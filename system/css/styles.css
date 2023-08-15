@@ -1,5 +1,4 @@
 /* custom-styles */
-
 body {
     background-color: #fffbfa;
     font-family: 'Libre Franklin', sans-serif;
@@ -7,25 +6,22 @@ body {
     font-size: 26px;
     line-height: 1.5;
     font-weight: 300;
-  }
-  
-  h1 {
+}
+h1 {
     margin-top: 50px;
     margin-bottom: 15px;
     font-size: 42px;
     line-height: 1.2;
     font-weight: 500;
-  }
-  
-  h2 {
+}
+h2 {
     margin-top: 32px;
     margin-bottom: 15px;
     font-size: 32px;
     line-height: 1.2;
     font-weight: 700;
-  }
-  
-  h3 {
+}
+h3 {
     margin-top: 30px;
     margin-bottom: 10px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
@@ -36,9 +32,8 @@ body {
     letter-spacing: 0.1em;
     text-transform: uppercase;
     max-width:43ch;
-  }
-  
-  h4 {
+}
+h4 {
     margin-top: 10px;
     margin-bottom: 10px;
     font-size: 18px;
@@ -48,9 +43,8 @@ body {
     font-weight: 600;
     letter-spacing: 0.07em;
     text-transform: uppercase;
-  }
-  
-  h5 {
+}
+h5 {
     margin-top: 10px;
     margin-bottom: 10px;
     font-family: 'Libre Franklin', sans-serif;
@@ -58,9 +52,8 @@ body {
     line-height: 1.2;
     font-style: italic;
     font-weight: 300;
-  }
-  
-  h6 {
+}
+h6 {
     margin-top: 10px;
     margin-bottom: 10px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
@@ -69,35 +62,28 @@ body {
     font-weight: 300;
     letter-spacing: 3px;
     text-transform: uppercase;
-  }
-  
-  p {
+}
+p {
     margin-bottom: 15px;
-  }
-  
-  ul, p, li {
+}
+ul, p, li {
     max-width: 43ch;
-  }
-  
-  ul {
+}
+ul {
     padding-inline-start:0.75em;
-  }
-  
-  a {
+}
+a {
     color: #d5a23c;
     text-decoration-thickness:6% ;
     text-underline-offset: 5%;
-  }
-  
-  a:hover {
+}
+a:hover {
     filter: brightness(.85);
-  }
-  
-  strong {
+}
+strong {
     font-weight: 600;
-  }
-  
-  .w-layout-grid {
+}
+.w-layout-grid {
     display: -ms-grid;
     display: grid;
     grid-auto-columns: 1fr;
@@ -105,9 +91,8 @@ body {
     grid-template-rows: auto auto;
     grid-row-gap: 16px;
     grid-column-gap: 16px;
-  }
-  
-  .nav-container {
+}
+.nav-container {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -127,16 +112,14 @@ body {
     -webkit-align-items: center;
     -ms-flex-align: center;
     align-items: center;
-  }
-  
-  .brand {
+}
+.brand {
     -webkit-box-ordinal-group: 0;
     -webkit-order: -1;
     -ms-flex-order: -1;
     order: -1;
-  }
-  
-  .nav-menu {
+}
+.nav-menu {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -149,9 +132,8 @@ body {
     -webkit-order: 1;
     -ms-flex-order: 1;
     order: 1;
-  }
-  
-  .navbar {
+}
+.navbar {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -162,24 +144,21 @@ body {
     -ms-flex-pack: justify;
     justify-content: space-between;
     background-color: #fffbfa;
-  }
-  
-  .nav-link {
+}
+.nav-link {
     margin-right: 10px;
     margin-left: 10px;
     padding: 10px;
     font-size: 18px;
     font-weight: 500;
-  }
-  
-  .nav-link.w--current {
+}
+.nav-link.w--current {
     border-style: solid;
     border-width: 2px;
     border-color: rgba(81, 42, 79, 0.15);
     color: #512a4f;
-  }
-  
-  .button {
+}
+.button {
     width: auto;
     margin-top: 5px;
     margin-bottom: 5px;
@@ -189,20 +168,17 @@ body {
     font-size: 20px;
     font-weight: 600;
     text-align: center;
-  }
-  
-  .button:hover {
+}
+.button:hover {
     filter:brightness(.95);
-  }
-  
-  .button.button-footer {
+}
+.button.button-footer {
     width: auto;
     margin-right: 10px;
     margin-left: 10px;
     font-size: 18px;
-  }
-  
-  .footer {
+}
+.footer {
     position: relative;
     margin-top: 20vh;
     padding: 30px 10px;
@@ -210,9 +186,8 @@ body {
     color: #fffbfa;
     font-size: 18px;
     text-align: center;
-  }
-  
-  .container {
+}
+.container {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -230,313 +205,259 @@ body {
     -webkit-align-items: center;
     -ms-flex-align: center;
     align-items: center;
-  }
-  
-  .footer-actions {
+}
+.footer-actions {
     margin-bottom: 10px;
-  }
-  
-  .footer-p {
+}
+.footer-p {
     margin-bottom: 5px;
-  }
-  
-  .footer-logo {
+}
+.footer-logo {
     width: 150px;
     -webkit-filter: invert(100%);
     filter: invert(100%);
     padding:0 0 0 30px;
-  }
-  
-  .shout {
+}
+.shout {
     max-width: 30ch;
     font-size: 50px;
     line-height: 1.2;
     font-weight: 500;
     margin-top:0;
-  }
-  
-  .shout-box {
+}
+.shout-box {
     padding-top:5vh;
     -webkit-box-align: center;
     -webkit-align-items: center;
     -ms-flex-align: center;
     align-items: center;
-  }
-  
-  .grid {
+}
+.grid {
     grid-column-gap: 30px;
     grid-row-gap: 30px;
-  }
-  
-  .grid-2 {
+}
+.grid-2 {
     -ms-grid-columns: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
     align-items:start;
-  }
-  
-  .grid-3 {
+}
+.grid-3 {
     -ms-grid-columns: 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr;
-  }
-  
-  .grid-span-2 {
+}
+.grid-span-2 {
     -ms-grid-column: span 2;
     grid-column-start: span 2;
     -ms-grid-column-span: 2;
     grid-column-end: span 2;
-  }
-  
-  .grid-span-3 {
+}
+.grid-span-3 {
     -ms-grid-column: span 3;
     grid-column-start: span 3;
     -ms-grid-column-span: 3;
     grid-column-end: span 3;
-  }
-  
-  
-  .small p, .small li, p.small {
+}
+.small p, .small li, p.small {
     font-size:20px;
-  }
-  
-  .tile-icon {
+}
+.tile-icon {
     max-width:120px;
-  }
-  
-  .top-45 {
+}
+.top-45 {
     margin-top: 45px;
-  }
-  
-  .top-0 {
+}
+.top-0 {
     margin-top: 0;
-  }
-  
-  .bottom-0 {
+}
+.bottom-0 {
     margin-bottom: 0;
-  }
-  
-  .bottom-20 {
+}
+.bottom-20 {
     margin-bottom: 20px;
-  }
-  
-  .text-field {
+}
+.text-field {
     height: 48px;
     font-size: 18px;
-  }
-  
-  .airtable-box {
+}
+.airtable-box {
     margin: 40px;
-  }
-  
-  .boxed {
+}
+.boxed {
     padding:15px;
     margin: 15px 0;
     border: 2px solid rgba(81, 42, 79, 0.15);
-  }
-  
-  .quote {
+}
+.quote {
     font-weight: 500;
-  }
-  
-  .citation {
+}
+.citation {
     font-style: italic;
     margin-bottom:0;
-  }
-  
-  @media screen and (max-width: 991px) {
+}
+@media screen and (max-width: 991px) {
     body {
-      padding-right: 10px;
-      padding-left: 10px;
-    }
-  
+        padding-right: 10px;
+        padding-left: 10px;
+   }
     .nav-container {
-      -webkit-align-self: auto;
-      -ms-flex-item-align: auto;
-      -ms-grid-row-align: auto;
-      align-self: auto;
-    }
-  
+        -webkit-align-self: auto;
+        -ms-flex-item-align: auto;
+        -ms-grid-row-align: auto;
+        align-self: auto;
+   }
     .nav-menu {
-      padding: 20px;
-      background-color: #bfc0c0;
-    }
-  
+        padding: 20px;
+        background-color: #bfc0c0;
+   }
     .navbar {
-      margin-right: -20px;
-      margin-left: -20px;
-      padding: 20px;
-      -webkit-box-align: center;
-      -webkit-align-items: center;
-      -ms-flex-align: center;
-      align-items: center;
-    }
-  
+        margin-right: -20px;
+        margin-left: -20px;
+        padding: 20px;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+   }
     .nav-link {
-      width: 100%;
-      margin-right: 0px;
-      margin-bottom: 10px;
-      margin-left: 0px;
-    }
-  
+        width: 100%;
+        margin-right: 0px;
+        margin-bottom: 10px;
+        margin-left: 0px;
+   }
     .nav-link.w--current {
-      border-color: #fffbfa;
-    }
-  
+        border-color: #fffbfa;
+   }
     .shout {
-      font-size: 48px;
-      margin-top:0;
-    }
-  
+        font-size: 48px;
+        margin-top:0;
+   }
     .footer {
-      margin-right: -10px;
-      margin-left: -10px;
-      padding-right: 20px;
-      padding-left: 20px;
-    }
-  
+        margin-right: -10px;
+        margin-left: -10px;
+        padding-right: 20px;
+        padding-left: 20px;
+   }
     .shout-box {
-      -webkit-box-orient: vertical;
-      -webkit-box-direction: normal;
-      -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-      flex-direction: column;
-    }
-  
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+   }
     .nav-container-last {
-      -webkit-box-ordinal-group: 2;
-      -webkit-order: 1;
-      -ms-flex-order: 1;
-      order: 1;
-    }
-  }
-  
-  @media screen and (max-width: 767px) {
+        -webkit-box-ordinal-group: 2;
+        -webkit-order: 1;
+        -ms-flex-order: 1;
+        order: 1;
+   }
+}
+@media screen and (max-width: 767px) {
     body {
-      padding-right: 10px;
-      padding-left: 10px;
-      font-size: 20px;
-    }
-  
+        padding-right: 10px;
+        padding-left: 10px;
+        font-size: 20px;
+   }
     .navbar {
-      margin-right: -10px;
-      margin-left: -10px;
-      padding: 10px 0px;
-    }
-  
+        margin-right: -10px;
+        margin-left: -10px;
+        padding: 10px 0px;
+   }
     .button {
-      width: 100%;
-      font-size: 18px;
-    }
-  
+        width: 100%;
+        font-size: 18px;
+   }
     .grid-3 {
-      grid-column-gap: 15px;
-      grid-row-gap: 15px;
-      grid-auto-columns: 1fr;
-      -ms-grid-columns: 1fr;
-    }
-  
+        grid-column-gap: 15px;
+        grid-row-gap: 15px;
+        grid-auto-columns: 1fr;
+        -ms-grid-columns: 1fr;
+   }
     .grid-span-3 {
-      -ms-grid-column: span 1;
-      grid-column-start: span 1;
-      -ms-grid-column-span: 1;
-      grid-column-end: span 1;
-    }
-  
+        -ms-grid-column: span 1;
+        grid-column-start: span 1;
+        -ms-grid-column-span: 1;
+        grid-column-end: span 1;
+   }
     .airtable-box {
-      margin: 10px;
-    }
-  
-  }
-  
-  
-  @media screen and (max-width: 479px) {
+        margin: 10px;
+   }
+}
+@media screen and (max-width: 479px) {
     .shout {
-      font-size: 36px;
-    }
-  
+        font-size: 36px;
+   }
     .shout-box {
-      padding-top:10px;
-    }
-  
+        padding-top:10px;
+   }
     h2 {
-      font-size: 24px;
-    }
-  
+        font-size: 24px;
+   }
     h3 {
-      font-size: 16px;
-    }
-  
+        font-size: 16px;
+   }
     .button.button-footer {
-      width: 100%;
-      margin-right: 1px;
-      margin-left: 1px;
-    }
-  
+        width: 100%;
+        margin-right: 1px;
+        margin-left: 1px;
+   }
     .footer {
-      padding-top: 10px;
-      padding-right: 10px;
-      padding-left: 10px;
-    }
-  
+        padding-top: 10px;
+        padding-right: 10px;
+        padding-left: 10px;
+   }
     .logo {
-      max-width: 80%;
-    }
-  
+        max-width: 80%;
+   }
     .grid, .grid-2 {
-      grid-column-gap: 15px;
-      grid-row-gap: 15px;
-      grid-auto-columns: 1fr;
-      grid-template-columns: 1fr;
-      -ms-grid-columns: 1fr;
-    }
-  
+        grid-column-gap: 15px;
+        grid-row-gap: 15px;
+        grid-auto-columns: 1fr;
+        grid-template-columns: 1fr;
+        -ms-grid-columns: 1fr;
+   }
     .grid-span-2 {
-      -ms-grid-column: span 1;
-      grid-column-start: span 1;
-      -ms-grid-column-span: 1;
-      grid-column-end: span 1;
-    }
-  
-  }
-  
-  
-  /* Dark mode */
-  
-  @media (prefers-color-scheme: dark) {
-  body {
-  background-color: #000;
-  color: #fffbfa;
-  }
-  h3, h4 {
-  color:#bfc0c0;
-    }
-  
-  .footer, .navbar {
-  background-color: #333;
-    color: #fffbfa;
-    }
+        -ms-grid-column: span 1;
+        grid-column-start: span 1;
+        -ms-grid-column-span: 1;
+        grid-column-end: span 1;
+   }
+}
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #000;
+        color: #fffbfa;
+   }
+    h3, h4 {
+        color:#bfc0c0;
+   }
+    .footer, .navbar {
+        background-color: #333;
+        color: #fffbfa;
+   }
     .logo {
-  filter: invert(1);
-    }
+        filter: invert(1);
+   }
     .nav-link{
-  color:#fffbfa;
-    }
+        color:#fffbfa;
+   }
     .nav-link.w--current {
-  color: #bfc0c0;
-      border-color:#bfc0c0;
-    }
-  }
+        color: #bfc0c0;
+        border-color:#bfc0c0;
+   }
+}
 /* webflow */
-
 /* It's useful to keep this here in case we export from webflow in the future. */
-
 @font-face {
     font-family: 'webflow-icons';
-    src: url("data:application/x-font-ttf;charset=utf-8;base64,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") format('truetype');
+    src: url("data:application/x-font-ttf;
+   charset=utf-8;
+   base64,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") format('truetype');
     font-weight: normal;
     font-style: normal;
-  }
-  [class^="w-icon-"] {
-    /* use !important to prevent issues with browser extensions that change fonts */
+}
+[class^="w-icon-"] {
+   /* use !important to prevent issues with browser extensions that change fonts */
     font-family: 'webflow-icons' !important;
     speak: none;
     font-style: normal;
@@ -544,22 +465,22 @@ body {
     font-variant: normal;
     text-transform: none;
     line-height: 1;
-    /* Better Font Rendering =========== */
+   /* Better Font Rendering =========== */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-  }
-  .w-icon-nav-menu:before {
+}
+.w-icon-nav-menu:before {
     content: "\e602";
-  }
-  * {
+}
+* {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-  }
-  html {
+}
+html {
     height: 100%;
-  }
-  body {
+}
+body {
     margin: 0;
     min-height: 100%;
     background-color: #fff;
@@ -567,13 +488,13 @@ body {
     font-size: 14px;
     line-height: 20px;
     color: #333;
-  }
-  img {
+}
+img {
     max-width: 100%;
     vertical-align: middle;
     display: inline-block;
-  }
-  .w-button {
+}
+.w-button {
     display: inline-block;
     padding: 9px 15px;
     background-color: #3898EC;
@@ -583,62 +504,57 @@ body {
     text-decoration: none;
     cursor: pointer;
     border-radius: 0;
-  }
-  input.w-button {
+}
+input.w-button {
     -webkit-appearance: button;
-  }
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+}
+h1, h2, h3, h4, h5, h6 {
     font-weight: bold;
     margin-bottom: 10px;
-  }
-  h1 {
+}
+h1 {
     font-size: 38px;
     line-height: 44px;
     margin-top: 20px;
-  }
-  h2 {
+}
+h2 {
     font-size: 32px;
     line-height: 36px;
     margin-top: 20px;
-  }
-  h3 {
+}
+h3 {
     font-size: 24px;
     line-height: 30px;
     margin-top: 20px;
-  }
-  h4 {
+}
+h4 {
     font-size: 18px;
     line-height: 24px;
     margin-top: 10px;
-  }
-  h5 {
+}
+h5 {
     font-size: 14px;
     line-height: 20px;
     margin-top: 10px;
-  }
-  h6 {
+}
+h6 {
     font-size: 12px;
     line-height: 18px;
     margin-top: 10px;
-  }
-  p {
+}
+p {
     margin-top: 0;
     margin-bottom: 10px;
-  }
-  ul {
+}
+ul {
     margin-top: 0px;
     margin-bottom: 10px;
     padding-left: 40px;
-  }
-  .w-form {
+}
+.w-form {
     margin: 0 0 15px;
-  }
-  .w-input {
+}
+.w-input {
     display: block;
     width: 100%;
     height: 38px;
@@ -650,181 +566,136 @@ body {
     vertical-align: middle;
     background-color: #ffffff;
     border: 1px solid #cccccc;
-  }
-  .w-input:-moz-placeholder {
+}
+.w-input:-moz-placeholder {
     color: #999;
-  }
-  .w-input::-moz-placeholder {
+}
+.w-input::-moz-placeholder {
     color: #999;
     opacity: 1;
-  }
-  .w-input:-ms-input-placeholder {
+}
+.w-input:-ms-input-placeholder {
     color: #999;
-  }
-  .w-input::-webkit-input-placeholder {
+}
+.w-input::-webkit-input-placeholder {
     color: #999;
-  }
-  .w-input:focus {
+}
+.w-input:focus {
     border-color: #3898EC;
     outline: 0;
-  }
-  .w-container {
+}
+.w-container {
     margin-left: auto;
     margin-right: auto;
     max-width: 940px;
-  }
-  .w-container:before,
-  .w-container:after {
+}
+.w-container:before, .w-container:after {
     content: " ";
     display: table;
     grid-column-start: 1;
     grid-row-start: 1;
     grid-column-end: 2;
     grid-row-end: 2;
-  }
-  .w-container:after {
+}
+.w-container:after {
     clear: both;
-  }
-  .w-container .w-row {
+}
+.w-container .w-row {
     margin-left: -10px;
     margin-right: -10px;
-  }
-  .w-row:before,
-  .w-row:after {
+}
+.w-row:before, .w-row:after {
     content: " ";
     display: table;
     grid-column-start: 1;
     grid-row-start: 1;
     grid-column-end: 2;
     grid-row-end: 2;
-  }
-  .w-row:after {
+}
+.w-row:after {
     clear: both;
-  }
-  .w-col {
+}
+.w-col {
     position: relative;
     float: left;
     width: 100%;
     min-height: 1px;
     padding-left: 10px;
     padding-right: 10px;
-  }
-  .w-col-6 {
+}
+.w-col-6 {
     width: 50%;
-  }
-  .w-col-12 {
+}
+.w-col-12 {
     width: 100%;
-  }
-  @media screen and (max-width: 991px) {
+}
+@media screen and (max-width: 991px) {
     .w-container {
-      max-width: 728px;
-    }
-  }
-  @media screen and (max-width: 767px) {
-    .w-row,
-    .w-container .w-row {
-      margin-left: 0;
-      margin-right: 0;
-    }
+        max-width: 728px;
+   }
+}
+@media screen and (max-width: 767px) {
+    .w-row, .w-container .w-row {
+        margin-left: 0;
+        margin-right: 0;
+   }
     .w-col {
-      width: 100%;
-      left: auto;
-      right: auto;
-    }
-  }
-  @media screen and (max-width: 479px) {
+        width: 100%;
+        left: auto;
+        right: auto;
+   }
+}
+@media screen and (max-width: 479px) {
     .w-container {
-      max-width: none;
-    }
+        max-width: none;
+   }
     .w-col {
-      width: 100%;
-    }
-  }
-  @media screen and (max-width: 767px) {
+        width: 100%;
+   }
+}
+@media screen and (max-width: 767px) {
     .w-nav-brand {
-      padding-left: 10px;
-    }
-  }
-  /**
-   * ## Note
-   * Safari (on both iOS and OS X) does not handle viewport units (vh, vw) well.
-   * For example percentage units do not work on descendants of elements that
-   * have any dimensions expressed in viewport units. It also doesn’t handle them at
-   * all in `calc()`.
-   */
-  /**
-   * Wrapper around all lightbox elements
-   *
-   * 1. Since the lightbox can receive focus, IE also gives it an outline.
-   * 2. Fixes flickering on Chrome when a transition is in progress
-   *    underneath the lightbox.
-   */
-  /**
-   * Neat trick to bind the rubberband effect to our canvas instead of the whole
-   * document on iOS. It also prevents a bug that causes the document underneath to scroll.
-   */
-  /* .w-lightbox-content */
-  /*
-   * 1. Remove default margin set by user-agent on the <figure> element.
-   */
-  /**
-   * IE adds image dimensions as width and height attributes on the IMG tag,
-   * but we need both width and height to be set to auto to enable scaling.
-   */
-  /**
-   * 1. Reset if style is set by user on "All Images"
-   */
-  /*
-   * Without specifying the with and height inside the SVG, all versions of IE render the icon too small.
-   * The bug does not seem to manifest itself if the elements are tall enough such as the above arrows.
-   * (http://stackoverflow.com/questions/16092114/background-size-differs-in-internet-explorer)
-   */
-  /**
-   * 1. All IE versions add extra space at the bottom without this.
-   */
-  /*
-   * 1. We use content-box to avoid having to do `width: calc(10vh + 2vw)`
-   *    which doesn’t work in Safari anyway.
-   * 2. Chrome renders images pixelated when switching to GPU. Making sure
-   *    the parent is also rendered on the GPU (by setting translate3d for
-   *    example) fixes this behavior.
-   */
-  /*
-   * Spinner
-   *
-   * Absolute pixel values are used to avoid rounding errors that would cause
-   * the white spinning element to be misaligned with the track.
-   */
-  /*
-   * Utility classes
-   */
-  @media (min-width: 768px) {
-    /* .w-lightbox-content */
-  }
-  .w-nav {
+        padding-left: 10px;
+   }
+}
+/** * ## Note * Safari (on both iOS and OS X) does not handle viewport units (vh, vw) well. * For example percentage units do not work on descendants of elements that * have any dimensions expressed in viewport units. It also doesn’t handle them at * all in `calc()`. */
+/** * Wrapper around all lightbox elements * * 1. Since the lightbox can receive focus, IE also gives it an outline. * 2. Fixes flickering on Chrome when a transition is in progress * underneath the lightbox. */
+/** * Neat trick to bind the rubberband effect to our canvas instead of the whole * document on iOS. It also prevents a bug that causes the document underneath to scroll. */
+/* .w-lightbox-content */
+/* * 1. Remove default margin set by user-agent on the <figure> element. */
+/** * IE adds image dimensions as width and height attributes on the IMG tag, * but we need both width and height to be set to auto to enable scaling. */
+/** * 1. Reset if style is set by user on "All Images" */
+/* * Without specifying the with and height inside the SVG, all versions of IE render the icon too small. * The bug does not seem to manifest itself if the elements are tall enough such as the above arrows. * (http://stackoverflow.com/questions/16092114/background-size-differs-in-internet-explorer) */
+/** * 1. All IE versions add extra space at the bottom without this. */
+/* * 1. We use content-box to avoid having to do `width: calc(10vh + 2vw)` * which doesn’t work in Safari anyway. * 2. Chrome renders images pixelated when switching to GPU. Making sure * the parent is also rendered on the GPU (by setting translate3d for * example) fixes this behavior. */
+/* * Spinner * * Absolute pixel values are used to avoid rounding errors that would cause * the white spinning element to be misaligned with the track. */
+/* * Utility classes */
+@media (min-width: 768px) {
+   /* .w-lightbox-content */
+}
+.w-nav {
     position: relative;
     background: #dddddd;
     z-index: 1000;
-  }
-  .w-nav:before,
-  .w-nav:after {
+}
+.w-nav:before, .w-nav:after {
     content: " ";
     display: table;
     grid-column-start: 1;
     grid-row-start: 1;
     grid-column-end: 2;
     grid-row-end: 2;
-  }
-  .w-nav:after {
+}
+.w-nav:after {
     clear: both;
-  }
-  .w-nav-brand {
+}
+.w-nav-brand {
     position: relative;
     float: left;
     text-decoration: none;
     color: #333333;
-  }
-  .w-nav-link {
+}
+.w-nav-link {
     position: relative;
     display: inline-block;
     vertical-align: top;
@@ -834,15 +705,15 @@ body {
     text-align: left;
     margin-left: auto;
     margin-right: auto;
-  }
-  .w-nav-link.w--current {
+}
+.w-nav-link.w--current {
     color: #0082f3;
-  }
-  .w-nav-menu {
+}
+.w-nav-menu {
     position: relative;
     float: right;
-  }
-  .w-nav-button {
+}
+.w-nav-button {
     position: relative;
     float: right;
     padding: 18px;
@@ -855,20 +726,20 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-  }
-  .w-nav-button:focus {
+}
+.w-nav-button:focus {
     outline: 0;
-  }
-  @media screen and (max-width: 991px) {
+}
+@media screen and (max-width: 991px) {
     .w-nav[data-collapse="medium"] .w-nav-menu {
-      display: none;
-    }
+        display: none;
+   }
     .w-nav[data-collapse="medium"] .w-nav-button {
-      display: block;
-    }
-  }
-  @media screen and (max-width: 767px) {
+        display: block;
+   }
+}
+@media screen and (max-width: 767px) {
     .w-nav-brand {
-      padding-left: 10px;
-    }
-  }
+        padding-left: 10px;
+   }
+}
