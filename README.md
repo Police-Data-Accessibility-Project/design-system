@@ -6,6 +6,9 @@ Open `system/demo.html` to see how things look.
 `system/css/normalize.css` is used for more consistent cross-browser rendering.
 `system/images` are icons and brand assets.
 
+# Usage
+```npm install pdap-design-system```
+
 # Context
 We are making tools for transparency about a serious subject. We are be focused, friendly, and open.
 
