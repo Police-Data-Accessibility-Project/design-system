@@ -109,11 +109,41 @@ p {
   margin-top: 0;
   margin-bottom: 10px;
 }
+
+code {
+  font-family: 'Source Code Pro', monospace;
+  font-weight:400;
+  font-size: inherit;
+}
+
+p > code,
+li > code {
+  background: rgba(81, 42, 79, 0.05);
+  word-wrap: break-word;
+  box-decoration-break: clone;
+  padding: .2rem .4rem .3rem;
+  border-radius: 2px;
+}
+
+pre code {
+  font-size:20px;
+  display:block;
+  background: rgba(81, 42, 79, 0.05);
+  border: 1px solid rgba(81, 42, 79, 0.15);
+  white-space: pre;
+  -webkit-overflow-scrolling: touch;
+  max-width: 100%;
+  min-width: 100px;
+  padding: 20px;
+  text-align:left;
+}
+
 .nav-menu-icon:before {
   content: "\e602";
 }
 .form {
   margin: 0 0 15px;
+  width:100%;
 }
 .input {
   display: block;
@@ -173,7 +203,7 @@ p {
 }
 
 /* left-aligns things narrower than containers inside containers */
-.container h1, .container h2, .container h3, .container h4, .container h5, .container h6, .container p, .container div, {
+.container h1, .container h2, .container h3, .container h4, .container h5, .container h6, .container p, .container div {
   margin-right:auto;
 }
 .container:before,
