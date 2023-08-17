@@ -2,8 +2,11 @@
 These are styling resources like CSS and templates for new PDAP microservices or branded web projects.
 
 Open `system/demo.html` to see how things look.
+
 `system/css/global-styles.css` are the styles used across all PDAP applications.
+
 `system/css/normalize.css` is used for more consistent cross-browser rendering.
+
 `system/images` are icons and brand assets.
 
 # Usage
