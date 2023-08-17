@@ -12,12 +12,10 @@ Open `system/demo.html` to see how things look.
 # Usage
 ```npm install pdap-design-system```
 
-# Context
-We are making tools for transparency about a serious subject. We are be focused, friendly, and open.
-
 ## Principles
 This is a first pass, so they're not etched in stone. Open to suggestions.
 
+We are making tools for transparency about a serious subject. We should be focused, friendly, and open.
 - Our design should take accessibility seriously. 
 - Keep it simple: things should not do anything they don't need to do. 
 - We should keep our users informed and in control with timely, relevant feedback.
