@@ -10,7 +10,20 @@ Open `system/demo.html` to see how things look.
 `system/images` are icons and brand assets.
 
 # Usage
-```npm install pdap-design-system```
+1. In the project's directory:
+
+```
+npm install pdap-design-system
+```
+
+2. Without moving the CSS files, reference them like this:
+
+```
+  <link href="node_modules/pdap-design-system/system/css/normalize.css" rel="stylesheet" type="text/css">
+  <link href="node_modules/pdap-design-system/system/css/global-styles.css" rel="stylesheet" type="text/css">
+  ```
+
+
 
 ## Principles
 This is a first pass, so they're not etched in stone. Open to suggestions.
@@ -27,3 +40,6 @@ We are making tools for transparency about a serious subject. We should be focus
 ## Assets
 Use these [brand assets](https://docs.pdap.io/meta/about/staff/brand-assets).
 Use this [terminology](https://docs.pdap.io/activities/terms-and-definitions).
+
+## Other notes
+This is based on the PDAP website, which was originally created in Webflow. That might explain some of the CSS browser compatibility choices.
