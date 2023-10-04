@@ -9,7 +9,6 @@ function cliImageCopy(args) {
 
 	console.log(`Copying PDAP image assets to ${destinationPath}`);
 
-	// To Move a folder or file, select overwrite accordingly
 	fs.copy(packageImagesPath, destinationPath, function handleError(err) {
 		if (err) {
 			console.error(err);
