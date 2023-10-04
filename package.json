@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/Police-Data-Accessibility-Project/design-system/issues"
   },
-  "homepage": "https://github.com/Police-Data-Accessibility-Project/design-system#readme"
+  "homepage": "https://github.com/Police-Data-Accessibility-Project/design-system#readme",
+	"devDependencies": {
+    "tailwindcss": "^3.3.3"
+  }
 }
