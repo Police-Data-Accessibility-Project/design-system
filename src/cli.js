@@ -12,10 +12,10 @@ function cliImageCopy(args) {
 	fs.copy(packageImagesPath, destinationPath, function handleError(err) {
 		if (err) {
 			console.error(err);
+		} else {
+			console.log(`PDAP image assets successfully copied.`);
 		}
 	});
-
-	console.log(`PDAP image assets successfully copied to ${destinationPath}`);
 }
 
 module.exports = { cliImageCopy };
