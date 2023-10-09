@@ -22,7 +22,7 @@ npm install pdap-design-system
 
 After installing the package, include PDAP styles in a project using one of two strategies.
 
-1. If you are using `Vue.js` or another framework that bundles CSS via a build tool like Webpack or Vite, you can import the package directly in your entrypoint js file. So, if your entrypoint is `main.js`, import it in that file like so:
+1. If the project uses `Vue.js` or another framework that bundles CSS via a build tool like Webpack or Vite, you can import the package directly in your entrypoint js file. So, if your entrypoint is `main.js`, import it in that file like so:
 
 ```
 import 'pdap-design-system'
@@ -32,6 +32,10 @@ And voila! You have access to PDAP's design system CSS / images to use in your t
 
 ```
 <button class="button">Say Hello</button>
+```
+
+```
+<img src=node_modules/pdap-design-system/dist/images/{name-of-image}.{png | svg | gif} alt="some descriptive alt text" />
 ```
 
 2. If the project does not have a build tool that bundles CSS for you, you can still include PDAP styles via HTML `link` tags:
@@ -44,28 +48,29 @@ And voila! You have access to PDAP's design system CSS / images to use in your t
 
 There are also two strategies for including PDAP image assets.
 
-1. Images can be copied to a directory of your choosing using the `pdap-design-system-copy-assets` command line method exposed by this package.
+1. If the project bundles images via a build tool like Webpack or Vite, you can import the package directly in your entrypoint js file. So, if your entrypoint is `main.js`, import it in that file like so:
 
 ```
-  pdap-design-system-copy-assets
+import 'pdap-design-system'
 ```
 
-Optional arguments:
+Then, from the root directory of your project, assets can be copied using the `pdap-design-system` command line method exposed by this package and passing the `--copy-images` argument to it.
 
 ```
---path={desiredPath}
+  pdap-design-system --copy-images
 ```
 
-By default, the images will be copied to a directory named `/assets` in the root of the project directory. If you would prefer them to be copied to a custom directory name, run the command with the `path` argument.
+By default, images will be copied to a directory named `assets/`. You can override this by passing a custom directory name to the optional `--to` argument.
 
 ```
-  pdap-design-system-copy-assets --path=foo
+  pdap-design-system --copy-images --to=foo
 ```
 
-2. Alternatively, you can reference images directly from the `node_modules` directory in the same way CSS is imported
+3. Alternatively, you can reference images directly from the `node_modules` directory in the same way CSS is imported  
+   _note: If using a bundled framework like Vue.js, images must be imported into the bundle either individually or by importing this entire package, otherwise your app will not know where to look for the path you pass to src_
 
 ```
-  <img src='node_modules/pdap-design-system/dist/{path-to-image}.png' alt='some descriptive alt text'>
+  <img src='node_modules/pdap-design-system/dist/images/{name-of-image}.{png | svg | gif}' alt='some descriptive alt text'>
 ```
 
 ## Development Setup
@@ -76,9 +81,10 @@ By default, the images will be copied to a directory named `/assets` in the root
 gh repo clone Police-Data-Accessibility-Project/design-system
 ```
 
-2. Install dependencies
+2. CD into the project folder and install dependencies
 
 ```
+cd design-system
 npm i
 ```
 
