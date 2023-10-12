@@ -18,7 +18,7 @@ CSS and assets are built to the `dist` directory before each release, so you wil
 npm install pdap-design-system
 ```
 
-#### To import and use CSS
+### To import and use CSS from the package
 
 After installing the package, include PDAP styles in a project using one of two strategies.
 
@@ -44,33 +44,35 @@ And voila! You have access to PDAP's design system CSS / images to use in your t
   <link href="node_modules/pdap-design-system/dist/css/global-styles.css" rel="stylesheet" type="text/css">
 ```
 
-#### To import and use images
+### To import and use images from the package
 
 There are also two strategies for including PDAP image assets.
 
 1. If the project bundles images via a build tool like Webpack or Vite, you can import the package directly in your entrypoint js file. So, if your entrypoint is `main.js`, import it in that file like so:
 
-```
-import 'pdap-design-system'
-```
-
-Then, from the root directory of your project, assets can be copied using the `pdap-design-system` command line method exposed by this package and passing the `--copy-images` argument to it.
-
-```
-  pdap-design-system --copy-images
-```
-
-By default, images will be copied to a directory named `assets/`. You can override this by passing a custom directory name to the optional `--to` argument.
-
-```
-  pdap-design-system --copy-images --to=foo
-```
-
-3. Alternatively, you can reference images directly from the `node_modules` directory in the same way CSS is imported  
+2. You can then reference images directly from the `node_modules` directory in the same way CSS is imported  
    _note: If using a bundled framework like Vue.js, images must be imported into the bundle either individually or by importing this entire package, otherwise your app will not know where to look for the path you pass to src_
 
 ```
   <img src='node_modules/pdap-design-system/dist/images/{name-of-image}.{png | svg | gif}' alt='some descriptive alt text'>
+```
+
+### Using the CLI to copy assets to your local project directory
+
+If you want either styles or images copied to a local folder, you can do so from the root directory of your project.
+
+Assets can be copied using the `pdap-design-system` command line method exposed by this package.
+
+One of the following arguments is required:  
+`--copy-assets`: Copies all assets.
+`--copy-images`: Copies all images.
+`--copy-styles`: Copies all images.
+
+The following argument is optional:  
+`--to={path}`: Path to directory where assets should be copied. Defaults to `assets`
+
+```
+  pdap-design-system --copy-images --to=image-assets
 ```
 
 ## Development Setup
@@ -88,7 +90,21 @@ cd design-system
 npm i
 ```
 
-3. If you use VS Code as your editor, you may want to install the [tailwind VS Code extension](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss), which helps with intellisense and the custom at-rules (`@tailwind`, for example) used by TailwindCSS.
+3.
+
+- To build styles to the `dist` folder:
+
+```
+npm run styles
+```
+
+- To watch for changes and update css as you make changes:
+
+```
+npm run styles:watch
+```
+
+4. If you use VS Code as your editor, you may want to install the [tailwind VS Code extension](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss), which helps with intellisense and the custom at-rules used by TailwindCSS.
 
 ## Principles
 
