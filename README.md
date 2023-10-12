@@ -64,9 +64,9 @@ If you want either styles or images copied to a local folder, you can do so from
 Assets can be copied using the `pdap-design-system` command line method exposed by this package.
 
 One of the following arguments is required:  
-`--copy-assets`: Copies all assets.
+`--copy-assets`: Copies all images and styles.
 `--copy-images`: Copies all images.
-`--copy-styles`: Copies all images.
+`--copy-styles`: Copies all styles.
 
 The following argument is optional:  
 `--to={path}`: Path to directory where assets should be copied. Defaults to `assets`
