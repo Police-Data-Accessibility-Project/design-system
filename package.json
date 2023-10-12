@@ -4,11 +4,10 @@
 	"description": "Global styles for PDAP apps",
 	"author": "Police Data Accessibility Project, Inc.",
 	"license": "ISC",
+	"homepage": "https://github.com/Police-Data-Accessibility-Project/design-system#readme",
 	"bugs": {
 		"url": "https://github.com/Police-Data-Accessibility-Project/design-system/issues"
 	},
-	"homepage": "https://github.com/Police-Data-Accessibility-Project/design-system#readme",
-	"main": "./dist/css/global-styles.css",
 	"exports": {
 		"import": {
 			"default": "./dist/css/global-styles.css"
@@ -17,6 +16,7 @@
 			"default": "./dist/css/global-styles.css"
 		}
 	},
+	"main": "./dist/css/global-styles.css",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/Police-Data-Accessibility-Project/design-system.git"
@@ -27,6 +27,29 @@
 	"engines": {
 		"npm": ">=9.0.0",
 		"node": ">=18.0.0"
+	},
+	"browserslist": {
+		"production": [
+			">0.01%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			">0.01%",
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	},
+	"devDependencies": {
+		"cross-env": "^7.0.3",
+		"npm-run-all": "^4.1.5",
+		"rimraf": "^5.0.5",
+		"tailwindcss": "^3.3.3"
+	},
+	"dependencies": {
+		"fs-extra": "^11.1.1",
+		"minimist": "^1.2.8"
 	},
 	"scripts": {
 		"build": "run-p build:*",
@@ -50,15 +73,5 @@
 	},
 	"keywords": [
 		"pdap-design-system"
-	],
-	"devDependencies": {
-		"cross-env": "^7.0.3",
-		"npm-run-all": "^4.1.5",
-		"rimraf": "^5.0.5",
-		"tailwindcss": "^3.3.3"
-	},
-	"dependencies": {
-		"fs-extra": "^11.1.1",
-		"minimist": "^1.2.8"
-	}
+	]
 }
