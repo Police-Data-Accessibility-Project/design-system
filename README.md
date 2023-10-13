@@ -90,12 +90,12 @@ cd design-system
 npm i
 ```
 
-3.
+3. Step 2 should result in the `build` script being run after packages are installed. Check the `dist` folder for changes. You then may want to take one or both of the following steps:
 
-- To build styles to the `dist` folder:
+- If `build` wasn't called when you installed deps, build styles and images to the `dist` folder:
 
 ```
-npm run styles
+npm run build
 ```
 
 - To watch for changes and update css as you make changes:
@@ -105,6 +105,8 @@ npm run styles:watch
 ```
 
 4. If you use VS Code as your editor, you may want to install the [tailwind VS Code extension](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss), which helps with intellisense and the custom at-rules used by TailwindCSS.
+
+5. Read the [contributing guide](./CONTRIBUTING.md) for development requirements and tips.
 
 ## Principles
 
