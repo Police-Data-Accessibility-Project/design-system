@@ -58,6 +58,7 @@
 		"clean": "rimraf dist",
 		"prebuild": "npm run clean",
 		"prepare": "npm run build",
+		"prepublishOnly": "npm run build",
 		"styles": "npx tailwindcss -i ./src/css/global-styles.css -o ./dist/css/global-styles.css",
 		"styles:watch": "npm run styles -- --watch",
 		"test": "echo \\\"No tests for CSS-only package.\\\" && exit 0"
