@@ -68,7 +68,8 @@
 
 	/* Anchors and buttons*/
 	a {
-		@apply text-brand-gold decoration-solid decoration-[6%] underline-offset-[5%];
+		@apply decoration-solid decoration-[6%] text-brand-gold  underline-offset-[5%];
+		@apply hover:brightness-85;
 	}
 
 	/* Miscellaneous */
@@ -92,7 +93,7 @@
 	}
 
 	code {
-		@apply font-normal font-mono max-w-full;
+		@apply font-normal font-mono max-w-full text-neutral-950;
 	}
 
 	p > code,
@@ -132,7 +133,7 @@
 
 	/* Header */
 	.header {
-		@apply bg-neutral-300 flex justify-between p-8 relative z-50;
+		@apply dark:bg-neutral-300 bg-neutral-50 flex justify-between p-8 relative z-50;
 	}
 
 	/* Footer */
@@ -159,7 +160,7 @@
 
 	/* Images and Icons */
 	.logo {
-		@apply decoration-0 relative  max-w-[80%];
+		@apply decoration-0 relative max-w-[80%] dark:invert;
 		@apply xs:max-w-none;
 	}
 
@@ -186,7 +187,7 @@
 	/* Buttons */
 	.button {
 		@apply bg-brand-gold cursor-pointer border-0 decoration-0 font-semibold inline-block mx-1 px-6 py-3 rounded-none text-center text-neutral-100 text-lg w-full;
-		@apply lg:text-xl sm:max-w-max;
+		@apply hover:brightness-85 lg:text-xl sm:max-w-max;
 	}
 
 	.button-outline {
@@ -200,7 +201,7 @@
 
 	/* Inputs */
 	.input {
-		@apply align-middle bg-neutral-950 block border-[1px] border-neutral-300 border-solid h-9 leading-normal mb-2 px-3 py-2 text-neutral-700 text-sm w-full;
+		@apply align-middle dark:bg-neutral-950 bg-neutral-50 block border-[1px] border-neutral-300 border-solid h-9 leading-normal mb-2 px-3 py-2 text-neutral-700 text-sm w-full;
 	}
 	.input:-moz-placeholder,
 	.input:-ms-input-placeholder,
@@ -272,26 +273,5 @@
 	.grid-item-span-3 {
 		@apply col-span-1;
 		@apply md:col-span-2 lg:col-span-3;
-	}
-}
-
-/* Media Queries */
-/* Dark mode */
-@media (prefers-color-scheme: dark) {
-	@layer components {
-		.logo img,
-		.tile-icon {
-			@apply invert;
-		}
-	}
-}
-
-/* Hover */
-@media (hover: hover) {
-	@layer base {
-		a:hover,
-		.button:hover {
-			@apply brightness-85;
-		}
 	}
 }
