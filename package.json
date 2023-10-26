@@ -16,7 +16,7 @@
 			"default": "./dist/css/global-styles.css"
 		}
 	},
-	"main": "./dist/css/global-styles.css",
+	"main": "./dist/index.js",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/Police-Data-Accessibility-Project/design-system.git"
@@ -25,8 +25,8 @@
 		"doc": "docs"
 	},
 	"engines": {
-		"npm": ">=9.0.0",
-		"node": ">=18.0.0"
+		"npm": "^9.0.0",
+		"node": "^18.0.0"
 	},
 	"browserslist": {
 		"production": [
@@ -59,12 +59,21 @@
 		"prebuild": "npm run clean",
 		"prepare": "npm run build",
 		"prepublishOnly": "npm run build",
-		"styles": "npx tailwindcss -i ./src/css/global-styles.css -o ./dist/css/global-styles.css",
-		"styles:watch": "npm run styles -- --watch",
+		"styles": "run-p styles:*",
+		"styles:base": "npx tailwindcss -i ./src/styles/base.css -o ./dist/styles/base.css --minify",
+		"styles:components": "npx tailwindcss -i ./src/styles/components.css -o ./dist/styles/components.css --minify",
+		"styles:global": "npx tailwindcss -i ./src/styles/styles.css -o ./dist/styles/styles.css --minify",
+		"styles:utilities": "npx tailwindcss -i ./src/styles/utilities.css -o ./dist/styles/utilities.css --minify",
+		"styles:watch:all": "run-p styles:watch:*",
+		"styles:watch:components": "npx tailwindcss -i ./src/styles/components.css -o ./dist/styles/components.css --watch",
+		"styles:watch:global": "npm run styles:global -- --watch",
+		"styles:watch:base": "npx tailwindcss -i ./src/styles/base.css -o ./dist/styles/base.css -- --watch",
+		"styles:watch:utilities": "npx tailwindcss -i ./src/styles/utilities.css -o ./dist/styles/utilities.css -- --watch",
 		"test": "echo \\\"No tests for CSS-only package.\\\" && exit 0"
 	},
 	"files": [
 		"bin",
+		"CONTRIBUTING.md",
 		"dist",
 		"system",
 		"README.md"

@@ -4,7 +4,7 @@ These are styling resources like CSS and templates for new PDAP microservices or
 
 Run `npm run build` and open `demo/index.html` to see how things look.
 
-`src/css/global-styles.css` are the styles used across all PDAP applications.
+`src/styles/styles.css` are the styles used across all PDAP applications.
 
 `src/images` are icons and brand assets.
 
@@ -41,7 +41,7 @@ And voila! You have access to PDAP's design system CSS / images to use in your t
 2. If the project does not have a build tool that bundles CSS for you, you can still include PDAP styles via HTML `link` tags:
 
 ```
-  <link href="node_modules/pdap-design-system/dist/css/global-styles.css" rel="stylesheet" type="text/css">
+  <link href="node_modules/pdap-design-system/dist/styles/styles.css" rel="stylesheet" type="text/css">
 ```
 
 ### To import and use images from the package

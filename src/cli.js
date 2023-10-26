@@ -17,8 +17,8 @@ function copyImageAssets(args) {
 }
 
 function copyStyleAssets(args) {
-	const packageImagesPath = process.cwd() + '/node_modules/pdap-design-system/dist/css';
-	const destinationSubPath = (args.to ?? 'assets') + '/css';
+	const packageImagesPath = process.cwd() + '/node_modules/pdap-design-system/dist/styles';
+	const destinationSubPath = (args.to ?? 'assets') + '/styles';
 	const destinationPath = process.cwd() + '/' + destinationSubPath;
 
 	console.log(`Copying PDAP Style assets to ${destinationPath}`);

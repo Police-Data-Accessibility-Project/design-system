@@ -2,7 +2,7 @@
 
 const cli = require('../src/cli');
 
-// Convert argv to object keyed by arg name where --{argName}
+// Convert argv to object keyed by argName where --argName is what is passed to CLI
 const args = require('minimist')(process.argv);
 
 switch (true) {

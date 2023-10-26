@@ -1,0 +1,108 @@
+@import './variables.css';
+@tailwind components;
+
+@layer components {
+	/* Layout */
+	.container {
+		/* Left and top aligned by default */
+		@apply items-start flex justify-start flex-col max-w-none mx-auto p-8 w-full;
+		/* Responsiveness */
+		@apply xs:max-w-3xl lg:max-w-4xl;
+	}
+
+	.container-center {
+		/* Center-aligned (vert & hor) */
+		@apply container items-center justify-center;
+	}
+
+	.container > * {
+		@apply w-full;
+	}
+
+	/* Header */
+	.header {
+		@apply dark:bg-neutral-300 bg-neutral-50 flex justify-between p-8 relative z-50;
+	}
+
+	/* Footer */
+	.footer {
+		@apply bg-brand-wine mt-auto mx-auto px-2 pt-2 pb-0 relative text-center text-[rgba(255,251,250)] text-lg;
+		@apply md:py-8 md:px-2;
+	}
+
+	.footer-actions > * {
+		@apply mb-2;
+	}
+
+	.footer .container {
+		@apply flex items-center justify-center;
+	}
+
+	.footer .container > * {
+		@apply mb-2 text-inherit;
+	}
+
+	.footer-logo {
+		@apply invert pl-7;
+	}
+
+	/* Images and Icons */
+	.logo {
+		@apply decoration-0 relative max-w-[80%] dark:invert;
+		@apply xs:max-w-none;
+	}
+
+	.tile-icon {
+		@apply max-w-[120px];
+	}
+
+	/* Nav */
+	.nav {
+		@apply bg-neutral-400 flex relative z-40;
+		@apply lg:bg-transparent lg:items-center lg:justify-center max-lg:absolute max-lg:flex-col max-lg:left-0 max-lg:h-[calc(100vh-104px)] max-lg:p-6 max-lg:top-[104px] max-lg:w-full;
+	}
+
+	.nav-open-button {
+		@apply cursor-pointer flex items-center text-xl;
+		@apply lg:hidden;
+	}
+
+	.nav-link {
+		@apply align-top basis-[max-content] decoration-0 font-medium inline-block p-2 relative text-left text-lg text-neutral-800;
+		@apply lg:flex-shrink-0 lg:flex-grow lg:mx-2 lg:mb-2;
+	}
+
+	/* Buttons */
+	.button {
+		@apply bg-brand-gold cursor-pointer border-0 decoration-0 font-semibold inline-block mx-1 px-6 py-3 rounded-none text-center text-neutral-100 text-lg w-full;
+		@apply hover:brightness-85 lg:text-xl sm:max-w-max;
+	}
+
+	.button-outline {
+		@apply button bg-transparent border-brand-gold border-2 border-solid text-brand-gold;
+	}
+
+	/* Form */
+	.form {
+		@apply mb-4 w-full;
+	}
+
+	/* Inputs */
+	.input {
+		@apply align-middle dark:bg-neutral-950 bg-neutral-50 block border-[1px] border-neutral-300 border-solid h-9 leading-normal mb-2 px-3 py-2 text-neutral-700 text-sm w-full;
+	}
+	.input:-moz-placeholder,
+	.input:-ms-input-placeholder,
+	.input::-webkit-input-placeholder {
+		@apply text-neutral-500;
+	}
+
+	.input:focus {
+		@apply border-2 border-brand-blue-light border-solid outline-0;
+	}
+
+	/* Input - text */
+	.input-text {
+		@apply h-12 text-lg;
+	}
+}
