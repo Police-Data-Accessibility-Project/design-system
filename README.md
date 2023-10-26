@@ -2,7 +2,7 @@
 
 These are styling resources like CSS and templates for new PDAP microservices or branded web projects.
 
-Open `src/demo.html` to see how things look.
+Run `npm run build` and open `demo/index.html` to see how things look.
 
 `src/css/global-styles.css` are the styles used across all PDAP applications.
 
