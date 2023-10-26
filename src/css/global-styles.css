@@ -1,0 +1,277 @@
+@import './variables.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	/* Globals */
+	* {
+		@apply box-border;
+	}
+
+	html {
+		@apply h-full;
+	}
+
+	body {
+		@apply bg-neutral-50 font-light font-sans leading-normal text-xl text-neutral-950 m-0 min-h-full;
+		@apply lg:text-3xl;
+	}
+
+	/* Images */
+	img {
+		@apply align-middle inline-block max-w-full;
+	}
+
+	/* Headings */
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply font-sans leading-tight;
+	}
+
+	h3,
+	h4 {
+		@apply text-brand-wine;
+	}
+
+	h4,
+	h5,
+	h6 {
+		@apply mb-[.625rem] mt-[.625rem];
+	}
+
+	h1 {
+		@apply font-medium mt-12 mb-4 text-[2.625rem];
+	}
+	h2 {
+		@apply font-bold mb-4 mt-8 text-2xl;
+		@apply md:text-4xl;
+	}
+	h3 {
+		@apply font-extrabold mb-2 mt-8 text-med tracking-[.1em] uppercase;
+		@apply md:text-lg;
+	}
+	h4 {
+		@apply font-semibold text-lg tracking-[.07em] uppercase;
+	}
+	h5 {
+		@apply font-light italic text-3xl;
+	}
+	h6 {
+		@apply font-light text-lg tracking-[.8125rem] uppercase;
+	}
+
+	/* Anchors and buttons*/
+	a {
+		@apply decoration-solid decoration-[6%] text-brand-gold  underline-offset-[5%];
+		@apply hover:brightness-85;
+	}
+
+	/* Miscellaneous */
+	p {
+		@apply mb-2 mt-0;
+	}
+
+	p,
+	li {
+		@apply max-w-[43ch];
+	}
+
+	.small p,
+	p.small,
+	.small li {
+		@apply text-lg;
+	}
+
+	strong {
+		@apply font-semibold;
+	}
+
+	code {
+		@apply font-normal font-mono max-w-full text-neutral-950;
+	}
+
+	p > code,
+	li > code,
+	pre code {
+		@apply bg-brand-wine bg-opacity-5;
+	}
+
+	p > code,
+	li > code {
+		@apply box-decoration-clone pt-1 px-2 pb-1 rounded-sm;
+		word-wrap: break-word;
+	}
+
+	pre code {
+		@apply block border-[1px] border-opacity-20 border-solid border-brand-wine max-w-full overflow-scroll p-5 text-left text-xl whitespace-pre;
+	}
+}
+
+@layer components {
+	/* Layout */
+	.container {
+		/* Left and top aligned by default */
+		@apply items-start flex justify-start flex-col max-w-none mx-auto p-8 w-full;
+		/* Responsiveness */
+		@apply xs:max-w-3xl lg:max-w-4xl;
+	}
+
+	.container-center {
+		/* Center-aligned (vert & hor) */
+		@apply container items-center justify-center;
+	}
+
+	.container > * {
+		@apply w-full;
+	}
+
+	/* Header */
+	.header {
+		@apply dark:bg-neutral-300 bg-neutral-50 flex justify-between p-8 relative z-50;
+	}
+
+	/* Footer */
+	.footer {
+		@apply bg-brand-wine mt-auto mx-auto px-2 pt-2 pb-0 relative text-center text-[rgba(255,251,250)] text-lg;
+		@apply md:py-8 md:px-2;
+	}
+
+	.footer-actions > * {
+		@apply mb-2;
+	}
+
+	.footer .container {
+		@apply flex items-center justify-center;
+	}
+
+	.footer .container > * {
+		@apply mb-2 text-inherit;
+	}
+
+	.footer-logo {
+		@apply invert pl-7;
+	}
+
+	/* Images and Icons */
+	.logo {
+		@apply decoration-0 relative max-w-[80%] dark:invert;
+		@apply xs:max-w-none;
+	}
+
+	.tile-icon {
+		@apply max-w-[120px];
+	}
+
+	/* Nav */
+	.nav {
+		@apply bg-neutral-400 flex relative z-40;
+		@apply lg:bg-transparent lg:items-center lg:justify-center max-lg:absolute max-lg:flex-col max-lg:left-0 max-lg:h-[calc(100vh-104px)] max-lg:p-6 max-lg:top-[104px] max-lg:w-full;
+	}
+
+	.nav-open-button {
+		@apply cursor-pointer flex items-center text-xl;
+		@apply lg:hidden;
+	}
+
+	.nav-link {
+		@apply align-top basis-[max-content] decoration-0 font-medium inline-block p-2 relative text-left text-lg text-neutral-800;
+		@apply lg:flex-shrink-0 lg:flex-grow lg:mx-2 lg:mb-2;
+	}
+
+	/* Buttons */
+	.button {
+		@apply bg-brand-gold cursor-pointer border-0 decoration-0 font-semibold inline-block mx-1 px-6 py-3 rounded-none text-center text-neutral-100 text-lg w-full;
+		@apply hover:brightness-85 lg:text-xl sm:max-w-max;
+	}
+
+	.button-outline {
+		@apply button bg-transparent border-brand-gold border-2 border-solid text-brand-gold;
+	}
+
+	/* Form */
+	.form {
+		@apply mb-4 w-full;
+	}
+
+	/* Inputs */
+	.input {
+		@apply align-middle dark:bg-neutral-950 bg-neutral-50 block border-[1px] border-neutral-300 border-solid h-9 leading-normal mb-2 px-3 py-2 text-neutral-700 text-sm w-full;
+	}
+	.input:-moz-placeholder,
+	.input:-ms-input-placeholder,
+	.input::-webkit-input-placeholder {
+		@apply text-neutral-500;
+	}
+
+	.input:focus {
+		@apply border-2 border-brand-blue-light border-solid outline-0;
+	}
+
+	/* Input - text */
+	.input-text {
+		@apply h-12 text-lg;
+	}
+}
+
+@layer utilities {
+	/* Current nav page */
+	.current {
+		@apply lg:border-neutral-400 lg:border-2 lg:border-solid text-neutral-700;
+	}
+
+	/* Hide up to the lg breakpoint (use for nav) */
+	.hide-max-lg {
+		@apply max-lg:hidden;
+	}
+
+	/* Lock any scroll container (used for body when mobile nav open) */
+	.lock-scroll {
+		@apply overflow-hidden;
+	}
+
+	/* Text */
+	.citation {
+		@apply italic mb-0;
+	}
+
+	.shout {
+		@apply font-medium leading-tight max-w-[30ch] mt-0 text-4xl;
+		@apply md:text-6xl;
+	}
+
+	/* Layout */
+	.boxed {
+		@apply p-4 my-4 mx-0 border-2 border-solid border-brand-wine border-opacity-20;
+	}
+
+	.layout-grid {
+		@apply grid grid-cols-1 gap-4 w-full;
+		@apply md:gap-8;
+	}
+
+	.layout-grid-2 {
+		@apply layout-grid items-start grid-cols-1;
+		@apply md:grid-cols-2;
+	}
+
+	.layout-grid-3 {
+		@apply layout-grid grid-cols-1;
+		@apply md:grid-cols-2 lg:grid-cols-3;
+	}
+
+	.grid-item-span-2 {
+		@apply col-span-1;
+		@apply md:col-span-2;
+	}
+
+	.grid-item-span-3 {
+		@apply col-span-1;
+		@apply md:col-span-2 lg:col-span-3;
+	}
+}
