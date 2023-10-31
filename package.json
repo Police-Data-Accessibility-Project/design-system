@@ -8,13 +8,15 @@
 	"bugs": {
 		"url": "https://github.com/Police-Data-Accessibility-Project/design-system/issues"
 	},
+	"type": "module",
 	"exports": {
-		"import": {
-			"default": "./dist/css/global-styles.css"
+		".": {
+			"import": "./dist/index.js",
+			"require": "./dist/index.cjs",
+			"types": "./dist/index.d.ts"
 		},
-		"require": {
-			"default": "./dist/css/global-styles.css"
-		}
+		"./images/*": "./dist/images/*",
+		"./styles": "./dist/styles/styles.css"
 	},
 	"main": "./dist/index.js",
 	"repository": {
@@ -42,34 +44,37 @@
 		]
 	},
 	"devDependencies": {
+		"@types/node": "^20.8.9",
+		"@vitejs/plugin-vue": "^4.4.0",
+		"autoprefixer": "^10.4.16",
+		"clsx": "^2.0.0",
 		"cross-env": "^7.0.3",
 		"npm-run-all": "^4.1.5",
 		"rimraf": "^5.0.5",
-		"tailwindcss": "^3.3.3"
+		"tailwindcss": "^3.3.3",
+		"typescript": "^5.2.2",
+		"vite": "^4.5.0",
+		"vue-tsc": "^1.8.22"
 	},
 	"dependencies": {
 		"fs-extra": "^11.1.1",
-		"minimist": "^1.2.8"
+		"minimist": "^1.2.8",
+		"vue": "^3.3.7"
 	},
 	"scripts": {
-		"build": "run-p build:*",
-		"build:assets": "mkdir -p ./dist/images && cp -a ./src/images ./dist",
+		"build": "run-s build:*",
+		"build:lib": "vite build && vue-tsc --emitDeclarationOnly",
 		"build:styles": "npm run styles",
 		"clean": "rimraf dist",
+		"dev": "vite",
 		"prebuild": "npm run clean",
 		"prepare": "npm run build",
 		"prepublishOnly": "npm run build",
-		"styles": "run-p styles:*",
-		"styles:base": "npx tailwindcss -i ./src/styles/base.css -o ./dist/styles/base.css --minify",
-		"styles:components": "npx tailwindcss -i ./src/styles/components.css -o ./dist/styles/components.css --minify",
-		"styles:global": "npx tailwindcss -i ./src/styles/styles.css -o ./dist/styles/styles.css --minify",
-		"styles:utilities": "npx tailwindcss -i ./src/styles/utilities.css -o ./dist/styles/utilities.css --minify",
-		"styles:watch:all": "run-p styles:watch:*",
-		"styles:watch:components": "npx tailwindcss -i ./src/styles/components.css -o ./dist/styles/components.css --watch",
-		"styles:watch:global": "npm run styles:global -- --watch",
-		"styles:watch:base": "npx tailwindcss -i ./src/styles/base.css -o ./dist/styles/base.css -- --watch",
-		"styles:watch:utilities": "npx tailwindcss -i ./src/styles/utilities.css -o ./dist/styles/utilities.css -- --watch",
-		"test": "echo \\\"No tests for CSS-only package.\\\" && exit 0"
+		"preview": "vite preview",
+		"styles": "npx tailwindcss -i ./src/styles/styles.css -o ./dist/styles/styles.css --minify",
+		"styles:watch": "npm run styles -- --watch",
+		"test": "echo \\\"No tests for CSS-only package.\\\" && exit 0",
+		"types": "vue-tsc "
 	},
 	"files": [
 		"bin",
