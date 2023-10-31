@@ -74,12 +74,20 @@
 
 	/* Buttons */
 	.button {
-		@apply bg-brand-gold cursor-pointer border-0 decoration-0 font-semibold inline-block mx-1 px-6 py-3 rounded-none text-center text-neutral-100 text-lg w-full;
+		@apply cursor-pointer border-0 decoration-0 font-semibold inline-block mx-1 px-6 py-3 rounded-none text-center text-lg w-full;
 		@apply hover:brightness-85 lg:text-xl sm:max-w-max;
+	}
+
+	.button-primary {
+		@apply button bg-brand-gold text-neutral-100;
 	}
 
 	.button-outline {
 		@apply button bg-transparent border-brand-gold border-2 border-solid text-brand-gold;
+	}
+
+	.button-disabled {
+		@apply opacity-50;
 	}
 
 	/* Form */
