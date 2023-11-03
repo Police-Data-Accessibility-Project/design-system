@@ -6,6 +6,7 @@ import vue from '@vitejs/plugin-vue';
 export default defineConfig({
 	plugins: [vue()],
 	build: {
+		cssCodeSplit: false,
 		lib: {
 			entry: resolve(__dirname, 'src/index.ts'),
 			formats: ['es', 'cjs'],
@@ -16,6 +17,9 @@ export default defineConfig({
 		rollupOptions: {
 			external: ['vue'],
 			output: {
+				assetFileNames: ({ name }) => {
+					if (name === 'style.css') return 'styles.css';
+				},
 				globals: {
 					vue: 'Vue',
 				},
