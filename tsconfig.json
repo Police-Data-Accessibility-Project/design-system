@@ -24,6 +24,7 @@
 		"noUnusedParameters": true,
 		"noFallthroughCasesInSwitch": true
 	},
-	"include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.vue", "src/cli.js"],
+	"exclude": ["**/__snapshots__/", "**/*.spec.ts"],
+	"include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.vue"],
 	"references": [{ "path": "./tsconfig.node.json" }]
 }

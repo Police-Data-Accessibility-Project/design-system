@@ -15,7 +15,7 @@ export default defineConfig({
 		},
 		outDir: 'dist',
 		rollupOptions: {
-			external: ['vue'],
+			external: ['vue', '**/__snapshots__/', '**/*.spec.ts'],
 			output: {
 				assetFileNames: ({ name }) => {
 					if (name === 'style.css') return 'styles.css';

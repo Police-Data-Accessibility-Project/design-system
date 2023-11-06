@@ -4,5 +4,8 @@ node_modules
 # Built files
 dist
 
+# Tests
+coverage/
+
 # OS
 .DS_Store
