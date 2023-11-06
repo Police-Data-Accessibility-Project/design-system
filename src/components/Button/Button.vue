@@ -1,50 +1,50 @@
 <template>
-	<button :class="classes" :disabled="isDisabled">
+	<button :class="classes">
 		<slot></slot>
 	</button>
 </template>
 
 <script setup lang="ts">
-import { defineProps, reactive } from 'vue';
+// Imports
+import { reactive } from 'vue';
 
+// Types
 export interface Props {
 	className?: string;
-	intent?: 'primary' | 'outline';
-	isDisabled?: boolean;
+	intent?: 'primary' | 'secondary';
 	isLoading?: boolean;
 }
 
+// Props
 const props = withDefaults(defineProps<Props>(), {
 	intent: 'primary',
-	isDisabled: false,
 	isLoading: false,
 });
 
+// CSS class map
 const classes = reactive({
 	'pdap-button': true,
 	[`pdap-button-${props.intent}`]: Boolean(props.intent),
 	[String(props.className)]: Boolean(props.className),
-	'pdap-button-disabled': props.isDisabled,
 	'pdap-button-loading': props.isLoading,
 });
 </script>
 
-<style>
-/* Buttons */
-.pdap-button {
-	@apply cursor-pointer border-0 decoration-0 font-semibold inline-block mx-1 px-6 py-3 rounded-none text-center text-lg w-full;
-	@apply hover:brightness-85 lg:text-xl sm:max-w-max;
-}
+<style scoped>
+@tailwind components;
 
-.pdap-button-primary {
-	@apply pdap-button bg-brand-gold text-neutral-100;
-}
+@layer components {
+	.pdap-button {
+		@apply cursor-pointer border-0 decoration-0 disabled:opacity-50 font-semibold inline-block mx-1 px-6 py-3 rounded-none text-center text-lg w-full;
+		@apply hover:brightness-85 lg:text-xl sm:max-w-max;
+	}
 
-.pdap-button-outline {
-	@apply pdap-button bg-transparent border-brand-gold border-2 border-solid text-brand-gold;
-}
+	.pdap-button-primary {
+		@apply pdap-button bg-brand-gold text-neutral-100;
+	}
 
-.pdap-button-disabled {
-	@apply opacity-50;
+	.pdap-button-secondary {
+		@apply pdap-button bg-transparent border-brand-gold border-2 border-solid text-brand-gold;
+	}
 }
 </style>

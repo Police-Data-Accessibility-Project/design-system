@@ -72,24 +72,6 @@
 		@apply lg:flex-shrink-0 lg:flex-grow lg:mx-2 lg:mb-2;
 	}
 
-	/* Buttons */
-	.pdap-button {
-		@apply cursor-pointer border-0 decoration-0 font-semibold inline-block mx-1 px-6 py-3 rounded-none text-center text-lg w-full;
-		@apply hover:brightness-85 lg:text-xl sm:max-w-max;
-	}
-
-	.pdap-button-primary {
-		@apply pdap-button bg-brand-gold text-neutral-100;
-	}
-
-	.pdap-button-outline {
-		@apply pdap-button bg-transparent border-brand-gold border-2 border-solid text-brand-gold;
-	}
-
-	.pdap-button-disabled {
-		@apply opacity-50;
-	}
-
 	/* Form */
 	.form {
 		@apply mb-4 w-full;
