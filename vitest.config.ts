@@ -12,10 +12,11 @@ export default mergeConfig(
 				provider: 'v8',
 				reportsDirectory: './coverage',
 			},
-			exclude: ['node_modules'],
-			include: ['./src/**/*.{spec,test}.ts'],
-			globals: true,
 			environment: 'happy-dom',
+			exclude: ['node_modules'],
+			globals: true,
+			include: ['**/*.{spec,test}.ts'],
+			setupFiles: ['./utils/testing/setup.ts'],
 		},
 	})
 );

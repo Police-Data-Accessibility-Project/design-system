@@ -1,3 +1,3 @@
-import Button from './Button.vue';
+import PdapButton from './PdapButton.vue';
 
-export { Button };
+export { PdapButton as Button };
