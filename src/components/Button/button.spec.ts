@@ -6,12 +6,18 @@ import { mount } from '@vue/test-utils';
 import { describe, expect, test } from 'vitest';
 
 // Test
-describe('Button component', () => {
+describe('Renders button component', () => {
 	// Render
 	test('Renders a button', () => {
-		const wrapper = mount(PdapButton);
+		const wrapper = mount(PdapButton, {
+			slots: {
+				default: 'Button Content',
+			},
+		});
+
 		expect(wrapper.find('button').exists()).toBe(true);
 		expect(wrapper.classes()).toContain('pdap-button');
+		expect(wrapper.html()).toContain('Button Content');
 		expect(wrapper.html()).toMatchSnapshot();
 	});
 
@@ -41,11 +47,11 @@ describe('Button component', () => {
 	});
 
 	// Events
-	test('Button handles click event', () => {
+	test('Handles a click event', () => {
 		const wrapper = mount(PdapButton);
 		wrapper.find('button').trigger('click');
 	});
-	test('Button handles keydown event', () => {
+	test('Handles a keydown event', () => {
 		const wrapper = mount(PdapButton);
 		wrapper.find('button').trigger('keydown');
 	});

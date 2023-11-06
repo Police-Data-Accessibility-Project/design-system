@@ -9,13 +9,15 @@ export default mergeConfig(
 	defineConfig({
 		test: {
 			coverage: {
+				all: true,
+				include: ['src/**/*.vue', 'utils/**/*.ts'],
 				provider: 'v8',
 				reportsDirectory: './coverage',
 			},
 			environment: 'happy-dom',
 			exclude: ['node_modules'],
 			globals: true,
-			include: ['**/*.{spec,test}.ts'],
+			include: ['src/**/*.{spec,test}.ts'],
 			setupFiles: ['./utils/testing/setup.ts'],
 		},
 	})

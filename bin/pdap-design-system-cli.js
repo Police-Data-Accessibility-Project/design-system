@@ -1,23 +1,27 @@
 #!/usr/bin/env node
-
-const cli = require('../src/cli');
+import minimist from 'minimist';
+import cli from '../src/cli/index.js';
 
 // Convert argv to object keyed by argName where --argName is what is passed to CLI
-const args = require('minimist')(process.argv);
+const args = minimist(process.argv);
 
 switch (true) {
 	case args['copy-assets']:
-		return cli.copyAllAssets(args);
+		cli.copyAllAssets(args);
+		break;
 	case args['copy-images']:
-		return cli.copyImageAssets(args);
+		cli.copyImageAssets(args);
+		break;
 	case args['copy-styles']:
-		return cli.copyStyleAssets(args);
+		cli.copyStyleAssets(args);
+		break;
 	default:
-		return console.log(
+		console.log(
 			'No option argument was passed to pdap-design-system CLI.',
 			'\n Current options are:',
 			'\n --copy-assets: Copy all assets to assets/ (default) or custom path passed to optional --to argument.',
 			'\n --copy-images: Copy only image assets to assets/ (default) or custom path passed to optional --to argument.',
 			'\n --copy-styles: Copy only CSS assets to assets/ (default) or custom path passed to optional --to argument.'
 		);
+		break;
 }
