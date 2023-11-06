@@ -26,3 +26,4 @@ export default {
 	print,
 	test,
 };
+// TODO: Devise a test for this, so that we don't need to add c8 declaration ignoring it (code is more or less boilerplate from c8 - https://github.com/tjw-lint/jest-serializer-vue-tjw/#using-with-vitest)

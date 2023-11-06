@@ -1,4 +1,5 @@
-@import './variables.css';
+@import url('./variables.css');
+
 @tailwind components;
 
 @layer components {
@@ -6,6 +7,7 @@
 	.container {
 		/* Left and top aligned by default */
 		@apply items-start flex justify-start flex-col max-w-none mx-auto p-8 w-full;
+
 		/* Responsiveness */
 		@apply xs:max-w-3xl lg:max-w-4xl;
 	}
@@ -81,9 +83,8 @@
 	.input {
 		@apply align-middle dark:bg-neutral-950 bg-neutral-50 block border-[1px] border-neutral-300 border-solid h-9 leading-normal mb-2 px-3 py-2 text-neutral-700 text-sm w-full;
 	}
-	.input:-moz-placeholder,
-	.input:-ms-input-placeholder,
-	.input::-webkit-input-placeholder {
+
+	.input::placeholder {
 		@apply text-neutral-500;
 	}
 

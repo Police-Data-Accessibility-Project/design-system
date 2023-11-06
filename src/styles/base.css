@@ -1,4 +1,5 @@
-@import './variables.css';
+@import url('./variables.css');
+
 @tailwind base;
 
 @layer base {
@@ -45,25 +46,30 @@
 	h1 {
 		@apply font-medium mt-12 mb-4 text-[2.625rem];
 	}
+
 	h2 {
 		@apply font-bold mb-4 mt-8 text-2xl;
 		@apply md:text-4xl;
 	}
+
 	h3 {
 		@apply font-extrabold mb-2 mt-8 text-med tracking-[.1em] uppercase;
 		@apply md:text-lg;
 	}
+
 	h4 {
 		@apply font-semibold text-lg tracking-[.07em] uppercase;
 	}
+
 	h5 {
 		@apply font-light italic text-3xl;
 	}
+
 	h6 {
 		@apply font-light text-lg tracking-[.8125rem] uppercase;
 	}
 
-	/* Anchors and buttons*/
+	/* Anchors and buttons */
 	a {
 		@apply decoration-solid decoration-[6%] text-brand-gold  underline-offset-[5%];
 		@apply hover:brightness-85;
@@ -102,6 +108,7 @@
 	p > code,
 	li > code {
 		@apply box-decoration-clone pt-1 px-2 pb-1 rounded-sm;
+
 		word-wrap: break-word;
 	}
 
