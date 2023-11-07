@@ -14,6 +14,7 @@ export default defineConfig({
 			fileName: 'index',
 		},
 		outDir: 'dist',
+		emptyOutDir: true,
 		rollupOptions: {
 			external: ['vue', '**/__snapshots__/', '**/*.spec.ts'],
 			output: {

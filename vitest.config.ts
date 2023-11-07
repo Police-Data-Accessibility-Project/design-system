@@ -7,6 +7,7 @@ import viteConfig from './vite.config';
 export default mergeConfig(
 	{ ...viteConfig },
 	defineConfig({
+		// root: './',
 		test: {
 			coverage: {
 				all: true,
