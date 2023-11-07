@@ -9,13 +9,13 @@
 import { reactive } from 'vue';
 
 // Types
-export interface Props {
+export interface PdapContainerProps {
 	align: 'center' | 'start';
 	className?: string;
 }
 
 // Props
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<PdapContainerProps>(), {
 	align: 'start',
 });
 
