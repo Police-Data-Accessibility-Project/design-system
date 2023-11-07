@@ -9,14 +9,14 @@
 import { reactive } from 'vue';
 
 // Types
-export interface Props {
+export interface PdapButtonProps {
 	className?: string;
 	intent?: 'primary' | 'secondary';
 	isLoading?: boolean;
 }
 
 // Props
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<PdapButtonProps>(), {
 	intent: 'primary',
 	isLoading: false,
 });
