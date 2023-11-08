@@ -8,7 +8,9 @@
 		@apply box-border;
 	}
 
-	html {
+	html,
+	body,
+	#app {
 		@apply h-full;
 	}
 

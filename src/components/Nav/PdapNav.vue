@@ -51,7 +51,6 @@ import {
 	reactive,
 } from 'vue';
 import { RouterLink } from 'vue-router';
-
 // Types
 export interface LinkData {
 	href?: string;
@@ -61,7 +60,7 @@ export interface LinkData {
 
 export interface PdapNavProps {
 	className?: string;
-	topPosition: number;
+	topPosition?: number;
 }
 
 export interface PdapNavState {
@@ -70,12 +69,7 @@ export interface PdapNavState {
 }
 
 // Inject
-const links: LinkData[] | undefined = inject('navLinks', [
-	// TODO: remove testing defaults
-	{ path: '/', text: 'Home' },
-	{ path: '/a', text: 'Home A' },
-	{ path: '/b', text: 'Home B' },
-]);
+const links: LinkData[] | undefined = inject('navLinks');
 
 if (typeof links === 'undefined') {
 	throw new Error(
@@ -105,6 +99,7 @@ onBeforeMount(() => {
 });
 
 onBeforeUnmount(() => {
+	/* c8 ignore next 1 */
 	window.removeEventListener('resize', setIsMobile);
 });
 

@@ -26,11 +26,6 @@
 	}
 
 	/* Images and Icons */
-	.logo {
-		@apply decoration-0 relative max-w-[80%] dark:invert;
-		@apply xs:max-w-none;
-	}
-
 	.tile-icon {
 		@apply max-w-[120px];
 	}

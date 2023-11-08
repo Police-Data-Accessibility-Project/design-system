@@ -34,7 +34,7 @@ const classes = reactive({
 	/* Layout */
 	.pdap-container {
 		/* Left and top aligned by default */
-		@apply items-start flex justify-start flex-col max-w-none mx-auto p-8 w-full;
+		@apply items-start flex h-full justify-start flex-col max-w-none mx-auto p-8 w-full;
 
 		/* Responsiveness */
 		@apply xs:max-w-3xl lg:max-w-4xl;

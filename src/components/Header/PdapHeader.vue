@@ -23,15 +23,7 @@
 </template>
 
 <script setup lang="ts">
-import {
-	computed,
-	// onBeforeMount,
-	onBeforeUnmount,
-	onMounted,
-	reactive,
-	ref,
-	watchEffect,
-} from 'vue';
+import { computed, onBeforeUnmount, onMounted, reactive, ref } from 'vue';
 import { RouterLink, useRoute } from 'vue-router';
 
 import PdapNav from '../Nav/PdapNav.vue';
@@ -60,7 +52,7 @@ const height = ref();
 // Vars
 const el = ref<HTMLElement | null>(null);
 const route = useRoute();
-const isSameRoute = computed(() => route.path === props.logoImageAnchorPath);
+const isSameRoute = computed(() => route?.path === props.logoImageAnchorPath);
 const navLogoLinkIsPath = props.logoImageAnchorPath.startsWith('/');
 
 // Lifecycle methods
@@ -70,26 +62,24 @@ onMounted(() => {
 });
 
 onBeforeUnmount(() => {
+	/* c8 ignore next 1 */
 	window.removeEventListener('resize', getHeight);
 });
 
 // Utils
 function getHeight() {
-	console.log('getHeight firing');
 	if (el.value) {
 		height.value = el.value.offsetHeight;
 	}
 }
-
-watchEffect(() => {
-	if (height.value) {
-		console.log({ height: height.value });
-	}
-});
 </script>
 
 <style scoped>
 .pdap-header {
 	@apply dark:bg-neutral-300 fixed bg-neutral-50 flex justify-between p-8 w-full z-50;
+}
+.logo {
+	@apply decoration-0 relative max-w-[80%] dark:invert;
+	@apply xs:max-w-none;
 }
 </style>
