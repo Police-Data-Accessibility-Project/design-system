@@ -25,14 +25,14 @@ describe('Renders container component', () => {
 	// Props
 	// Props - align
 	test('Renders start aligned container', () => {
-		const wrapper = mount(PdapContainer, { props: { align: 'start' } });
-		expect(wrapper.props().align).toBe('start');
+		const wrapper = mount(PdapContainer, { props: { alignment: 'start' } });
+		expect(wrapper.props().alignment).toBe('start');
 		expect(wrapper.classes()).toContain('pdap-container-start');
 	});
 
 	test('Renders center aligned container', () => {
-		const wrapper = mount(PdapContainer, { props: { align: 'center' } });
-		expect(wrapper.props().align).toBe('center');
+		const wrapper = mount(PdapContainer, { props: { alignment: 'center' } });
+		expect(wrapper.props().alignment).toBe('center');
 		expect(wrapper.classes()).toContain('pdap-container-center');
 	});
 });
