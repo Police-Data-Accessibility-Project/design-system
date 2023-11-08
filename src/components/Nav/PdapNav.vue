@@ -18,6 +18,7 @@
 		id="nav"
 		:aria-expanded="(state.isMobile && state.isExpanded) || !state.isMobile"
 		:class="classes"
+		:style="state.isMobile ? { top: `${topPosition}px` } : {}"
 	>
 		<li v-for="link in links" :key="link.text" class="pdap-nav-link-container">
 			<a
@@ -60,6 +61,7 @@ export interface LinkData {
 
 export interface PdapNavProps {
 	className?: string;
+	topPosition: number;
 }
 
 export interface PdapNavState {
