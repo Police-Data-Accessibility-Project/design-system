@@ -1,11 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-	content: [
-		'./src/**/*.vue',
-		'./src/styles/variables.css',
-		'./src/styles/components.css',
-		'./src/styles/base.css',
-	],
+	content: ['./src/**/*.vue', './src/**/*.css'],
 	theme: {
 		// Nested within "extend" - extends tailwind theme defaults, only overrides properties named here
 		extend: {
@@ -62,7 +57,12 @@ module.exports = {
 				'sans-serif',
 			],
 			serif: ['ui-serif', 'Georgia'],
-			mono: ['"Source Code Pro"', 'monospace', 'ui-monospace', 'SFMono-Regular'],
+			mono: [
+				'"Source Code Pro"',
+				'monospace',
+				'ui-monospace',
+				'SFMono-Regular',
+			],
 		},
 		fontSize: {
 			xs: '0.75rem',

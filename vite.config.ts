@@ -16,7 +16,7 @@ export default defineConfig({
 		outDir: 'dist',
 		emptyOutDir: true,
 		rollupOptions: {
-			external: ['vue', '**/__snapshots__/', '**/*.spec.ts'],
+			external: ['vue', 'vue-router', '**/__snapshots__/', '**/*.spec.ts'],
 			output: {
 				assetFileNames: ({ name }) => {
 					if (name === 'style.css') return 'styles.css';
@@ -27,4 +27,6 @@ export default defineConfig({
 			},
 		},
 	},
+	optimizeDeps: { include: ['vue-router'] },
+	test: { globals: true },
 });

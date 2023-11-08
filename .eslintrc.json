@@ -26,6 +26,7 @@
 				"tabWidth": 2,
 				"useTabs": true
 			}
-		]
+		],
+		"vue/no-multiple-template-root": "off"
 	}
 }
