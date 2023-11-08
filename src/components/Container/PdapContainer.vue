@@ -10,19 +10,19 @@ import { reactive } from 'vue';
 
 // Types
 export interface PdapContainerProps {
-	align: 'center' | 'start';
+	alignment: 'center' | 'start';
 	className?: string;
 }
 
 // Props
 const props = withDefaults(defineProps<PdapContainerProps>(), {
-	align: 'start',
+	alignment: 'start',
 });
 
 // CSS class map
 const classes = reactive({
 	'pdap-container': true,
-	[`pdap-container-${props.align}`]: true,
+	[`pdap-container-${props.alignment}`]: true,
 	[String(props.className)]: Boolean(props.className),
 });
 </script>
