@@ -1,5 +1,5 @@
 <template>
-	<component :is="component" :class="classes" :styles="styles">
+	<component :is="component" :class="classes" :style="styles">
 		<slot />
 	</component>
 </template>
@@ -25,8 +25,7 @@ const props = withDefaults(defineProps<PdapGridContainerProps>(), {
 // CSS class map
 const classes = reactive({
 	'pdap-grid-container': true,
-	[`pdap-grid-container-column-${props.columns}`]:
-		typeof props.columns === 'number',
+	[`pdap-grid-container-column-${props.columns}`]: props.columns !== 'auto',
 	[String(props.className)]: Boolean(props.className),
 });
 // CSS styles map
@@ -44,7 +43,7 @@ const styles = reactive({
 
 <style scoped>
 .pdap-grid-container {
-	@apply grid grid-cols-[auto] grid-rows-[auto] gap-4 w-full;
+	@apply grid grid-cols-[auto] grid-rows-[auto] h-full gap-4 p-8 w-full;
 	@apply md:gap-8;
 }
 

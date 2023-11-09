@@ -22,7 +22,7 @@ describe('Footer component', () => {
 	test('Renders footer with default logo src', () => {
 		const wrapper = mount(PdapFooter);
 		expect(wrapper.props().logoImageSrc).toBe(
-			'node_modules/pdap-design-system/dist/images/lockup.svg'
+			'node_modules/pdap-design-system/dist/images/acronym.svg'
 		);
 	});
 

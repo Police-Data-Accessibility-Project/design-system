@@ -4,9 +4,9 @@ exports[`Footer component > Renders a footer 1`] = `
 <footer class="pdap-footer">
   <div class="pdap-flex-container pdap-flex-container-center">
     <div class="pdap-footer-social-links">
-      <a class="pdap-button-primary" href="https://github.com/orgs/Police-Data-Accessibility-Project">Github</a>
-      <a class="pdap-button-primary" href="ttps://discord.gg/wMqex8nKZJ">Discord</a>
-      <a class="pdap-button-primary" href="https://www.linkedin.com/company/pdap">LinkedIn</a>
+      <a class="pdap-footer-social-link" href="https://github.com/orgs/Police-Data-Accessibility-Project">Github</a>
+      <a class="pdap-footer-social-link" href="ttps://discord.gg/wMqex8nKZJ">Discord</a>
+      <a class="pdap-footer-social-link" href="https://www.linkedin.com/company/pdap">LinkedIn</a>
     </div><!-- Copyright and policies -->
     <p class="pdap-footer-copyright"> © 2023 Police Data Accessibility Project
       <br>
@@ -17,8 +17,8 @@ exports[`Footer component > Renders a footer 1`] = `
       <a href="https://www.guidestar.org/profile/85-4207132" target="_blank">
         <img src="https://widgets.guidestar.org/gximage2?o=9973356&amp;l=v4">
       </a>
-      <router-link class="logo" to="/">
-        <img alt="Police Data Accessibility Project Logo" src="node_modules/pdap-design-system/dist/images/lockup.svg" width="250">
+      <router-link class="pdap-footer-logo" to="/">
+        <img alt="Police Data Accessibility Project Logo" src="node_modules/pdap-design-system/dist/images/acronym.svg" width="250">
       </router-link>
     </div>
   </div>

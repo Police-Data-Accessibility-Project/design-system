@@ -1,5 +1,5 @@
 <template>
-	<component :is="component" :class="classes" :styles="styles">
+	<component :is="component" :class="classes" :style="styles">
 		<slot />
 	</component>
 </template>
@@ -26,7 +26,7 @@ const classes = reactive({
 	[`pdap-grid-item-span-column-${props.spanColumn}`]: props.spanColumn > 1,
 	[String(props.className)]: Boolean(props.className),
 });
-// CSS styles map
+// CSS styles
 const styles = reactive({
 	// Only add inline property if it is passed and exceeds the default
 	...(props.spanRow > 1 && {

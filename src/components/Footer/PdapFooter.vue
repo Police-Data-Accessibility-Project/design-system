@@ -6,7 +6,7 @@
 					v-for="link in links"
 					:key="link.text"
 					:href="link.to"
-					class="pdap-button-primary"
+					class="pdap-footer-social-link"
 					>{{ link.text }}</a
 				>
 			</div>
@@ -32,14 +32,17 @@
 					><img src="https://widgets.guidestar.org/gximage2?o=9973356&l=v4"
 				/></a>
 
-				<a v-if="!navLogoLinkIsPath" :href="logoImageAnchorPath" class="logo"
+				<a
+					v-if="!navLogoLinkIsPath"
+					:href="logoImageAnchorPath"
+					class="pdap-footer-logo"
 					><img
 						:src="logoImageSrc"
 						loading="lazy"
 						width="250"
 						alt="Police Data Accessibility Project Logo"
 				/></a>
-				<router-link v-else :to="logoImageAnchorPath" class="logo"
+				<router-link v-else :to="logoImageAnchorPath" class="pdap-footer-logo"
 					><img
 						:src="logoImageSrc"
 						loading="lazy"
@@ -61,12 +64,12 @@ export interface PdapFooterSocialLinks {
 }
 
 export interface PdapFooterProps {
-	logoImageSrc: string;
-	logoImageAnchorPath: string;
+	logoImageSrc?: string;
+	logoImageAnchorPath?: string;
 }
 
 const props = withDefaults(defineProps<PdapFooterProps>(), {
-	logoImageSrc: 'node_modules/pdap-design-system/dist/images/lockup.svg',
+	logoImageSrc: 'node_modules/pdap-design-system/dist/images/acronym.svg',
 	logoImageAnchorPath: '/',
 });
 
@@ -104,13 +107,21 @@ const navLogoLinkIsPath = props.logoImageAnchorPath.startsWith('/');
 		@apply mb-2 text-inherit;
 	}
 
-	.pdap-footer-logo {
-		@apply invert pl-7;
+	.pdap-footer-widget-links {
+		@apply flex mt-6;
 	}
 
-	/* .pdap-footer-social-link {
+	.pdap-footer-logo {
+		@apply invert ml-7 w-[10rem];
+	}
+
+	.pdap-footer-logo img {
+		@apply w-full;
+	}
+
+	.pdap-footer-social-link {
 		@apply cursor-pointer bg-brand-gold  border-0 decoration-0 disabled:opacity-50 font-semibold inline-block mx-1 px-6 py-3 rounded-none text-center text-neutral-100 text-lg w-full;
 		@apply hover:brightness-85 lg:text-xl sm:max-w-max;
-	} */
+	}
 }
 </style>

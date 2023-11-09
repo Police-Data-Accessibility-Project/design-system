@@ -1,9 +1,9 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Renders container component > Renders a container 1`] = `
-<div class="pdap-grid-container" styles="[object Object]">
-  <li class="pdap-grid-item" styles="[object Object]"></li>
-  <img class="pdap-grid-item" src="https://mock.test.com" styles="[object Object]">
-  <card class="pdap-grid-item" styles="[object Object]"></card>
+<div class="pdap-grid-container">
+  <li class="pdap-grid-item"></li>
+  <img class="pdap-grid-item" src="https://mock.test.com">
+  <card class="pdap-grid-item" style="grid-row: span 2 / span 2;"></card>
 </div>
 `;
