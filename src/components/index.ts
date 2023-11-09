@@ -1,6 +1,6 @@
 export { Button } from './Button';
 export { FlexContainer } from './FlexContainer';
-// export { Footer } from './Footer';
+export { Footer } from './Footer';
 // export { Form } from './Form';
 export { GridContainer } from './GridContainer';
 export { GridItem } from './GridItem';
