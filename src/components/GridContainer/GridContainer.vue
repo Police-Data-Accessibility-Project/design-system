@@ -1,0 +1,64 @@
+<template>
+	<component :is="component" :class="classes" :styles="styles">
+		<slot />
+	</component>
+</template>
+
+<script setup lang="ts">
+import { reactive } from 'vue';
+
+export interface PdapGridContainerProps {
+	className?: string;
+	columns?: 1 | 2 | 3 | 'auto';
+	component?: string;
+	rows?: number | 'auto';
+	templateColumns?: string;
+	templateRows?: string;
+}
+
+const props = withDefaults(defineProps<PdapGridContainerProps>(), {
+	columns: 'auto',
+	component: 'div',
+	rows: 'auto',
+});
+
+// CSS class map
+const classes = reactive({
+	'pdap-grid-container': true,
+	[`pdap-grid-container-column-${props.columns}`]:
+		typeof props.columns === 'number',
+	[String(props.className)]: Boolean(props.className),
+});
+// CSS styles map
+const renderTemplateRowsInline =
+	props.templateRows || typeof props.rows === 'number';
+const gridTemplateRows =
+	props.templateRows ?? `repeat(${props.rows}, minmax(0, 1fr))`;
+const styles = reactive({
+	...(renderTemplateRowsInline && {
+		gridTemplateRows,
+	}),
+	...(props.templateColumns && { gridTemplateColumns: props.templateColumns }),
+});
+</script>
+
+<style scoped>
+.pdap-grid-container {
+	@apply grid grid-cols-[auto] grid-rows-[auto] gap-4 w-full;
+	@apply md:gap-8;
+}
+
+.pdap-grid-container-column-1 {
+	@apply grid-cols-1;
+}
+
+.pdap-grid-container-column-2 {
+	@apply items-start grid-cols-1;
+	@apply md:grid-cols-2;
+}
+
+.pdap-grid-container-column-3 {
+	@apply grid-cols-1;
+	@apply md:grid-cols-2 lg:grid-cols-3;
+}
+</style>
