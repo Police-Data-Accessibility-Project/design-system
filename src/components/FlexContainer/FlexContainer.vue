@@ -10,7 +10,7 @@ import { reactive } from 'vue';
 
 // Types
 export interface PdapContainerProps {
-	alignment: 'center' | 'start';
+	alignment?: 'center' | 'start';
 	className?: string;
 }
 

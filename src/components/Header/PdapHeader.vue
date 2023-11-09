@@ -1,10 +1,6 @@
 <template>
 	<header ref="el" :class="classes">
-		<a
-			v-if="!navLogoLinkIsPath"
-			:href="logoImageAnchorPath"
-			:aria-current="isSameRoute"
-			class="logo"
+		<a v-if="!navLogoLinkIsPath" :href="logoImageAnchorPath" class="logo"
 			><img
 				:src="logoImageSrc"
 				loading="lazy"
@@ -23,8 +19,8 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, reactive, ref } from 'vue';
-import { RouterLink, useRoute } from 'vue-router';
+import { onBeforeUnmount, onMounted, reactive, ref } from 'vue';
+import { RouterLink } from 'vue-router';
 
 import PdapNav from '../Nav/PdapNav.vue';
 
@@ -51,8 +47,6 @@ const height = ref();
 
 // Vars
 const el = ref<HTMLElement | null>(null);
-const route = useRoute();
-const isSameRoute = computed(() => route?.path === props.logoImageAnchorPath);
 const navLogoLinkIsPath = props.logoImageAnchorPath.startsWith('/');
 
 // Lifecycle methods

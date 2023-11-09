@@ -6,6 +6,7 @@ import PdapNav from './PdapNav.vue';
 // Utils
 import { mount } from '@vue/test-utils';
 import { describe, expect, test, vi } from 'vitest';
+import { nextTick } from 'vue';
 
 // Mocks
 vi.mock('vue-router');
@@ -23,6 +24,19 @@ const base = {
 				{ path: '/b', text: 'Home B' },
 				{ path: '', text: 'Link', href: 'https://www.google.com' },
 			],
+		},
+		config: {
+			warnHandler(msg, instance, trace) {
+				if (
+					// TODO: investigate these cases (happening anywhere nav is rendered)
+					msg.includes('Invalid prop: type check failed for prop') ||
+					msg.includes('missing template')
+				) {
+					// ignore warning
+					return;
+				}
+				console.warn(msg, instance, trace);
+			},
 		},
 	},
 };
@@ -47,7 +61,32 @@ describe('Nav component', () => {
 		// TODO: how to check?
 	});
 
-	test('Throws an error if no data provided', () => {
-		// TODO: how to implement? Should the component emit the error instead of throwing it?
+	test('Renders empty nav when links are undefined', () => {
+		const wrapper = mount(PdapNav, {
+			...base,
+			global: {
+				provide: {
+					navLinks: undefined,
+				},
+			},
+		});
+
+		expect(wrapper.find('.pdap-nav').exists()).toBe(true);
+	});
+
+	test('Triggers toggleIsExpanded function on update click', async () => {
+		vi.stubGlobal('innerWidth', 700);
+		const wrapper = mount(PdapNav, base);
+
+		const button = wrapper.find('.pdap-nav-open-button');
+		const nav = wrapper.find('.pdap-nav');
+
+		button.trigger('click');
+		await nextTick();
+		expect(nav.attributes('aria-expanded')).toBe('true');
+		await nextTick();
+		button.trigger('click');
+		await nextTick();
+		expect(nav.attributes('aria-expanded')).toBe('false');
 	});
 });

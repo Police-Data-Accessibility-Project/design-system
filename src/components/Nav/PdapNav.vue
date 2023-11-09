@@ -33,7 +33,7 @@
 				active-class="pdap-nav-link-current"
 				exact-active-class="pdap-nav-link-current-exact"
 				class="pdap-nav-link"
-				:to="link.path ?? ''"
+				:to="link.path"
 				@click="toggleIsExpanded"
 				>{{ link.text }}</router-link
 			>
@@ -69,11 +69,13 @@ export interface PdapNavState {
 }
 
 // Inject
-const links: LinkData[] | undefined = inject('navLinks');
+let links: LinkData[] | undefined = inject('navLinks');
 
 if (typeof links === 'undefined') {
-	throw new Error(
-		'No navLinks found when PdapNav tried to inject data. Please `provide()` a `LinkData[]` at the `navLinks` key.'
+	links = [];
+	console.error(
+		'Hey, PDAP developer \n',
+		'Did you forget to inject some linkData for the Nav component?'
 	);
 }
 
@@ -105,15 +107,10 @@ onBeforeUnmount(() => {
 
 // Handlers
 async function setIsMobile() {
-	if (!state.isMobile && window.innerWidth <= 1024) {
+	if (window.innerWidth <= 1024) {
 		state.isMobile = true;
-	} else if (
-		(state.isMobile || typeof state.isMobile === 'undefined') &&
-		window.innerWidth > 1024
-	) {
-		state.isMobile = false;
 	} else {
-		state.isMobile;
+		state.isMobile = false;
 	}
 	await nextTick();
 }
