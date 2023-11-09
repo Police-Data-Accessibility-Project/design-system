@@ -1,5 +1,5 @@
 // Component
-import PdapContainer from './PdapContainer.vue';
+import FlexContainer from './FlexContainer.vue';
 
 // Utils
 import { mount } from '@vue/test-utils';
@@ -9,7 +9,7 @@ import { describe, expect, test } from 'vitest';
 describe('Renders container component', () => {
 	// Render
 	test('Renders a container', () => {
-		const wrapper = mount(PdapContainer, {
+		const wrapper = mount(FlexContainer, {
 			slots: {
 				// Todo: Render some actual components here to test
 				default: 'Container Content',
@@ -25,13 +25,13 @@ describe('Renders container component', () => {
 	// Props
 	// Props - align
 	test('Renders start aligned container', () => {
-		const wrapper = mount(PdapContainer, { props: { alignment: 'start' } });
+		const wrapper = mount(FlexContainer, { props: { alignment: 'start' } });
 		expect(wrapper.props().alignment).toBe('start');
 		expect(wrapper.classes()).toContain('pdap-container-start');
 	});
 
 	test('Renders center aligned container', () => {
-		const wrapper = mount(PdapContainer, { props: { alignment: 'center' } });
+		const wrapper = mount(FlexContainer, { props: { alignment: 'center' } });
 		expect(wrapper.props().alignment).toBe('center');
 		expect(wrapper.classes()).toContain('pdap-container-center');
 	});
