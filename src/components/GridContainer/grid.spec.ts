@@ -1,3 +1,4 @@
+/* eslint-disable vue/one-component-per-file */
 // Component
 import GridContainer from './GridContainer.vue';
 import GridItem, { PdapGridItemProps } from '../GridItem/GridItem.vue';
@@ -12,14 +13,14 @@ type TestSlotProps<T extends PdapGridItemProps = PdapGridItemProps> = T;
 const data = [
 	{ component: 'li' },
 	{ component: 'img', src: 'https://mock.test.com' },
-	{ component: 'card', spanColumn: 3 },
+	{ component: 'card', spanColumn: 3, spanRow: 2 },
 ];
 const template =
-	'<GridItem v-for="item in data" :key="`item.component + ${item.spanRows * Math.random()}`" :component="item.component" :src="item.src ?? undefined" ><slot /></GridItem>';
+	'<GridItem v-for="item in data" :key="`item.component + ${item.spanRow * Math.random()}`" :component="item.component" :src="item.src ?? undefined" :spanRow="item.spanRow"><slot /></GridItem>';
 
 const expectComponents = new Set(['li', 'img', 'card']);
 
-const TestSlotContent = defineComponent({
+const MultipleItems = defineComponent({
 	components: {
 		GridItem,
 	},
@@ -32,10 +33,24 @@ const TestSlotContent = defineComponent({
 	template,
 });
 
+const SingleItem = defineComponent({
+	components: {
+		GridItem,
+	},
+	props: {
+		data: {
+			type: Array<TestSlotProps>,
+			default: data,
+		},
+	},
+	template: '<GridItem :spanRow="3"><slot /></GridItem>',
+});
+
 const getComputedStyle = vi.fn((el) => el.getComputedStyle());
 getComputedStyle.mockReturnValue({
 	gridTemplateRows: 'repeat(3, minmax(20px, 1fr))',
 	gridTemplateColumns: 'repeat(2, auto)',
+	gridRow: 'span 2 / span 2',
 });
 vi.stubGlobal('getComputedStyle', getComputedStyle);
 
@@ -45,7 +60,7 @@ describe('Renders container component', () => {
 	test('Renders a container', () => {
 		const wrapper = mount(GridContainer, {
 			slots: {
-				default: TestSlotContent,
+				default: MultipleItems,
 			},
 		});
 
@@ -76,7 +91,7 @@ describe('Renders container component', () => {
 	test('Renders a container with template props passed', () => {
 		const wrapper = mount(GridContainer, {
 			slots: {
-				default: TestSlotContent,
+				default: MultipleItems,
 			},
 			props: {
 				templateColumns: 'repeat(2, auto)',
@@ -95,7 +110,7 @@ describe('Renders container component', () => {
 	test('Renders a container with columns and rows props passed', () => {
 		const wrapper = mount(GridContainer, {
 			slots: {
-				default: TestSlotContent,
+				default: MultipleItems,
 			},
 			props: {
 				rows: 2,
@@ -105,5 +120,19 @@ describe('Renders container component', () => {
 
 		expect(wrapper.vm.$props.rows).toBe(2);
 		expect(wrapper.vm.$props.columns).toBe(3);
+	});
+
+	test('Renders a grid item with custom row span prop', () => {
+		const wrapper = mount(GridContainer, {
+			slots: {
+				default: SingleItem,
+			},
+		});
+
+		console.log(wrapper.html());
+
+		expect(
+			window.getComputedStyle(wrapper.find('.pdap-grid-item').element).gridRow
+		).toBe('span 2 / span 2');
 	});
 });
