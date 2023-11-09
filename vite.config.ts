@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
 import vue from '@vitejs/plugin-vue';
@@ -28,5 +29,20 @@ export default defineConfig({
 		},
 	},
 	optimizeDeps: { include: ['vue-router'] },
-	test: { globals: true },
+	test: {
+		coverage: {
+			all: true,
+			include: ['src/**/*.vue', 'utils/**/*.ts'],
+			provider: 'v8',
+			reportsDirectory: './coverage',
+		},
+		environment: 'happy-dom',
+		exclude: ['node_modules'],
+		globals: true,
+		include: ['src/**/*.{spec,test}.ts'],
+		setupFiles: ['./tools/testing/setup.ts'],
+		typecheck: {
+			include: ['src/**/*.{spec,test}.ts'],
+		},
+	},
 });
