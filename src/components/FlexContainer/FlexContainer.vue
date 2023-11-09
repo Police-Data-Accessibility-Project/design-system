@@ -21,8 +21,8 @@ const props = withDefaults(defineProps<PdapContainerProps>(), {
 
 // CSS class map
 const classes = reactive({
-	'pdap-container': true,
-	[`pdap-container-${props.alignment}`]: true,
+	'pdap-flex-container': true,
+	[`pdap-flex-container-${props.alignment}`]: true,
 	[String(props.className)]: Boolean(props.className),
 });
 </script>
@@ -32,7 +32,7 @@ const classes = reactive({
 
 @layer components {
 	/* Layout */
-	.pdap-container {
+	.pdap-flex-container {
 		/* Left and top aligned by default */
 		@apply items-start flex h-full justify-start flex-col max-w-none mx-auto p-8 w-full;
 
@@ -40,15 +40,15 @@ const classes = reactive({
 		@apply xs:max-w-3xl lg:max-w-4xl;
 	}
 
-	.pdap-container-center {
+	.pdap-flex-container-center {
 		/* Center-aligned (vert & hor) */
-		@apply pdap-container items-center justify-center;
+		@apply pdap-flex-container items-center justify-center;
 	}
-	.pdap-container-start {
-		@apply pdap-container;
+	.pdap-flex-container-start {
+		@apply pdap-flex-container;
 	}
 
-	.pdap-container > * {
+	.pdap-flex-container > * {
 		@apply w-full;
 	}
 }

@@ -16,8 +16,8 @@ describe('Renders container component', () => {
 			},
 		});
 
-		expect(wrapper.find('.pdap-container').exists()).toBe(true);
-		expect(wrapper.classes()).toContain('pdap-container');
+		expect(wrapper.find('.pdap-flex-container').exists()).toBe(true);
+		expect(wrapper.classes()).toContain('pdap-flex-container');
 		expect(wrapper.html()).toContain('Container Content');
 		expect(wrapper.html()).toMatchSnapshot();
 	});
@@ -27,12 +27,12 @@ describe('Renders container component', () => {
 	test('Renders start aligned container', () => {
 		const wrapper = mount(FlexContainer, { props: { alignment: 'start' } });
 		expect(wrapper.props().alignment).toBe('start');
-		expect(wrapper.classes()).toContain('pdap-container-start');
+		expect(wrapper.classes()).toContain('pdap-flex-container-start');
 	});
 
 	test('Renders center aligned container', () => {
 		const wrapper = mount(FlexContainer, { props: { alignment: 'center' } });
 		expect(wrapper.props().alignment).toBe('center');
-		expect(wrapper.classes()).toContain('pdap-container-center');
+		expect(wrapper.classes()).toContain('pdap-flex-container-center');
 	});
 });
