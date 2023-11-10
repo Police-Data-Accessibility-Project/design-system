@@ -7,4 +7,4 @@ export { GridItem } from './GridItem';
 // export { Input } from './Input';
 export { Header } from './Header';
 export { Nav } from './Nav';
-// export { TileIcon } from './TileIcon';
+export { TileIcon } from './TileIcon';
