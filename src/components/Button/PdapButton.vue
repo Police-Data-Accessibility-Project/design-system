@@ -40,7 +40,7 @@ const classes = reactive({
 	}
 
 	.pdap-button-primary {
-		@apply pdap-button bg-brand-gold text-neutral-100;
+		@apply pdap-button bg-brand-gold text-neutral-950;
 	}
 
 	.pdap-button-secondary {
