@@ -129,8 +129,6 @@ describe('Renders container component', () => {
 			},
 		});
 
-		console.log(wrapper.html());
-
 		expect(
 			window.getComputedStyle(wrapper.find('.pdap-grid-item').element).gridRow
 		).toBe('span 2 / span 2');

@@ -3,12 +3,6 @@
 @tailwind utilities;
 
 @layer utilities {
-	/* Hide up to the lg breakpoint (use for nav) */
-	.hide-max-lg {
-		@apply max-lg:hidden;
-	}
-
-	/* Lock any scroll container (used for body when mobile nav open) */
 	.lock-scroll {
 		@apply overflow-hidden;
 	}
@@ -26,30 +20,5 @@
 	/* Layout */
 	.boxed {
 		@apply p-4 my-4 mx-0 border-2 border-solid border-brand-wine border-opacity-20;
-	}
-
-	.layout-grid {
-		@apply grid grid-cols-1 gap-4 w-full;
-		@apply md:gap-8;
-	}
-
-	.layout-grid-2 {
-		@apply layout-grid items-start grid-cols-1;
-		@apply md:grid-cols-2;
-	}
-
-	.layout-grid-3 {
-		@apply layout-grid grid-cols-1;
-		@apply md:grid-cols-2 lg:grid-cols-3;
-	}
-
-	.grid-item-span-2 {
-		@apply col-span-1;
-		@apply md:col-span-2;
-	}
-
-	.grid-item-span-3 {
-		@apply col-span-1;
-		@apply md:col-span-2 lg:col-span-3;
 	}
 }
