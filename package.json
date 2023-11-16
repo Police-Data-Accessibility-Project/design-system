@@ -80,7 +80,7 @@
 		"vue-router": "^4.2.5"
 	},
 	"scripts": {
-		"build": "vite build && vue-tsc --emitDeclarationOnly",
+		"build": "vite build && vue-tsc",
 		"build:watch": "npm run build -- --watch",
 		"clean": "rimraf coverage test/report",
 		"lint": "run-p lint:*",

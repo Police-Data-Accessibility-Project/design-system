@@ -21,7 +21,7 @@ import { useVuelidate } from '@vuelidate/core';
 import InputsGenerator from './InputsGenerator/FormInputsGenerator.vue';
 
 // Utils
-import { createRule } from '../../../utils/vuelidate';
+import { createRule } from '../../utils/vuelidate';
 
 // Types
 import { PdapInputCheckboxProps, PdapInputTextProps } from '../Input/types';
@@ -52,14 +52,8 @@ export type PdapFormData = Record<string, unknown>;
 
 /**
  * PDAP Form props interface.
- * @param THandleSubmitArgs (type param) - Shape of object passed to handle submit.
- * This will almost always be form data, but we should allow for Forms to do things
- * on submit that don't necessarily involve submitting data. In order to pass this
  */
 export interface PdapFormProps {
-	// <
-	// THandleSubmitArgs extends PdapFormData = PdapFormData,
-	// >
 	className?: string;
 	errorMessage?: string | undefined | null;
 	// submit: (args?: THandleSubmitArgs) => void;
@@ -98,12 +92,13 @@ const rules = props.schema.reduce((acc, input) => {
 				...createRule(key, val),
 			};
 		},
-
 		{}
 	);
 	return {
-		...acc,
-		...toAdd,
+		[input.name]: {
+			...acc,
+			...toAdd,
+		},
 	};
 }, {});
 
@@ -113,7 +108,7 @@ const v$ = useVuelidate(rules, values, { $autoDirty: false, $lazy: false });
 export type VuelidateInstance = typeof v$.value;
 
 watchEffect(() =>
-	console.debug(
+	console.log(
 		`Hello from PDAP Form ${props.name} rendered at ${window.location.pathname}`,
 		{
 			props,
@@ -150,6 +145,7 @@ async function submit(event: Event) {
 		form.reset();
 		return;
 	} else {
+		console.log('is invalid form data', { v$: v$.value });
 		// TODO: Error and form validation stuff
 		return;
 	}
@@ -161,3 +157,4 @@ async function submit(event: Event) {
 	@apply mb-4 w-full;
 }
 </style>
+../../utils/vuelidate

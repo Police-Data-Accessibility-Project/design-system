@@ -4,7 +4,7 @@ export enum PdapInputTypes {
 }
 
 export interface PdapInputBaseProps {
-	errorMessage: string | undefined | null;
+	errorMessage?: string | undefined | null;
 	id: string;
 	label: string;
 	name: string;
