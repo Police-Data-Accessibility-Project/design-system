@@ -16,14 +16,12 @@
 // Globals
 import { ref, watchEffect } from 'vue';
 import { useVuelidate } from '@vuelidate/core';
-// import { useState } from '../../composables/useState';
 
 // Components
 import InputsGenerator from './InputsGenerator/FormInputsGenerator.vue';
 
 // Utils
 import { createRule } from '../../../utils/vuelidate';
-// import { componentMap } from '../Input/utils';
 
 // Types
 import { PdapInputCheckboxProps, PdapInputTextProps } from '../Input/types';
