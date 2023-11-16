@@ -18,7 +18,10 @@
 	"plugins": ["@typescript-eslint", "prettier"],
 	"rules": {
 		"vue/require-default-prop": "off",
-		"indent": ["warn", "tab"],
+		// Switch base eslint indent rule off
+		"indent": "off",
+		// Use TS package instead
+		"@typescript-eslint/indent": ["warn", "tab", { "SwitchCase": 1 }],
 		"vue/html-self-closing": [
 			"error",
 			{
@@ -34,7 +37,7 @@
 		"prettier/prettier": [
 			"warn",
 			{
-				"indent": ["warn", "tab"],
+				"indent": ["warn", "tab", { "SwitchCase": 2 }],
 				"tabWidth": 2,
 				"useTabs": true
 			}
