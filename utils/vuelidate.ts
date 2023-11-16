@@ -54,6 +54,6 @@ export function createRule<T extends number | boolean>(key: string, val: T) {
 	return isLengthRule(key) && typeof val === 'number'
 		? makeLengthRule(key, val)
 		: key === 'required' && typeof val === 'boolean'
-		? makeRequiredRule()
-		: { [key]: val };
+		  ? makeRequiredRule()
+		  : { [key]: val };
 }
