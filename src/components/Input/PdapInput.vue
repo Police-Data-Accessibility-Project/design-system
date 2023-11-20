@@ -1,22 +1,32 @@
 <template>
-	<div class="pdap-input">
+	<div
+		:class="{
+			'pdap-input': true,
+			'pdap-input-error': error?.length >= 1,
+			[String(props.className)]: Boolean(props.className),
+		}"
+	>
 		<slot />
 		<label class="pdap-input-label" :for="id">{{ label }}</label>
-		<!-- TODO: add error message and associate with input -->
+		<div v-if="error" :id="errorMessageId" class="pdap-input-error-message">
+			{{ error }}
+		</div>
 	</div>
 </template>
 
 <script setup lang="ts">
 // Globals
-import { watchEffect } from 'vue';
+import { computed, watchEffect } from 'vue';
 
 import { PdapInputBaseProps } from './types';
 
 // Props
 const props = defineProps<PdapInputBaseProps>();
 
+const errorMessageId = computed(() => `pdap-${props.name}-input-error`);
+
 watchEffect(() => {
-	console.debug(
+	console.log(
 		`Hello from PDAP Input ${props.name} rendered at ${window.location.pathname}`,
 		{
 			props,
@@ -49,8 +59,28 @@ watchEffect(() => {
 	}
 
 	.pdap-input label {
-		@apply items-center flex basis-[max-content] justify-center p-3;
+		@apply items-center flex basis-[max-content] justify-end p-3;
 	}
+
+	/* Error state */
+	.pdap-input-error {
+		@apply flex-wrap;
+		row-gap: 0;
+	}
+
+	.pdap-input-error label {
+		@apply justify-start;
+	}
+
+	.pdap-input-error input {
+		@apply border-red-800 dark:border-red-300;
+	}
+
+	.pdap-input-error-message {
+		@apply items-center justify-start basis-full flex-shrink flex bg-red-300 text-red-800 p-2 text-sm;
+	}
+
+	/* Specific inputs */
 
 	/* Input - text */
 	.pdap-input input[type='text'] {

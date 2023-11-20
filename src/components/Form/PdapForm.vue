@@ -1,6 +1,11 @@
 <template>
 	<form class="pdap-form" @submit.prevent="submit($event)">
-		<div class="pdap-form-error-message">{{ errorMessage }}</div>
+		<div
+			v-if="typeof error === 'string' && error.length > 0"
+			class="pdap-form-error-message"
+		>
+			{{ error }}
+		</div>
 		<InputsGenerator
 			v-bind="{
 				schema,
@@ -55,7 +60,7 @@ export type PdapFormData = Record<string, unknown>;
  */
 export interface PdapFormProps {
 	className?: string;
-	errorMessage?: string | undefined | null;
+	error?: string | undefined | null;
 	// submit: (args?: THandleSubmitArgs) => void;
 	id: string;
 	name: string;
@@ -64,7 +69,7 @@ export interface PdapFormProps {
 
 // Props
 const props = withDefaults(defineProps<PdapFormProps>(), {
-	errorMessage: null,
+	error: null,
 });
 
 // Emits
@@ -95,8 +100,8 @@ const rules = props.schema.reduce((acc, input) => {
 		{}
 	);
 	return {
+		...acc,
 		[input.name]: {
-			...acc,
 			...toAdd,
 		},
 	};
@@ -104,11 +109,12 @@ const rules = props.schema.reduce((acc, input) => {
 
 // TODO: finish validation (display error messages, etc)
 const v$ = useVuelidate(rules, values, { $autoDirty: false, $lazy: false });
+
 // Type for passing as prop
 export type VuelidateInstance = typeof v$.value;
 
 watchEffect(() =>
-	console.log(
+	console.debug(
 		`Hello from PDAP Form ${props.name} rendered at ${window.location.pathname}`,
 		{
 			props,
@@ -127,14 +133,14 @@ async function submit(event: Event) {
 		const form = <HTMLFormElement>event.target;
 		const formData = new FormData(form);
 
-		// Assign values to new object
+		// Assign values to object
 		const values = {};
 		for (const [name, value] of formData) {
 			Object.assign(values, { [name]: value });
 		}
 
 		// Debug log
-		console.log("Hello from Form's onSubmit handler", {
+		console.debug("Hello from Form's onSubmit handler", {
 			values,
 			isCorrectSubmission,
 			vuelidate: v$.value,
@@ -145,8 +151,7 @@ async function submit(event: Event) {
 		form.reset();
 		return;
 	} else {
-		console.log('is invalid form data', { v$: v$.value });
-		// TODO: Error and form validation stuff
+		console.error('is invalid form data', { v$: v$.value });
 		return;
 	}
 }
@@ -156,5 +161,8 @@ async function submit(event: Event) {
 .pdap-form {
 	@apply mb-4 w-full;
 }
+
+.pdap-form-error-message {
+	@apply items-center justify-start basis-full flex-shrink flex bg-red-300 text-red-800 p-2 text-sm;
+}
 </style>
-../../utils/vuelidate

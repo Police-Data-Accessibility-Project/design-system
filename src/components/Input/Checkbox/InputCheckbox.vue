@@ -29,7 +29,7 @@ const change = (event: Event) => {
 
 watchEffect(() => {
 	console.debug(
-		`Hello from PDAP InputText ${props.name} rendered at ${window.location.pathname}`,
+		`Hello from PDAP InputCheckbox ${props.name} rendered at ${window.location.pathname}`,
 		{
 			props,
 		}

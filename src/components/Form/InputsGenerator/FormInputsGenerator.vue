@@ -3,7 +3,7 @@
 		v-for="field in schema"
 		:id="field.id"
 		:key="field.name"
-		:error-message="field.errorMessage"
+		:error="v?.[field.name]?.$errors?.[0]?.$message"
 		:name="field.name"
 		:label="field.label"
 	>
@@ -38,7 +38,6 @@ export default {
 	props: {
 		schema: { type: Object as PropType<PdapFormSchema> },
 		values: { type: Object as PropType<Record<string, unknown>> },
-		errors: { type: Object as PropType<Record<string, unknown>> },
 		v$: {
 			type: Object as PropType<VuelidateInstance>,
 		},
@@ -52,7 +51,7 @@ export default {
 		return {
 			formData: this.values || {},
 			INPUT_COMPONENT_MAP: INPUT_COMPONENT_MAP,
-			v: this.v$,
+			v: this.$props.v$,
 		};
 	},
 	methods: {
@@ -61,7 +60,7 @@ export default {
 			this.$emit('input', this.formData);
 		},
 		updateValidations(fieldName: string) {
-			this.v?.value?.[fieldName].$touch;
+			this.v$?.value?.[fieldName].$touch;
 		},
 	},
 };
