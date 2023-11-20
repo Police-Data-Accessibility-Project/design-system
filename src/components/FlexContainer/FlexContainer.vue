@@ -1,7 +1,7 @@
 <template>
-	<div :class="classes">
+	<component :is="component" :class="classes">
 		<slot />
-	</div>
+	</component>
 </template>
 
 <script setup lang="ts">
@@ -12,11 +12,13 @@ import { reactive } from 'vue';
 export interface PdapContainerProps {
 	alignment?: 'center' | 'start';
 	className?: string;
+	component?: string;
 }
 
 // Props
 const props = withDefaults(defineProps<PdapContainerProps>(), {
 	alignment: 'start',
+	component: 'div',
 });
 
 // CSS class map

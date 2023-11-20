@@ -40,7 +40,7 @@ export default defineConfig({
 		exclude: ['node_modules'],
 		globals: true,
 		include: ['src/**/*.{spec,test}.ts'],
-		setupFiles: ['./tools/testing/setup.ts'],
+		setupFiles: ['./src/tools/testing/setup.ts'],
 		typecheck: {
 			include: ['src/**/*.{spec,test}.ts'],
 		},
