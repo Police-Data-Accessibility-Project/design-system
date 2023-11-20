@@ -7,12 +7,7 @@
 <script setup lang="ts">
 import { reactive } from 'vue';
 
-export interface PdapGridItemProps {
-	className?: string;
-	component?: string;
-	spanColumn?: 1 | 2 | 3;
-	spanRow?: number;
-}
+import { PdapGridItemProps } from './types';
 
 const props = withDefaults(defineProps<PdapGridItemProps>(), {
 	component: 'div',

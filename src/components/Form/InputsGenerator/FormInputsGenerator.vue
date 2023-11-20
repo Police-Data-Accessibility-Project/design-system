@@ -25,7 +25,7 @@ import InputCheckbox from '../../Input/Checkbox/InputCheckbox.vue';
 
 // Types
 import { PropType } from 'vue';
-import { PdapFormSchema } from '../PdapForm.vue';
+import { PdapFormSchema } from '../types.ts';
 import { INPUT_COMPONENT_MAP } from '../../Input/utils';
 import { VuelidateInstance } from '../PdapForm.vue';
 

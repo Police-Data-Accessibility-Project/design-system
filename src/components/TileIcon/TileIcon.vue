@@ -3,10 +3,7 @@
 </template>
 
 <script setup lang="ts">
-export interface PdapTileIconProps {
-	imgAltText: string;
-	imgSrc: string;
-}
+import { PdapTileIconProps } from './types';
 
 defineProps<PdapTileIconProps>();
 </script>

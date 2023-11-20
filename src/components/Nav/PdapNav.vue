@@ -52,24 +52,10 @@ import {
 } from 'vue';
 import { RouterLink } from 'vue-router';
 // Types
-export interface LinkData {
-	href?: string;
-	path?: string;
-	text: string;
-}
-
-export interface PdapNavProps {
-	className?: string;
-	topPosition?: number;
-}
-
-export interface PdapNavState {
-	isExpanded: boolean;
-	isMobile: boolean | undefined;
-}
+import { PdapLinkData, PdapNavProps } from './types';
 
 // Inject
-let links: LinkData[] | undefined = inject('navLinks');
+let links: PdapLinkData[] | undefined = inject('navLinks');
 
 if (typeof links === 'undefined') {
 	links = [];

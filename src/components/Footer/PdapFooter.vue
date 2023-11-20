@@ -58,15 +58,8 @@
 import { inject } from 'vue';
 import FlexContainer from '../FlexContainer/FlexContainer.vue';
 
-export interface PdapFooterSocialLinks {
-	to: string;
-	text: string;
-}
-
-export interface PdapFooterProps {
-	logoImageSrc?: string;
-	logoImageAnchorPath?: string;
-}
+// Types
+import { PdapFooterProps, PdapFooterSocialLinks } from './types';
 
 const props = withDefaults(defineProps<PdapFooterProps>(), {
 	logoImageSrc: 'node_modules/pdap-design-system/dist/images/acronym.svg',

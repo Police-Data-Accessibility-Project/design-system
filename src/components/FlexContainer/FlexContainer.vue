@@ -9,14 +9,10 @@
 import { reactive } from 'vue';
 
 // Types
-export interface PdapContainerProps {
-	alignment?: 'center' | 'start';
-	className?: string;
-	component?: string;
-}
+import { PdapFlexContainerProps } from './types';
 
 // Props
-const props = withDefaults(defineProps<PdapContainerProps>(), {
+const props = withDefaults(defineProps<PdapFlexContainerProps>(), {
 	alignment: 'start',
 	component: 'div',
 });

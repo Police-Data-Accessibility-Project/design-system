@@ -1,5 +1,5 @@
 import * as validators from '@vuelidate/validators';
-import { PdapFormValidators } from 'src/components/Form/PdapForm.vue';
+import { PdapFormValidators } from 'src/components/Form/types.ts';
 import { Ref } from 'vue';
 
 const validValidators = ['maxLength', 'minLength', 'required'];

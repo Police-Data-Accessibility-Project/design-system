@@ -24,11 +24,7 @@ import { RouterLink } from 'vue-router';
 
 import PdapNav from '../Nav/PdapNav.vue';
 
-export interface PdapHeaderProps {
-	className?: string;
-	logoImageSrc?: string;
-	logoImageAnchorPath?: string;
-}
+import { PdapHeaderProps } from './types';
 
 // Props
 const props = withDefaults(defineProps<PdapHeaderProps>(), {

@@ -9,11 +9,7 @@
 import { reactive } from 'vue';
 
 // Types
-export interface PdapButtonProps {
-	className?: string;
-	intent?: 'primary' | 'secondary';
-	isLoading?: boolean;
-}
+import { PdapButtonProps } from './types';
 
 // Props
 const props = withDefaults(defineProps<PdapButtonProps>(), {
