@@ -2,9 +2,39 @@
 
 Documentation for PDAP component usage
 
+## Table of Contents
+
+- [Button](#button)
+  - [Props](#props)
+  - [Example](#example)
+- [FlexContainer](#flexcontainer)
+  - [Props](#props-1)
+  - [Example](#example-1)
+- [Footer](#footer)
+  - [Props](#props-2)
+  - [Example](#example-2)
+- [Form](#form)
+  - [Props](#props-3)
+  - [Example](#example-3)
+- [GridContainer](#gridcontainer)
+  - [Props](#props-4)
+  - [Example](#example-4)
+- [GridItem](#griditem)
+  - [Props](#props-5)
+  - [Example](#example-5)
+- [Header](#header)
+  - [Props](#props-6)
+  - [Example](#example-6)
+- [Input](#input)
+- [Nav](#nav)
+  - [Example](#example-7)
+- [TileIcon](#tileicon)
+  - [Props](#props-7)
+  - [Example](#example-8)
+
 ## Button
 
-### Props
+### _Props_
 
 | name        | required? | types                    | description                | default   |
 | ----------- | --------- | ------------------------ | -------------------------- | --------- |
@@ -12,11 +42,11 @@ Documentation for PDAP component usage
 | `isLoading` | no        | `boolean`                | Request state              | `false`   |
 | `intent`    | yes       | `primary` \| `secondary` | Determines style of button | `primary` |
 
-### Example
+### _Example_
 
 ```
 <template>
-  <Button className="custom-btn-class" intent="primary" :on-click="() => console.log('hello world')" type="button">Click me</Button>
+  <Button className="custom-btn-class" intent="primary" @click="() => console.log('hello world')" type="button">Click me</Button>
 </template>
 
 ...
@@ -43,9 +73,9 @@ export default {
 
 ## FlexContainer
 
-All container components are designed to be dynamic and take any `HTMLElement` tag as the component to be rendered. `FlexContainer`. `FlexContainer` can itself be passed as the element type for `GridItem`, for example, or vice versa, allowing us to easily compose complex layouts (more on this later with the `GridContainer` and `GridItem` documentation).
+All container components are designed to be dynamic and take any `HTMLElement` tag as the component to be rendered. `FlexContainer` can itself be passed as the element type for `GridItem`, for example, or vice versa, allowing us to easily compose complex layouts (more on this later with the `GridContainer` and `GridItem` documentation).
 
-### Props
+### _Props_
 
 | name        | required? | types               | description                         | default |
 | ----------- | --------- | ------------------- | ----------------------------------- | ------- |
@@ -53,14 +83,14 @@ All container components are designed to be dynamic and take any `HTMLElement` t
 | `component` | no        | `string`            | HTML Element to render as container | `'div'` |
 | `alignment` | no        | `start` \| `center` | Flex alignment presets              | `start` |
 
-### Example
+### _Example_
 
 ```
 <template>
 	<FlexContainer alignment="center" component="card">
       <h2>Some content goes here</h2>
       <p>More content goes here.</p>
-      <Button className="custom-button-class-name" :isLoading="false" @click="() => console.log('hello world')">
+      <Button className="custom-button-class-name" :isLoading="isLoading" @click="() => console.log('hello world')">
         Say hello with this button
       </Button>
 	</FlexContainer>
@@ -75,6 +105,12 @@ import { Button, FlexContainer } from 'pdap-design-system';
 
 export default {
   components: ['Button', 'FlexContainer'],
+  props: ['requestPending', ...],
+  data() {
+    return {
+      isLoading: this.requestPending
+    }
+  }
   ...
 }
 </script>
@@ -82,14 +118,14 @@ export default {
 
 ## Footer
 
-### Props
+### _Props_
 
 | name                  | required? | types    | description            | default                                                     |
 | --------------------- | --------- | -------- | ---------------------- | ----------------------------------------------------------- |
 | `logoImageSrc`        | no        | `string` | Source of logo image   | `'node_modules/pdap-design-system/dist/images/acronym.svg'` |
 | `logoImageAnchorPath` | no        | `string` | Flex alignment presets | `/`                                                         |
 
-### Notes
+### _Notes_
 
 The `Footer` component provides support for overriding the default social links. The `links` variable is `inject`ed by the component, using the following defaults:
 
@@ -124,7 +160,7 @@ export default {
 
 If we desire different links somewhere that `Footer` is rendered, simply `provide` an overriding array from a parent component, like so:
 
-### Example
+### _Example_
 
 ```
 <template>
@@ -157,7 +193,7 @@ export default {
 
 The `Form` component is powerful. All you need to do is pass a few props, and the component will generate inputs and render them in the UI, complete with customizable form validation and both form-level and input-level error states.
 
-### Props
+### _Props_
 
 | name        | required? | types                             | description                        | default     |
 | ----------- | --------- | --------------------------------- | ---------------------------------- | ----------- |
@@ -167,7 +203,7 @@ The `Form` component is powerful. All you need to do is pass a few props, and th
 | `name`      | yes       | `string`                          | Form name                          | none        |
 | `schema`    | yes       | `PdapFormSchema`                  | Array of schema entries for inputs | none        |
 
-N.B.:
+### _Notes_
 
 - Form schema entries can look different depending on the type of input. We currently only use text inputs, so the example only displays these.
 - To properly submit the form, you must render a button with `type="submit"` _inside_ of the `Form` component.
@@ -177,14 +213,14 @@ N.B.:
 ```
 
 PdapFormValidators {
-maxLength: number;
-minLength: number;
-required: boolean;
+  maxLength: number;
+  minLength: number;
+  required: boolean;
 }
 
 ```
 
-### Example
+### _Example_
 
 ```
 
@@ -203,18 +239,29 @@ import { Button, Form, PdapInputTypes } from 'pdap-design-system';
 
 export default {
   components: ['Button', 'Form'],
-  data: {
-    formSchema: [
-      {
-        id: 'testfirstname',
-        name: 'firstName',
-        label: 'First Name',
-        type: PdapInputTypes.TEXT,
-        placeholder: 'John',
-        value: '',
-        validators: { minLength: 3, required: true },
-      },
-    ]
+  data() {
+    return {
+      formSchema: [
+        {
+          id: 'testfirstname',
+          name: 'firstName',
+          label: 'First Name',
+          type: PdapInputTypes.TEXT,
+          placeholder: 'John',
+          value: '',
+          validators: { minLength: 3, required: true },
+        },
+        {
+          id: 'testlastname',
+          name: 'lastName',
+          label: 'Last Name',
+          type: PdapInputTypes.TEXT,
+          placeholder: 'Doe',
+          value: '',
+          validators: { minLength: 2, maxLength: 999, required: true },
+        }
+      ]
+    }
   },
   methods: {
     handleSubmit: async function(data) {
@@ -230,9 +277,122 @@ export default {
 
 ## GridContainer
 
+All container components are designed to be dynamic and take any `HTMLElement` tag as the component to be rendered. It also works with the `GridItem` component (see example below). `GridContainer` and `GridItem` could both be passed as the element type for `FlexContainer`, for example, or vice versa, allowing us to easily compose complex layouts.
+
+### _Props_
+
+| name              | required? | types                         | description                                         | default             |
+| ----------------- | --------- | ----------------------------- | --------------------------------------------------- | ------------------- |
+| `className`       | no        | `string`                      | Add a custom css class                              | none                |
+| `columns`         | no        | `1` \| `2` \| `3` \| `'auto'` | Number of grid columns                              | `'auto'`            |
+| `component`       | no        | `string`                      | HTML Element to render as container                 | `'div'`             |
+| `rows`            | no        | `number` \| `'auto'`          | Number of grid rows                                 | `'auto'`            |
+| `templateColumns` | no        | `string` \| `undefined`       | Custom `grid-template-columns` value, passed inline | `undefined` (no-op) |
+| `templateRows`    | no        | `string` \| `undefined`       | Custom `grid-template-rows` value, passed inline    | `undefined` (no-op) |
+
+### _Notes_
+
+- Grid layouts max out at 3 columns, and responsiveness is baked in.
+  - i.e. When you render a 3-column grid layout, it automatically resizes to 2 columns, then 1 column, as screen widths decrease.
+  - In this case, it is a best practice to leave the `rows` prop as its default `'auto'` value, to ensure that the layout fills as many rows as are needed when the number of columns decreases
+
+### _Example_
+
+```
+<template>
+  <GridContainer :columns="3" component="section">
+    <GridItem component="FlexContainer">
+      <h2>Some content goes here</h2>
+      <p>More content goes here.</p>
+      <Button className="custom-button-class-name" :isLoading="isLoading" @click="() => console.log('hello world')">
+        Say hello with this button
+      </Button>
+    </GridItem>
+  </GridContainer>
+</template>
+
+...
+
+<script>
+import { Button, FlexContainer } from 'pdap-design-system';
+
+...
+
+export default {
+  components: ['Button', 'FlexContainer', 'GridContainer', 'GridItem'],
+  props: ['requestPending', ...],
+  data() {
+    return {
+      isLoading: this.requestPending
+    }
+  },
+  ...
+}
+</script>
+```
+
 ## GridItem
 
+### _Props_
+
+| name         | required? | types             | description                         | default |
+| ------------ | --------- | ----------------- | ----------------------------------- | ------- |
+| `className`  | no        | `string`          | Add a custom css class              | none    |
+| `component`  | no        | `string`          | HTML Element to render as grid item | `'div'` |
+| `spanColumn` | no        | `1` \| `2` \| `3` | Columns grid item should span       | `1`     |
+| `spanRow`    | no        | `number`          | Rows grid item should span          | `1`     |
+
+### _Notes_
+
+- Grid layouts max out at 3 columns, and responsiveness is baked in.
+  - i.e. When you render a 3-column grid layout, it automatically resizes to 2 columns, then 1 column, as screen widths decrease.
+  - In this case, it is a best practice to leave the `rows` prop as its default `'auto'` value, to ensure that the layout fills as many rows as are needed when the number of columns decreases
+
+### _Example_
+
+See `GridContainer` above.
+
 ## Header
+
+### _Props_
+
+| name                  | required? | types    | description            | default                                                    |
+| --------------------- | --------- | -------- | ---------------------- | ---------------------------------------------------------- |
+| `logoImageSrc`        | no        | `string` | Source of logo image   | `'node_modules/pdap-design-system/dist/images/lockup.svg'` |
+| `logoImageAnchorPath` | no        | `string` | Flex alignment presets | `/`                                                        |
+
+### _Notes_
+
+The `Header` component does not require any props to be passed. But keep in mind that it is responsible for rendering the `Nav` component. Consuming applications will need to `provide` an array of nav links — **there are no defaults for this**, you must `provide` these links either 1. in a layout component (see example below), at the route level, or at the app level. This allows for flexibility in which links are rendered on which routes
+
+### _Example_
+
+```
+<template>
+  <Header />
+  <router-view />
+  <Footer />
+</template>
+
+...
+
+<script>
+import { Header, Footer } from 'pdap-design-system';
+import { RouterView } from 'vue-router'
+
+...
+
+export default {
+  name: 'Layout',
+  components: ['Header', 'Footer'],
+  ...
+  provide: {
+    navLinks: [...]
+  }
+}
+</script>
+
+```
 
 ## Input
 
@@ -242,7 +402,7 @@ Inputs are rendered by the `Form` component via a schema. Please see `Form` for 
 
 You do not need to render `Nav` directly. `Header` takes care of that. But you do need to `provide` nav link data from a parent component. This allows for nav links to be dynamic depending on where `Header` is rendered.
 
-### Example
+### _Example_
 
 ```
 
@@ -290,6 +450,43 @@ provide('navLinks', linkData);
 
 ## TileIcon
 
+### _Props_
+
+| name         | required? | types    | description                   | default |
+| ------------ | --------- | -------- | ----------------------------- | ------- |
+| `imgAltText` | yes       | `string` | Descriptive alt text for icon | none    |
+| `imgSrc`     | yes       | `string` | Source of icon to render      | none    |
+
+### _Example_
+
 ```
+<template>
+  <GridContainer :columns="3" component="section">
+    <GridItem>
+      <TileIcon :imgAltText="altText" :imgSrc="imagePath" >
+    </GridItem>
+  </GridContainer>
+</template>
+
+...
+
+<script>
+import { Header, Footer } from 'pdap-design-system';
+import { RouterView } from 'vue-router'
+
+...
+
+export default {
+  name: 'Layout',
+  components: ['GridContainer', 'GridItem', 'TileIcon'],
+  props: ['alt', 'src'],
+  data() {
+    return {
+      altText: this.alt,
+      imgSrc: this.src
+    }
+  }
+}
+</script>
 
 ```
