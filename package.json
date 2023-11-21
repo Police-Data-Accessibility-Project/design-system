@@ -97,7 +97,6 @@
 		"bin",
 		"CONTRIBUTING.md",
 		"dist",
-		"system",
 		"README.md"
 	],
 	"bin": {
