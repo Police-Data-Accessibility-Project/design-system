@@ -91,7 +91,7 @@
 		"prepublishOnly": "npm run build",
 		"test": "vitest --dom --run --coverage",
 		"test:changed": "npm run test --changed",
-		"types": "vue-tsc "
+		"types": "vue-tsc"
 	},
 	"files": [
 		"bin",

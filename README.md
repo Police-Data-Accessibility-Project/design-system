@@ -1,60 +1,50 @@
 # Design System
 
-These are styling resources like CSS and templates for new PDAP microservices or branded web projects.
-
-Run `npm run build` and open `demo/index.html` to see how things look.
-
-`src/styles/styles.css` are the styles used across all PDAP applications.
-
-`src/images` are icons and brand assets.
-
-CSS and assets are built to the `dist` directory before each release, so you will access them from there.
+This is a `Vue` component library, styling system, and image asset repository for PDAP-branded client apps.
 
 ## Usage
 
-1. In the project's root directory:
+1. Install the package
 
 ```
 npm install pdap-design-system
 ```
 
-### To import and use CSS from the package
-
-After installing the package, include PDAP styles in a project using one of two strategies.
-
-1. If the project uses `Vue.js` or another framework that bundles CSS via a build tool like Webpack or Vite, you can import the package directly in your entrypoint js file. So, if your entrypoint is `main.js`, import it in that file like so:
+2. Import the stylesheet in the app's entrypoint (usually `index.js` or `main.js`, at the root of your project)
 
 ```
-import 'pdap-design-system'
+// index.js
+
+import 'pdap-design-system/styles';
 ```
 
-And voila! You have access to PDAP's design system CSS / images to use in your templates / components:
+3. Import and use the components
 
 ```
-<button class="button">Say Hello</button>
+import { Button, Form } from 'pdap-design-system';
 ```
 
-```
-<img src=node_modules/pdap-design-system/dist/images/{name-of-image}.{png | svg | gif} alt="some descriptive alt text" />
-```
-
-2. If the project does not have a build tool that bundles CSS for you, you can still include PDAP styles via HTML `link` tags:
+4. If your project is using `TypeScript`, the component props definitions and other types are exposed for import as well.  
+   _n.b. This can be particularly useful for composing `Form` schemas, where `Input` schema objects are defined differently depending on the `type` of input desired._
 
 ```
-  <link href="node_modules/pdap-design-system/dist/styles/styles.css" rel="stylesheet" type="text/css">
+import { PdapInputTypes } from 'pdap-design-system';
 ```
 
-### To import and use images from the package
+5. See [the component documentation](./doc/components.md) for details on each component's API.
 
-There are also two strategies for including PDAP image assets.
+### About images
 
-1. If the project bundles images via a build tool like Webpack or Vite, you can import the package directly in your entrypoint js file. So, if your entrypoint is `main.js`, import it in that file like so:
-
-2. You can then reference images directly from the `node_modules` directory in the same way CSS is imported  
-   _note: If using a bundled framework like Vue.js, images must be imported into the bundle either individually or by importing this entire package, otherwise your app will not know where to look for the path you pass to src_
+PDAP image assets contained in this repo are built to the `/dist` folder. For convenience an importing alias `/images` has been added.
 
 ```
-  <img src='node_modules/pdap-design-system/dist/images/{name-of-image}.{png | svg | gif}' alt='some descriptive alt text'>
+import 'pdap-design-system/images/acronym.svg';
+```
+
+Or, if you need them all, you can import all images at the app level. Just remember that if it's imported it gets bundled with your production app, so take care not to import unneeded images.
+
+```
+import `pdap-design-system/images`;
 ```
 
 ### Using the CLI to copy assets to your local project directory
@@ -98,35 +88,31 @@ npm i
 npm run build
 ```
 
-- To watch for changes and update css as you make changes:
+- To watch for changes and update the build as you make changes:
 
 ```
-npm run styles:watch
+npm run build:watch
 ```
 
 4. If you use VS Code as your editor, you may want to install the [tailwind VS Code extension](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss), which helps with intellisense and the custom at-rules used by TailwindCSS.
 
 5. Read the [contributing guide](./CONTRIBUTING.md) for development requirements and tips.
 
-## Principles
-
-This is a first pass, so they're not etched in stone. Open to suggestions.
-
-We are making tools for transparency about a serious subject. We should be focused, friendly, and open.
-
-- Our design should take accessibility seriously.
-- Keep it simple: things should not do anything they don't need to do.
-- We should keep our users informed and in control with timely, relevant feedback.
-- Things that look the same should behave in the same way, and an action should always produce the same result.
-- Don't reinvent the wheel: use standard conventions and cues.
-- Provide help to people in context, not in the docs.
-- Establish good visual hierarchy by ensuring each page and object has a primary function.
-
 ## Assets
 
 Use these [brand assets](https://docs.pdap.io/meta/about/staff/brand-assets).
 Use this [terminology](https://docs.pdap.io/activities/terms-and-definitions).
 
-## Other notes
+## Scripts reference
 
-This is based on the PDAP website, which was originally created in Webflow. That might explain some of the CSS browser compatibility choices.
+| Script         | What it does                                    |
+| -------------- | ----------------------------------------------- |
+| `build`        | Builds the library                              |
+| `build:watch`  | Builds the library and watches for file changes |
+| `clean`        | Removes testing coverage reports after build    |
+| `lint`         | Lint `ts` and `css`                             |
+| `lint:es`      | Lint `ts`                                       |
+| `lint:css`     | Lint `css`                                      |
+| `test`         | Runs full test suite                            |
+| `test:changed` | Runs only test suites affected by changed files |
+| `types`        | Runs type check on all `ts` and `vue` files     |
