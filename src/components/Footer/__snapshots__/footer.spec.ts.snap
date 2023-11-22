@@ -3,11 +3,24 @@
 exports[`Footer component > Renders a footer 1`] = `
 <footer class="pdap-footer">
   <div class="pdap-flex-container pdap-flex-container-center">
-    <div class="pdap-footer-social-links">
-      <a class="pdap-footer-social-link" href="https://github.com/orgs/Police-Data-Accessibility-Project">Github</a>
-      <a class="pdap-footer-social-link" href="ttps://discord.gg/wMqex8nKZJ">Discord</a>
-      <a class="pdap-footer-social-link" href="https://www.linkedin.com/company/pdap">LinkedIn</a>
-    </div><!-- Copyright and policies -->
+    <ul class="pdap-footer-social-links">
+      <li class="pdap-nav-link-container">
+        <a class="pdap-footer-social-link" href="https://github.com/orgs/Police-Data-Accessibility-Project" referrerpolicy="no-referrer" target="_blank">Github</a>
+        <!--v-if-->
+      </li>
+      <li class="pdap-nav-link-container">
+        <a class="pdap-footer-social-link" href="ttps://discord.gg/wMqex8nKZJ" referrerpolicy="no-referrer" target="_blank">Discord</a>
+        <!--v-if-->
+      </li>
+      <li class="pdap-nav-link-container">
+        <a class="pdap-footer-social-link" href="https://www.linkedin.com/company/pdap" referrerpolicy="no-referrer" target="_blank">LinkedIn</a>
+        <!--v-if-->
+      </li>
+      <li class="pdap-nav-link-container">
+        <!--v-if-->
+        <router-link active-class="pdap-footer-social-link-current" class="pdap-footer-social-link" exact-active-class="pdap-footer-social-link-current-exact" to="/jobs">Jobs</router-link>
+      </li>
+    </ul><!-- Copyright and policies -->
     <p class="pdap-footer-copyright"> © 2023 Police Data Accessibility Project
       <br>
     </p>

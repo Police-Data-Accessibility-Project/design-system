@@ -1,15 +1,30 @@
 <template>
 	<footer class="pdap-footer">
 		<FlexContainer alignment="center">
-			<div class="pdap-footer-social-links">
-				<a
+			<ul class="pdap-footer-social-links">
+				<li
 					v-for="link in links"
 					:key="link.text"
-					:href="link.to"
-					class="pdap-footer-social-link"
-					>{{ link.text }}</a
+					class="pdap-nav-link-container"
 				>
-			</div>
+					<a
+						v-if="link.href"
+						class="pdap-footer-social-link"
+						:href="link.href"
+						target="_blank"
+						referrerpolicy="no-referrer"
+						>{{ link.text }}</a
+					>
+					<router-link
+						v-if="link.path"
+						active-class="pdap-footer-social-link-current"
+						exact-active-class="pdap-footer-social-link-current-exact"
+						class="pdap-footer-social-link"
+						:to="link.path"
+						>{{ link.text }}</router-link
+					>
+				</li>
+			</ul>
 
 			<!-- Copyright and policies -->
 			<p class="pdap-footer-copyright">
@@ -68,16 +83,20 @@ const props = withDefaults(defineProps<PdapFooterProps>(), {
 
 const links = inject<PdapFooterSocialLinks[]>('footerLinks', [
 	{
-		to: 'https://github.com/orgs/Police-Data-Accessibility-Project',
+		href: 'https://github.com/orgs/Police-Data-Accessibility-Project',
 		text: 'Github',
 	},
 	{
-		to: 'ttps://discord.gg/wMqex8nKZJ',
+		href: 'ttps://discord.gg/wMqex8nKZJ',
 		text: 'Discord',
 	},
 	{
-		to: 'https://www.linkedin.com/company/pdap',
+		href: 'https://www.linkedin.com/company/pdap',
 		text: 'LinkedIn',
+	},
+	{
+		path: '/jobs',
+		text: 'Jobs',
 	},
 ]);
 
@@ -91,6 +110,10 @@ const navLogoLinkIsPath = props.logoImageAnchorPath.startsWith('/');
 	.pdap-footer {
 		@apply bg-neutral-300 mt-auto mx-auto px-2 pt-2 pb-0 relative text-center text-[rgba(255,251,250)] text-lg;
 		@apply md:py-8 md:px-2;
+	}
+
+	.pdap-footer-social-links {
+		@apply flex gap-2;
 	}
 
 	.pdap-footer-social-links > * {
@@ -115,6 +138,14 @@ const navLogoLinkIsPath = props.logoImageAnchorPath.startsWith('/');
 	.pdap-footer-social-link {
 		@apply cursor-pointer bg-brand-gold  border-0 decoration-0 disabled:opacity-50 font-semibold inline-block mx-1 px-6 py-3 rounded-none text-center text-neutral-100 text-lg w-full;
 		@apply hover:brightness-85 lg:text-xl sm:max-w-max;
+	}
+
+	.pdap-footer-social-link-current {
+		@apply lg:border-neutral-400 lg:border-2 lg:border-solid text-neutral-700;
+	}
+
+	.pdap-footer-social-link-current-exact {
+		@apply pdap-footer-social-link-current lg:border-neutral-700;
 	}
 }
 </style>

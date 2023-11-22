@@ -1,5 +1,6 @@
 export interface PdapFooterSocialLinks {
-	to: string;
+	href?: string;
+	path?: string;
 	text: string;
 }
 
