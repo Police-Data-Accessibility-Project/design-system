@@ -25,6 +25,8 @@
 				v-if="link.href"
 				class="pdap-nav-link"
 				:href="link.href"
+				target="_blank"
+				referrerpolicy="no-referrer"
 				@click="toggleIsExpanded"
 				>{{ link.text }}</a
 			>
@@ -102,13 +104,21 @@ async function setIsMobile() {
 }
 
 async function toggleIsExpanded() {
-	if (!state.isExpanded) state.isExpanded = true;
-	else state.isExpanded = false;
+	const body = document.querySelector('body');
+	if (!state.isExpanded) {
+		state.isExpanded = true;
+		if (!body?.classList.contains('lock-scroll')) {
+			document.querySelector('body')?.classList.add('lock-scroll');
+		}
+	} else {
+		state.isExpanded = false;
+		document.querySelector('body')?.classList.remove('lock-scroll');
+	}
 	await nextTick();
 }
 </script>
 
-<style scoped>
+<style>
 @tailwind components;
 
 @layer components {

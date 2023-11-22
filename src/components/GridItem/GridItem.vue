@@ -30,7 +30,7 @@ const styles = reactive({
 });
 </script>
 
-<style scoped>
+<style>
 .pdap-grid-item {
 	@apply col-span-1 row-span-1;
 }

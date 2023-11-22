@@ -64,7 +64,7 @@ export default {
 
 ...
 
-<style scoped>
+<style>
 .custom-btn-class {
   padding: 12px;
 }

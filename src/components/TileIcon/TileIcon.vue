@@ -8,7 +8,7 @@ import { PdapTileIconProps } from './types';
 defineProps<PdapTileIconProps>();
 </script>
 
-<style scoped>
+<style>
 .pdap-tile-icon {
 	@apply h-auto max-w-[7.5rem];
 }

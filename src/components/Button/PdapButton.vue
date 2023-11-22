@@ -26,7 +26,7 @@ const classes = reactive({
 });
 </script>
 
-<style scoped>
+<style>
 @tailwind components;
 
 @layer components {

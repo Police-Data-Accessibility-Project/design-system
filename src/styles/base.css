@@ -36,7 +36,7 @@
 
 	h3,
 	h4 {
-		@apply text-brand-wine;
+		@apply text-brand-wine dark:text-neutral-500;
 	}
 
 	h4,

@@ -34,7 +34,7 @@ const styles = reactive({
 });
 </script>
 
-<style scoped>
+<style>
 .pdap-grid-container {
 	@apply grid grid-cols-[auto] grid-rows-[auto] h-full gap-4 p-8 w-full;
 	@apply md:gap-8;

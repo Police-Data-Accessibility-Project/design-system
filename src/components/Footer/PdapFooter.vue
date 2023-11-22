@@ -5,7 +5,7 @@
 				<li
 					v-for="link in links"
 					:key="link.text"
-					class="pdap-nav-link-container"
+					class="pdap-footer-link-container"
 				>
 					<a
 						v-if="link.href"
@@ -103,7 +103,7 @@ const links = inject<PdapFooterSocialLinks[]>('footerLinks', [
 const navLogoLinkIsPath = props.logoImageAnchorPath.startsWith('/');
 </script>
 
-<style scoped>
+<style>
 @tailwind components;
 
 @layer components {
@@ -113,7 +113,8 @@ const navLogoLinkIsPath = props.logoImageAnchorPath.startsWith('/');
 	}
 
 	.pdap-footer-social-links {
-		@apply flex gap-2;
+		@apply flex justify-center flex-wrap gap-2;
+		@apply md:flex-nowrap;
 	}
 
 	.pdap-footer-social-links > * {
@@ -124,7 +125,7 @@ const navLogoLinkIsPath = props.logoImageAnchorPath.startsWith('/');
 	}
 
 	.pdap-footer-widget-links {
-		@apply flex mt-6;
+		@apply flex justify-center mt-6;
 	}
 
 	.pdap-footer-logo {
@@ -133,6 +134,11 @@ const navLogoLinkIsPath = props.logoImageAnchorPath.startsWith('/');
 
 	.pdap-footer-logo img {
 		@apply w-full;
+	}
+
+	.pdap-nav-link-container {
+		@apply align-top basis-[max-content] inline-block list-none relative;
+		@apply lg:flex-shrink-0 lg:mx-2 lg:mb-2;
 	}
 
 	.pdap-footer-social-link {
