@@ -25,7 +25,7 @@ const props = defineProps<PdapInputBaseProps>();
 const errorMessageId = computed(() => `pdap-${props.name}-input-error`);
 
 watchEffect(() => {
-	console.log(
+	console.debug(
 		`Hello from PDAP Input ${props.name} rendered at ${window.location.pathname}`,
 		{
 			props,

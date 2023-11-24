@@ -28,7 +28,7 @@ const input = (event: Event) => {
 };
 
 watchEffect(() => {
-	console.log(
+	console.debug(
 		`Hello from PDAP InputText ${props.name} rendered at ${window.location.pathname}`,
 		{
 			props,
