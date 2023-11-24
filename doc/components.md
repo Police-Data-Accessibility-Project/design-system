@@ -428,20 +428,8 @@ export default {
     ]
   }
   ...
-}
-</script>
 
 ```
-
-const linkData = [
-{ path: '/', text: 'Home', method: 'path' },
-{ path: '/a', text: 'a', method: 'path' },
-{ path: '/b', text: 'b', method: 'path' },
-{ path: '/c', text: 'c', method: 'path' },
-{ href: 'https://www.google.com', text: 'Go to Google', method: 'href' },
-];
-
-provide('navLinks', linkData);
 
 ## TileIcon
 
@@ -455,6 +443,7 @@ provide('navLinks', linkData);
 ### _Example_
 
 ```
+
 <template>
   <GridContainer :columns="3" component="section">
     <GridItem>
