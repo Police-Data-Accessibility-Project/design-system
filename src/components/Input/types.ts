@@ -4,7 +4,6 @@ export enum PdapInputTypes {
 }
 
 export interface PdapInputBaseProps {
-	className?: string;
 	id: string;
 	label: string;
 	name: string;

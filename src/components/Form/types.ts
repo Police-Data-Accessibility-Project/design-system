@@ -29,7 +29,6 @@ export type PdapFormData = Record<string, unknown>;
  * PDAP Form props interface.
  */
 export interface PdapFormProps {
-	className?: string;
 	error?: string | undefined | null;
 	id: string;
 	name: string;

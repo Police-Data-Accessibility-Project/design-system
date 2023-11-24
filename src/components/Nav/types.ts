@@ -5,7 +5,6 @@ export interface PdapLinkData {
 }
 
 export interface PdapNavProps {
-	className?: string;
 	topPosition?: number;
 }
 

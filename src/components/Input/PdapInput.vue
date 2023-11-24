@@ -3,7 +3,6 @@
 		:class="{
 			'pdap-input': true,
 			'pdap-input-error': error?.length >= 1,
-			[String(props.className)]: Boolean(props.className),
 		}"
 	>
 		<slot />

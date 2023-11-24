@@ -19,7 +19,6 @@ const props = withDefaults(defineProps<PdapGridContainerProps>(), {
 const classes = reactive({
 	'pdap-grid-container': true,
 	[`pdap-grid-container-column-${props.columns}`]: props.columns !== 'auto',
-	[String(props.className)]: Boolean(props.className),
 });
 // CSS styles map
 const renderTemplateRowsInline =

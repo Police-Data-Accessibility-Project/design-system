@@ -15,11 +15,14 @@ const props = withDefaults(defineProps<PdapGridItemProps>(), {
 	spanRow: 1,
 });
 
+if (props.spanColumn > 1) {
+	console.log({ props });
+}
+
 // CSS class map
 const classes = reactive({
 	'pdap-grid-item': true,
 	[`pdap-grid-item-span-column-${props.spanColumn}`]: props.spanColumn > 1,
-	[String(props.className)]: Boolean(props.className),
 });
 // CSS styles
 const styles = reactive({

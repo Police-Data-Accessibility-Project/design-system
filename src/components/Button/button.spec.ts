@@ -26,7 +26,6 @@ describe('Renders button component', () => {
 	test('Renders primary button', () => {
 		const wrapper = mount(PdapButton, { props: { intent: 'primary' } });
 		expect(wrapper.props()).toStrictEqual({
-			className: undefined,
 			intent: 'primary',
 			isLoading: false,
 		});

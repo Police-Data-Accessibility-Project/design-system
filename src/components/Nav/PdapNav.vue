@@ -68,7 +68,7 @@ if (typeof links === 'undefined') {
 }
 
 // Props
-const props = defineProps<PdapNavProps>();
+const { topPosition } = defineProps<PdapNavProps>();
 
 // Refs
 const state = reactive<{ isExpanded: boolean; isMobile: boolean }>({
@@ -79,7 +79,6 @@ const state = reactive<{ isExpanded: boolean; isMobile: boolean }>({
 // CSS class map
 const classes = reactive({
 	'pdap-nav': true,
-	[String(props.className)]: Boolean(props.className),
 });
 
 // Life cycle methods

@@ -21,7 +21,6 @@ const props = withDefaults(defineProps<PdapButtonProps>(), {
 const classes = reactive({
 	'pdap-button': true,
 	[`pdap-button-${props.intent}`]: Boolean(props.intent),
-	[String(props.className)]: Boolean(props.className),
 	'pdap-button-loading': props.isLoading,
 });
 </script>

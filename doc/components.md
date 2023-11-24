@@ -38,7 +38,6 @@ Documentation for PDAP component usage
 
 | name        | required? | types                    | description                | default   |
 | ----------- | --------- | ------------------------ | -------------------------- | --------- |
-| `className` | no        | `string`                 | Add a custom css class     | none      |
 | `isLoading` | no        | `boolean`                | Request state              | `false`   |
 | `intent`    | yes       | `primary` \| `secondary` | Determines style of button | `primary` |
 
@@ -46,7 +45,7 @@ Documentation for PDAP component usage
 
 ```
 <template>
-  <Button className="custom-btn-class" intent="primary" @click="() => console.log('hello world')" type="button">Click me</Button>
+  <Button class="custom-btn-class" intent="primary" @click="() => console.log('hello world')" type="button">Click me</Button>
 </template>
 
 ...
@@ -79,7 +78,6 @@ All container components are designed to be dynamic and take any `HTMLElement` t
 
 | name        | required? | types               | description                         | default |
 | ----------- | --------- | ------------------- | ----------------------------------- | ------- |
-| `className` | no        | `string`            | Add a custom css class              | none    |
 | `component` | no        | `string`            | HTML Element to render as container | `'div'` |
 | `alignment` | no        | `start` \| `center` | Flex alignment presets              | `start` |
 
@@ -90,7 +88,7 @@ All container components are designed to be dynamic and take any `HTMLElement` t
 	<FlexContainer alignment="center" component="card">
       <h2>Some content goes here</h2>
       <p>More content goes here.</p>
-      <Button className="custom-button-class-name" :isLoading="isLoading" @click="() => console.log('hello world')">
+      <Button class="custom-button-class-name" :isLoading="isLoading" @click="() => console.log('hello world')">
         Say hello with this button
       </Button>
 	</FlexContainer>
@@ -195,13 +193,12 @@ The `Form` component is powerful. All you need to do is pass a few props, and th
 
 ### _Props_
 
-| name        | required? | types                             | description                        | default     |
-| ----------- | --------- | --------------------------------- | ---------------------------------- | ----------- |
-| `className` | no        | `string`                          | Add a custom css class             | none        |
-| `error`     | no        | `string` \| `undefined` \| `null` | Error state                        | `undefined` |
-| `id`        | yes       | `string`                          | Form id                            | none        |
-| `name`      | yes       | `string`                          | Form name                          | none        |
-| `schema`    | yes       | `PdapFormSchema`                  | Array of schema entries for inputs | none        |
+| name     | required? | types                             | description                        | default     |
+| -------- | --------- | --------------------------------- | ---------------------------------- | ----------- |
+| `error`  | no        | `string` \| `undefined` \| `null` | Error state                        | `undefined` |
+| `id`     | yes       | `string`                          | Form id                            | none        |
+| `name`   | yes       | `string`                          | Form name                          | none        |
+| `schema` | yes       | `PdapFormSchema`                  | Array of schema entries for inputs | none        |
 
 ### _Notes_
 
@@ -283,7 +280,6 @@ All container components are designed to be dynamic and take any `HTMLElement` t
 
 | name              | required? | types                         | description                                         | default             |
 | ----------------- | --------- | ----------------------------- | --------------------------------------------------- | ------------------- |
-| `className`       | no        | `string`                      | Add a custom css class                              | none                |
 | `columns`         | no        | `1` \| `2` \| `3` \| `'auto'` | Number of grid columns                              | `'auto'`            |
 | `component`       | no        | `string`                      | HTML Element to render as container                 | `'div'`             |
 | `rows`            | no        | `number` \| `'auto'`          | Number of grid rows                                 | `'auto'`            |
@@ -304,7 +300,7 @@ All container components are designed to be dynamic and take any `HTMLElement` t
     <GridItem component="FlexContainer">
       <h2>Some content goes here</h2>
       <p>More content goes here.</p>
-      <Button className="custom-button-class-name" :isLoading="isLoading" @click="() => console.log('hello world')">
+      <Button class="custom-button-class-name" :isLoading="isLoading" @click="() => console.log('hello world')">
         Say hello with this button
       </Button>
     </GridItem>
@@ -337,7 +333,6 @@ export default {
 
 | name         | required? | types             | description                         | default |
 | ------------ | --------- | ----------------- | ----------------------------------- | ------- |
-| `className`  | no        | `string`          | Add a custom css class              | none    |
 | `component`  | no        | `string`          | HTML Element to render as grid item | `'div'` |
 | `spanColumn` | no        | `1` \| `2` \| `3` | Columns grid item should span       | `1`     |
 | `spanRow`    | no        | `number`          | Rows grid item should span          | `1`     |

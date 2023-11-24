@@ -21,7 +21,6 @@ const props = withDefaults(defineProps<PdapFlexContainerProps>(), {
 const classes = reactive({
 	'pdap-flex-container': true,
 	[`pdap-flex-container-${props.alignment}`]: true,
-	[String(props.className)]: Boolean(props.className),
 });
 </script>
 

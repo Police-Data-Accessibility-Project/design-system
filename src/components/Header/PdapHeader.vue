@@ -1,5 +1,5 @@
 <template>
-	<header ref="el" :class="classes">
+	<header ref="el" class="pdap-header">
 		<a v-if="!navLogoLinkIsPath" :href="logoImageAnchorPath" class="logo"
 			><img
 				:src="logoImageSrc"
@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, reactive, ref } from 'vue';
+import { onBeforeUnmount, onMounted, ref } from 'vue';
 import { RouterLink } from 'vue-router';
 
 import PdapNav from '../Nav/PdapNav.vue';
@@ -30,12 +30,6 @@ import { PdapHeaderProps } from './types';
 const props = withDefaults(defineProps<PdapHeaderProps>(), {
 	logoImageSrc: 'node_modules/pdap-design-system/dist/images/lockup.svg',
 	logoImageAnchorPath: '/',
-});
-
-// CSS class map
-const classes = reactive({
-	'pdap-header': true,
-	[String(props.className)]: Boolean(props.className),
 });
 
 // State
