@@ -35,8 +35,8 @@ const styles = reactive({
 
 <style>
 .pdap-grid-container {
-	@apply grid grid-cols-[auto] grid-rows-[auto] h-full gap-4 p-8 w-full;
-	@apply md:gap-8;
+	@apply grid grid-cols-[auto] grid-rows-[auto] h-full gap-4 mx-auto p-8 w-full;
+	@apply md:gap-8 xs:max-w-3xl lg:max-w-4xl;
 }
 
 .pdap-grid-container-column-1 {
