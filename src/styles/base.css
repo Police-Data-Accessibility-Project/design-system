@@ -1,0 +1,120 @@
+@import url('./variables.css');
+
+@tailwind base;
+
+@layer base {
+	/* Globals */
+	* {
+		@apply box-border;
+	}
+
+	html,
+	body,
+	#app {
+		@apply h-full;
+	}
+
+	body {
+		@apply bg-neutral-50 font-light font-sans leading-normal text-xl text-neutral-950 m-0 min-h-full;
+		@apply lg:text-3xl;
+	}
+
+	/* Images */
+	img {
+		@apply align-middle inline-block max-w-full;
+	}
+
+	/* Headings */
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply font-sans leading-tight;
+	}
+
+	h3,
+	h4 {
+		@apply text-brand-wine dark:text-neutral-500;
+	}
+
+	h4,
+	h5,
+	h6 {
+		@apply mb-[.625rem] mt-[.625rem];
+	}
+
+	h1 {
+		@apply font-medium mt-12 mb-4 text-[2.625rem];
+	}
+
+	h2 {
+		@apply font-bold mb-4 mt-8 text-2xl;
+		@apply md:text-4xl;
+	}
+
+	h3 {
+		@apply font-extrabold mb-2 mt-8 text-med tracking-[.1em] uppercase;
+		@apply md:text-lg;
+	}
+
+	h4 {
+		@apply font-semibold text-lg tracking-[.07em] uppercase;
+	}
+
+	h5 {
+		@apply font-light italic text-3xl;
+	}
+
+	h6 {
+		@apply font-light text-lg tracking-[.8125rem] uppercase;
+	}
+
+	/* Anchors and buttons */
+	a {
+		@apply decoration-solid decoration-[6%] text-brand-gold  underline-offset-[5%];
+		@apply hover:brightness-85;
+	}
+
+	/* Miscellaneous */
+	p {
+		@apply mb-2 mt-0;
+	}
+
+	p,
+	li {
+		@apply max-w-[43ch];
+	}
+
+	.small p,
+	p.small,
+	.small li {
+		@apply text-lg;
+	}
+
+	strong {
+		@apply font-semibold;
+	}
+
+	code {
+		@apply font-normal font-mono max-w-full text-neutral-950;
+	}
+
+	p > code,
+	li > code,
+	pre code {
+		@apply bg-brand-wine bg-opacity-5;
+	}
+
+	p > code,
+	li > code {
+		@apply box-decoration-clone pt-1 px-2 pb-1 rounded-sm;
+
+		word-wrap: break-word;
+	}
+
+	pre code {
+		@apply block border-[1px] border-opacity-20 border-solid border-brand-wine max-w-full overflow-scroll p-5 text-left text-xl whitespace-pre;
+	}
+}

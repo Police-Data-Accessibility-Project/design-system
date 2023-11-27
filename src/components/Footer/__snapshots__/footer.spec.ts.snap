@@ -1,0 +1,39 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Footer component > Renders a footer 1`] = `
+<footer class="pdap-footer">
+  <div class="pdap-flex-container pdap-flex-container-center">
+    <ul class="pdap-footer-social-links">
+      <li class="pdap-footer-link-container">
+        <a class="pdap-footer-social-link" href="https://github.com/orgs/Police-Data-Accessibility-Project" referrerpolicy="no-referrer" target="_blank">Github</a>
+        <!--v-if-->
+      </li>
+      <li class="pdap-footer-link-container">
+        <a class="pdap-footer-social-link" href="ttps://discord.gg/wMqex8nKZJ" referrerpolicy="no-referrer" target="_blank">Discord</a>
+        <!--v-if-->
+      </li>
+      <li class="pdap-footer-link-container">
+        <a class="pdap-footer-social-link" href="https://www.linkedin.com/company/pdap" referrerpolicy="no-referrer" target="_blank">LinkedIn</a>
+        <!--v-if-->
+      </li>
+      <li class="pdap-footer-link-container">
+        <!--v-if-->
+        <router-link active-class="pdap-footer-social-link-current" class="pdap-footer-social-link" exact-active-class="pdap-footer-social-link-current-exact" to="/jobs">Jobs</router-link>
+      </li>
+    </ul><!-- Copyright and policies -->
+    <p class="pdap-footer-copyright"> © 2023 Police Data Accessibility Project
+      <br>
+    </p>
+    <p class="pdap-footer-copyright"> PDAP is a non-profit. EIN: 85-4207132. <a alt="Privacy Policy" href="https://docs.pdap.io/meta/policy/pdap-privacy-policy"> Privacy Policy</a>. <a href="mailto:contact@pdap.io">contact@pdap.io</a>
+    </p><!-- Widget / logo links -->
+    <div class="pdap-footer-widget-links">
+      <a href="https://www.guidestar.org/profile/85-4207132" target="_blank">
+        <img src="https://widgets.guidestar.org/gximage2?o=9973356&amp;l=v4">
+      </a>
+      <router-link class="pdap-footer-logo" to="/">
+        <img alt="Police Data Accessibility Project Logo" src="node_modules/pdap-design-system/dist/images/acronym.svg" width="250">
+      </router-link>
+    </div>
+  </div>
+</footer>
+`;

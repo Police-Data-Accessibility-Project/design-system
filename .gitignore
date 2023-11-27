@@ -1,9 +1,11 @@
 # Packages
 node_modules
-package-lock.json
 
 # Built files
 dist
+
+# Tests
+coverage/
 
 # OS
 .DS_Store

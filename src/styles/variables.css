@@ -1,0 +1,50 @@
+/* stylelint-disable declaration-block-no-duplicate-custom-properties */
+/* Disable custom properties linting for this file. Duplicating is the point */
+@tailwind base;
+
+@layer base {
+	:root {
+		/* Theming */
+
+		/* Using only the rgb values here allows Tailwind to interpolate on compilation and adjust opacity at build time. */
+
+		/* Neutral */
+		--color-neutral-50: 255 255 255;
+		--color-neutral-100: 255 253 253;
+		--color-neutral-200: 255 251 250;
+		--color-neutral-300: 204 204 204;
+		--color-neutral-400: 191 192 192;
+		--color-neutral-500: 153 153 153;
+		--color-neutral-600: 97 97 97;
+		--color-neutral-700: 51 51 51;
+		--color-neutral-800: 34 34 34;
+		--color-neutral-800: 26 26 26;
+		--color-neutral-950: 0 0 0;
+
+		/* Brand */
+		--color-brand-blue-light: 56 152 236;
+		--color-brand-blue-medium: 0 130 243;
+		--color-brand-gold: 213 162 60;
+		--color-brand-wine: 81 42 79;
+	}
+
+	/* Dark mode */
+	@media (prefers-color-scheme: dark) {
+		:root {
+			/* Theming */
+
+			/* Reverse the order of neutral colors for dark theme */
+			--color-neutral-50: 0 0 0;
+			--color-neutral-100: 26 26 26;
+			--color-neutral-200: 34 34 34;
+			--color-neutral-300: 51 51 51;
+			--color-neutral-400: 97 97 97;
+			--color-neutral-500: 153 153 153;
+			--color-neutral-600: 191 192 192;
+			--color-neutral-700: 204 204 204;
+			--color-neutral-800: 255 251 250;
+			--color-neutral-800: 255 253 253;
+			--color-neutral-950: 255 255 255;
+		}
+	}
+}
