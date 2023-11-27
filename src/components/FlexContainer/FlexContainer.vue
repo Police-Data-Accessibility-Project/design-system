@@ -31,7 +31,7 @@ const classes = reactive({
 	/* Layout */
 	.pdap-flex-container {
 		/* Left and top aligned by default */
-		@apply items-start flex h-full justify-start flex-col max-w-none mx-auto p-8 w-full;
+		@apply items-start flex h-full justify-start flex-col gap-2 max-w-none mx-auto p-8 w-full;
 
 		/* Responsiveness */
 		@apply xs:max-w-3xl lg:max-w-4xl;
@@ -47,6 +47,10 @@ const classes = reactive({
 
 	.pdap-flex-container > * {
 		@apply w-full;
+	}
+
+	.pdap-flex-container.pdap-grid-item {
+		@apply p-0;
 	}
 }
 </style>

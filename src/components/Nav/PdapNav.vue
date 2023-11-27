@@ -104,12 +104,12 @@ async function setIsMobile() {
 
 async function toggleIsExpanded() {
 	const body = document.querySelector('body');
-	if (!state.isExpanded) {
+	if (!state.isExpanded && state.isMobile) {
 		state.isExpanded = true;
 		if (!body?.classList.contains('lock-scroll')) {
 			document.querySelector('body')?.classList.add('lock-scroll');
 		}
-	} else {
+	} else if (state.isExpanded && state.isMobile) {
 		state.isExpanded = false;
 		document.querySelector('body')?.classList.remove('lock-scroll');
 	}

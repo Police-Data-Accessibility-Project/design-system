@@ -30,15 +30,19 @@ const styles = reactive({
 </script>
 
 <style>
-.pdap-grid-item {
-	@apply col-span-1 row-span-1;
-}
-.pdap-grid-item-span-column-2 {
-	@apply md:col-span-2;
-}
+@tailwind components;
 
-.pdap-grid-item-span-column-3 {
-	@apply col-span-1;
-	@apply md:col-span-2 lg:col-span-3;
+@layer components {
+	.pdap-grid-item {
+		@apply col-span-1 row-span-1;
+	}
+	.pdap-grid-item-span-column-2 {
+		@apply md:col-span-2;
+	}
+
+	.pdap-grid-item-span-column-3 {
+		@apply col-span-1;
+		@apply md:col-span-2 lg:col-span-3;
+	}
 }
 </style>
