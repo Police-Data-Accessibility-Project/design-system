@@ -1,5 +1,12 @@
 import { PdapInputCheckboxProps, PdapInputTextProps } from '../Input/types';
 
+export type PdapLengthRules = 'maxLength' | 'minLength';
+
+export interface PdapFormValidator<T> {
+	message?: string;
+	value: T;
+}
+
 /**
  * Keyed by currently used validators.
  * Add any Vuelidate validators or custom ones here as we need them.
@@ -7,9 +14,9 @@ import { PdapInputCheckboxProps, PdapInputTextProps } from '../Input/types';
  *
  */
 export interface PdapFormValidators {
-	maxLength: number;
-	minLength: number;
-	required: boolean;
+	maxLength: PdapFormValidator<number>;
+	minLength: PdapFormValidator<number>;
+	required: PdapFormValidator<boolean>;
 }
 
 export interface PdapFormSchemaEntryInputCheckbox

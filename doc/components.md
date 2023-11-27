@@ -210,12 +210,57 @@ The `Form` component is powerful. All you need to do is pass a few props, and th
 ```
 
 PdapFormValidators {
-  maxLength: number;
-  minLength: number;
-  required: boolean;
+  maxLength: {
+    message?: string;
+    value: number;
+  };
+  minLength: {
+    message?: string;
+    value: number;
+  };
+  required: {
+    message?: string;
+    value: boolean;
+  };
 }
 
 ```
+
+- The `message` property is optional. If it is not passed, Vuelidate will default to a generic error message. The `value` property is the value you want to validate against. (i.e. for a required field with a max length of 12 characters, we might pass:
+
+```
+// For a custom message
+{
+  ...,
+  validators: {
+    maxLength: {
+      message: 'No more than twelve characters, please!',
+      value: 12
+    },
+    required: {
+      message: 'Pretty please enter this field.',
+      value: true
+    }
+  }
+}
+
+// For the default Vuelidate message
+{
+  ...,
+  validators: {
+    maxLength: {
+      value: 12
+    },
+    required: {
+      value: true
+    }
+  }
+}
+
+
+```
+
+)
 
 ### _Example_
 
@@ -243,19 +288,35 @@ export default {
           id: 'testfirstname',
           name: 'firstName',
           label: 'First Name',
-          type: PdapInputTypes.TEXT,
+          type: 'text',
           placeholder: 'John',
           value: '',
-          validators: { minLength: 3, required: true },
+          validators: {
+            minLength: {
+              value: 3
+            },
+            required: {
+              message: 'Please provide this information',
+              value: true
+            }
+          },
         },
         {
           id: 'testlastname',
           name: 'lastName',
           label: 'Last Name',
-          type: PdapInputTypes.TEXT,
+          type: 'text',
           placeholder: 'Doe',
           value: '',
-          validators: { minLength: 2, maxLength: 999, required: true },
+          validators: {
+            minLength: {
+              value: 3
+            },
+            maxLength: {
+              message: 'A thousand characters for your surname? Are you a bot?',
+              value: 999
+            },
+          },
         }
       ]
     }

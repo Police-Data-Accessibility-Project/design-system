@@ -1,12 +1,11 @@
 import * as validators from '@vuelidate/validators';
-import { PdapFormValidators } from 'src/components/Form/types.ts';
-import { Ref } from 'vue';
-
-const validValidators = ['maxLength', 'minLength', 'required'];
-type PdapLengthRules = 'maxLength' | 'minLength';
+import {
+	PdapFormValidator,
+	PdapFormValidators,
+	PdapLengthRules,
+} from 'src/components/Form/types.ts';
 
 // TODO: Add tests
-
 /**
  * Type predicate to ensure the passed validator is a valid one.
  * @param s string to check against keys of the vuelidate validators object
@@ -14,17 +13,14 @@ type PdapLengthRules = 'maxLength' | 'minLength';
 export function isPdapVuelidateValidator(
 	s: string
 ): s is keyof PdapFormValidators {
-	return s in validators && validValidators.includes(s);
+	return s in validators;
 }
 
 export function isLengthRule(s: string): s is PdapLengthRules {
 	return ['maxLength', 'minLength'].includes(s);
 }
 
-export function makeLengthRule(
-	rule: PdapLengthRules,
-	value: number | Ref<number>
-) {
+export function makeLengthRule(rule: PdapLengthRules, value: number) {
 	return {
 		[rule]: validators[rule](value),
 	};
@@ -32,7 +28,7 @@ export function makeLengthRule(
 
 export function makeLengthRuleWithCustomMessage(
 	rule: PdapLengthRules,
-	value: number | Ref<number>,
+	value: number,
 	message: string
 ) {
 	return {
@@ -50,10 +46,30 @@ export function makeRequiredRuleWithCustomMessage(message: string) {
 	};
 }
 
-export function createRule<T extends number | boolean>(key: string, val: T) {
-	return isLengthRule(key) && typeof val === 'number'
-		? makeLengthRule(key, val)
-		: key === 'required' && typeof val === 'boolean'
-		  ? makeRequiredRule()
-		  : { [key]: val };
+export function createRule<T extends PdapFormValidator<number | boolean>>(
+	rule: string,
+	validator: T
+) {
+	if (
+		isLengthRule(rule) &&
+		typeof validator.message === 'string' &&
+		typeof validator.value === 'number'
+	) {
+		return makeLengthRuleWithCustomMessage(
+			rule,
+			validator.value,
+			validator.message
+		);
+	} else if (
+		isLengthRule(rule) &&
+		typeof validator.message === 'undefined' &&
+		typeof validator.value === 'number'
+	) {
+		return makeLengthRule(rule, validator.value);
+	} else if (rule === 'required' && typeof validator.message === 'string') {
+		return makeRequiredRuleWithCustomMessage(validator.message);
+	} else if (rule === 'required' && typeof validator.message === 'undefined') {
+		return makeRequiredRule();
+	}
+	throw new Error('No valid rule detected');
 }
