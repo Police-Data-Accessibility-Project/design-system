@@ -84,7 +84,7 @@
 
 	p,
 	li {
-		@apply max-w-[43ch];
+		@apply max-w-[45ch];
 	}
 
 	.small p,
