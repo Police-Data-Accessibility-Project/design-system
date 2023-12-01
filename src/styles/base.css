@@ -16,7 +16,7 @@
 
 	body {
 		@apply bg-neutral-50 font-light font-sans leading-normal text-xl text-neutral-950 m-0 min-h-full;
-		@apply lg:text-3xl;
+		@apply lg:text-2xl;
 	}
 
 	/* Images */
