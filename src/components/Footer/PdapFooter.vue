@@ -87,7 +87,7 @@ const links = inject<PdapFooterSocialLinks[]>('footerLinks', [
 		text: 'Github',
 	},
 	{
-		href: 'ttps://discord.gg/wMqex8nKZJ',
+		href: 'https://discord.gg/wMqex8nKZJ',
 		text: 'Discord',
 	},
 	{
@@ -97,6 +97,10 @@ const links = inject<PdapFooterSocialLinks[]>('footerLinks', [
 	{
 		path: '/jobs',
 		text: 'Jobs',
+	},
+	{
+		path: 'https://newsletter.pdap.io',
+		text: 'Newsletter',
 	},
 ]);
 
