@@ -21,7 +21,7 @@
 		// Switch base eslint indent rule off
 		"indent": "off",
 		// Use TS package instead
-		"@typescript-eslint/indent": ["warn", "tab", { "SwitchCase": 1 }],
+		"@typescript-eslint/indent": "off",
 		"vue/html-self-closing": [
 			"error",
 			{
