@@ -1,0 +1,21 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`QuickSearchForm component > Renders a QuickSearchForm 1`] = `
+<div class="pdap-flex-container pdap-flex-container-center pdap-quick-search-form">
+  <p class="quick-search-description"> We maintain a catalog of public records about police, court, and jail systems across the United States. </p>
+  <form class="pdap-form small">
+    <!--v-if-->
+    <div class="pdap-input">
+      <input id="search-term" name="searchTerm" placeholder="Enter a keyword, type of public records, or &#x27;all&#x27;" type="text">
+      <label class="pdap-input-label" for="search-term">What are you looking for?</label>
+      <!--v-if-->
+    </div>
+    <div class="pdap-input">
+      <input id="location" name="location" placeholder="Enter a state, county, municipality, or &#x27;all&#x27;" type="text">
+      <label class="pdap-input-label" for="location">From where?</label>
+      <!--v-if-->
+    </div>
+    <button class="pdap-button pdap-button-primary" type="submit">Search Data Sources</button>
+  </form>
+</div>
+`;
