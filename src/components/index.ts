@@ -9,4 +9,5 @@ export { InputCheckbox } from './Input/Checkbox';
 export { InputText } from './Input/Text';
 export { Header } from './Header';
 export { Nav } from './Nav';
+export { QuickSearchForm } from './QuickSearchForm';
 export { TileIcon } from './TileIcon';
