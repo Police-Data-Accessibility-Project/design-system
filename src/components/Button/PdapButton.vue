@@ -35,7 +35,7 @@ const classes = reactive({
 	}
 
 	.pdap-button-primary {
-		@apply pdap-button bg-brand-gold text-neutral-950;
+		@apply pdap-button bg-brand-gold text-white;
 	}
 
 	.pdap-button-primary[type='submit'] {
