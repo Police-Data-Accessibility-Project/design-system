@@ -42,6 +42,10 @@ const classes = reactive({
 		@apply bg-brand-gold;
 	}
 
+	.pdap-button-primary[type='submit'] {
+		@apply bg-brand-gold;
+	}
+
 	.pdap-button-secondary {
 		@apply pdap-button bg-transparent border-brand-gold border-2 border-solid text-brand-gold;
 	}
