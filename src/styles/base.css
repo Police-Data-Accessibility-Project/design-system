@@ -55,7 +55,7 @@
 	h4.pdap-grid-item,
 	h5.pdap-grid-item,
 	h6.pdap-grid-item {
-		@apply mt-0 /* The grid adds the spacing, these end up being too much */
+		@apply my-0 /* The grid adds the spacing, these end up being too much */
 	}
 
 	h1:first-child,
