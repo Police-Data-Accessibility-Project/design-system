@@ -4,10 +4,6 @@
 		component="div"
 		class="pdap-quick-search-form"
 	>
-		<p class="quick-search-description">
-			We maintain a catalog of public records about police, court, and jail
-			systems across the United States.
-		</p>
 		<Form
 			id="quick-search-form"
 			class="small"
