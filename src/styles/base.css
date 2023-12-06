@@ -109,12 +109,6 @@
 		@apply max-w-[45ch];
 	}
 
-	.small p,
-	p.small,
-	.small li {
-		@apply text-lg;
-	}
-
 	strong {
 		@apply font-semibold;
 	}
