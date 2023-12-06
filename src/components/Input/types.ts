@@ -4,20 +4,20 @@ export enum PdapInputTypes {
 }
 
 export interface PdapInputBaseProps {
+	error?: string;
 	id: string;
 	label: string;
 	name: string;
-	error: string;
+	placeholder?: string;
+	type: PdapInputTypes;
+	value?: string;
+	defaultChecked?: boolean;
 }
 
 export interface PdapInputTextProps extends PdapInputBaseProps {
-	placeholder?: string;
 	type: PdapInputTypes.TEXT;
-	value: string;
 }
 
 export interface PdapInputCheckboxProps extends PdapInputBaseProps {
-	defaultChecked: boolean;
 	type: PdapInputTypes.CHECKBOX;
-	value: string;
 }

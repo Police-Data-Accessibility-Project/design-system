@@ -29,7 +29,6 @@ import FlexContainer from '../FlexContainer/FlexContainer.vue';
 import Form from '../Form/PdapForm.vue';
 
 // Types
-import { PdapFormSchema } from '../Form/types';
 import { PdapInputTypes } from '../Input/types';
 
 const router = useRouter();
@@ -55,8 +54,7 @@ const formSchema = [
 		placeholder: "Enter a state, county, municipality, or 'all'",
 		value: '',
 	},
-	// TODO: Fix TS when form and form test refactor PR is merged
-] as PdapFormSchema;
+];
 
 function handleSubmit({
 	location,
@@ -65,8 +63,8 @@ function handleSubmit({
 	location: string;
 	searchTerm: string;
 }) {
-	location = location.length > 0 ? location : 'all';
-	searchTerm = searchTerm.length > 0 ? searchTerm : 'all';
+	location = location && location.length > 0 ? location : 'all';
+	searchTerm = searchTerm && searchTerm.length > 0 ? searchTerm : 'all';
 	// If search route exists, route to it
 	if (router.getRoutes().some((route) => route.path.includes('/search/'))) {
 		router.push(`/search/${searchTerm}/${location}`);

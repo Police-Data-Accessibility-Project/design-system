@@ -1,37 +1,68 @@
 <template>
-	<div
+	<GridContainer
 		:class="{
 			'pdap-input': true,
-			'pdap-input-error': error?.length >= 1,
+			'pdap-input-error': Number(error?.length) >= 1,
 		}"
 	>
-		<slot />
-		<label class="pdap-input-label" :for="id">{{ label }}</label>
+		<!-- Text -->
+		<input
+			v-if="type === PdapInputTypes.TEXT"
+			:id="id"
+			type="text"
+			:name="name"
+			:placeholder="placeholder"
+			:value="value"
+			v-bind="$attrs"
+			@input="input"
+		/>
+
+		<!-- Checkbox -->
+		<input
+			v-else-if="type === PdapInputTypes.CHECKBOX"
+			:id="id"
+			class="pdap-input-checkbox"
+			:name="name"
+			:checked="checked"
+			type="checkbox"
+			:value="value"
+			v-bind="$attrs"
+			@change="change"
+		/>
+
 		<div v-if="error" :id="errorMessageId" class="pdap-input-error-message">
 			{{ error }}
 		</div>
-	</div>
+
+		<label class="pdap-input-label" :for="id">{{ label }}</label>
+	</GridContainer>
 </template>
 
 <script setup lang="ts">
-// Globals
-import { computed, watchEffect } from 'vue';
+import { computed, ref } from 'vue';
+import { PdapInputBaseProps, PdapInputTypes } from './types';
+import { GridContainer } from '..';
 
-import { PdapInputBaseProps } from './types';
+const props = withDefaults(defineProps<PdapInputBaseProps>(), {});
 
-// Props
-const props = defineProps<PdapInputBaseProps>();
+// Emits
+const emit = defineEmits<{
+	(event: 'change', val: string): void;
+	(event: 'input', val: string): void;
+}>();
+
+const change = () => {
+	checked.value = !checked.value;
+	emit('change', checked.value.toString());
+};
+
+const input = (event: Event) => {
+	emit('input', (<HTMLInputElement>event.target).value);
+};
+
+const checked = ref(props.defaultChecked);
 
 const errorMessageId = computed(() => `pdap-${props.name}-input-error`);
-
-watchEffect(() => {
-	console.debug(
-		`Hello from PDAP Input ${props.name} rendered at ${window.location.pathname}`,
-		{
-			props,
-		}
-	);
-});
 </script>
 
 <style>
@@ -40,7 +71,11 @@ watchEffect(() => {
 @layer components {
 	/* General input styles  */
 	.pdap-input {
-		@apply align-middle flex h-[max-content] gap-4 leading-normal mb-2 w-full;
+		@apply h-[max-content] gap-4 leading-normal mb-3 w-full;
+	}
+
+	.pdap-grid-container.pdap-input {
+		@apply p-0 gap-0;
 	}
 
 	.pdap-input input {
@@ -58,7 +93,7 @@ watchEffect(() => {
 	}
 
 	.pdap-input label {
-		@apply items-center flex basis-[max-content] justify-end p-3;
+		@apply max-w-[max-content] p-2;
 	}
 
 	/* Error state */
@@ -68,7 +103,7 @@ watchEffect(() => {
 	}
 
 	.pdap-input-error label {
-		@apply justify-start;
+		@apply justify-start text-sm;
 	}
 
 	.pdap-input-error input {
@@ -76,11 +111,10 @@ watchEffect(() => {
 	}
 
 	.pdap-input-error-message {
-		@apply items-center justify-start basis-full flex-shrink flex bg-red-300 text-red-800 p-2 text-sm;
+		@apply items-center justify-start flex bg-red-300 text-red-800 p-1 text-xs;
 	}
 
 	/* Specific inputs */
-
 	/* Input - text */
 	.pdap-input input[type='text'] {
 		@apply h-12 text-lg;
@@ -88,8 +122,11 @@ watchEffect(() => {
 
 	/* Input - checkbox */
 	.pdap-input input[type='checkbox'] {
-		@apply w-6 accent-brand-gold;
+		@apply h-6 w-6 accent-brand-gold;
+	}
+
+	.pdap-input input[type='checkbox'] ~ label {
+		@apply pl-0;
 	}
 }
 </style>
-./Checkbox

@@ -1,17 +1,32 @@
 <template>
 	<form class="pdap-form" @submit.prevent="submit($event)">
 		<div
-			v-if="typeof error === 'string' && error.length > 0"
+			v-if="typeof errorMessage === 'string' && errorMessage.length > 0"
 			class="pdap-form-error-message"
 		>
-			{{ error }}
+			{{ errorMessage }}
 		</div>
-		<InputsGenerator
-			v-bind="{
-				schema,
-				values,
-				...(typeof v$ !== 'undefined' ? { v$ } : {}),
-			}"
+
+		<PdapInput
+			v-for="field in schema"
+			v-bind="delete field.validators ? field : field"
+			:key="field.name"
+			:error="
+				Boolean(v$[field.name]?.$error)
+					? v$[field.name]?.$errors?.[0]?.$message
+					: ''
+			"
+			:value="values[field.name]"
+			@change="
+				field.type !== PdapInputTypes.TEXT
+					? updateForm(field.name, $event)
+					: undefined
+			"
+			@input="
+				field.type === PdapInputTypes.TEXT
+					? updateForm(field.name, $event)
+					: undefined
+			"
 		/>
 		<slot />
 	</form>
@@ -23,13 +38,14 @@ import { ref, watchEffect } from 'vue';
 import { useVuelidate } from '@vuelidate/core';
 
 // Components
-import InputsGenerator from './InputsGenerator/FormInputsGenerator.vue';
+import PdapInput from '../Input/PdapInput.vue';
 
 // Utils
 import { createRule } from '../../utils/vuelidate';
 
 // Types
 import { PdapFormProps } from './types';
+import { PdapInputTypes } from '../Input/types';
 
 // Props
 const props = withDefaults(defineProps<PdapFormProps>(), {
@@ -40,19 +56,17 @@ const props = withDefaults(defineProps<PdapFormProps>(), {
 const emit = defineEmits(['submit']);
 
 // State
-const values = ref<Record<string, unknown>>(
+const values = ref<Record<string, string>>(
 	props.schema.reduce((acc, input) => {
 		switch (input.type) {
-			case 'checkbox':
-				return { ...acc, [input.name]: input.defaultChecked };
-			case 'text':
-				return { ...acc, [input.name]: input.value };
+			case PdapInputTypes.CHECKBOX:
+				return { ...acc, [input.name]: String(input.defaultChecked) };
+			case PdapInputTypes.TEXT:
 			default:
-				return acc;
+				return { ...acc, [input.name]: input.value };
 		}
 	}, {})
 );
-
 const rules = props.schema.reduce((acc, input) => {
 	const toAdd = Object.entries(input.validators ?? {}).reduce(
 		(acc, [key, val]) => {
@@ -70,63 +84,71 @@ const rules = props.schema.reduce((acc, input) => {
 		},
 	};
 }, {});
+const v$ = useVuelidate(rules, values, { $autoDirty: false, $lazy: true });
 
-// TODO: finish validation (display error messages, etc)
-const v$ = useVuelidate(rules, values, { $autoDirty: false, $lazy: false });
-
-// Type for passing as prop
+// Types
 export type VuelidateInstance = typeof v$.value;
 
-watchEffect(() =>
-	console.debug(
-		`Hello from PDAP Form ${props.name} rendered at ${window.location.pathname}`,
-		{
-			props,
-			values,
+// Vars
+const errorMessage = ref(props.error);
+
+// Handlers
+function updateForm(fieldName: string, value: string) {
+	values.value[fieldName] = value;
+}
+
+// Effects
+// Effect - Updates form error state based on input error state and/or props
+watchEffect(() => {
+	if (props.error) errorMessage.value = props.error;
+	else if (errorMessage.value && v$.value.$errors.length === 0)
+		errorMessage.value = null;
+	else if (!errorMessage.value && v$.value.$errors.length > 0)
+		errorMessage.value = 'Please update this form to correct the errors';
+});
+
+// Effect - Debug logger
+watchEffect(() => {
+	console.debug(`PdapForm ${props.name}\n`, {
+		props,
+		values,
+		vuelidate: {
 			rules,
-			vuelidate: v$.value,
-		}
-	)
-);
+			v$,
+		},
+	});
+});
 
 async function submit(event: Event) {
 	// Check form submission
-	const isCorrectSubmission = await v$.value.$validate();
-	if (isCorrectSubmission) {
-		// Get form
-		const form = <HTMLFormElement>event.target;
-		const formData = new FormData(form);
-
-		// Assign values to object
-		const values = {};
-		for (const [name, value] of formData) {
-			Object.assign(values, { [name]: value });
-		}
-
-		// Debug log
-		console.debug("Hello from Form's onSubmit handler", {
-			values,
-			isCorrectSubmission,
-			vuelidate: v$.value,
-		});
-
-		emit('submit', values);
+	const isValidSubmission = await v$.value.$validate();
+	if (isValidSubmission) {
+		// Emit submit event (spread to new object to create new object, this allows us to reset `values` without messing with the data returned)
+		emit('submit', { ...values });
+		// Reset vuelidate and form
 		v$.value.$reset();
+		const form = <HTMLFormElement>event.target;
 		form.reset();
-		return;
-	} else {
-		console.error('is invalid form data', { v$: v$.value });
+
+		// Wipe values state ('' for text inputs, as-was for everything else)
+		values.value = Object.entries(values.value).reduce((acc, [key, value]) => {
+			return { ...acc, [key]: ['true', 'false'].includes(value) ? value : '' };
+		}, {});
 		return;
 	}
 }
 </script>
 
 <style>
-.pdap-form {
-	@apply mb-4 w-full;
-}
+@tailwind components;
 
-.pdap-form-error-message {
-	@apply items-center justify-start basis-full flex-shrink flex bg-red-300 text-red-800 p-2 text-sm;
+@layer components {
+	.pdap-form {
+		@apply mb-4 w-full;
+	}
+
+	.pdap-form-error-message {
+		@apply items-center justify-start basis-full flex-shrink flex bg-red-300 text-red-800 mb-3 p-2 text-sm;
+	}
 }
 </style>

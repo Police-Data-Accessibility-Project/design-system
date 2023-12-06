@@ -1,4 +1,4 @@
-import { PdapInputCheckboxProps, PdapInputTextProps } from '../Input/types';
+import { PdapInputBaseProps } from '../Input/types';
 
 export type PdapLengthRules = 'maxLength' | 'minLength';
 
@@ -19,17 +19,11 @@ export interface PdapFormValidators {
 	required: PdapFormValidator<boolean>;
 }
 
-export interface PdapFormSchemaEntryInputCheckbox
-	extends PdapInputCheckboxProps {
+export interface PdapFormInputProps
+	extends Exclude<PdapInputBaseProps, 'error'> {
 	validators?: Partial<PdapFormValidators>;
 }
-export interface PdapFormSchemaEntryInputText extends PdapInputTextProps {
-	validators?: Partial<PdapFormValidators>;
-}
-export type PdapFormSchemaEntry =
-	| PdapFormSchemaEntryInputCheckbox
-	| PdapFormSchemaEntryInputText;
-export type PdapFormSchema = PdapFormSchemaEntry[];
+export type PdapFormSchema = PdapFormInputProps[];
 export type PdapFormData = Record<string, unknown>;
 
 /**
