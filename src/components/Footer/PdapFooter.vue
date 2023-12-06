@@ -98,10 +98,6 @@ const links = inject<PdapFooterSocialLinks[]>('footerLinks', [
 		path: '/jobs',
 		text: 'Jobs',
 	},
-	{
-		path: 'https://newsletter.pdap.io',
-		text: 'Newsletter',
-	},
 ]);
 
 const navLogoLinkIsPath = props.logoImageAnchorPath.startsWith('/');
