@@ -28,8 +28,10 @@ Documentation for PDAP component usage
 - [Input](#input)
 - [Nav](#nav)
   - [Example](#example-7)
-- [TileIcon](#tileicon)
+- [QuickSearchForm](#quicksearchform)
   - [Props](#props-7)
+- [TileIcon](#tileicon)
+  - [Props](#props-8)
   - [Example](#example-8)
 
 ## Button
@@ -491,6 +493,22 @@ export default {
   ...
 
 ```
+
+## QuickSearchForm
+
+### _Props_
+
+| name   | required? | types             | description                                                                | default  |
+| ------ | --------- | ----------------- | -------------------------------------------------------------------------- | -------- |
+| `mode` | no        | `'dev' \| 'prod'` | env. controls which url users are sent to when form is rendered on pdap.io | `'prod'` |
+
+### _Notes_
+
+The different `mode` prop values result the following base url values in the eventual navigation
+| value | base url |
+|--|--|
+| `'dev'` | `'https://data-sources.pdap.dev'` |
+| `'prod'` | `'https://data-sources.pdap.io'` |
 
 ## TileIcon
 
