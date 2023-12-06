@@ -67,7 +67,6 @@ function handleSubmit({
 	searchTerm = searchTerm && searchTerm.length > 0 ? searchTerm : 'all';
 	// If search route exists, route to it
 	if (router.getRoutes().some((route) => route.path.includes('/search/'))) {
-		console.log('/search/ route exists');
 		router.push(`/search/${searchTerm}/${location}`);
 	} else {
 		// Otherwise navigate via window
