@@ -6,19 +6,4 @@
 	.lock-scroll {
 		@apply overflow-hidden;
 	}
-
-	/* Text */
-	.citation {
-		@apply italic mb-0;
-	}
-
-	.shout {
-		@apply font-medium leading-tight max-w-[30ch] mt-0 text-4xl;
-		@apply md:text-6xl;
-	}
-
-	/* Layout */
-	.boxed {
-		@apply p-4 my-4 mx-0 border-2 border-solid border-brand-wine border-opacity-20;
-	}
 }

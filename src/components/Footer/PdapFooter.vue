@@ -87,7 +87,7 @@ const links = inject<PdapFooterSocialLinks[]>('footerLinks', [
 		text: 'Github',
 	},
 	{
-		href: 'ttps://discord.gg/wMqex8nKZJ',
+		href: 'https://discord.gg/wMqex8nKZJ',
 		text: 'Discord',
 	},
 	{
@@ -108,7 +108,7 @@ const navLogoLinkIsPath = props.logoImageAnchorPath.startsWith('/');
 
 @layer components {
 	.pdap-footer {
-		@apply bg-neutral-300 mt-auto mx-auto px-2 pt-2 pb-0 relative text-center text-[rgba(255,251,250)] text-lg;
+		@apply bg-brand-wine mt-auto mx-auto px-2 pt-2 pb-0 relative text-center text-[rgba(255,251,250)] text-lg;
 		@apply md:py-8 md:px-2;
 	}
 

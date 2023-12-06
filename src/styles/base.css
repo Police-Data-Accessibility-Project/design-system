@@ -16,7 +16,7 @@
 
 	body {
 		@apply bg-neutral-50 font-light font-sans leading-normal text-xl text-neutral-950 m-0 min-h-full;
-		@apply lg:text-3xl;
+		@apply lg:text-2xl;
 	}
 
 	/* Images */
@@ -43,6 +43,28 @@
 	h5,
 	h6 {
 		@apply mb-[.625rem] mt-[.625rem];
+	}
+
+	h1:first-child {
+		@apply mt-0;
+	}
+
+	h1.pdap-grid-item,
+	h2.pdap-grid-item,
+	h3.pdap-grid-item,
+	h4.pdap-grid-item,
+	h5.pdap-grid-item,
+	h6.pdap-grid-item {
+		@apply my-0 /* The grid adds the spacing, these end up being too much */
+	}
+
+	h1:first-child,
+	h2:first-child,
+	h3:first-child,
+	h4:first-child,
+	h5:first-child,
+	h6:first-child {
+		@apply mt-0; /* Alternatively, we could some vertical padding off containers by default. */
 	}
 
 	h1 {
@@ -84,13 +106,7 @@
 
 	p,
 	li {
-		@apply max-w-[43ch];
-	}
-
-	.small p,
-	p.small,
-	.small li {
-		@apply text-lg;
+		@apply max-w-[45ch];
 	}
 
 	strong {
