@@ -7,4 +7,5 @@ export { GridItem } from './GridItem';
 export { Input } from './Input';
 export { Header } from './Header';
 export { Nav } from './Nav';
+export { QuickSearchForm } from './QuickSearchForm';
 export { TileIcon } from './TileIcon';
