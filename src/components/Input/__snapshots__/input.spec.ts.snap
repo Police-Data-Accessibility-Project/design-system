@@ -1,0 +1,39 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Input component > Renders checkbox input in error state 1`] = `
+<div class="pdap-grid-container pdap-input pdap-input-error">
+  <!-- Text -->
+  <!-- Checkbox -->
+  <input class="pdap-input-checkbox" id="test-checked" name="testCheckbox" type="checkbox">
+  <div class="pdap-input-error-message" id="pdap-testCheckbox-input-error">error message</div>
+  <label class="pdap-input-label" for="test-checked">test this checkbox input</label>
+</div>
+`;
+
+exports[`Input component > Renders checkbox input in okay state 1`] = `
+<div class="pdap-grid-container pdap-input">
+  <!-- Text -->
+  <!-- Checkbox -->
+  <input class="pdap-input-checkbox" id="test-checked" name="testCheckbox" type="checkbox">
+  <!--v-if-->
+  <label class="pdap-input-label" for="test-checked">test this checkbox input</label>
+</div>
+`;
+
+exports[`Input component > Renders text input in error state 1`] = `
+<div class="pdap-grid-container pdap-input pdap-input-error">
+  <!-- Text -->
+  <input id="test-text" name="testText" placeholder="This is testing testing" type="text">
+  <div class="pdap-input-error-message" id="pdap-testText-input-error">error message</div>
+  <label class="pdap-input-label" for="test-text">test this text input</label>
+</div>
+`;
+
+exports[`Input component > Renders text input in okay state 1`] = `
+<div class="pdap-grid-container pdap-input">
+  <!-- Text -->
+  <input id="test-text" name="testText" placeholder="This is testing testing" type="text">
+  <!--v-if-->
+  <label class="pdap-input-label" for="test-text">test this text input</label>
+</div>
+`;

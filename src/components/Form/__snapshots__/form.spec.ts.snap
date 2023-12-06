@@ -1,0 +1,67 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Form component > Renders component in form error state 1`] = `
+<form class="pdap-form">
+  <div class="pdap-form-error-message">This form is incorrect</div>
+  <div class="pdap-grid-container pdap-input">
+    <!-- Text -->
+    <input id="test-1" name="testOne" placeholder="Enter a value here" type="text">
+    <!--v-if-->
+    <label class="pdap-input-label" for="test-1">First test input</label>
+  </div>
+  <div class="pdap-grid-container pdap-input">
+    <!-- Text -->
+    <input id="test-2" name="testTwo" placeholder="Enter another value here" type="text">
+    <!--v-if-->
+    <label class="pdap-input-label" for="test-2">Second test input</label>
+  </div>
+  <div class="pdap-grid-container pdap-input">
+    <!-- Text -->
+    <!-- Checkbox -->
+    <input checked class="pdap-input-checkbox" id="checkbox-default-checked" name="checkboxDefaultChecked" type="checkbox" value="true">
+    <!--v-if-->
+    <label class="pdap-input-label" for="checkbox-default-checked">Keep this box checked?</label>
+  </div>
+  <div class="pdap-grid-container pdap-input">
+    <!-- Text -->
+    <!-- Checkbox -->
+    <input class="pdap-input-checkbox" id="checkbox-default-unchecked" name="checkboxDefaultUnchecked" type="checkbox" value="false">
+    <!--v-if-->
+    <label class="pdap-input-label" for="checkbox-default-unchecked">Check this box?</label>
+  </div>
+  <button type="submit">Submit</button>
+</form>
+`;
+
+exports[`Form component > Renders component in static state 1`] = `
+<form class="pdap-form">
+  <!--v-if-->
+  <div class="pdap-grid-container pdap-input">
+    <!-- Text -->
+    <input id="test-1" name="testOne" placeholder="Enter a value here" type="text">
+    <!--v-if-->
+    <label class="pdap-input-label" for="test-1">First test input</label>
+  </div>
+  <div class="pdap-grid-container pdap-input">
+    <!-- Text -->
+    <input id="test-2" name="testTwo" placeholder="Enter another value here" type="text">
+    <!--v-if-->
+    <label class="pdap-input-label" for="test-2">Second test input</label>
+  </div>
+  <div class="pdap-grid-container pdap-input">
+    <!-- Text -->
+    <!-- Checkbox -->
+    <input checked class="pdap-input-checkbox" id="checkbox-default-checked" name="checkboxDefaultChecked" type="checkbox" value="true">
+    <!--v-if-->
+    <label class="pdap-input-label" for="checkbox-default-checked">Keep this box checked?</label>
+  </div>
+  <div class="pdap-grid-container pdap-input">
+    <!-- Text -->
+    <!-- Checkbox -->
+    <input class="pdap-input-checkbox" id="checkbox-default-unchecked" name="checkboxDefaultUnchecked" type="checkbox" value="false">
+    <!--v-if-->
+    <label class="pdap-input-label" for="checkbox-default-unchecked">Check this box?</label>
+  </div>
+  <button type="submit">Submit</button>
+</form>
+`;
