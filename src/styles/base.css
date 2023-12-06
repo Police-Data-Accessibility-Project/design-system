@@ -45,6 +45,28 @@
 		@apply mb-[.625rem] mt-[.625rem];
 	}
 
+	h1:first-child {
+		@apply mt-0;
+	}
+
+	h1.pdap-grid-item,
+	h2.pdap-grid-item,
+	h3.pdap-grid-item,
+	h4.pdap-grid-item,
+	h5.pdap-grid-item,
+	h6.pdap-grid-item {
+		@apply mt-0 /* The grid adds the spacing, these end up being too much */
+	}
+
+	h1:first-child,
+	h2:first-child,
+	h3:first-child,
+	h4:first-child,
+	h5:first-child,
+	h6:first-child {
+		@apply mt-0; /* Alternatively, we could some vertical padding off containers by default. */
+	}
+
 	h1 {
 		@apply font-medium mt-12 mb-4 text-[2.625rem];
 	}
