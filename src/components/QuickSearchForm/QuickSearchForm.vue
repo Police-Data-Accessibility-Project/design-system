@@ -52,13 +52,9 @@ const formSchema = [
 	},
 ];
 
-function handleSubmit({
-	location,
-	searchTerm,
-}: {
-	location: string;
-	searchTerm: string;
-}) {
+function handleSubmit(values: { location: string; searchTerm: string }) {
+	console.log({ values });
+	let { location, searchTerm } = values;
 	location = location && location.length > 0 ? location : 'all';
 	searchTerm = searchTerm && searchTerm.length > 0 ? searchTerm : 'all';
 	// If search route exists, route to it
