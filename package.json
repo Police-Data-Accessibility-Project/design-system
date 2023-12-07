@@ -90,7 +90,8 @@
 		"prepare": "npm run build",
 		"prepublishOnly": "npm run build",
 		"test": "vitest --dom --run --coverage",
-		"test:changed": "npm run test --changed",
+		"test:changed": "npm run test -- --changed",
+		"test:ci": "test --watchAll=false",
 		"types": "vue-tsc"
 	},
 	"files": [
