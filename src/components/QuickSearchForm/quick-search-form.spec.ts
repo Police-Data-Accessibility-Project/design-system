@@ -61,12 +61,12 @@ describe('QuickSearchForm component', () => {
 		expect((locationInput.element as HTMLInputElement).value).toBe('bar');
 
 		// Submit
-		await wrapper.find('form').trigger('submit');
+		await wrapper.find('form').trigger('submit.prevent');
 		await nextTick();
 
 		// Assert submit event
 		expect(wrapper.emitted()).toHaveProperty('submit');
-
+		expect(wrapper.emitted('submit')?.length).toBe(1);
 		// TODO: how to test router push called via form submit event. Not working anywhere.
 		// expect(push).toHaveBeenCalledWith('/search/foo/bar');
 	});

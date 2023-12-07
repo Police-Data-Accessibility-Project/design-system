@@ -124,7 +124,7 @@ async function submit(event: Event) {
 	const isValidSubmission = await v$.value.$validate();
 	if (isValidSubmission) {
 		// Emit submit event (spread to new object to create new object, this allows us to reset `values` without messing with the data returned)
-		emit('submit', { ...values });
+		emit('submit', { ...values.value });
 		// Reset vuelidate and form
 		v$.value.$reset();
 		const form = <HTMLFormElement>event.target;
