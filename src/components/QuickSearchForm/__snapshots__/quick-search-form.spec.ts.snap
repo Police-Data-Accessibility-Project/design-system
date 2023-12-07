@@ -2,7 +2,6 @@
 
 exports[`QuickSearchForm component > Renders a QuickSearchForm 1`] = `
 <div class="pdap-flex-container pdap-flex-container-center pdap-quick-search-form">
-  <p class="quick-search-description"> We maintain a catalog of public records about police, court, and jail systems across the United States. </p>
   <form class="pdap-form small">
     <!--v-if-->
     <div class="pdap-grid-container pdap-input">

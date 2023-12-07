@@ -9,7 +9,7 @@ exports[`Footer component > Renders a footer 1`] = `
         <!--v-if-->
       </li>
       <li class="pdap-footer-link-container">
-        <a class="pdap-footer-social-link" href="ttps://discord.gg/wMqex8nKZJ" referrerpolicy="no-referrer" target="_blank">Discord</a>
+        <a class="pdap-footer-social-link" href="https://discord.gg/wMqex8nKZJ" referrerpolicy="no-referrer" target="_blank">Discord</a>
         <!--v-if-->
       </li>
       <li class="pdap-footer-link-container">
