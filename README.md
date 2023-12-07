@@ -31,7 +31,7 @@ import { Button, Form } from 'pdap-design-system';
 import { PdapInputTypes } from 'pdap-design-system';
 ```
 
-5. See [the component documentation](./doc/components.md) for details on each component's API.
+5. See [the component documentation](./docs/components.md) for details on each component's API.
 
 ### About images
 
