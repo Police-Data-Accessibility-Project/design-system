@@ -96,8 +96,10 @@
 	},
 	"files": [
 		"bin",
-		"CONTRIBUTING.md",
 		"dist",
+		"doc",
+		"CHANGELOG.md",
+		"CONTRIBUTING.md",
 		"README.md"
 	],
 	"bin": {
