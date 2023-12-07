@@ -5,6 +5,12 @@ on:
     branches:
       - master
 
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+  id-token: write
+
 jobs:
   setup:
     name: Setup
@@ -20,10 +26,11 @@ jobs:
         with:
           node-version: '20.x'
           cache: 'npm'
-      - name: Install dependencies
+      - name: Install deps 🧶
         run: npm ci
 
-  lint-and-test:
+  release:
+    name: Release
     needs: setup
     runs-on: ubuntu-latest
     steps:
@@ -33,27 +40,19 @@ jobs:
           node-version: '20.x'
           cache: 'npm'
 
-      - run: npm ci
-      - name: Lint TS and CSS
+      - name: Install deps 🧶
+        run: npm ci
+
+      - name: Lint TS and CSS 🎨
         run: npm run lint
-      - name: Run tests
+
+      - name: Run tests 📋
         run: npm run test:ci
 
-  release:
-    name: Release
-    needs: [setup, lint-and-test]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '20.x'
-          cache: 'npm'
-
-      - run: npm ci
-      - name: Build lib
+      - name: Build lib 👷‍♂️
         run: npm run build
-      - name: Release
+
+      - name: Release 🚀🚀🚀
         run: npm run semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
