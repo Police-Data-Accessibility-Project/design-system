@@ -32,7 +32,7 @@ export default defineConfig({
 	test: {
 		coverage: {
 			all: true,
-			include: ['src/**/*.vue', 'utils/**/*.ts'],
+			include: ['src/**/*.vue', 'src/utils/**/*.ts'],
 			provider: 'v8',
 			reportsDirectory: './coverage',
 		},
