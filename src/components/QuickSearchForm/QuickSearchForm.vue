@@ -41,7 +41,7 @@ const formSchema = [
 		name: 'searchTerm',
 		label: 'What are you looking for?',
 		type: PdapInputTypes.TEXT,
-		placeholder: "Enter a keyword, type of public records, or 'all'",
+		placeholder: "Enter a keyword, or 'all'",
 		value: '',
 	},
 	{
@@ -49,7 +49,7 @@ const formSchema = [
 		name: 'location',
 		label: 'From where?',
 		type: PdapInputTypes.TEXT,
-		placeholder: "Enter a state, county, municipality, or 'all'",
+		placeholder: "Enter a place, or 'all'",
 		value: '',
 	},
 ];
