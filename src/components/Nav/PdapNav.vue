@@ -137,15 +137,15 @@ async function toggleIsExpanded() {
 	}
 
 	.pdap-nav-link {
-		@apply decoration-0 font-medium p-2 text-left text-lg text-neutral-800;
+		@apply decoration-0 font-medium p-2 text-left text-lg text-neutral-950;
 	}
 
 	.pdap-nav-link-current {
-		@apply lg:border-neutral-400 lg:border-2 lg:border-solid text-neutral-700;
+		@apply lg:outline-neutral-800 lg:outline text-neutral-950;
 	}
 
 	.pdap-nav-link-current-exact {
-		@apply pdap-nav-link-current lg:border-neutral-700;
+		@apply pdap-nav-link-current lg:outline-neutral-800;
 	}
 
 	.pdap-nav-open-button {
