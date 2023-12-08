@@ -93,10 +93,6 @@ function handleSubmit(values: { location: string; searchTerm: string }) {
 		@apply h-full max-h-[75-vh] p-0;
 	}
 
-	.quick-search-description {
-		@apply flex justify-center text-center w-full mt-0 mx-auto mb-10;
-	}
-
 	.pdap-quick-search-form .pdap-form {
 		@apply flex flex-wrap;
 
@@ -104,7 +100,7 @@ function handleSubmit(values: { location: string; searchTerm: string }) {
 	}
 
 	.pdap-quick-search-form .pdap-button {
-		@apply flex-grow-0 flex-shrink-0 basis-full max-w-[unset] mt-8;
+		@apply flex-grow-0 flex-shrink-0 basis-full max-w-[unset] mt-4;
 	}
 
 	.pdap-quick-search-form .pdap-input {

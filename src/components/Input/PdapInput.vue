@@ -79,11 +79,11 @@ const errorMessageId = computed(() => `pdap-${props.name}-input-error`);
 	}
 
 	.pdap-input input {
-		@apply dark:bg-neutral-950 border-2 border-neutral-300 border-solid border-transparent px-3 py-2 text-[rgba(0,0,0)];
+		@apply dark:bg-neutral-950 border border-neutral-500 border-solid px-3 py-2 text-[rgba(0,0,0)];
 	}
 
 	.pdap-input input::placeholder {
-		@apply text-neutral-500;
+		@apply text-neutral-600 text-lg;
 	}
 
 	.pdap-input input:focus,
@@ -93,7 +93,7 @@ const errorMessageId = computed(() => `pdap-${props.name}-input-error`);
 	}
 
 	.pdap-input label {
-		@apply max-w-[max-content] p-2;
+		@apply max-w-[max-content] text-lg py-2 font-medium;
 	}
 
 	/* Error state */
