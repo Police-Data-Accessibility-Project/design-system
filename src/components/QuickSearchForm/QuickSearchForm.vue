@@ -7,6 +7,7 @@
 		<Form
 			id="quick-search-form"
 			class="small"
+			:error="error"
 			:schema="formSchema"
 			name="quickSearchForm"
 			@submit="handleSubmit"
@@ -26,6 +27,7 @@ import Form from '../Form/PdapForm.vue';
 
 // Types
 import { PdapInputTypes } from '../Input/types';
+import { ref } from 'vue';
 
 const router = useRouter();
 
@@ -52,10 +54,22 @@ const formSchema = [
 	},
 ];
 
+const error = ref<string | undefined>(undefined);
+
 function handleSubmit(values: { location: string; searchTerm: string }) {
+	/**  Extra validation - backend expects 1 form value to be filled in.
+	 *   The other input will be set to 'all'
+	 */
+	if (Object.values(values).every((val) => !val)) {
+		error.value = 'Either a search term or a location is required.';
+		return;
+	}
+
 	let { location, searchTerm } = values;
+
 	location = location && location.length > 0 ? location : 'all';
 	searchTerm = searchTerm && searchTerm.length > 0 ? searchTerm : 'all';
+
 	// If search route exists, route to it
 	if (router.getRoutes().some((route) => route.path.includes('/search/'))) {
 		router.push(`/search/${searchTerm}/${location}`);
