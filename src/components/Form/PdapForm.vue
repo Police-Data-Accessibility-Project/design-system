@@ -1,7 +1,7 @@
 <template>
 	<form class="pdap-form" @submit.prevent="submit($event)">
 		<div
-			v-if="typeof errorMessage === 'string' && errorMessage.length > 0"
+			v-if="typeof errorMessage === 'string'"
 			class="pdap-form-error-message"
 		>
 			{{ errorMessage }}
@@ -110,6 +110,7 @@ watchEffect(() => {
 // Effect - Debug logger
 watchEffect(() => {
 	console.debug(`PdapForm ${props.name}\n`, {
+		errorMessage: errorMessage.value,
 		props,
 		values,
 		vuelidate: {
