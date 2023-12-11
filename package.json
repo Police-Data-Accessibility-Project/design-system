@@ -58,6 +58,7 @@
 		"autoprefixer": "^10.4.16",
 		"conventional-changelog-angular": "^7.0.0",
 		"cross-env": "^7.0.3",
+		"cz-conventional-changelog": "^3.3.0",
 		"eslint": "^8.53.0",
 		"eslint-config-prettier": "^9.0.0",
 		"eslint-plugin-vue": "^9.18.1",
@@ -88,6 +89,7 @@
 		"build": "vite build && vue-tsc",
 		"build:watch": "npm run build -- --watch",
 		"clean": "rimraf coverage test/report",
+		"_commit": "cz",
 		"lint": "run-p lint:*",
 		"lint:es": "eslint src --ext .ts .",
 		"lint:css": "stylelint 'src/**/*.css'",
@@ -115,5 +117,10 @@
 	"publishConfig": {
 		"registry": "https://registry.npmjs.org/",
 		"tag": "latest"
+	},
+	"config": {
+		"commitizen": {
+			"path": "./node_modules/cz-conventional-changelog"
+		}
 	}
 }
