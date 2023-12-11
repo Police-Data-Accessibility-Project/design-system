@@ -5,7 +5,6 @@ import {
 	PdapLengthRules,
 } from 'src/components/Form/types.ts';
 
-// TODO: Add tests
 /**
  * Type predicate to ensure the passed validator is a valid one.
  * @param s string to check against keys of the vuelidate validators object

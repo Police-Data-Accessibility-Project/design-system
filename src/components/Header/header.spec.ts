@@ -4,7 +4,7 @@
 import PdapHeader from './PdapHeader.vue';
 
 // Utils
-import { mount } from '@vue/test-utils';
+import { RouterLinkStub, mount } from '@vue/test-utils';
 import { describe, expect, test, vi } from 'vitest';
 
 // Mocks
@@ -30,6 +30,9 @@ const base = {
 				console.warn(msg, instance, trace);
 			},
 		},
+	},
+	stubs: {
+		RouterLink: RouterLinkStub,
 	},
 };
 
@@ -84,5 +87,11 @@ describe('Header component', () => {
 			props: { logoImageAnchorPath: 'www.test.com' },
 		});
 		expect(wrapper.props().logoImageAnchorPath).toBe('www.test.com');
+	});
+
+	test('Header is unmounted from the DOM', async () => {
+		const wrapper = mount(PdapHeader, base);
+
+		wrapper.unmount();
 	});
 });

@@ -44,7 +44,7 @@ describe('QuickSearchForm component', () => {
 		expect(wrapper.html()).toMatchSnapshot();
 	});
 
-	test('Button triggers router push when rendered in app with /search/ route', async () => {
+	test('Form triggers router push when rendered in app with /search/ route', async () => {
 		getRoutes.mockReturnValueOnce([{ path: '/search/:foo/:bar' }]);
 
 		const wrapper = mount(QuickSearchForm, base);
@@ -63,15 +63,15 @@ describe('QuickSearchForm component', () => {
 		// Submit
 		await wrapper.find('form').trigger('submit.prevent');
 		await nextTick();
+		await wrapper.vm.$forceUpdate();
 
 		// Assert submit event
 		expect(wrapper.emitted()).toHaveProperty('submit');
 		expect(wrapper.emitted('submit')?.length).toBe(1);
-		// TODO: how to test router push called via form submit event. Not working anywhere.
-		// expect(push).toHaveBeenCalledWith('/search/foo/bar');
+		expect(push).toHaveBeenCalledWith('/search/foo/bar');
 	});
 
-	test('Button triggers window navigation when rendered in app without /search/ route — prod mode', async () => {
+	test('Form triggers window navigation when rendered in app without /search/ route — prod mode', async () => {
 		getRoutes.mockReturnValueOnce([
 			{ path: '/' },
 			{ path: '/foo' },
@@ -90,17 +90,18 @@ describe('QuickSearchForm component', () => {
 		// Submit
 		await wrapper.find('form').trigger('submit');
 		await nextTick();
+		await wrapper.vm.$forceUpdate();
 
 		// Assert submit event
 		expect(wrapper.emitted()).toHaveProperty('submit');
 
 		// TODO: how to test window.assign called via form submit event. Not working anywhere.
-		// expect(assign).toHaveBeenCalledWith(
-		// 	'https://data-sources.pdap.io/search/foo/bar'
-		// );
+		expect(assign).toHaveBeenCalledWith(
+			'https://data-sources.pdap.io/search/foo/bar'
+		);
 	});
 
-	test('Button triggers window navigation when rendered in app without /search/ route — dev mode', async () => {
+	test('Form triggers window navigation when rendered in app without /search/ route — dev mode', async () => {
 		getRoutes.mockReturnValueOnce([
 			{ path: '/' },
 			{ path: '/foo' },
@@ -124,13 +125,28 @@ describe('QuickSearchForm component', () => {
 		// Submit
 		await wrapper.find('form').trigger('submit');
 		await nextTick();
+		await wrapper.vm.$forceUpdate();
 
 		// Assert submit event
 		expect(wrapper.emitted()).toHaveProperty('submit');
 
-		// TODO: how to test window.assign called via form submit event. Not working anywhere.
-		// expect(assign).toHaveBeenCalledWith(
-		// 	'https://data-sources.pdap.dev/search/foo/bar'
-		// );
+		expect(assign).toHaveBeenCalledWith(
+			'https://data-sources.pdap.dev/search/foo/bar'
+		);
+	});
+
+	test('Form errors when submitted with both inputs blank', async () => {
+		const wrapper = mount(QuickSearchForm, base);
+
+		// Submit
+		await wrapper.find('form').trigger('submit.prevent');
+		await nextTick();
+		await wrapper.vm.$forceUpdate();
+
+		// Assert error message
+		expect(wrapper.find('.pdap-form-error-message').exists()).toBe(true);
+		expect(wrapper.get('.pdap-form-error-message').text()).toBe(
+			'Either a search term or a location is required.'
+		);
 	});
 });

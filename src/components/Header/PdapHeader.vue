@@ -46,7 +46,6 @@ onMounted(() => {
 });
 
 onBeforeUnmount(() => {
-	/* c8 ignore next 1 */
 	window.removeEventListener('resize', getHeight);
 });
 

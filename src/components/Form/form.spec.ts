@@ -80,10 +80,7 @@ vi.mock('@vuelidate/core', async () => {
 	};
 });
 
-const handlers = {
-	submit: (values: Record<string, string>) => values,
-};
-
+const submit = vi.fn((values: Record<string, string>) => values);
 const base = {
 	global: {
 		mocks: {
@@ -101,7 +98,7 @@ const base = {
 		name: 'test',
 	},
 	attrs: {
-		submit: handlers.submit,
+		onSubmit: submit,
 	},
 	slots: {
 		default: '<button type="submit">Submit</button>',
@@ -114,6 +111,8 @@ describe('Form component', () => {
 
 		expect(wrapper.find('.pdap-form').exists()).toBe(true);
 		expect(wrapper.find('.pdap-form-error-message').exists()).toBe(false);
+		expect(wrapper.find('#test-1').exists()).toBe(true);
+		expect(wrapper.find('#test-1').attributes('validators')).toBe(undefined);
 		expect(wrapper.html()).toMatchSnapshot();
 	});
 
@@ -193,12 +192,15 @@ describe('Form component', () => {
 
 		await wrapper.find('form').trigger('submit');
 		await nextTick();
+		await wrapper.vm.$forceUpdate();
 
-		// TODO: This technically gets coverage, but doesn't assert against anything...
-		// ....How to fix testing of emitted events and submit handler? None of this is working as
-		// ....expected per Vue Test Utils docs: https://test-utils.vuejs.org/guide/essentials/forms
-		// expect(wrapper.emitted('submit')?.[0][0]).toBe('foo');
-		// expect(submitSpy).toHaveBeenCalled();
+		expect(wrapper.emitted('submit')?.[0][0]).toStrictEqual({
+			checkboxDefaultChecked: 'true',
+			checkboxDefaultUnchecked: 'false',
+			testOne: 'foo',
+			testTwo: 'bar',
+		});
+		expect(submit).toHaveBeenCalled();
 	});
 
 	test('Form validation with incorrect values and clears form error state', async () => {

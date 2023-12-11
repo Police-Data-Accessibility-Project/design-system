@@ -4,12 +4,13 @@
 import PdapNav from './PdapNav.vue';
 
 // Utils
-import { mount } from '@vue/test-utils';
+import { RouterLinkStub, mount } from '@vue/test-utils';
 import { describe, expect, test, vi } from 'vitest';
 import { nextTick } from 'vue';
 
 // Mocks
 vi.mock('vue-router');
+
 const base = {
 	global: {
 		mocks: {
@@ -38,6 +39,9 @@ const base = {
 				console.warn(msg, instance, trace);
 			},
 		},
+	},
+	stubs: {
+		RouterLink: RouterLinkStub,
 	},
 };
 
@@ -88,5 +92,11 @@ describe('Nav component', () => {
 		button.trigger('click');
 		await nextTick();
 		expect(nav.attributes('aria-expanded')).toBe('false');
+	});
+
+	test('Nav is unmounted from the DOM', async () => {
+		const wrapper = mount(PdapNav, base);
+
+		wrapper.unmount();
 	});
 });
