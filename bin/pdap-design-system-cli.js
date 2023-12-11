@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import minimist from 'minimist';
-import cli from '../src/cli/index.js';
+import cli from '../cli';
 
 // Convert argv to object keyed by argName where --argName is what is passed to CLI
 const args = minimist(process.argv);
