@@ -5,6 +5,3 @@ node_modules
 dist
 
 *.config.*
-cli
-bin
-# TODO: remove bin and cli once they are converted to TS

@@ -44,6 +44,11 @@
 		]
 	},
 	"devDependencies": {
+		"@commitlint/cli": "^18.4.3",
+		"@commitlint/config-conventional": "^18.4.3",
+		"@semantic-release/changelog": "^6.0.3",
+		"@semantic-release/git": "^10.0.1",
+		"@semantic-release/release-notes-generator": "^12.1.0",
 		"@types/node": "^20.8.9",
 		"@typescript-eslint/eslint-plugin": "^6.9.1",
 		"@typescript-eslint/parser": "^6.9.1",
@@ -53,16 +58,22 @@
 		"@vue/eslint-config-typescript": "^12.0.0",
 		"@vue/test-utils": "^2.4.1",
 		"autoprefixer": "^10.4.16",
+		"conventional-changelog-angular": "^7.0.0",
 		"cross-env": "^7.0.3",
+		"cz-conventional-changelog": "^3.3.0",
 		"eslint": "^8.53.0",
 		"eslint-config-prettier": "^9.0.0",
 		"eslint-plugin-vue": "^9.18.1",
+		"husky": "^8.0.0",
 		"jest-serializer-vue-tjw": "^3.20.0",
+		"lint-staged": "^15.2.0",
 		"npm-run-all": "^4.1.5",
 		"prettier": "^3.0.3",
 		"rimraf": "^5.0.5",
+		"semantic-release": "^22.0.10",
 		"stylelint": "^15.11.0",
 		"stylelint-config-standard": "^34.0.0",
+		"stylelint-config-standard-vue": "^1.0.0",
 		"tailwindcss": "^3.3.3",
 		"typescript": "^5.2.2",
 		"vite": "^4.5.0",
@@ -80,29 +91,44 @@
 		"vue-router": "^4.2.5"
 	},
 	"scripts": {
+		"_commit": "cz",
 		"build": "vite build && vue-tsc",
 		"build:watch": "npm run build -- --watch",
-		"clean": "rimraf coverage test/report",
+		"ci": "npm run clean && npm ci",
+		"clean": "run-p clean:*",
+		"clean:deps": "rimraf node_modules",
+		"clean:build": "rimraf coverage test/report dist",
+		"clean:test": "rimraf coverage test/report",
 		"lint": "run-p lint:*",
+		"lint:css": "stylelint 'src/**/*.{css,vue}'",
 		"lint:es": "eslint src --ext .ts .",
-		"lint:css": "stylelint 'src/**/*.css'",
-		"postbuild": "npm run clean",
-		"prepare": "npm run build",
-		"prepublishOnly": "npm run build",
+		"lint:ts": "vue-tsc",
+		"postbuild": "run-p clean:test && rimraf dist/{config,utils}",
+		"prepare": "husky install",
 		"test": "vitest --dom --run --coverage",
-		"test:changed": "npm run test --changed",
-		"types": "vue-tsc"
+		"test:changed": "npm run test -- --changed",
+		"test:ci": "test --watchAll=false",
+		"typecheck": "vue-tsc"
 	},
-	"files": [
-		"bin",
-		"CONTRIBUTING.md",
-		"dist",
-		"README.md"
-	],
 	"bin": {
-		"pdap-design-system": "./bin/pdap-design-system-cli.js"
+		"pdap-design-system": "./bin/pdap-design-system-cli.js"	
 	},
 	"keywords": [
 		"pdap-design-system"
-	]
+	],
+	"files": [
+		"bin",
+		"dist",
+		"docs",
+		"README.md"
+	],
+	"publishConfig": {
+		"registry": "https://registry.npmjs.org/",
+		"tag": "latest"
+	},
+	"config": {
+		"commitizen": {
+			"path": "./node_modules/cz-conventional-changelog"
+		}
+	}
 }

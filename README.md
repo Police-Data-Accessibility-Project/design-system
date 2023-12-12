@@ -13,7 +13,7 @@ npm install pdap-design-system
 2. Import the stylesheet in the app's entrypoint (usually `index.js` or `main.js`, at the root of your project)
 
 ```
-// index.js
+// index.js | main.js
 
 import 'pdap-design-system/styles';
 ```
@@ -24,14 +24,33 @@ import 'pdap-design-system/styles';
 import { Button, Form } from 'pdap-design-system';
 ```
 
-4. If your project is using `TypeScript`, the component props definitions and other types are exposed for import as well.  
+4. Import and use the tailwind config (if your project is using tailwind)
+
+```
+// tailwind.config.js
+import { tailwindConfig } from 'pdap-design-system';
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  // Spread base config
+  ...tailwindConfig,
+  // Then override with `content` property and any other superseding config (if necessary - it really shouldn't be)
+  content: [
+    "./index.html",
+    "./src/**/*.{vue,js,css}",
+  ],
+}
+
+```
+
+5. If your project is using `TypeScript`, the component props definitions and other types are exposed for import as well.  
    _n.b. This can be particularly useful for composing `Form` schemas, where `Input` schema objects are defined differently depending on the `type` of input desired._
 
 ```
 import { PdapInputTypes } from 'pdap-design-system';
 ```
 
-5. See [the component documentation](./doc/components.md) for details on each component's API.
+6. See [the component documentation](./docs/components.md) for details on each component's API.
 
 ### About images
 
@@ -96,7 +115,7 @@ npm run build:watch
 
 4. If you use VS Code as your editor, you may want to install the [tailwind VS Code extension](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss), which helps with intellisense and the custom at-rules used by TailwindCSS.
 
-5. Read the [contributing guide](./CONTRIBUTING.md) for development requirements and tips.
+5. Read the [contributing guide](./docs/CONTRIBUTING.md) for development requirements and tips.
 
 ## Assets
 
@@ -105,14 +124,21 @@ Use this [terminology](https://docs.pdap.io/activities/terms-and-definitions).
 
 ## Scripts reference
 
-| Script         | What it does                                    |
-| -------------- | ----------------------------------------------- |
-| `build`        | Builds the library                              |
-| `build:watch`  | Builds the library and watches for file changes |
-| `clean`        | Removes testing coverage reports after build    |
-| `lint`         | Lint `ts` and `css`                             |
-| `lint:es`      | Lint `ts`                                       |
-| `lint:css`     | Lint `css`                                      |
-| `test`         | Runs full test suite                            |
-| `test:changed` | Runs only test suites affected by changed files |
-| `types`        | Runs type check on all `ts` and `vue` files     |
+| Script         | What it does                                             |
+| -------------- | -------------------------------------------------------- |
+| `_commit`      | Create conventional commits                              |
+| `build`        | Builds the library                                       |
+| `build:watch`  | Builds the library and watches for file changes          |
+| `ci`           | Removes all generated files and re-installs deps         |
+| `clean`        | Removes all generated files (except `package-lock.json`) |
+| `clean:deps`   | Removes node_modules directory                           |
+| `clean:build`  | Removes dist directory                                   |
+| `clean:test`   | Removes testing coverage reports                         |
+| `lint`         | Lints everything                                         |
+| `lint:es`      | Lint `ts`  and `vue` with `eslint`                       |
+| `lint:css`     | Lint `css` and `vue` with `stylelint`                    |
+| `lint:ts`      | Lint `ts` with `tsc`                                     |
+| `test`         | Runs all test suites                                     |
+| `test:changed` | Runs only test suites affected by changed files          |
+| `typecheck`    | Runs type check on all `ts` and `vue` files              |
+_n.b. There are some other scripts defined in the `package.json` `"scripts"` field, but they are mostly for CI or cleanup post-build, etc. You shouldn't need them._

@@ -15,3 +15,6 @@ export * from './components/Header/types';
 export * from './components/Input/types';
 export * from './components/Nav/types';
 export * from './components/TileIcon/types';
+
+// Config
+export * from '../config';
