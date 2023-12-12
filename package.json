@@ -91,24 +91,27 @@
 		"vue-router": "^4.2.5"
 	},
 	"scripts": {
+		"_commit": "cz",
 		"build": "vite build && vue-tsc",
 		"build:watch": "npm run build -- --watch",
-		"clean": "rimraf coverage test/report",
-		"_commit": "cz",
+		"ci": "npm run clean && npm ci",
+		"clean": "run-p clean:*",
+		"clean:deps": "rimraf node_modules",
+		"clean:build": "rimraf coverage test/report dist",
+		"clean:test": "rimraf coverage test/report",
 		"lint": "run-p lint:*",
-		"lint:es": "eslint src --ext .ts .",
 		"lint:css": "stylelint 'src/**/*.{css,vue}'",
+		"lint:es": "eslint src --ext .ts .",
 		"lint:ts": "vue-tsc",
-		"postbuild": "npm run clean",
-		"semantic-release": "semantic-release",
+		"postbuild": "run-p clean:test && rimraf dist/{config,utils}",
+		"prepare": "husky install",
 		"test": "vitest --dom --run --coverage",
 		"test:changed": "npm run test -- --changed",
 		"test:ci": "test --watchAll=false",
-		"types": "vue-tsc",
-		"prepare": "husky install"
+		"typecheck": "vue-tsc"
 	},
 	"bin": {
-		"pdap-design-system": "./bin/pdap-design-system-cli.js"
+		"pdap-design-system": "./bin/pdap-design-system-cli.js"	
 	},
 	"keywords": [
 		"pdap-design-system"
@@ -116,9 +119,7 @@
 	"files": [
 		"bin",
 		"dist",
-		"doc",
-		"CHANGELOG.md",
-		"CONTRIBUTING.md",
+		"docs",
 		"README.md"
 	],
 	"publishConfig": {
