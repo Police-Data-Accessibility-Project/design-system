@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
 	content: ['./src/**/*.vue', './src/**/*.css'],
 	theme: {
 		// Nested within "extend" - extends tailwind theme defaults, only overrides properties named here
