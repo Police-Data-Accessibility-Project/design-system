@@ -36,6 +36,7 @@ const styles = reactive({
 	.pdap-grid-item {
 		@apply col-span-1 row-span-1;
 	}
+
 	.pdap-grid-item-span-column-2 {
 		@apply md:col-span-2;
 	}

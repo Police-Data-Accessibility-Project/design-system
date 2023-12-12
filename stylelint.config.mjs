@@ -17,4 +17,13 @@ export default {
 		'declaration-block-trailing-semicolon': null,
 		'no-descending-specificity': null,
 	},
+	"overrides": [
+    {
+      "files": ["**/*.vue"],
+      "extends": [
+        "stylelint-config-standard-vue"
+      ]
+    }
+  ]
+
 };

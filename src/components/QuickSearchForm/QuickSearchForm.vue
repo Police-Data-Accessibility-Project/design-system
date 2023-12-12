@@ -99,6 +99,7 @@ function handleSubmit(values: { location: string; searchTerm: string }) {
 
 	.pdap-quick-search-form .pdap-form {
 		@apply flex flex-wrap;
+
 		column-gap: 1rem;
 	}
 
@@ -108,8 +109,10 @@ function handleSubmit(values: { location: string; searchTerm: string }) {
 
 	.pdap-quick-search-form .pdap-input {
 		@apply flex-col flex-grow flex-shrink-0 basis-[45%];
+
 		row-gap: 0;
 	}
+
 	.pdap-quick-search-form .pdap-input-label {
 		@apply justify-start;
 	}

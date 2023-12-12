@@ -120,6 +120,7 @@ const navLogoLinkIsPath = props.logoImageAnchorPath.startsWith('/');
 	.pdap-footer-social-links > * {
 		@apply mb-2;
 	}
+
 	.pdap-footer .pdap-flex-container > * {
 		@apply mb-2 text-inherit;
 	}
