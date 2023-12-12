@@ -96,7 +96,7 @@ npm run build:watch
 
 4. If you use VS Code as your editor, you may want to install the [tailwind VS Code extension](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss), which helps with intellisense and the custom at-rules used by TailwindCSS.
 
-5. Read the [contributing guide](./CONTRIBUTING.md) for development requirements and tips.
+5. Read the [contributing guide](./docs/CONTRIBUTING.md) for development requirements and tips.
 
 ## Assets
 
