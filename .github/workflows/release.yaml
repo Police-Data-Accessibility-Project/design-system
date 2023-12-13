@@ -54,5 +54,5 @@ jobs:
       - name: Release 🚀🚀🚀
         run: npx semantic-release
         env:
-          GITHUB_TOKEN: ${{ secrets.DEPLOY_TOKEN_FINE }}
+          GITHUB_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
