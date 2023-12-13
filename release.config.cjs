@@ -47,7 +47,7 @@ module.exports = {
 			},
 		],
 
-		// 3. Update CHANGELOG
+		// 3. Update CHANGELOG (must be called before /npm)
 		[
 			'@semantic-release/changelog',
 			{
@@ -55,24 +55,24 @@ module.exports = {
 			},
 		],
 
-		// 4. Publish to npm
+		// 4. Publish to npm (must be called after /changelog and before /git)
 		'@semantic-release/npm',
 
 		// 5. Publish to GH
 		[
 			'@semantic-release/github',
 			{
-				assets: ['dist'],
+				assets: ['bin', 'dist', 'docs', 'README.md', 'package.json'],
 			},
 		],
 
-		// 6. Update version with new commit
+		// 6. Update version with new release commit (must be called after /changelog and /npm)
 		[
 			'@semantic-release/git',
 			{
-				assets: ['bin', 'dist', 'docs', 'README.md', 'package.json'],
+				assets: ['docs', 'package.json', 'package-lock.json', 'npm-shrinkwrap.json'],
 				message:
-					"Release <%= nextRelease.version %> - <%= new Date().toLocaleDateString('en-US', {year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric' }) %> [skip ci]\n\n<%= nextRelease.notes %> ",
+					"chore(release) <%= nextRelease.version %> - <%= new Date().toLocaleDateString('en-US', {year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric' }) %> [skip ci]\n\n<%= nextRelease.notes %> ",
 			},
 		],
 	],

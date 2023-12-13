@@ -120,6 +120,7 @@
 		"bin",
 		"dist",
 		"docs",
+		"package.json",
 		"README.md"
 	],
 	"publishConfig": {
