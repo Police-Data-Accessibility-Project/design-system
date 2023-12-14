@@ -61,17 +61,20 @@ module.exports = {
 		// 5. Publish to GH
 		'@semantic-release/github',
 
+
+		/* TODO: Use either of the below strategies. 
+		*** */
 		// 6. Update version with new release PR raised against main (in lieu of direct commit for now)
 		// If we're going to use this, it will require a shim. See errors in console.
-		[
-      "semantic-release-github-pullrequest", {
-        "assets": ["package.json", "package-lock.json", "CHANGELOG.md"],
-        "baseRef": "main",
-				"branch": 'semantic-release-pr<%= nextRelease.version %>',
-				"pullRequestTitle": "chore(release) <%= nextRelease.version %>",
+		// [
+    //   "semantic-release-github-pullrequest", {
+    //     "assets": ["package.json", "package-lock.json", "CHANGELOG.md"],
+    //     "baseRef": "main",
+		// 		"branch": 'semantic-release-pr<%= nextRelease.version %>',
+		// 		"pullRequestTitle": "chore(release) <%= nextRelease.version %>",
 
-      }
-    ]
+    //   }
+    // ]
 
 
 		// TODO: Fix token so that /git will work
