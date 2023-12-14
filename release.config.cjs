@@ -59,8 +59,7 @@ module.exports = {
 		'@semantic-release/npm',
 
 		// 5. Publish to GH
-		
-			'@semantic-release/github',
+		'@semantic-release/github',
 
 		// 6. Update version with new release PR raised against main (in lieu of direct commit for now)
 		// If we're going to use this, it will require a shim. See errors in console.
