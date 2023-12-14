@@ -147,13 +147,5 @@ const navLogoLinkIsPath = props.logoImageAnchorPath.startsWith('/');
 		@apply cursor-pointer border-2 border-brand-gold decoration-0 disabled:opacity-50 font-semibold inline-block mx-1 px-6 py-2 rounded-none text-center text-lg w-full bg-brand-gold text-white;
 		@apply hover:brightness-85 lg:text-xl sm:max-w-max;
 	}
-
-	.pdap-footer-social-link-current {
-		@apply lg:border-neutral-400 lg:border-2 lg:border-solid;
-	}
-
-	.pdap-footer-social-link-current-exact {
-		@apply pdap-footer-social-link-current lg:border-neutral-700;
-	}
 }
 </style>
