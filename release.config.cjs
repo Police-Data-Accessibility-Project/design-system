@@ -66,7 +66,10 @@ module.exports = {
 		[
       "semantic-release-github-pullrequest", {
         "assets": ["package.json", "package-lock.json", "CHANGELOG.md"],
-        "baseRef": "main"
+        "baseRef": "main",
+				"branch": 'semantic-release-pr<%= nextRelease.version %>',
+				"pullRequestTitle": "chore(release) <%= nextRelease.version %>",
+
       }
     ]
 
@@ -78,7 +81,7 @@ module.exports = {
 		// 	{
 		// 		assets: ['docs', 'package.json', 'package-lock.json', 'npm-shrinkwrap.json'],
 		// 		message:
-		// 			"chore(release) <%= nextRelease.version %> - <%= new Date().toLocaleDateString('en-US', {year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric' }) %> [skip ci]\n\n<%= nextRelease.notes %> ",
+					// "chore(release) <%= nextRelease.version %> - <%= new Date().toLocaleDateString('en-US', {year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric' }) %> [skip ci]\n\n<%= nextRelease.notes %> ",
 		// 	},
 		// ],
 	],
