@@ -149,7 +149,7 @@ const navLogoLinkIsPath = props.logoImageAnchorPath.startsWith('/');
 	}
 
 	.pdap-footer-social-link-current {
-		@apply lg:border-neutral-400 lg:border-2 lg:border-solid text-neutral-700;
+		@apply lg:border-neutral-400 lg:border-2 lg:border-solid;
 	}
 
 	.pdap-footer-social-link-current-exact {
