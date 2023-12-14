@@ -51,7 +51,7 @@ module.exports = {
 		[
 			'@semantic-release/changelog',
 			{
-				changelogFile: 'docs/CHANGELOG.md',
+				changelogFile: 'CHANGELOG.md',
 			},
 		],
 
@@ -66,14 +66,25 @@ module.exports = {
 			},
 		],
 
-		// 6. Update version with new release commit (must be called after /changelog and /npm)
+		// 6. Update version with new release PR raised against main (in lieu of direct commit for now)
+		// If we're going to use this, it will require a shim. See errors in console.
 		[
-			'@semantic-release/git',
-			{
-				assets: ['docs', 'package.json', 'package-lock.json', 'npm-shrinkwrap.json'],
-				message:
-					"chore(release) <%= nextRelease.version %> - <%= new Date().toLocaleDateString('en-US', {year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric' }) %> [skip ci]\n\n<%= nextRelease.notes %> ",
-			},
-		],
+      "semantic-release-github-pullrequest", {
+        "assets": ["package.json", "package-lock.json", "CHANGELOG.md"],
+        "baseRef": "main"
+      }
+    ]
+
+
+		// TODO: Fix token so that /git will work
+		// // 6. Update version with new release commit (must be called after /changelog and /npm)
+		// [
+		// 	'@semantic-release/git',
+		// 	{
+		// 		assets: ['docs', 'package.json', 'package-lock.json', 'npm-shrinkwrap.json'],
+		// 		message:
+		// 			"chore(release) <%= nextRelease.version %> - <%= new Date().toLocaleDateString('en-US', {year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric' }) %> [skip ci]\n\n<%= nextRelease.notes %> ",
+		// 	},
+		// ],
 	],
 };
