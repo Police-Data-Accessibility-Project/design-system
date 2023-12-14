@@ -90,7 +90,7 @@ function handleSubmit(values: { location: string; searchTerm: string }) {
 
 @layer components {
 	.pdap-quick-search-form {
-		@apply h-full max-h-[75-vh] p-0;
+		@apply h-full max-h-[75-vh] p-0 justify-start;
 	}
 
 	.pdap-quick-search-form .pdap-form {
