@@ -44,6 +44,7 @@ fix(Button): update border styles
 Bug in post-css causing....
 
 BREAKING CHANGE
+Prop `style` changes to `intent`
 
 # example 3
 docs(README): add button documentation
