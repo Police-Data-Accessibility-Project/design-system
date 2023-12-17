@@ -29,7 +29,7 @@ const base = {
 		config: {
 			warnHandler(msg, instance, trace) {
 				if (
-					// TODO: investigate these cases (happening anywhere nav is rendered)
+					// TODO: investigate these cases
 					msg.includes('Invalid prop: type check failed for prop') ||
 					msg.includes('missing template')
 				) {
@@ -62,7 +62,7 @@ describe('Nav component', () => {
 	});
 
 	test('Renders mobile nav', () => {
-		// TODO: how to check?
+		// TODO: check this
 	});
 
 	test('Renders empty nav when links are undefined', () => {
