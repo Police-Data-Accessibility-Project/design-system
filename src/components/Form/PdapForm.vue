@@ -8,8 +8,8 @@
 		</div>
 
 		<PdapInput
-			v-for="field in schema"
-			v-bind="delete field.validators ? field : field"
+			v-for="field in data"
+			v-bind="field"
 			:key="field.name"
 			:error="
 				Boolean(v$[field.name]?.$error)
@@ -56,6 +56,15 @@ const props = withDefaults(defineProps<PdapFormProps>(), {
 const emit = defineEmits(['submit']);
 
 // State
+const data = ref<typeof props.schema>(
+	props.schema.map((input) => {
+		const newInput = { ...input };
+		delete newInput.validators;
+
+		return newInput;
+	})
+);
+
 const values = ref<Record<string, string>>(
 	props.schema.reduce((acc, input) => {
 		switch (input.type) {
