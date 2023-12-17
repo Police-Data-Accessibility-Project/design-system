@@ -5,8 +5,8 @@
 This is a `Vue` component library. It is built using `Vue3` and the `composition` API with TypeScript. Styles are created using `TailwindCSS`. The library is built using `Vite`. For testing, we use `Vitest`, for linting `eslint`, for formatting `prettier`. Conventional commits are enforced using `commitizen`, and publishing is done automatically via `semantic-release`.
 Some helpful resources and reading:
 
-[Commitizen](https://commitizen-tools.github.io/commitizen/)
-[Semantic Release](https://semantic-release.gitbook.io/semantic-release/)
+[Commitizen](https://commitizen-tools.github.io/commitizen/)  
+[Semantic Release](https://semantic-release.gitbook.io/semantic-release/)  
 [Tailwind](https://tailwindui.com/documentation)  
 [TypeScript](https://www.typescriptlang.org/docs/)
 [Vite](https://vitejs.dev/guide/)  
@@ -16,6 +16,7 @@ Some helpful resources and reading:
 [Vuelidate](https://vuelidate.js.org/)
 
 ### Etiquette
+[![Discord](https://img.shields.io/discord/828274060034965575?logo=discord)](https://discord.gg/vKhDv7nC8B)
 
 Head to [\#outreach](https://discord.com/channels/828274060034965575/853442226034442260/) in our [Discord](https://discord.gg/vKhDv7nC8B) if you'd like to collect feedback from the wider group.
 
@@ -60,6 +61,8 @@ To test the package locally:
 1. Run `npm link` from the root of the project directory.
 2. `cd` into the local directory of the app you want to test importing into, then run `npm link pdap-design-system`
 3. This will create a symlink between your local directories, allowing you to test changes in real time without actually publish to the `npm` registry.
-4. To test publishing, squash merge your local feature/fix/whatever branch into `main`. Then from `main` run `npm exec semantic-release --dry-run`. Then revert the squash merge commit.
-
-The `lint`, `test`, and `build` scripts are all required to pass before pull requests can be merged. The `lint` scripts are run against all staged files, and you can run `test:changed` to verify test suites against all local changes (staged and unstaged) before committing. You can run `build` locally as well, if you want to verify that it will pass before pushing changes. 
+4. To test publishing, squash merge your local feature/fix/whatever branch into `main`. Then from `main` run `npm exec semantic-release --dry-run`. Then reset the squash merge commit using `git reset HEAD~1 && git restore .`.
+5. A few things to note:
+- The `lint`, `test`, and `build` scripts are all required to pass before pull requests can be merged. 
+- The `lint` scripts are run against all staged files before a commit will succeed, and the full test suite is run using the `test:ci` before a `git push` will succeed.
+- You can run `test:changed` to verify test suites against all local changes (staged and un-staged) before committing.

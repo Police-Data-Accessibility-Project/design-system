@@ -1,6 +1,11 @@
-# Design System
+# PDAP Design System
+_A `Vue` component library, styling system, and image asset repository for PDAP-branded client apps._
 
-This is a `Vue` component library, styling system, and image asset repository for PDAP-branded client apps.
+[![Discord](https://img.shields.io/discord/828274060034965575?logo=discord)](https://discord.gg/vKhDv7nC8B)
+![Current npm release](https://img.shields.io/github/release/Police-Data-Accessibility-Project/design-system.svg)
+![License](https://img.shields.io/github/license/Police-Data-Accessibility-Project/design-system.svg)
+
+
 
 ## Usage
 
@@ -43,7 +48,7 @@ module.exports = {
 
 ```
 
-5. If your project is using `TypeScript`, the component props definitions and other types are exposed for import as well.  
+5. If the project is using `TypeScript`, the component props definitions and other types are exposed for import as well.  
    _n.b. This can be particularly useful for composing `Form` schemas, where `Input` schema objects are defined differently depending on the `type` of input desired._
 
 ```
@@ -54,7 +59,7 @@ import { PdapInputTypes } from 'pdap-design-system';
 
 ### About images
 
-PDAP image assets contained in this repo are built to the `/dist` folder. For convenience an importing alias `/images` has been added.
+PDAP image assets contained in this repo are built to the `/dist` directory. For convenience an importing alias `/images` has been added.
 
 ```
 import 'pdap-design-system/images/acronym.svg';
@@ -68,7 +73,7 @@ import `pdap-design-system/images`;
 
 ### Using the CLI to copy assets to your local project directory
 
-If you want either styles or images copied to a local folder, you can do so from the root directory of your project.
+If you want either styles or images copied to a local directory, you can do so from the root directory of your project.
 
 Assets can be copied using the `pdap-design-system` command line method exposed by this package.
 
@@ -92,16 +97,16 @@ The following argument is optional:
 gh repo clone Police-Data-Accessibility-Project/design-system
 ```
 
-2. CD into the project folder and install dependencies
+2. CD into the project directory and install dependencies
 
 ```
 cd design-system
 npm i
 ```
 
-3. Step 2 should result in the `build` script being run after packages are installed. Check the `dist` folder for changes. You then may want to take one or both of the following steps:
+3. Step 2 should result in the `build` script being run after packages are installed. Check the `dist` directory for changes. You then may want to take one or both of the following steps:
 
-- If `build` wasn't called when you installed deps, build styles and images to the `dist` folder:
+- If `build` wasn't called when you installed deps, build styles and images to the `dist` directory:
 
 ```
 npm run build
@@ -129,16 +134,18 @@ Use this [terminology](https://docs.pdap.io/activities/terms-and-definitions).
 | `_commit`      | Create conventional commits                              |
 | `build`        | Builds the library                                       |
 | `build:watch`  | Builds the library and watches for file changes          |
-| `ci`           | Removes all generated files and re-installs deps         |
-| `clean`        | Removes all generated files (except `package-lock.json`) |
-| `clean:deps`   | Removes node_modules directory                           |
-| `clean:build`  | Removes dist directory                                   |
-| `clean:test`   | Removes testing coverage reports                         |
-| `lint`         | Lints everything                                         |
+| `ci`           | Remove all generated files and re-installs deps         |
+| `clean`        | Remove all generated files (except `package-lock.json`) |
+| `clean:deps`   | Remove node_modules directory                           |
+| `clean:build`  | Remove dist directory                                   |
+| `clean:test`   | Remove testing coverage reports                         |
+| `lint`         | Lint everything                                         |
 | `lint:es`      | Lint `ts`  and `vue` with `eslint`                       |
 | `lint:css`     | Lint `css` and `vue` with `stylelint`                    |
 | `lint:ts`      | Lint `ts` with `tsc`                                     |
-| `test`         | Runs all test suites                                     |
-| `test:changed` | Runs only test suites affected by changed files          |
-| `typecheck`    | Runs type check on all `ts` and `vue` files              |
+| `test`         | Run all test suites                                     |
+| `test:changed` | Run only test suites affected by changed files          |
+| `typecheck`    | Run type check on all `ts` and `vue` files              |
+
+
 _n.b. There are some other scripts defined in the `package.json` `"scripts"` field, but they are mostly for CI or cleanup post-build, etc. You shouldn't need them._
