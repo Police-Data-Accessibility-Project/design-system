@@ -1,4 +1,5 @@
 import fs from 'fs-extra';
+import process from 'process';
 
 function copyImageAssets(args) {
 	const packageImagesPath =
