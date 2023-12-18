@@ -64,5 +64,6 @@ To test the package locally:
 4. To test publishing, squash merge your local feature/fix/whatever branch into `main`. Then from `main` run `npm exec semantic-release --dry-run`. Then reset the squash merge commit using `git reset HEAD~1 && git restore .`.
 5. A few things to note:
 - The `lint`, `test`, and `build` scripts are all required to pass before pull requests can be merged. 
-- The `lint` scripts are run against all staged files before a commit will succeed, and the full test suite is run using the `test:ci` before a `git push` will succeed.
+- The `lint` scripts are run against all staged files before a commit will succeed.
+- All local commit messages are linted and the full test suite is run using the `test:ci` before a `git push` will succeed.
 - You can run `test:changed` to verify test suites against all local changes (staged and un-staged) before committing.
