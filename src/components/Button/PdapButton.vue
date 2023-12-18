@@ -30,7 +30,7 @@ const classes = reactive({
 
 @layer components {
 	.pdap-button {
-		@apply cursor-pointer border-0 decoration-0 disabled:opacity-50 font-semibold inline-block mx-1 px-6 py-3 rounded-none text-center text-lg w-full;
+		@apply cursor-pointer border-2 border-brand-gold decoration-0 disabled:opacity-50 font-semibold inline-block mx-1 px-6 py-2 rounded-none text-center text-lg w-full;
 		@apply hover:brightness-85 lg:text-xl sm:max-w-max;
 	}
 
@@ -43,7 +43,7 @@ const classes = reactive({
 	}
 
 	.pdap-button-secondary {
-		@apply pdap-button bg-transparent border-brand-gold border-2 border-solid text-brand-gold;
+		@apply pdap-button bg-white border-2 border-brand-gold text-brand-gold;
 	}
 
 	.pdap-button-secondary[type='submit'] {

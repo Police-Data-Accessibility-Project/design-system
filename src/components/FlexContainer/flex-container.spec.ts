@@ -11,7 +11,6 @@ describe('Renders container component', () => {
 	test('Renders a container', () => {
 		const wrapper = mount(FlexContainer, {
 			slots: {
-				// Todo: Render some actual components here to test
 				default: 'Container Content',
 			},
 		});

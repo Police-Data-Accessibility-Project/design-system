@@ -1,18 +1,29 @@
 <template>
+	<FlexContainer class="md:p-0">
+		<h2 class="mt-0">Search our database</h2>
+		<p class="pb-4 md:pb-8">
+			If you have a question to answer, we may already know about helpful data
+			in your area.
+			<RouterLink to="/data">Learn more about the data here.</RouterLink>
+		</p>
+	</FlexContainer>
 	<FlexContainer
 		alignment="center"
-		component="div"
-		class="pdap-quick-search-form"
+		class="pdap-quick-search-form h-full max-h-[75-vh] justify-start md:p-0"
 	>
 		<Form
 			id="quick-search-form"
-			class="small"
+			class="flex flex-wrap gap-x-4"
 			:error="error"
 			:schema="formSchema"
 			name="quickSearchForm"
 			@submit="handleSubmit"
 		>
-			<Button type="submit">Search Data Sources</Button>
+			<Button
+				type="submit"
+				class="flex-grow-0 flex-shrink-0 basis-full max-w-[unset] mt-4"
+				>Search Data Sources</Button
+			>
 		</Form>
 	</FlexContainer>
 </template>
@@ -41,7 +52,7 @@ const formSchema = [
 		name: 'searchTerm',
 		label: 'What are you looking for?',
 		type: PdapInputTypes.TEXT,
-		placeholder: "Enter a keyword, type of public records, or 'all'",
+		placeholder: "Enter a keyword, or 'all'",
 		value: '',
 	},
 	{
@@ -49,7 +60,7 @@ const formSchema = [
 		name: 'location',
 		label: 'From where?',
 		type: PdapInputTypes.TEXT,
-		placeholder: "Enter a state, county, municipality, or 'all'",
+		placeholder: "Enter a place, or 'all'",
 		value: '',
 	},
 ];
@@ -89,28 +100,8 @@ function handleSubmit(values: { location: string; searchTerm: string }) {
 @tailwind components;
 
 @layer components {
-	.pdap-quick-search-form {
-		@apply h-full max-h-[75-vh] p-0;
-	}
-
-	.quick-search-description {
-		@apply flex justify-center text-center w-full mt-0 mx-auto mb-10;
-	}
-
-	.pdap-quick-search-form .pdap-form {
-		@apply flex flex-wrap;
-
-		column-gap: 1rem;
-	}
-
-	.pdap-quick-search-form .pdap-button {
-		@apply flex-grow-0 flex-shrink-0 basis-full max-w-[unset] mt-8;
-	}
-
 	.pdap-quick-search-form .pdap-input {
-		@apply flex-col flex-grow flex-shrink-0 basis-[45%];
-
-		row-gap: 0;
+		@apply flex-col flex-grow flex-shrink-0 basis-[45%] gap-y-0;
 	}
 
 	.pdap-quick-search-form .pdap-input-label {

@@ -3,7 +3,7 @@ import QuickSearchForm from './QuickSearchForm.vue';
 
 // Utils
 import { mount } from '@vue/test-utils';
-import { describe, expect, test, vi } from 'vitest';
+import { beforeEach, describe, expect, test, vi } from 'vitest';
 import { nextTick } from 'vue';
 
 // Mocks and stubs
@@ -44,61 +44,127 @@ describe('QuickSearchForm component', () => {
 		expect(wrapper.html()).toMatchSnapshot();
 	});
 
-	test('Form triggers router push when rendered in app with /search/ route', async () => {
-		getRoutes.mockReturnValueOnce([{ path: '/search/:foo/:bar' }]);
+	describe('Form triggers router push when rendered in app with /search/ route', async () => {
+		let searchInput;
+		let locationInput;
+		let wrapper;
 
-		const wrapper = mount(QuickSearchForm, base);
+		beforeEach(() => {
+			getRoutes.mockReturnValueOnce([{ path: '/search/:foo/:bar' }]);
 
-		// Set input values
-		const searchInput = wrapper.find('#search-term');
-		const locationInput = wrapper.find('#location');
-		await searchInput.setValue('foo');
-		await locationInput.setValue('bar');
-		await nextTick();
+			wrapper = mount(QuickSearchForm, base);
 
-		// Assert
-		expect((searchInput.element as HTMLInputElement).value).toBe('foo');
-		expect((locationInput.element as HTMLInputElement).value).toBe('bar');
+			// Set input values
+			searchInput = wrapper.find('#search-term');
+			locationInput = wrapper.find('#location');
+		});
 
-		// Submit
-		await wrapper.find('form').trigger('submit.prevent');
-		await nextTick();
-		await wrapper.vm.$forceUpdate();
+		test('Form triggers router push with both values set', async () => {
+			await searchInput.setValue('foo');
+			await locationInput.setValue('bar');
+			await nextTick();
 
-		// Assert submit event
-		expect(wrapper.emitted()).toHaveProperty('submit');
-		expect(wrapper.emitted('submit')?.length).toBe(1);
-		expect(push).toHaveBeenCalledWith('/search/foo/bar');
+			// Submit
+			await wrapper.find('form').trigger('submit');
+			await nextTick();
+			await wrapper.vm.$forceUpdate();
+
+			// Assert router push
+			expect(push).toHaveBeenCalledWith('/search/foo/bar');
+		});
+
+		test('Form triggers router push with first value set, second unset', async () => {
+			await searchInput.setValue('foo');
+			await locationInput.setValue('');
+			await nextTick();
+
+			// Submit
+			await wrapper.find('form').trigger('submit');
+			await nextTick();
+			await wrapper.vm.$forceUpdate();
+
+			// Assert router push
+			expect(push).toHaveBeenCalledWith('/search/foo/all');
+		});
+
+		test('Form triggers router push with second value set, first unset', async () => {
+			await searchInput.setValue('');
+			await locationInput.setValue('bar');
+			await nextTick();
+
+			// Submit
+			await wrapper.find('form').trigger('submit');
+			await nextTick();
+			await wrapper.vm.$forceUpdate();
+
+			// Assert router push
+			expect(push).toHaveBeenCalledWith('/search/all/bar');
+		});
 	});
 
-	test('Form triggers window navigation when rendered in app without /search/ route — prod mode', async () => {
-		getRoutes.mockReturnValueOnce([
-			{ path: '/' },
-			{ path: '/foo' },
-			{ path: '/bar' },
-		]);
+	describe('Form triggers window navigation when rendered in app without /search/ route — prod mode', async () => {
+		let searchInput;
+		let locationInput;
+		let wrapper;
 
-		const wrapper = mount(QuickSearchForm, base);
+		beforeEach(() => {
+			getRoutes.mockReturnValueOnce([
+				{ path: '/' },
+				{ path: '/foo' },
+				{ path: '/bar' },
+			]);
 
-		// Set input values
-		const searchInput = wrapper.find('#search-term');
-		const locationInput = wrapper.find('#location');
-		await searchInput.setValue('foo');
-		await locationInput.setValue('bar');
-		await nextTick();
+			wrapper = mount(QuickSearchForm, base);
 
-		// Submit
-		await wrapper.find('form').trigger('submit');
-		await nextTick();
-		await wrapper.vm.$forceUpdate();
+			// Set input values
+			searchInput = wrapper.find('#search-term');
+			locationInput = wrapper.find('#location');
+		});
 
-		// Assert submit event
-		expect(wrapper.emitted()).toHaveProperty('submit');
+		test('Form triggers navigation with both values set', async () => {
+			await searchInput.setValue('foo');
+			await locationInput.setValue('bar');
+			await nextTick();
 
-		// TODO: how to test window.assign called via form submit event. Not working anywhere.
-		expect(assign).toHaveBeenCalledWith(
-			'https://data-sources.pdap.io/search/foo/bar'
-		);
+			// Submit
+			await wrapper.find('form').trigger('submit');
+			await nextTick();
+			await wrapper.vm.$forceUpdate();
+
+			expect(assign).toHaveBeenCalledWith(
+				'https://data-sources.pdap.io/search/foo/bar'
+			);
+		});
+
+		test('Form triggers navigation with first value set, second unset', async () => {
+			await searchInput.setValue('foo');
+			await locationInput.setValue('');
+			await nextTick();
+
+			// Submit
+			await wrapper.find('form').trigger('submit');
+			await nextTick();
+			await wrapper.vm.$forceUpdate();
+
+			expect(assign).toHaveBeenCalledWith(
+				'https://data-sources.pdap.io/search/foo/all'
+			);
+		});
+
+		test('Form triggers navigation with second value set, first unset', async () => {
+			await searchInput.setValue('');
+			await locationInput.setValue('bar');
+			await nextTick();
+
+			// Submit
+			await wrapper.find('form').trigger('submit');
+			await nextTick();
+			await wrapper.vm.$forceUpdate();
+
+			expect(assign).toHaveBeenCalledWith(
+				'https://data-sources.pdap.io/search/all/bar'
+			);
+		});
 	});
 
 	test('Form triggers window navigation when rendered in app without /search/ route — dev mode', async () => {
@@ -128,8 +194,6 @@ describe('QuickSearchForm component', () => {
 		await wrapper.vm.$forceUpdate();
 
 		// Assert submit event
-		expect(wrapper.emitted()).toHaveProperty('submit');
-
 		expect(assign).toHaveBeenCalledWith(
 			'https://data-sources.pdap.dev/search/foo/bar'
 		);

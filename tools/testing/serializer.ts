@@ -2,9 +2,7 @@
 /* c8 ignore next 30 */
 import { print as _print } from 'jest-serializer-vue-tjw';
 
-// TODO:
-// 1. Write tests
-// 2. Fix typescript -- any type is not safe
+// TODO: 1. Write tests, 2. Fix typescript -- any type is not safe
 
 const helpers = {
 	isHtmlString: function (received: any) {
@@ -31,4 +29,3 @@ export default {
 	print,
 	test,
 };
-// TODO: Devise a test for this, so that we don't need to add c8 declaration ignoring it (code is more or less boilerplate from c8 - https://github.com/tjw-lint/jest-serializer-vue-tjw/#using-with-vitest)

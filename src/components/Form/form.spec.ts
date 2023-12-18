@@ -214,20 +214,23 @@ describe('Form component', () => {
 		await inputTextTwo.setValue('a');
 		await nextTick();
 
-		// TODO: `setProps` is not the best way to to this. Find out why trigger('submit') is not working
-		// await wrapper.find('form').trigger('submit');
-		await wrapper.setProps({ ...base.props, error: 'Error' });
+		await wrapper.find('form').trigger('submit');
 		await nextTick();
+		wrapper.vm.$forceUpdate();
 
 		// Assert error state
 		expect(wrapper.find('.pdap-form-error-message').exists()).toBe(true);
+		// Assert error message
+		expect(wrapper.find('.pdap-form-error-message').text()).toBe(
+			'Please update this form to correct the errors'
+		);
 
 		// Set values to correct values
 		await inputTextOne.setValue('aaaaa');
 		await inputTextTwo.setValue('bvvvvv');
 
-		await wrapper.setProps({ ...base.props, error: null });
 		await nextTick();
+		wrapper.vm.$forceUpdate();
 
 		// Assert error message no longer present
 		expect(wrapper.find('.pdap-form-error-message').exists()).toBe(false);

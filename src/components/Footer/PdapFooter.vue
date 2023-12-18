@@ -35,9 +35,10 @@
 				<a
 					href="https://docs.pdap.io/meta/policy/pdap-privacy-policy"
 					alt="Privacy Policy"
-				>
-					Privacy Policy</a
-				>.
+					target="_blank"
+					><br />
+					Privacy Policy <i class="fa fa-external-link" /></a
+				><br />
 				<a href="mailto:contact@pdap.io">contact@pdap.io</a>
 			</p>
 
@@ -143,16 +144,8 @@ const navLogoLinkIsPath = props.logoImageAnchorPath.startsWith('/');
 	}
 
 	.pdap-footer-social-link {
-		@apply cursor-pointer bg-brand-gold  border-0 decoration-0 disabled:opacity-50 font-semibold inline-block mx-1 px-6 py-3 rounded-none text-center text-neutral-100 text-lg w-full;
+		@apply cursor-pointer border-2 border-brand-gold decoration-0 disabled:opacity-50 font-semibold inline-block mx-1 px-6 py-2 rounded-none text-center text-lg w-full bg-brand-gold text-white;
 		@apply hover:brightness-85 lg:text-xl sm:max-w-max;
-	}
-
-	.pdap-footer-social-link-current {
-		@apply lg:border-neutral-400 lg:border-2 lg:border-solid text-neutral-700;
-	}
-
-	.pdap-footer-social-link-current-exact {
-		@apply pdap-footer-social-link-current lg:border-neutral-700;
 	}
 }
 </style>

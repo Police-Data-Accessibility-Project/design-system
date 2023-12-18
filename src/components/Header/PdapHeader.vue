@@ -59,7 +59,7 @@ function getHeight() {
 
 <style>
 .pdap-header {
-	@apply dark:bg-neutral-300 relative bg-neutral-50 flex justify-between p-8 w-full z-50;
+	@apply dark:bg-neutral-300 relative bg-neutral-50 flex justify-between p-4 md:p-6 w-full z-50;
 }
 
 .logo {
