@@ -1,10 +1,13 @@
 # PDAP Design System
 _A `Vue` component library, styling system, and image asset repository for PDAP-branded client apps._
 
-[![Discord](https://img.shields.io/discord/828274060034965575?logo=discord)](https://discord.gg/vKhDv7nC8B)
-![Current npm release](https://img.shields.io/github/release/Police-Data-Accessibility-Project/design-system.svg)
-![License](https://img.shields.io/github/license/Police-Data-Accessibility-Project/design-system.svg)
+[![Current npm release](https://img.shields.io/npm/v/pdap-design-system?style=for-the-badge)](https://www.npmjs.com/package/pdap-design-system)
+![Build status](./badges/build.svg) 
+![Test coverage](./badges/coverage.svg) 
+![License](https://img.shields.io/github/license/Police-Data-Accessibility-Project/design-system.svg?style=for-the-badge&color=green) 
 
+
+[![Discord](https://img.shields.io/discord/828274060034965575?logo=discord&style=for-the-badge&color=blue)](https://discord.gg/vKhDv7nC8B)
 
 
 ## Usage
@@ -120,7 +123,7 @@ npm run build:watch
 
 4. If you use VS Code as your editor, you may want to install the [tailwind VS Code extension](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss), which helps with intellisense and the custom at-rules used by TailwindCSS.
 
-5. Read the [contributing guide](./docs/CONTRIBUTING.md) for development requirements and tips.
+5. Read the [contributing guide](./CONTRIBUTING.md) for development requirements and tips.
 
 ## Assets
 
