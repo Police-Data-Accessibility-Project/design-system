@@ -36,9 +36,9 @@
 					href="https://docs.pdap.io/meta/policy/pdap-privacy-policy"
 					alt="Privacy Policy"
 					target="_blank"
-				><br>
-					Privacy Policy <i class="fa fa-external-link"></i></a
-				><br>
+					><br />
+					Privacy Policy <i class="fa fa-external-link" /></a
+				><br />
 				<a href="mailto:contact@pdap.io">contact@pdap.io</a>
 			</p>
 

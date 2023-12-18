@@ -1,10 +1,9 @@
 <template>
-	<FlexContainer 
-		class="md:p-0"
-	>
+	<FlexContainer class="md:p-0">
 		<h2 class="mt-0">Search our database</h2>
 		<p class="pb-4 md:pb-8">
-			If you have a question to answer, we may already know about helpful data in your area.
+			If you have a question to answer, we may already know about helpful data
+			in your area.
 			<RouterLink to="/data">Learn more about the data here.</RouterLink>
 		</p>
 	</FlexContainer>
@@ -20,10 +19,11 @@
 			name="quickSearchForm"
 			@submit="handleSubmit"
 		>
-			<Button 
-				type="submit" 
+			<Button
+				type="submit"
 				class="flex-grow-0 flex-shrink-0 basis-full max-w-[unset] mt-4"
-			>Search Data Sources</Button>
+				>Search Data Sources</Button
+			>
 		</Form>
 	</FlexContainer>
 </template>
