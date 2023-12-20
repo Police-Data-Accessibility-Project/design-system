@@ -4,7 +4,7 @@
 		<p class="pb-4 md:pb-8">
 			If you have a question to answer, we may already know about helpful data
 			in your area.
-			<RouterLink to="/data">Learn more about the data here.</RouterLink>
+			<a href="https://pdap.io/data">Learn more about the data here.</a>
 		</p>
 	</FlexContainer>
 	<FlexContainer
