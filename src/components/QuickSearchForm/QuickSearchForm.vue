@@ -1,5 +1,5 @@
 <template>
-	<FlexContainer class="md:p-0">
+	<FlexContainer class="p-0">
 		<h2 class="mt-0">Search our database</h2>
 		<p class="pb-4 md:pb-8">
 			If you have a question to answer, we may already know about helpful data
@@ -9,7 +9,7 @@
 	</FlexContainer>
 	<FlexContainer
 		alignment="center"
-		class="pdap-quick-search-form h-full max-h-[75-vh] justify-start md:p-0"
+		class="pdap-quick-search-form h-full max-h-[75-vh] justify-start p-0"
 	>
 		<Form
 			id="quick-search-form"
