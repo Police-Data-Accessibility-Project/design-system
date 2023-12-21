@@ -122,7 +122,7 @@ async function toggleIsExpanded() {
 @layer components {
 	/* Nav */
 	.pdap-nav {
-		@apply items-center bg-neutral-400 flex relative z-40;
+		@apply items-start bg-neutral-300 flex relative z-40;
 		@apply lg:bg-transparent lg:justify-center max-lg:absolute max-lg:flex-col max-lg:left-0 max-lg:h-[calc(100vh-104px)] max-lg:p-6 max-lg:top-[104px] max-lg:w-full;
 	}
 
@@ -132,12 +132,12 @@ async function toggleIsExpanded() {
 	}
 
 	.pdap-nav-link-container {
-		@apply align-top basis-[max-content] inline-block list-none relative;
+		@apply align-top basis-[max-content] p-2 lg:p-0 inline-block list-none relative;
 		@apply lg:flex-shrink-0 lg:flex-grow lg:mx-2 lg:mb-2;
 	}
 
 	.pdap-nav-link {
-		@apply decoration-0 font-medium p-2 text-left text-lg text-neutral-950;
+		@apply decoration-0 font-medium p-2 text-left text-xl lg:text-lg text-neutral-950;
 	}
 
 	.pdap-nav-link-current {
