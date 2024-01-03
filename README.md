@@ -32,7 +32,7 @@ import 'pdap-design-system/styles';
 import { Button, Form } from 'pdap-design-system';
 ```
 
-4. Import and use the tailwind config (if your project is using tailwind)
+4. Optional: Import the tailwind config if you need to use additional tailwind styles.
 
 ```
 // tailwind.config.js
