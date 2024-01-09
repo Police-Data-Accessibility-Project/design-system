@@ -17,4 +17,4 @@ export * from './components/Nav/types';
 export * from './components/TileIcon/types';
 
 // Config
-export * from '../config';
+export * from './config';

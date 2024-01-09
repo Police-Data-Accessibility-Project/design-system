@@ -1,4 +1,11 @@
 {
 	"css.validate": false,
-	"eslint.validate": ["typescript", "javascript", "vue"],
+	"eslint.validate": [
+		"typescript",
+		"javascript",
+		"vue"
+	],
+	"editor.codeActionsOnSave": {
+		"source.eslint.fixAll": "explicit"
+	},
 }
