@@ -117,6 +117,7 @@
 		"badges:build": "node ./tools/generateBuildBadge.js",
 		"badges:coverage": "node ./tools/generateCoverageBadge.js"
 	},
+	"workspaces": ["eslint-config"],
 	"bin": {
 		"pdap-design-system": "./bin/pdap-design-system-cli.js"
 	},
