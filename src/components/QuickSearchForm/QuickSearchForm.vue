@@ -42,8 +42,8 @@ import { ref } from 'vue';
 
 const router = useRouter();
 
-const props = withDefaults(defineProps<{ mode: 'dev' | 'prod' }>(), {
-	mode: 'prod',
+const props = withDefaults(defineProps<{ baseUrlForRedirect: string }>(), {
+	baseUrlForRedirect: 'https://data-sources.pdap.io',
 });
 
 const formSchema = [
@@ -85,13 +85,9 @@ function handleSubmit(values: { location: string; searchTerm: string }) {
 	if (router.getRoutes().some((route) => route.path.includes('/search/'))) {
 		router.push(`/search/${searchTerm}/${location}`);
 	} else {
-		// Otherwise navigate via window
-		const baseUrl =
-			props.mode === 'prod'
-				? 'https://data-sources.pdap.io'
-				: 'https://data-sources.pdap.dev';
-
-		window.location.assign(`${baseUrl}/search/${searchTerm}/${location}`);
+		window.location.assign(
+			`${props.baseUrlForRedirect}/search/${searchTerm}/${location}`
+		);
 	}
 }
 </script>

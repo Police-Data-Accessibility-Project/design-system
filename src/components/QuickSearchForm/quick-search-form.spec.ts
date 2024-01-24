@@ -167,7 +167,8 @@ describe('QuickSearchForm component', () => {
 		});
 	});
 
-	test('Form triggers window navigation when rendered in app without /search/ route — dev mode', async () => {
+	test('Form triggers window navigation when rendered in app without /search/ route — custom baseUrlForRedirect', async () => {
+		const baseUrlForRedirect = 'https://data-sources.pdap.dev';
 		getRoutes.mockReturnValueOnce([
 			{ path: '/' },
 			{ path: '/foo' },
@@ -177,7 +178,7 @@ describe('QuickSearchForm component', () => {
 		const wrapper = mount(QuickSearchForm, {
 			...base,
 			props: {
-				mode: 'dev' as const,
+				baseUrlForRedirect,
 			},
 		});
 
