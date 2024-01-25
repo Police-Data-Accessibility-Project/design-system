@@ -32,7 +32,20 @@ import 'pdap-design-system/styles';
 import { Button, Form } from 'pdap-design-system';
 ```
 
-4. Optional: Import the tailwind config if you need to use additional tailwind styles.
+4. Extend the `es-lint` config in the `eslintrc` file, for consistency in linting between client apps:
+
+```
+{ 
+  ...,
+	extends: [
+		"@pdap-design-system/eslint-config",
+    ...
+	],
+}
+```
+
+
+1. (Optional) Import the tailwind config if you need to use additional tailwind styles.
 
 ```
 // tailwind.config.js
