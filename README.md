@@ -32,7 +32,8 @@ import 'pdap-design-system/styles';
 import { Button, Form } from 'pdap-design-system';
 ```
 
-4. Extend the `es-lint` config in the `eslintrc` file, for consistency in linting between client apps:
+1. Extend the `es-lint` config, for consistency in linting between client apps:
+First `npm install --save-dev @pdap-design-system/eslint-config`, then, in `eslintrc`:
 
 ```
 { 
@@ -45,7 +46,7 @@ import { Button, Form } from 'pdap-design-system';
 ```
 
 
-1. (Optional) Import the tailwind config if you need to use additional tailwind styles.
+5. (Optional) Import the tailwind config if you need to use additional tailwind styles.
 
 ```
 // tailwind.config.js
@@ -64,7 +65,7 @@ module.exports = {
 
 ```
 
-5. If the project is using `TypeScript`, the component props definitions and other types are exposed for import as well.  
+6. If the project is using `TypeScript`, the component props definitions and other types are exposed for import as well.  
    _n.b. This can be particularly useful for composing `Form` schemas, where `Input` schema objects are defined differently depending on the `type` of input desired._
 
 ```
