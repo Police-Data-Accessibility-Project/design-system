@@ -112,7 +112,7 @@
 		"prepare": "husky install",
 		"test": "vitest --dom --run --coverage",
 		"test:changed": "npm run test -- --changed",
-		"test:ci": "test --watchAll=false",
+		"test:ci": "npm run test -- --silent",
 		"typecheck": "vue-tsc",
 		"badges": "run-p badges:*",
 		"badges:build": "node ./tools/generateBuildBadge.js",
