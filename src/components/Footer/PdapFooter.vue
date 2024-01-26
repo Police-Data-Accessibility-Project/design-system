@@ -28,7 +28,7 @@
 
 			<!-- Copyright and policies -->
 			<p class="pdap-footer-copyright">
-				© 2023 Police Data Accessibility Project<br />
+				© {{ new Date().getFullYear() }} Police Data Accessibility Project<br />
 			</p>
 			<p class="pdap-footer-copyright">
 				PDAP is a non-profit. EIN: 85-4207132.
