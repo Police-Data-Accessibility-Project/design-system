@@ -96,7 +96,7 @@
 	"scripts": {
 		"_commit": "cz",
 		"build": "vite build && vue-tsc && npm run badges:build",
-		"build:watch": "npm run build -- --watch",
+		"build:watch": "vite build && vue-tsc --watch",
 		"ci": "npm run clean && npm ci",
 		"clean": "run-p clean:*",
 		"clean:deps": "rimraf node_modules",
