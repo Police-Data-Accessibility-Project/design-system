@@ -15,6 +15,7 @@ module.exports = {
 	rules: {
 		'vue/require-default-prop': 'off',
 		indent: 'off',
+		'vue/no-reserved-component-names': 'off',
 		'vue/html-self-closing': [
 			'error',
 			{
