@@ -1,4 +1,4 @@
 export interface PdapButtonProps {
-	intent?: 'primary' | 'secondary';
+	intent?: 'primary' | 'secondary' | 'tertiary';
 	isLoading?: boolean;
 }
