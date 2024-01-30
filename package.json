@@ -46,6 +46,7 @@
 	"devDependencies": {
 		"@commitlint/cli": "^18.4.3",
 		"@commitlint/config-conventional": "^18.4.3",
+		"@pdap-design-system/eslint-config": "^1.0.0",
 		"@semantic-release/changelog": "^6.0.3",
 		"@semantic-release/git": "^10.0.1",
 		"@semantic-release/release-notes-generator": "^12.1.0",
@@ -107,15 +108,19 @@
 		"lint:es": "eslint src --ext .ts .",
 		"lint:ts": "vue-tsc",
 		"postbuild": "run-p clean:test && rimraf dist/{config,utils}",
+		"posttest": "npm run badges:coverage",
 		"prepare": "husky install",
-		"test": "vitest --dom --run --coverage && npm run badges:coverage",
+		"test": "vitest --dom --run --coverage",
 		"test:changed": "npm run test -- --changed",
-		"test:ci": "test --watchAll=false",
+		"test:ci": "npm run test -- --silent",
 		"typecheck": "vue-tsc",
 		"badges": "run-p badges:*",
 		"badges:build": "node ./tools/generateBuildBadge.js",
 		"badges:coverage": "node ./tools/generateCoverageBadge.js"
 	},
+	"workspaces": [
+		"eslint-config"
+	],
 	"bin": {
 		"pdap-design-system": "./bin/pdap-design-system-cli.js"
 	},
