@@ -11,13 +11,15 @@ exports[`QuickSearchForm component > Renders a QuickSearchForm 1`] = `
     <!--v-if-->
     <div class="pdap-grid-container pdap-input">
       <!-- Text -->
-      <input id="search-term" name="searchTerm" placeholder="Enter a keyword, or &#x27;all&#x27;" type="text">
+      <input id="search-term" name="searchTerm" placeholder="Enter a keyword, or &#x27;all&#x27;" type="text"><!-- Password -->
+      <!--v-if-->
       <!--v-if-->
       <label class="pdap-input-label" for="search-term">What are you looking for?</label>
     </div>
     <div class="pdap-grid-container pdap-input">
       <!-- Text -->
-      <input id="location" name="location" placeholder="Enter a place, or &#x27;all&#x27;" type="text">
+      <input id="location" name="location" placeholder="Enter a place, or &#x27;all&#x27;" type="text"><!-- Password -->
+      <!--v-if-->
       <!--v-if-->
       <label class="pdap-input-label" for="location">From where?</label>
     </div>

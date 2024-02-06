@@ -23,6 +23,35 @@ const schema = [
 		},
 	},
 	{
+		id: 'test-email',
+		label: 'Email test input',
+		name: 'email',
+		placeholder: 'Email',
+		type: PdapInputTypes.TEXT,
+		value: '',
+		validators: {
+			email: {
+				message: 'Please enter a valid email address',
+				value: true,
+			},
+		},
+	},
+	{
+		id: 'test-password',
+		label: 'Password test input',
+		name: 'password',
+		placeholder: 'Password',
+		type: PdapInputTypes.TEXT,
+		value: '',
+		validators: {
+			password: {
+				message:
+					'Please enter a password of 8 characters, with at least one capital letter, one lowercase letter, one number, and one special character',
+				value: true,
+			},
+		},
+	},
+	{
 		id: 'test-2',
 		label: 'Second test input',
 		name: 'testTwo',
@@ -133,6 +162,8 @@ describe('Form component', () => {
 		// Get elements
 		const inputTextOne = await wrapper.find('#test-1');
 		const inputTextTwo = await wrapper.find('#test-2');
+		const inputEmail = await wrapper.find('#test-email');
+		const inputPassword = await wrapper.find('#test-password');
 		const inputCheckboxDefaultChecked = await wrapper.find(
 			'#checkbox-default-checked'
 		);
@@ -144,6 +175,8 @@ describe('Form component', () => {
 		const elements = [
 			inputTextOne,
 			inputTextTwo,
+			inputEmail,
+			inputPassword,
 			inputCheckboxDefaultChecked,
 			inputCheckboxDefaultUnchecked,
 		];
@@ -152,7 +185,7 @@ describe('Form component', () => {
 		elements.forEach((element) => {
 			expect(element.exists()).toBe(true);
 		});
-		elements.slice(0, 1).forEach((element) => {
+		elements.slice(0, 3).forEach((element) => {
 			expect((element.element as HTMLInputElement).value).toBe('');
 		});
 		expect(
@@ -165,6 +198,8 @@ describe('Form component', () => {
 		// Interact with elements
 		await inputTextOne.setValue('foo');
 		await inputTextTwo.setValue('bar');
+		await inputEmail.setValue('hello@hello.com');
+		await inputPassword.setValue('P@ssword1!');
 		await inputCheckboxDefaultChecked.trigger('change');
 		await inputCheckboxDefaultUnchecked.trigger('change');
 		await nextTick();
@@ -172,6 +207,12 @@ describe('Form component', () => {
 		// Assert new values
 		expect((inputTextOne.element as HTMLInputElement).value).toBe('foo');
 		expect((inputTextTwo.element as HTMLInputElement).value).toBe('bar');
+		expect((inputEmail.element as HTMLInputElement).value).toBe(
+			'hello@hello.com'
+		);
+		expect((inputPassword.element as HTMLInputElement).value).toBe(
+			'P@ssword1!'
+		);
 		expect(
 			(inputCheckboxDefaultChecked.element as HTMLInputElement).value
 		).toBe('false');
@@ -185,10 +226,15 @@ describe('Form component', () => {
 
 		const inputTextOne = wrapper.find('#test-1');
 		const inputTextTwo = wrapper.find('#test-2');
+		const inputEmail = await wrapper.find('#test-email');
+		const inputPassword = await wrapper.find('#test-password');
+
 		await nextTick();
 
 		await inputTextOne.setValue('foo');
 		await inputTextTwo.setValue('bar');
+		await inputEmail.setValue('hello@hello.com');
+		await inputPassword.setValue('P@ssword1!');
 
 		await wrapper.find('form').trigger('submit');
 		await nextTick();
@@ -197,6 +243,8 @@ describe('Form component', () => {
 		expect(wrapper.emitted('submit')?.[0][0]).toStrictEqual({
 			checkboxDefaultChecked: 'true',
 			checkboxDefaultUnchecked: 'false',
+			email: 'hello@hello.com',
+			password: 'P@ssword1!',
 			testOne: 'foo',
 			testTwo: 'bar',
 		});
@@ -208,10 +256,14 @@ describe('Form component', () => {
 
 		const inputTextOne = wrapper.find('#test-1');
 		const inputTextTwo = wrapper.find('#test-2');
+		const inputEmail = await wrapper.find('#test-email');
+		const inputPassword = await wrapper.find('#test-password');
 		await nextTick();
 
 		await inputTextOne.setValue('');
 		await inputTextTwo.setValue('a');
+		await inputEmail.setValue('hello');
+		await inputPassword.setValue('Pass');
 		await nextTick();
 
 		await wrapper.find('form').trigger('submit');
@@ -228,7 +280,8 @@ describe('Form component', () => {
 		// Set values to correct values
 		await inputTextOne.setValue('aaaaa');
 		await inputTextTwo.setValue('bvvvvv');
-
+		await inputEmail.setValue('hello@hello.com');
+		await inputPassword.setValue('P@ssword1!');
 		await nextTick();
 		wrapper.vm.$forceUpdate();
 
