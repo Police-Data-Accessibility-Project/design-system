@@ -54,7 +54,10 @@ describe('Input component', () => {
 	});
 
 	test('Renders password input in okay state', () => {
-		const wrapper = mount(PdapInput, {...baseText, props: {...baseText.props, type: PdapInputTypes.PASSWORD}});
+		const wrapper = mount(PdapInput, {
+			...baseText,
+			props: { ...baseText.props, type: PdapInputTypes.PASSWORD },
+		});
 
 		expect(
 			wrapper.find('.pdap-input').find('input[type="password"]').exists()
@@ -66,7 +69,11 @@ describe('Input component', () => {
 	test('Renders password input in error state', () => {
 		const wrapper = mount(PdapInput, {
 			...baseText,
-			props: { ...baseText.props, error: 'error message', type: PdapInputTypes.PASSWORD},
+			props: {
+				...baseText.props,
+				error: 'error message',
+				type: PdapInputTypes.PASSWORD,
+			},
 		});
 
 		expect(

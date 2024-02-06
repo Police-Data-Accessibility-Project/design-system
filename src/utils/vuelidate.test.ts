@@ -170,7 +170,7 @@ describe('Vuelidate utils', () => {
 			expect(emailWithMessage?.email.$params).toStrictEqual({
 				type: 'email',
 			});
-			
+
 			// @ts-expect-error
 			expect(emailWithMessage.email.$message).toBe('error message');
 		});
