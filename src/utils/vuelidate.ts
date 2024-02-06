@@ -5,10 +5,11 @@ import {
 	PdapLengthRules,
 } from 'src/components/Form/types.ts';
 
-/**
- * Type predicate to ensure the passed validator is a valid one.
- * @param s string to check against keys of the vuelidate validators object
- */
+// Custom rules
+export const password = validators.helpers.regex(
+	/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/
+);
+
 export function isPdapVuelidateValidator(
 	s: string
 ): s is keyof PdapFormValidators {
@@ -17,6 +18,18 @@ export function isPdapVuelidateValidator(
 
 export function isLengthRule(s: string): s is PdapLengthRules {
 	return ['maxLength', 'minLength'].includes(s);
+}
+
+export function isRequiredRule(s: string): s is 'required' {
+	return s === 'required';
+}
+
+export function isEmailRule(s: string): s is 'email' {
+	return s === 'email';
+}
+
+export function isPasswordRule(s: string): s is 'password' {
+	return s === 'password';
 }
 
 export function makeLengthRule(rule: PdapLengthRules, value: number) {
@@ -45,6 +58,27 @@ export function makeRequiredRuleWithCustomMessage(message: string) {
 	};
 }
 
+export function makeEmailRule() {
+	return { email: validators.email };
+}
+
+export function makeEmailRuleWithCustomMessage(message: string) {
+	return {
+		email: validators.helpers.withMessage(message, validators.email),
+	};
+}
+
+export function makePasswordRule() {
+	return { password };
+}
+
+export function makePasswordRuleWithCustomMessage(message: string) {
+	return {
+		password: validators.helpers.withMessage(message, password),
+	};
+}
+
+// TODO: update call signatures so that TS is happy with the delimited return type (see errors in ./vuelidate.test.ts)
 export function createRule<T extends PdapFormValidator<number | boolean>>(
 	rule: string,
 	validator: T
@@ -65,9 +99,17 @@ export function createRule<T extends PdapFormValidator<number | boolean>>(
 		typeof validator.value === 'number'
 	) {
 		return makeLengthRule(rule, validator.value);
-	} else if (rule === 'required' && typeof validator.message === 'string') {
+	} else if (isEmailRule(rule) && typeof validator.message === 'string') {
+		return makeEmailRuleWithCustomMessage(validator.message);
+	} else if (isEmailRule(rule) && typeof validator.message === 'undefined') {
+		return makeEmailRule();
+	} else if (isPasswordRule(rule) && typeof validator.message === 'string') {
+		return makePasswordRuleWithCustomMessage(validator.message);
+	} else if (isPasswordRule(rule) && typeof validator.message === 'undefined') {
+		return makePasswordRule();
+	} else if (isRequiredRule(rule) && typeof validator.message === 'string') {
 		return makeRequiredRuleWithCustomMessage(validator.message);
-	} else if (rule === 'required' && typeof validator.message === 'undefined') {
+	} else if (isRequiredRule(rule) && typeof validator.message === 'undefined') {
 		return makeRequiredRule();
 	}
 	throw new Error('No valid rule detected');
