@@ -4,8 +4,12 @@ import {
 	createRule,
 	isLengthRule,
 	isPdapVuelidateValidator,
+	makeEmailRule,
+	makeEmailRuleWithCustomMessage,
 	makeLengthRule,
 	makeLengthRuleWithCustomMessage,
+	makePasswordRule,
+	makePasswordRuleWithCustomMessage,
 	makeRequiredRule,
 	makeRequiredRuleWithCustomMessage,
 } from './vuelidate';
@@ -78,6 +82,38 @@ describe('Vuelidate utils', () => {
 		expect(requiredWithMessage['required'].$message).toBe('error message');
 	});
 
+	test('makeEmailRule', () => {
+		const email = makeEmailRule();
+		expect(email).toHaveProperty('email');
+		expect(
+			(email.email as unknown as ValidationRuleWithParams).$params
+		).toStrictEqual({
+			type: 'email',
+		});
+	});
+
+	test('makeEmailRuleWithMessage', () => {
+		const emailWithMessage = makeEmailRuleWithCustomMessage('error message');
+		expect(emailWithMessage).toHaveProperty('email');
+		expect(
+			(emailWithMessage.email as unknown as ValidationRuleWithParams).$params
+		).toStrictEqual({
+			type: 'email',
+		});
+		expect(emailWithMessage.email.$message).toBe('error message');
+	});
+
+	test('makePasswordRule', () => {
+		const password = makePasswordRule();
+		expect(typeof password.password).toBe('function');
+	});
+
+	test('makePasswordRuleWithCustomMessage', () => {
+		const password = makePasswordRuleWithCustomMessage('error message');
+		expect(typeof password.password.$validator).toBe('function');
+		expect(password.password.$message).toBe('error message');
+	});
+
 	describe('createRule', () => {
 		test('creates length rules', () => {
 			const max = createRule('maxLength', { value: 3 });
@@ -93,14 +129,67 @@ describe('Vuelidate utils', () => {
 			).toBe('error message');
 		});
 
-		test('creates required rule', () => {
+		test('creates required rules', () => {
 			const required = createRule('required', { value: true });
 			expect(required).toHaveProperty('required');
-			expect(
-				(required['required'] as unknown as ValidationRuleWithParams).$params
-			).toStrictEqual({
+			// @ts-expect-error
+			expect(required?.required.$params).toStrictEqual({
 				type: 'required',
 			});
+
+			const requiredWithMessage = createRule('required', {
+				value: true,
+				message: 'error message',
+			});
+			expect(requiredWithMessage).toHaveProperty('required');
+
+			// @ts-expect-error
+			expect(requiredWithMessage?.required.$params).toStrictEqual({
+				type: 'required',
+			});
+
+			// @ts-expect-error
+			expect(requiredWithMessage.required.$message).toBe('error message');
+		});
+
+		test('creates email rules', () => {
+			const email = createRule('email', { value: true });
+			expect(email).toHaveProperty('email');
+			// @ts-expect-error
+			expect(email?.email.$params).toStrictEqual({
+				type: 'email',
+			});
+
+			const emailWithMessage = createRule('email', {
+				value: true,
+				message: 'error message',
+			});
+			expect(emailWithMessage).toHaveProperty('email');
+
+			// @ts-expect-error
+			expect(emailWithMessage?.email.$params).toStrictEqual({
+				type: 'email',
+			});
+			
+			// @ts-expect-error
+			expect(emailWithMessage.email.$message).toBe('error message');
+		});
+
+		test('creates password rules', () => {
+			const password = createRule('password', { value: true });
+			expect(password).toHaveProperty('password');
+			expect(typeof (password as { password: () => void }).password).toBe(
+				'function'
+			);
+
+			const passwordWithMessage = createRule('password', {
+				value: true,
+				message: 'error message',
+			});
+			// @ts-expect-error
+			expect(typeof passwordWithMessage.password.$validator).toBe('function');
+			// @ts-expect-error
+			expect(passwordWithMessage.password.$message).toBe('error message');
 		});
 
 		test('Throw error with unsuppored rule', () => {
