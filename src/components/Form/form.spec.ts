@@ -41,7 +41,7 @@ const schema = [
 		label: 'Password test input',
 		name: 'password',
 		placeholder: 'Password',
-		type: PdapInputTypes.TEXT,
+		type: PdapInputTypes.PASSWORD,
 		value: '',
 		validators: {
 			password: {

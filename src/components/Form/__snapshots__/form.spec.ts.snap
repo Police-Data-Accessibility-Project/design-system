@@ -19,8 +19,9 @@ exports[`Form component > Renders component in form error state 1`] = `
   </div>
   <div class="pdap-grid-container pdap-input">
     <!-- Text -->
-    <input id="test-password" name="password" placeholder="Password" type="text"><!-- Password -->
     <!--v-if-->
+    <!-- Password -->
+    <input id="test-password" name="password" placeholder="Password" type="password">
     <!--v-if-->
     <label class="pdap-input-label" for="test-password">Password test input</label>
   </div>
@@ -72,8 +73,9 @@ exports[`Form component > Renders component in static state 1`] = `
   </div>
   <div class="pdap-grid-container pdap-input">
     <!-- Text -->
-    <input id="test-password" name="password" placeholder="Password" type="text"><!-- Password -->
     <!--v-if-->
+    <!-- Password -->
+    <input id="test-password" name="password" placeholder="Password" type="password">
     <!--v-if-->
     <label class="pdap-input-label" for="test-password">Password test input</label>
   </div>
