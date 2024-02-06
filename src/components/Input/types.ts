@@ -1,6 +1,7 @@
 export enum PdapInputTypes {
 	CHECKBOX = 'checkbox',
 	TEXT = 'text',
+	PASSWORD = 'password',
 }
 
 export interface PdapInputBaseProps {
