@@ -17,16 +17,8 @@
 					: ''
 			"
 			:value="values[field.name]"
-			@change="
-				field.type !== PdapInputTypes.TEXT
-					? updateForm(field.name, $event)
-					: undefined
-			"
-			@input="
-				field.type === PdapInputTypes.TEXT
-					? updateForm(field.name, $event)
-					: undefined
-			"
+			@change="updateForm(field.name, $event)"
+			@input="updateForm(field.name, $event)"
 		/>
 		<slot />
 	</form>

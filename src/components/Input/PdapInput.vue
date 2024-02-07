@@ -16,6 +16,18 @@
 			v-bind="$attrs"
 			@input="input"
 		/>
+		
+		<!-- Password -->
+		<input
+			v-if="type === PdapInputTypes.PASSWORD"
+			:id="id"
+			type="password"
+			:name="name"
+			:placeholder="placeholder"
+			:value="value"
+			v-bind="$attrs"
+			@input="input"
+		/>
 
 		<!-- Checkbox -->
 		<input

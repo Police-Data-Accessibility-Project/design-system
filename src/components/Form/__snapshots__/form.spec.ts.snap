@@ -5,18 +5,37 @@ exports[`Form component > Renders component in form error state 1`] = `
   <div class="pdap-form-error-message">This form is incorrect</div>
   <div class="pdap-grid-container pdap-input">
     <!-- Text -->
-    <input id="test-1" name="testOne" placeholder="Enter a value here" type="text">
+    <input id="test-1" name="testOne" placeholder="Enter a value here" type="text"><!-- Password -->
+    <!--v-if-->
     <!--v-if-->
     <label class="pdap-input-label" for="test-1">First test input</label>
   </div>
   <div class="pdap-grid-container pdap-input">
     <!-- Text -->
-    <input id="test-2" name="testTwo" placeholder="Enter another value here" type="text">
+    <input id="test-email" name="email" placeholder="Email" type="text"><!-- Password -->
+    <!--v-if-->
+    <!--v-if-->
+    <label class="pdap-input-label" for="test-email">Email test input</label>
+  </div>
+  <div class="pdap-grid-container pdap-input">
+    <!-- Text -->
+    <!--v-if-->
+    <!-- Password -->
+    <input id="test-password" name="password" placeholder="Password" type="password">
+    <!--v-if-->
+    <label class="pdap-input-label" for="test-password">Password test input</label>
+  </div>
+  <div class="pdap-grid-container pdap-input">
+    <!-- Text -->
+    <input id="test-2" name="testTwo" placeholder="Enter another value here" type="text"><!-- Password -->
+    <!--v-if-->
     <!--v-if-->
     <label class="pdap-input-label" for="test-2">Second test input</label>
   </div>
   <div class="pdap-grid-container pdap-input">
     <!-- Text -->
+    <!--v-if-->
+    <!-- Password -->
     <!-- Checkbox -->
     <input checked class="pdap-input-checkbox" id="checkbox-default-checked" name="checkboxDefaultChecked" type="checkbox" value="true">
     <!--v-if-->
@@ -24,6 +43,8 @@ exports[`Form component > Renders component in form error state 1`] = `
   </div>
   <div class="pdap-grid-container pdap-input">
     <!-- Text -->
+    <!--v-if-->
+    <!-- Password -->
     <!-- Checkbox -->
     <input class="pdap-input-checkbox" id="checkbox-default-unchecked" name="checkboxDefaultUnchecked" type="checkbox" value="false">
     <!--v-if-->
@@ -38,18 +59,37 @@ exports[`Form component > Renders component in static state 1`] = `
   <!--v-if-->
   <div class="pdap-grid-container pdap-input">
     <!-- Text -->
-    <input id="test-1" name="testOne" placeholder="Enter a value here" type="text">
+    <input id="test-1" name="testOne" placeholder="Enter a value here" type="text"><!-- Password -->
+    <!--v-if-->
     <!--v-if-->
     <label class="pdap-input-label" for="test-1">First test input</label>
   </div>
   <div class="pdap-grid-container pdap-input">
     <!-- Text -->
-    <input id="test-2" name="testTwo" placeholder="Enter another value here" type="text">
+    <input id="test-email" name="email" placeholder="Email" type="text"><!-- Password -->
+    <!--v-if-->
+    <!--v-if-->
+    <label class="pdap-input-label" for="test-email">Email test input</label>
+  </div>
+  <div class="pdap-grid-container pdap-input">
+    <!-- Text -->
+    <!--v-if-->
+    <!-- Password -->
+    <input id="test-password" name="password" placeholder="Password" type="password">
+    <!--v-if-->
+    <label class="pdap-input-label" for="test-password">Password test input</label>
+  </div>
+  <div class="pdap-grid-container pdap-input">
+    <!-- Text -->
+    <input id="test-2" name="testTwo" placeholder="Enter another value here" type="text"><!-- Password -->
+    <!--v-if-->
     <!--v-if-->
     <label class="pdap-input-label" for="test-2">Second test input</label>
   </div>
   <div class="pdap-grid-container pdap-input">
     <!-- Text -->
+    <!--v-if-->
+    <!-- Password -->
     <!-- Checkbox -->
     <input checked class="pdap-input-checkbox" id="checkbox-default-checked" name="checkboxDefaultChecked" type="checkbox" value="true">
     <!--v-if-->
@@ -57,6 +97,8 @@ exports[`Form component > Renders component in static state 1`] = `
   </div>
   <div class="pdap-grid-container pdap-input">
     <!-- Text -->
+    <!--v-if-->
+    <!-- Password -->
     <!-- Checkbox -->
     <input class="pdap-input-checkbox" id="checkbox-default-unchecked" name="checkboxDefaultUnchecked" type="checkbox" value="false">
     <!--v-if-->

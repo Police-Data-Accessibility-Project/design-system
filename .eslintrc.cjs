@@ -26,5 +26,13 @@ module.exports = {
 	],
 	rules: {
 		"@typescript-eslint/indent": "off",
+		"@typescript-eslint/ban-ts-comment": [
+			"error", {
+				'ts-expect-error': false,
+				'ts-ignore': true,
+				'ts-nocheck': true,
+				'ts-check': false,
+				minimumDescriptionLength: 3,		
+		}]
 	}
 }

@@ -17,6 +17,8 @@ export interface PdapFormValidators {
 	maxLength: PdapFormValidator<number>;
 	minLength: PdapFormValidator<number>;
 	required: PdapFormValidator<boolean>;
+	email: PdapFormValidator<boolean>;
+	password: PdapFormValidator<boolean>;
 }
 
 export interface PdapFormInputProps

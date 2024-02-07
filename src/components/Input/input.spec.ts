@@ -53,6 +53,36 @@ describe('Input component', () => {
 		expect(wrapper.html()).toMatchSnapshot();
 	});
 
+	test('Renders password input in okay state', () => {
+		const wrapper = mount(PdapInput, {
+			...baseText,
+			props: { ...baseText.props, type: PdapInputTypes.PASSWORD },
+		});
+
+		expect(
+			wrapper.find('.pdap-input').find('input[type="password"]').exists()
+		).toBe(true);
+		expect(wrapper.find('.pdap-input-error-message').exists()).toBe(false);
+		expect(wrapper.html()).toMatchSnapshot();
+	});
+
+	test('Renders password input in error state', () => {
+		const wrapper = mount(PdapInput, {
+			...baseText,
+			props: {
+				...baseText.props,
+				error: 'error message',
+				type: PdapInputTypes.PASSWORD,
+			},
+		});
+
+		expect(
+			wrapper.find('.pdap-input').find('input[type="password"]').exists()
+		).toBe(true);
+		expect(wrapper.find('.pdap-input-error-message').exists()).toBe(true);
+		expect(wrapper.html()).toMatchSnapshot();
+	});
+
 	test('Renders checkbox input in okay state', () => {
 		const wrapper = mount(PdapInput, baseCheckbox);
 
