@@ -3,6 +3,7 @@
 		:id="id"
 		:name="name"
 		class="pdap-form"
+		@change="change"
 		@submit.prevent="submit($event)"
 	>
 		<div
@@ -50,7 +51,7 @@ const props = withDefaults(defineProps<PdapFormProps>(), {
 });
 
 // Emits
-const emit = defineEmits(['submit']);
+const emit = defineEmits(['submit', 'change']);
 
 // State
 const data = computed(() =>
@@ -102,6 +103,7 @@ const errorMessage = ref(props.error);
 // Handlers
 function updateForm(fieldName: string, value: string) {
 	values[fieldName] = value;
+	change();
 }
 
 // Effects
@@ -128,6 +130,10 @@ watchEffect(() => {
 		},
 	});
 });
+
+function change() {
+	emit('change', { ...values });
+}
 
 async function submit(event: Event) {
 	// Check form submission
