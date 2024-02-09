@@ -17,6 +17,7 @@
 			:error="error"
 			:schema="formSchema"
 			name="quickSearchForm"
+			@change="handleChange"
 			@submit="handleSubmit"
 		>
 			<Button
@@ -66,6 +67,15 @@ const formSchema = [
 ];
 
 const error = ref<string | undefined>(undefined);
+
+function handleChange(values: { location: string; searchTerm: string }) {
+	// Reset error on form change
+	if (error.value) {
+		if (Object.values(values).some(Boolean)) {
+			error.value = undefined;
+		}
+	}
+}
 
 function handleSubmit(values: { location: string; searchTerm: string }) {
 	/**  Extra validation - backend expects 1 form value to be filled in.
