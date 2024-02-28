@@ -25,6 +25,35 @@
 				>Search Data Sources</Button
 			>
 		</Form>
+
+		<p class="max-w-[unset] text-med">
+			For example, you could search for
+			<RouterLink v-if="hasSearchRoute" to="/search/stops/pittsburgh">
+				stops in Pittsburgh
+			</RouterLink>
+			<a
+				v-else
+				target="_blank"
+				rel="noreferrer"
+				:href="`${props.baseUrlForRedirect}/search/stops/pittsburgh`"
+			>
+				stops in Pittsburgh
+			</a>
+
+			or
+			<RouterLink v-if="hasSearchRoute" to="/search/complaints/all">
+				complaints everywhere
+			</RouterLink>
+			<a
+				v-else
+				target="_blank"
+				rel="noreferrer"
+				:href="`${props.baseUrlForRedirect}/search/complaints/all`"
+			>
+				complaints everywhere
+			</a>
+			.
+		</p>
 	</FlexContainer>
 </template>
 
@@ -35,6 +64,7 @@ import { useRouter } from 'vue-router';
 import Button from '../Button/PdapButton.vue';
 import FlexContainer from '../FlexContainer/FlexContainer.vue';
 import Form from '../Form/PdapForm.vue';
+import { RouterLink } from 'vue-router';
 
 // Types
 import { PdapInputTypes } from '../Input/types';
@@ -66,6 +96,9 @@ const formSchema = [
 ];
 
 const error = ref<string | undefined>(undefined);
+const hasSearchRoute = router
+	.getRoutes()
+	.some((route) => route.path.includes('/search/'));
 
 function handleChange(values: { location: string; searchTerm: string }) {
 	// Reset error on form change
@@ -91,7 +124,7 @@ function handleSubmit(values: { location: string; searchTerm: string }) {
 	searchTerm = searchTerm && searchTerm.length > 0 ? searchTerm : 'all';
 
 	// If search route exists, route to it
-	if (router.getRoutes().some((route) => route.path.includes('/search/'))) {
+	if (hasSearchRoute) {
 		router.push(`/search/${searchTerm}/${location}`);
 	} else {
 		window.location.assign(

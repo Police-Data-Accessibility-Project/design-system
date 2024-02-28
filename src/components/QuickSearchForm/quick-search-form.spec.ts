@@ -2,7 +2,7 @@
 import QuickSearchForm from './QuickSearchForm.vue';
 
 // Utils
-import { mount } from '@vue/test-utils';
+import { RouterLinkStub, mount } from '@vue/test-utils';
 import { beforeEach, describe, expect, test, vi } from 'vitest';
 import { nextTick } from 'vue';
 
@@ -31,6 +31,11 @@ vi.stubGlobal('location', {
 const base = {
 	props: {
 		mode: 'prod' as const,
+	},
+	global: {
+		stubs: {
+			RouterLink: RouterLinkStub,
+		},
 	},
 };
 

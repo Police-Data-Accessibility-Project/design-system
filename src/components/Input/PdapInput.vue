@@ -16,7 +16,7 @@
 			v-bind="$attrs"
 			@input="input"
 		/>
-		
+
 		<!-- Password -->
 		<input
 			v-if="type === PdapInputTypes.PASSWORD"
@@ -105,7 +105,7 @@ const errorMessageId = computed(() => `pdap-${props.name}-input-error`);
 	}
 
 	.pdap-input label {
-		@apply max-w-[max-content] text-lg py-2 font-medium;
+		@apply max-w-[max-content] text-lg py-1 font-medium;
 	}
 
 	/* Error state */
