@@ -1,5 +1,11 @@
 <template>
-	<form class="pdap-form" @submit.prevent="submit($event)">
+	<form
+		:id="id"
+		:name="name"
+		class="pdap-form"
+		@change="change"
+		@submit.prevent="submit($event)"
+	>
 		<div
 			v-if="typeof errorMessage === 'string'"
 			class="pdap-form-error-message"
@@ -26,7 +32,7 @@
 
 <script setup lang="ts">
 // Globals
-import { ref, watchEffect } from 'vue';
+import { computed, reactive, ref, watchEffect } from 'vue';
 import { useVuelidate } from '@vuelidate/core';
 
 // Components
@@ -45,10 +51,10 @@ const props = withDefaults(defineProps<PdapFormProps>(), {
 });
 
 // Emits
-const emit = defineEmits(['submit']);
+const emit = defineEmits(['submit', 'change']);
 
 // State
-const data = ref<typeof props.schema>(
+const data = computed(() =>
 	props.schema.map((input) => {
 		const newInput = { ...input };
 		delete newInput.validators;
@@ -57,12 +63,13 @@ const data = ref<typeof props.schema>(
 	})
 );
 
-const values = ref<Record<string, string>>(
-	props.schema.reduce((acc, input) => {
+let values = reactive<Record<string, string>>(
+	data.value.reduce((acc, input) => {
 		switch (input.type) {
 			case PdapInputTypes.CHECKBOX:
 				return { ...acc, [input.name]: String(input.defaultChecked) };
 			case PdapInputTypes.TEXT:
+			case PdapInputTypes.PASSWORD:
 			default:
 				return { ...acc, [input.name]: input.value };
 		}
@@ -95,7 +102,8 @@ const errorMessage = ref(props.error);
 
 // Handlers
 function updateForm(fieldName: string, value: string) {
-	values.value[fieldName] = value;
+	values[fieldName] = value;
+	change();
 }
 
 // Effects
@@ -124,19 +132,23 @@ watchEffect(() => {
 	}
 });
 
+function change() {
+	emit('change', { ...values });
+}
+
 async function submit(event: Event) {
 	// Check form submission
 	const isValidSubmission = await v$.value.$validate();
 	if (isValidSubmission) {
 		// Emit submit event (spread to new object to create new object, this allows us to reset `values` without messing with the data returned)
-		emit('submit', { ...values.value });
+		emit('submit', { ...values });
 		// Reset vuelidate and form
 		v$.value.$reset();
 		const form = <HTMLFormElement>event.target;
 		form.reset();
 
 		// Wipe values state ('' for text inputs, as-was for everything else)
-		values.value = Object.entries(values.value).reduce((acc, [key, value]) => {
+		values = Object.entries(values).reduce((acc, [key, value]) => {
 			return { ...acc, [key]: ['true', 'false'].includes(value) ? value : '' };
 		}, {});
 		return;

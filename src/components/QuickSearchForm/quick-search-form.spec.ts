@@ -205,7 +205,7 @@ describe('QuickSearchForm component', () => {
 		);
 	});
 
-	test('Form errors when submitted with both inputs blank', async () => {
+	test('Form errors when submitted with both inputs blank and clears error on input', async () => {
 		const wrapper = mount(QuickSearchForm, base);
 
 		// Submit
@@ -218,5 +218,10 @@ describe('QuickSearchForm component', () => {
 		expect(wrapper.get('.pdap-form-error-message').text()).toBe(
 			'Either a search term or a location is required.'
 		);
+
+		const searchInput = wrapper.find('#search-term');
+		await searchInput.setValue('foo');
+		await nextTick();
+		expect(wrapper.find('.pdap-form-error-message').exists()).toBe(false);
 	});
 });
