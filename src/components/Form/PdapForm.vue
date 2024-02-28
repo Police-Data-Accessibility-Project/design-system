@@ -108,17 +108,20 @@ watchEffect(() => {
 		errorMessage.value = 'Please update this form to correct the errors';
 });
 
-// Effect - Debug logger
+// Effect - Debug logger - following comment ignores in coverage report
+/* c8 ignore next 12 */
 watchEffect(() => {
-	console.debug(`PdapForm ${props.name}\n`, {
-		errorMessage: errorMessage.value,
-		props,
-		values,
-		vuelidate: {
-			rules,
-			v$,
-		},
-	});
+	if (import.meta.env.MODE === 'development') {
+		console.debug(`PdapForm ${props.name}\n`, {
+			errorMessage: errorMessage.value,
+			props,
+			values,
+			vuelidate: {
+				rules,
+				v$,
+			},
+		});
+	}
 });
 
 async function submit(event: Event) {
