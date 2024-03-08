@@ -1,0 +1,74 @@
+name: Build Status
+
+on:
+  push:
+    branches: [ main, feature/**, feat/**, refactor/** ]
+  pull_request:
+    branches: [ main, feature/**, feat/**, refactor/** ]
+
+jobs:
+  build:
+
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node-version: [14.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v3
+      with:
+        node-version: '20.x'
+        cache: 'npm'
+    - name: Install deps 🧶
+      run: npm ci
+    - name: Build 
+      run: npm run build
+    - name: Test
+      run: npm run test
+
+    # Only run the coverage once
+    - name: Get Coverage for badge
+      run: |
+        # var SUMMARY = [
+        #   '',
+        #   '=============================== Coverage summary ===============================',
+        #   'Statements   : 32.5% ( 39/120 )',
+        #   'Branches     : 38.89% ( 21/54 )',
+        #   'Functions    : 21.74% ( 5/23 )',
+        #   'Lines        : 31.93% ( 38/119 )',
+        #   '================================================================================',
+        #   ''
+        # ];
+        # SUMMARY = SUMMARY.split('\n')[5]; // 'Lines        : 31.93% ( 38/119 )'
+        # SUMMARY = SUMMARY.split(':')[1].split('(')[0].trim(); // '31.93%'
+        SUMMARY="$(npm run test-ci | tail -2 | head -1)"
+        TOKENS=($SUMMARY)
+        # process.env.COVERAGE = '31.93%';
+        echo "COVERAGE=$(echo ${TOKENS[2]})" >> $GITHUB_ENV
+
+        # var REF = 'refs/pull/27/merge.json';
+        REF=${{ github.ref }}
+        # console.log('github.ref: ' + REF);
+        echo "github.ref: $REF"
+        # var PATHS = REF.split('/');
+        IFS='/' read -ra PATHS <<< "$REF"
+        # var BRANCH_NAME = PATHS[1] + PATHS[2];
+        BRANCH_NAME="${PATHS[1]}_${PATHS[2]}"
+        # console.log(BRANCH_NAME); // 'pull_27'
+        echo $BRANCH_NAME
+        # process.env.BRANCH = 'pull_27';
+        echo "BRANCH=$(echo ${BRANCH_NAME})" >> $GITHUB_ENV
+
+    - name: Create the Badge
+      uses: schneegans/dynamic-badges-action@v1.0.0
+      with:
+        auth: ${{ secrets.GIST_SECRET }}
+        gistID: 550f6ee414a26e0c8eae7cb6af3c214e
+        filename: rollup-plugin-critical__${{ env.BRANCH }}.json
+        label: Test Coverage
+        message: ${{ env.COVERAGE }}
+        color: green
+        namedLogo: jest
