@@ -112,6 +112,7 @@
 		"prepare": "husky install",
 		"test": "vitest --dom --run --coverage",
 		"test:changed": "npm run test -- --changed",
+		"test:badge": "vitest run --coverage.enabled --coverage.reporter='text-summary'",
 		"test:ci": "npm run test -- --silent",
 		"typecheck": "vue-tsc",
 		"badges": "run-p badges:*",
