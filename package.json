@@ -59,7 +59,6 @@
 		"@vue/eslint-config-typescript": "^12.0.0",
 		"@vue/test-utils": "^2.4.1",
 		"autoprefixer": "^10.4.16",
-		"badge-maker": "^3.3.1",
 		"cheerio": "1.0.0-rc.12",
 		"conventional-changelog-angular": "^7.0.0",
 		"cross-env": "^7.0.3",
@@ -96,36 +95,27 @@
 	},
 	"scripts": {
 		"_commit": "cz",
-		"build": "vite build && vue-tsc && npm run badges:build",
+		"build": "vite build && vue-tsc",
 		"build:watch": "vite build && vue-tsc --watch",
 		"ci": "npm run clean && npm ci",
 		"clean": "run-p clean:*",
 		"clean:deps": "rimraf node_modules",
-		"clean:build": "rimraf coverage test/report dist",
-		"clean:test": "rimraf coverage test/report",
+		"clean:test": "rimraf coverage",
 		"lint": "run-p lint:*",
 		"lint:css": "stylelint 'src/**/*.{css,vue}'",
 		"lint:es": "eslint src --ext .ts .",
 		"lint:ts": "vue-tsc",
-		"postbuild": "run-p clean:test && rimraf dist/{config,utils}",
-		"posttest": "npm run badges:coverage",
+		"postbuild": "rimraf dist/{config,utils}",
+		"posttest": "npm run clean:test",
 		"prepare": "husky install",
 		"test": "vitest --dom --run --coverage",
 		"test:changed": "npm run test -- --changed",
+		"test:badge": "vitest run --coverage.enabled --coverage.reporter='text-summary'",
 		"test:ci": "npm run test -- --silent",
-		"typecheck": "vue-tsc",
-		"badges": "run-p badges:*",
-		"badges:build": "node ./tools/generateBuildBadge.js",
-		"badges:coverage": "node ./tools/generateCoverageBadge.js"
+		"typecheck": "vue-tsc"
 	},
 	"workspaces": [
 		"eslint-config"
-	],
-	"bin": {
-		"pdap-design-system": "./bin/pdap-design-system-cli.js"
-	},
-	"keywords": [
-		"pdap-design-system"
 	],
 	"files": [
 		"bin",

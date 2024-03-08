@@ -2,8 +2,8 @@
 _A `Vue` component library, styling system, and image asset repository for PDAP-branded client apps._
 
 [![Current npm release](https://img.shields.io/npm/v/pdap-design-system?style=for-the-badge)](https://www.npmjs.com/package/pdap-design-system)
-![Build status](./badges/build.svg) 
-![Test coverage](./badges/coverage.svg) 
+![Build status](https://img.shields.io/github/actions/workflow/status/Police-Data-Accessibility-Project/design-system/build.yaml?branch=main&style=for-the-badge)
+![Coverage Badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/joshuagraber/f3a173e87a763056b73438f503680993/raw/c849e80481d329e6a4176699d52b7ad70d12d829/pdap-design-system__heads_main.json)
 ![License](https://img.shields.io/github/license/Police-Data-Accessibility-Project/design-system.svg?style=for-the-badge&color=green) 
 
 
@@ -86,24 +86,6 @@ Or, if you need them all, you can import all images at the app level. Just remem
 
 ```
 import `pdap-design-system/images`;
-```
-
-### Using the CLI to copy assets to your local project directory
-
-If you want either styles or images copied to a local directory, you can do so from the root directory of your project.
-
-Assets can be copied using the `pdap-design-system` command line method exposed by this package.
-
-One of the following arguments is required:  
-`--copy-assets`: Copies all images and styles.
-`--copy-images`: Copies all images.
-`--copy-styles`: Copies all styles.
-
-The following argument is optional:  
-`--to={path}`: Path to directory where assets should be copied. Defaults to `assets`
-
-```
-  pdap-design-system --copy-images --to=image-assets
 ```
 
 ## Development Setup
