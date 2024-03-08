@@ -1,3 +1,6 @@
 {
-	"recommendations": ["tailwind.tailwindcss", "vue.volar", "vue.vscode-typescript-vue-plugin"]
+	"recommendations": [
+		"tailwind.tailwindcss",
+		"vue.volar"
+	]
 }

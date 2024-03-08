@@ -2,10 +2,8 @@
 _A `Vue` component library, styling system, and image asset repository for PDAP-branded client apps._
 
 [![Current npm release](https://img.shields.io/npm/v/pdap-design-system?style=for-the-badge)](https://www.npmjs.com/package/pdap-design-system)
-<!-- ![Build status](./badges/build.svg) 
-![Test coverage](./badges/coverage.svg)  -->
-(![Coverage Badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/joshuagraber/f3a173e87a763056b73438f503680993/raw/pdap-design-system__heads_refactor.json)
-)
+![Build status](https://img.shields.io/github/actions/workflow/status/Police-Data-Accessibility-Project/design-system/build.yaml?branch=main&style=for-the-badge)
+![Coverage Badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/joshuagraber/f3a173e87a763056b73438f503680993/raw/c849e80481d329e6a4176699d52b7ad70d12d829/pdap-design-system__heads_main.json)
 ![License](https://img.shields.io/github/license/Police-Data-Accessibility-Project/design-system.svg?style=for-the-badge&color=green) 
 
 
