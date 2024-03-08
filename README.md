@@ -88,24 +88,6 @@ Or, if you need them all, you can import all images at the app level. Just remem
 import `pdap-design-system/images`;
 ```
 
-### Using the CLI to copy assets to your local project directory
-
-If you want either styles or images copied to a local directory, you can do so from the root directory of your project.
-
-Assets can be copied using the `pdap-design-system` command line method exposed by this package.
-
-One of the following arguments is required:  
-`--copy-assets`: Copies all images and styles.
-`--copy-images`: Copies all images.
-`--copy-styles`: Copies all styles.
-
-The following argument is optional:  
-`--to={path}`: Path to directory where assets should be copied. Defaults to `assets`
-
-```
-  pdap-design-system --copy-images --to=image-assets
-```
-
 ## Development Setup
 
 1. Clone the repo
