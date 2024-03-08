@@ -121,12 +121,6 @@
 	"workspaces": [
 		"eslint-config"
 	],
-	"bin": {
-		"pdap-design-system": "./bin/pdap-design-system-cli.js"
-	},
-	"keywords": [
-		"pdap-design-system"
-	],
 	"files": [
 		"bin",
 		"dist",
