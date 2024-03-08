@@ -1,0 +1,47 @@
+name: Coverage
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  coverage-badge:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v3
+      with:
+        node-version: '20.x'
+        cache: 'npm'
+    - name: Install deps 🧶
+      run: npm ci
+    - name: Build 
+      run: npm run build
+    - name: Test
+      run: npm run test:badge
+
+    # Only run the coverage once
+    - name: Get Coverage for badge
+      run: |
+        SUMMARY="$(npm run test:badge | tail -2 | head -1)"
+        TOKENS=($SUMMARY)
+        echo "COVERAGE=$(echo ${TOKENS[2]})" >> $GITHUB_ENV
+
+        REF=${{ github.ref }}
+        echo "github.ref: $REF"
+        IFS='/' read -ra PATHS <<< "$REF"
+        BRANCH_NAME="${PATHS[1]}_${PATHS[2]}"
+        echo $BRANCH_NAME
+        echo "BRANCH=$(echo ${BRANCH_NAME})" >> $GITHUB_ENV
+
+    - name: Create the Badge
+      uses: schneegans/dynamic-badges-action@v1.0.0
+      with:
+        auth: ${{ secrets.GIST_SECRET }}
+        gistID: f3a173e87a763056b73438f503680993
+        filename: pdap-design-system__${{ env.BRANCH }}.json
+        label: Test Coverage
+        message: ${{ env.COVERAGE }}
+        color: green
+        namedLogo: vitest
+        style: for-the-badge
