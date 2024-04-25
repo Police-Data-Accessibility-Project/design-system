@@ -2,7 +2,7 @@
  * @type {import('semantic-release').GlobalConfig}
  */
 module.exports = {
-	branches: ['main'],
+	branches: ['main', { name: 'beta', channel: 'beta', prerelease: true }],
 	plugins: [
 		// Run in order:
 		// 1. Analyze commits to determine release type
@@ -11,7 +11,8 @@ module.exports = {
 			{
 				preset: 'angular',
 				releaseRules: [
-					{ type: 'docs', release: 'patch' },
+					{ type: 'feature', release: 'minor'},
+					{ type: 'docs', message: '*README*', release: 'patch' },
 					{ type: 'refactor', release: 'patch' },
 					{ type: 'style', release: 'patch' },
 				],
@@ -35,6 +36,7 @@ module.exports = {
 				presetConfig: {
 					types: [
 						{ type: 'feat', section: 'Features' },
+						{ type: 'feature', section: 'Features' },
 						{ type: 'fix', section: 'Bug Fixes' },
 						{ type: 'hotfix', section: 'Bug Fixes' },
 						{ type: 'docs', section: 'Docs' },
