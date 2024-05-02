@@ -73,7 +73,7 @@ export default {
 ```
 
 ## FlexContainer
-
+_DEPRECATED_
 All container components are designed to be dynamic and take any `HTMLElement` tag as the component to be rendered. `FlexContainer` can itself be passed as the element type for `GridItem`, for example, or vice versa, allowing us to easily compose complex layouts (more on this later with the `GridContainer` and `GridItem` documentation).
 
 ### _Props_
@@ -336,7 +336,7 @@ export default {
 ```
 
 ## GridContainer
-
+_DEPRECATED_
 All container components are designed to be dynamic and take any `HTMLElement` tag as the component to be rendered. It also works with the `GridItem` component (see example below). `GridContainer` and `GridItem` could both be passed as the element type for `FlexContainer`, for example, or vice versa, allowing us to easily compose complex layouts.
 
 ### _Props_
@@ -391,7 +391,7 @@ export default {
 ```
 
 ## GridItem
-
+_DEPRECATED_
 ### _Props_
 
 | name         | required? | types             | description                         | default |

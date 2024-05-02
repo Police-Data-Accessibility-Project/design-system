@@ -145,6 +145,7 @@ Use this [terminology](https://docs.pdap.io/activities/terms-and-definitions).
 | `test`         | Run all test suites                                     |
 | `test:changed` | Run only test suites affected by changed files          |
 | `typecheck`    | Run type check on all `ts` and `vue` files              |
+| `dev`          | Run demo app to check visual changes to components       |
 
 
 _n.b. There are some other scripts defined in the `package.json` `"scripts"` field, but they are mostly for CI or cleanup post-build, etc. You shouldn't need them._

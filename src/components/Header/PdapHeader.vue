@@ -21,14 +21,13 @@
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from 'vue';
 import { RouterLink } from 'vue-router';
-
 import PdapNav from '../Nav/PdapNav.vue';
-
 import { PdapHeaderProps } from './types';
+import lockup from '../../assets/lockup.svg';
 
 // Props
 const props = withDefaults(defineProps<PdapHeaderProps>(), {
-	logoImageSrc: 'node_modules/pdap-design-system/dist/images/lockup.svg',
+	logoImageSrc: lockup,
 	logoImageAnchorPath: '/',
 });
 
