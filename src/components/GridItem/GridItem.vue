@@ -29,6 +29,13 @@ const styles = reactive({
 });
 </script>
 
+<script lang="ts">
+/** @deprecated */
+export default {
+	name: 'GridItem',
+};
+</script>
+
 <style>
 @tailwind components;
 

@@ -2,7 +2,7 @@
 
 exports[`Footer component > Renders a footer 1`] = `
 <footer class="pdap-footer">
-  <div class="pdap-flex-container pdap-flex-container-center">
+  <div class="pdap-flex-container-center">
     <ul class="pdap-footer-social-links">
       <li class="pdap-footer-link-container">
         <a class="pdap-footer-social-link" href="https://github.com/orgs/Police-Data-Accessibility-Project" referrerpolicy="no-referrer" target="_blank">Github</a>
@@ -35,7 +35,7 @@ exports[`Footer component > Renders a footer 1`] = `
         <img src="https://widgets.guidestar.org/gximage2?o=9973356&amp;l=v4">
       </a>
       <router-link class="pdap-footer-logo" to="/">
-        <img alt="Police Data Accessibility Project Logo" src="node_modules/pdap-design-system/dist/images/acronym.svg" width="250">
+        <img alt="Police Data Accessibility Project Logo" src="/src/assets/acronym.svg" width="250">
       </router-link>
     </div>
   </div>

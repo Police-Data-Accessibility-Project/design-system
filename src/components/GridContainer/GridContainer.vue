@@ -33,23 +33,34 @@ const styles = reactive({
 });
 </script>
 
-<style>
-.pdap-grid-container {
-	@apply grid grid-cols-[auto] grid-rows-[auto] h-full gap-4 mx-auto p-8 w-full;
-	@apply md:gap-8 xs:max-w-3xl lg:max-w-4xl;
-}
+<script lang="ts">
+/** @deprecated use TailwindCSS class instead */
+export default {
+	name: 'GridContainer',
+};
+</script>
 
-.pdap-grid-container-column-1 {
-	@apply grid-cols-1;
-}
+<!-- <style>
+@tailwind components;
 
-.pdap-grid-container-column-2 {
-	@apply items-start grid-cols-1;
-	@apply md:grid-cols-2;
-}
+@layer components {
+	.pdap-grid-container {
+		@apply grid grid-cols-[auto] grid-rows-[auto] h-full gap-4 mx-auto p-8 w-full;
+		@apply md:gap-8 xs:max-w-3xl lg:max-w-4xl;
+	}
 
-.pdap-grid-container-column-3 {
-	@apply grid-cols-1;
-	@apply md:grid-cols-2 lg:grid-cols-3;
+	.pdap-grid-container-column-1 {
+		@apply grid-cols-1;
+	}
+
+	.pdap-grid-container-column-2 {
+		@apply items-start grid-cols-1;
+		@apply md:grid-cols-2;
+	}
+
+	.pdap-grid-container-column-3 {
+		@apply grid-cols-1;
+		@apply md:grid-cols-2 lg:grid-cols-3;
+	}
 }
-</style>
+</style> -->

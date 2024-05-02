@@ -1,6 +1,6 @@
 <template>
 	<footer class="pdap-footer">
-		<FlexContainer alignment="center">
+		<div class="pdap-flex-container-center">
 			<ul class="pdap-footer-social-links">
 				<li
 					v-for="link in links"
@@ -66,19 +66,17 @@
 						alt="Police Data Accessibility Project Logo"
 				/></router-link>
 			</div>
-		</FlexContainer>
+		</div>
 	</footer>
 </template>
 
 <script setup lang="ts">
 import { inject } from 'vue';
-import FlexContainer from '../FlexContainer/FlexContainer.vue';
-
-// Types
 import { PdapFooterProps, PdapFooterSocialLinks } from './types';
+import acronym from '../../assets/acronym.svg';
 
 const props = withDefaults(defineProps<PdapFooterProps>(), {
-	logoImageSrc: 'node_modules/pdap-design-system/dist/images/acronym.svg',
+	logoImageSrc: acronym,
 	logoImageAnchorPath: '/',
 });
 

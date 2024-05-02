@@ -19,6 +19,10 @@
 		@apply lg:text-2xl;
 	}
 
+	main {
+		@apply p-8;
+	}
+
 	/* Images */
 	img {
 		@apply align-middle inline-block max-w-full;

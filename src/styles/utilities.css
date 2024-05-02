@@ -6,4 +6,8 @@
 	.lock-scroll {
 		@apply overflow-hidden;
 	}
+
+	.col-span-full {
+		@apply col-start-1 col-end-[-1]
+	}
 }

@@ -24,7 +24,14 @@ const classes = reactive({
 });
 </script>
 
-<style>
+<script lang="ts">
+/** @deprecated Please use TailwindCSS class instead */
+export default {
+	name: 'FlexContainer',
+};
+</script>
+
+<!-- <style>
 @tailwind components;
 
 @layer components {
@@ -54,4 +61,4 @@ const classes = reactive({
 		@apply p-0;
 	}
 }
-</style>
+</style> -->
