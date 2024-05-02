@@ -1,6 +1,7 @@
 <template>
-	<GridContainer
+	<div
 		:class="{
+			'pdap-grid-container': true,
 			'pdap-input': true,
 			'pdap-input-error': Number(error?.length) >= 1,
 		}"
@@ -47,13 +48,12 @@
 		</div>
 
 		<label class="pdap-input-label" :for="id">{{ label }}</label>
-	</GridContainer>
+	</div>
 </template>
 
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 import { PdapInputBaseProps, PdapInputTypes } from './types';
-import { GridContainer } from '..';
 
 const props = withDefaults(defineProps<PdapInputBaseProps>(), {});
 
@@ -83,7 +83,7 @@ const errorMessageId = computed(() => `pdap-${props.name}-input-error`);
 @layer components {
 	/* General input styles  */
 	.pdap-input {
-		@apply h-[max-content] gap-4 leading-normal mb-3 w-full;
+		@apply h-[max-content] gap-4 leading-normal mb-3 w-full flex flex-col;
 	}
 
 	.pdap-grid-container.pdap-input {

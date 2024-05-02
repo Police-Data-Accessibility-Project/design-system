@@ -6,6 +6,9 @@ import vue from '@vitejs/plugin-vue';
 // https://vitejs.dev/config/
 export default defineConfig({
 	plugins: [vue()],
+	server: {
+		port: 8888
+	},
 	build: {
 		cssCodeSplit: false,
 		lib: {
@@ -32,6 +35,7 @@ export default defineConfig({
 	test: {
 		coverage: {
 			all: true,
+			exclude: ['src/demo/*'],
 			include: ['src/**/*.vue', 'src/utils/**/*.ts'],
 			provider: 'v8',
 			reportsDirectory: './coverage',

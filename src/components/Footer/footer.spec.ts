@@ -27,9 +27,7 @@ describe('Footer component', () => {
 	// Props - logo src
 	test('Renders footer with default logo src', () => {
 		const wrapper = mount(PdapFooter, base);
-		expect(wrapper.props().logoImageSrc).toBe(
-			'node_modules/pdap-design-system/dist/images/acronym.svg'
-		);
+		expect(wrapper.props().logoImageSrc).toBe('/src/assets/acronym.svg');
 	});
 
 	test('Renders footer with custom logo src', () => {

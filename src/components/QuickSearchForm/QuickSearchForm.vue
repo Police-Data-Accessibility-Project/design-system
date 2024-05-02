@@ -1,15 +1,12 @@
 <template>
-	<FlexContainer class="p-0">
+	<div class="pdap-flex-container">
 		<h2 class="mt-0">Search our database</h2>
 		<p class="pb-4 md:pb-8">
 			If you are looking for something specific, we may already be tracking it.
 			<a href="https://pdap.io/data">Learn more about the data here.</a>
 		</p>
-	</FlexContainer>
-	<FlexContainer
-		alignment="center"
-		class="pdap-quick-search-form h-full max-h-[75-vh] justify-start p-0"
-	>
+	</div>
+	<div class="pdap-quick-search-form h-full max-h-[75-vh] justify-start p-0">
 		<Form
 			id="quick-search-form"
 			class="flex flex-wrap gap-x-4"
@@ -54,7 +51,7 @@
 			</a>
 			.
 		</p>
-	</FlexContainer>
+	</div>
 </template>
 
 <script setup lang="ts">
@@ -62,7 +59,6 @@
 import { useRouter } from 'vue-router';
 // Components
 import Button from '../Button/PdapButton.vue';
-import FlexContainer from '../FlexContainer/FlexContainer.vue';
 import Form from '../Form/PdapForm.vue';
 import { RouterLink } from 'vue-router';
 
@@ -139,7 +135,7 @@ function handleSubmit(values: { location: string; searchTerm: string }) {
 
 @layer components {
 	.pdap-quick-search-form .pdap-input {
-		@apply flex-col flex-grow flex-shrink-0 basis-[45%] gap-y-0;
+		@apply flex flex-col flex-grow flex-shrink-0 basis-[45%] gap-y-0;
 	}
 
 	.pdap-quick-search-form .pdap-input-label {

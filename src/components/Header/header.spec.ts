@@ -54,9 +54,7 @@ describe('Header component', () => {
 	// Props - logo src
 	test('Renders header with default logo src', () => {
 		const wrapper = mount(PdapHeader, base);
-		expect(wrapper.props().logoImageSrc).toBe(
-			'node_modules/pdap-design-system/dist/images/lockup.svg'
-		);
+		expect(wrapper.props().logoImageSrc).toBe('/src/assets/lockup.svg');
 	});
 
 	test('Renders header with custom logo src', () => {

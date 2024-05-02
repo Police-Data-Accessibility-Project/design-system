@@ -112,7 +112,8 @@
 		"test:changed": "npm run test -- --changed",
 		"test:badge": "vitest run --coverage.enabled --coverage.reporter='text-summary'",
 		"test:ci": "npm run test -- --silent",
-		"typecheck": "vue-tsc"
+		"typecheck": "vue-tsc",
+		"dev": "vite"
 	},
 	"workspaces": [
 		"eslint-config"
