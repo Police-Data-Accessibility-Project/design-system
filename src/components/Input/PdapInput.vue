@@ -109,7 +109,12 @@ const errorMessageId = computed(() => `pdap-${props.name}-input-error`);
 	}
 
 	.pdap-input input[type='checkbox'] ~ label {
-		@apply pl-0;
+		@apply pl-0 w-full max-w-full;
+	}
+
+	.pdap-input input[type='checkbox'],
+	.pdap-input input[type='checkbox'] ~ label {
+		@apply cursor-pointer;
 	}
 }
 </style>
