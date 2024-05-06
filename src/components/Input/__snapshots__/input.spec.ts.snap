@@ -1,10 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Input component > Renders checkbox input in error state 1`] = `
-<div class="pdap-grid-container pdap-input pdap-input-error">
-  <!-- Text -->
-  <!--v-if-->
-  <!-- Password -->
+<div class="pdap-input pdap-input-checkbox pdap-input-error">
   <!-- Checkbox -->
   <input class="pdap-input-checkbox" id="test-checked" name="testCheckbox" type="checkbox">
   <div class="pdap-input-error-message" id="pdap-testCheckbox-input-error">error message</div>
@@ -13,10 +10,7 @@ exports[`Input component > Renders checkbox input in error state 1`] = `
 `;
 
 exports[`Input component > Renders checkbox input in okay state 1`] = `
-<div class="pdap-grid-container pdap-input">
-  <!-- Text -->
-  <!--v-if-->
-  <!-- Password -->
+<div class="pdap-input pdap-input-checkbox">
   <!-- Checkbox -->
   <input class="pdap-input-checkbox" id="test-checked" name="testCheckbox" type="checkbox">
   <!--v-if-->
@@ -25,10 +19,9 @@ exports[`Input component > Renders checkbox input in okay state 1`] = `
 `;
 
 exports[`Input component > Renders password input in error state 1`] = `
-<div class="pdap-grid-container pdap-input pdap-input-error">
-  <!-- Text -->
-  <!--v-if-->
-  <!-- Password -->
+<div class="pdap-input pdap-input-password pdap-input-error">
+  <!-- Checkbox -->
+  <!-- Text / password -->
   <input id="test-text" name="testText" placeholder="This is testing testing" type="password">
   <div class="pdap-input-error-message" id="pdap-testText-input-error">error message</div>
   <label class="pdap-input-label" for="test-text">test this text input</label>
@@ -36,10 +29,9 @@ exports[`Input component > Renders password input in error state 1`] = `
 `;
 
 exports[`Input component > Renders password input in okay state 1`] = `
-<div class="pdap-grid-container pdap-input">
-  <!-- Text -->
-  <!--v-if-->
-  <!-- Password -->
+<div class="pdap-input pdap-input-password">
+  <!-- Checkbox -->
+  <!-- Text / password -->
   <input id="test-text" name="testText" placeholder="This is testing testing" type="password">
   <!--v-if-->
   <label class="pdap-input-label" for="test-text">test this text input</label>
@@ -47,20 +39,20 @@ exports[`Input component > Renders password input in okay state 1`] = `
 `;
 
 exports[`Input component > Renders text input in error state 1`] = `
-<div class="pdap-grid-container pdap-input pdap-input-error">
-  <!-- Text -->
-  <input id="test-text" name="testText" placeholder="This is testing testing" type="text"><!-- Password -->
-  <!--v-if-->
+<div class="pdap-input pdap-input-text pdap-input-error">
+  <!-- Checkbox -->
+  <!-- Text / password -->
+  <input id="test-text" name="testText" placeholder="This is testing testing" type="text">
   <div class="pdap-input-error-message" id="pdap-testText-input-error">error message</div>
   <label class="pdap-input-label" for="test-text">test this text input</label>
 </div>
 `;
 
 exports[`Input component > Renders text input in okay state 1`] = `
-<div class="pdap-grid-container pdap-input">
-  <!-- Text -->
-  <input id="test-text" name="testText" placeholder="This is testing testing" type="text"><!-- Password -->
-  <!--v-if-->
+<div class="pdap-input pdap-input-text">
+  <!-- Checkbox -->
+  <!-- Text / password -->
+  <input id="test-text" name="testText" placeholder="This is testing testing" type="text">
   <!--v-if-->
   <label class="pdap-input-label" for="test-text">test this text input</label>
 </div>

@@ -101,8 +101,11 @@ export type VuelidateInstance = typeof v$.value;
 const errorMessage = ref(props.error);
 
 // Handlers
-function updateForm(fieldName: string, value: string) {
-	values[fieldName] = value;
+function updateForm(fieldName: string, event: Event) {
+	const target = event.target as HTMLInputElement;
+	const update =
+		target.type === PdapInputTypes.CHECKBOX ? target.checked : target.value;
+	values[fieldName] = update.toString();
 	change();
 }
 
@@ -147,9 +150,9 @@ async function submit(event: Event) {
 		const form = <HTMLFormElement>event.target;
 		form.reset();
 
-		// Wipe values state ('' for text inputs, as-was for everything else)
-		values = Object.entries(values).reduce((acc, [key, value]) => {
-			return { ...acc, [key]: ['true', 'false'].includes(value) ? value : '' };
+		// Wipe values state
+		values = Object.entries(values).reduce((acc, [key]) => {
+			return { ...acc, [key]: '' };
 		}, {});
 		return;
 	}

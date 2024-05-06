@@ -78,6 +78,11 @@ const mockFormSchema = [
 		type: PdapInputTypes.TEXT,
 		placeholder: 'John',
 		value: '',
+		validators: {
+			required: {
+				value: true,
+			},
+		},
 	},
 	{
 		id: 'last-name',
@@ -86,6 +91,18 @@ const mockFormSchema = [
 		type: PdapInputTypes.TEXT,
 		placeholder: 'Doe',
 		value: '',
+		validators: {
+			required: {
+				value: true,
+			},
+		},
+	},
+	{
+		id: 'likes-ice-cream',
+		name: 'iceCream',
+		label: 'Do you like ice cream?',
+		type: PdapInputTypes.CHECKBOX,
+		value: '',
 	},
 ];
 
@@ -93,8 +110,11 @@ function buttonAlert(msg: string) {
 	alert(msg);
 }
 
-function submit(values: Record<'firstName' | 'lastName', string>) {
-	const alertString = `Howdy, ${values.firstName} ${values.lastName}`;
+function submit(values: Record<'firstName' | 'lastName' | 'iceCream', string>) {
+	console.debug({ values });
+	const alertString = `Howdy, ${values.firstName} ${values.lastName}\n${
+		values.iceCream ? 'We like ice cream, too' : "Who doesn't like ice cream?"
+	}`;
 	alert(alertString);
 }
 
