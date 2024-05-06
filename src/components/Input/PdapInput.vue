@@ -8,14 +8,12 @@
 			'pdap-input-error': Number(error?.length) >= 1,
 		}"
 	>
-		<!-- Checkbox -->
 		<PdapInputCheckbox
 			v-if="type === PdapInputTypes.CHECKBOX"
 			class="pdap-input-checkbox"
 			v-bind="{ ...$attrs, ...(props as PdapInputCheckboxProps) }"
 		/>
 
-		<!-- Text / password -->
 		<PdapInputText
 			v-else
 			v-bind="{ ...$attrs, ...($props as PdapInputTextProps) }"
@@ -99,7 +97,7 @@ const errorMessageId = computed(() => `pdap-${props.name}-input-error`);
 
 	/* Input - checkbox */
 	.pdap-input-checkbox {
-		@apply border-2 border-transparent items-center gap-4 flex-row py-1 px-2;
+		@apply border-2 border-transparent items-center gap-4 flex-row py-1 px-2 w-auto;
 	}
 
 	.pdap-input-checkbox-checked {

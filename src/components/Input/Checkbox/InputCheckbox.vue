@@ -1,11 +1,11 @@
 <template>
 	<input
 		:id="id"
-		class="pdap-input-checkbox"
 		:name="name"
-		:checked="value === 'true' || (!value && defaultChecked)"
-		type="checkbox"
+		:checked="value === 'true' ?? undefined"
 		:value="value"
+		class="pdap-input-checkbox"
+		type="checkbox"
 		v-bind="$attrs"
 		@change="change"
 	/>

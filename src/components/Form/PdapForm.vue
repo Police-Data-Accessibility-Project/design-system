@@ -24,7 +24,6 @@
 			"
 			:value="values[field.name]"
 			@change="updateForm(field.name, $event)"
-			@input="updateForm(field.name, $event)"
 		/>
 		<slot />
 	</form>
@@ -32,7 +31,7 @@
 
 <script setup lang="ts">
 // Globals
-import { computed, reactive, ref, watchEffect } from 'vue';
+import { computed, ref, watchEffect } from 'vue';
 import { useVuelidate } from '@vuelidate/core';
 
 // Components
@@ -63,7 +62,7 @@ const data = computed(() =>
 	})
 );
 
-let values = reactive<Record<string, string>>(
+const values = ref<Record<string, string>>(
 	data.value.reduce((acc, input) => {
 		switch (input.type) {
 			case PdapInputTypes.CHECKBOX:
@@ -104,8 +103,12 @@ const errorMessage = ref(props.error);
 function updateForm(fieldName: string, event: Event) {
 	const target = event.target as HTMLInputElement;
 	const update =
-		target.type === PdapInputTypes.CHECKBOX ? target.checked : target.value;
-	values[fieldName] = update.toString();
+		target.type === PdapInputTypes.CHECKBOX &&
+		typeof target.checked === 'boolean'
+			? target.checked.toString()
+			: target.value;
+
+	values.value[fieldName] = update;
 	change();
 }
 
@@ -136,7 +139,7 @@ watchEffect(() => {
 });
 
 function change() {
-	emit('change', { ...values });
+	emit('change', { ...values.value });
 }
 
 async function submit(event: Event) {
@@ -144,16 +147,17 @@ async function submit(event: Event) {
 	const isValidSubmission = await v$.value.$validate();
 	if (isValidSubmission) {
 		// Emit submit event (spread to new object to create new object, this allows us to reset `values` without messing with the data returned)
-		emit('submit', { ...values });
+		emit('submit', { ...values.value });
 		// Reset vuelidate and form
 		v$.value.$reset();
 		const form = <HTMLFormElement>event.target;
 		form.reset();
 
 		// Wipe values state
-		values = Object.entries(values).reduce((acc, [key]) => {
+		values.value = Object.entries(values).reduce((acc, [key]) => {
 			return { ...acc, [key]: '' };
 		}, {});
+
 		return;
 	}
 }
