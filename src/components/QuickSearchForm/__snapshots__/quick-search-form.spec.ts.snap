@@ -10,15 +10,11 @@ exports[`QuickSearchForm component > Renders a QuickSearchForm 1`] = `
   <form class="pdap-form flex flex-wrap gap-x-4" id="quick-search-form" name="quickSearchForm">
     <!--v-if-->
     <div class="pdap-input pdap-input-text">
-      <!-- Checkbox -->
-      <!-- Text / password -->
       <input id="search-term" name="searchTerm" placeholder="Enter a keyword, or &#x27;all&#x27;" type="text">
       <!--v-if-->
       <label class="pdap-input-label" for="search-term">What are you looking for?</label>
     </div>
     <div class="pdap-input pdap-input-text">
-      <!-- Checkbox -->
-      <!-- Text / password -->
       <input id="location" name="location" placeholder="Enter a place, or &#x27;all&#x27;" type="text">
       <!--v-if-->
       <label class="pdap-input-label" for="location">From where?</label>
