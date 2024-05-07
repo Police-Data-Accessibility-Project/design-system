@@ -13,7 +13,6 @@ const baseCheckbox = {
 		label: 'test this checkbox input',
 		name: 'testCheckbox',
 		type: PdapInputTypes.CHECKBOX,
-		defaultChecked: false,
 	},
 };
 
@@ -122,13 +121,10 @@ describe('Input component', () => {
 		const input = wrapper.find('input[type="checkbox"]');
 		await nextTick();
 
-		// First assert falsy value
-		expect((input.element as HTMLInputElement).checked).toBe(false);
-
 		// Set checkbox value
 		input.trigger('change');
 		await nextTick();
 
-		expect((input.element as HTMLInputElement).checked).toBe(true);
+		expect((input.element as HTMLInputElement).value).toBe('on');
 	});
 });

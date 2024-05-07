@@ -319,6 +319,12 @@ export default {
               value: 999
             },
           },
+        {
+          id: 'ice-cream',
+          name: 'iceCream',
+          label: 'Do you like ice cream?',
+          type: 'checkbox',
+          defaultChecked: true,
         }
       ]
     }
