@@ -24,7 +24,6 @@
 			"
 			:value="values[field.name]"
 			@change="updateForm(field.name, $event)"
-			@input="updateForm(field.name, $event)"
 		/>
 		<slot />
 	</form>
@@ -32,7 +31,7 @@
 
 <script setup lang="ts">
 // Globals
-import { computed, reactive, ref, watchEffect } from 'vue';
+import { computed, ref, watchEffect } from 'vue';
 import { useVuelidate } from '@vuelidate/core';
 
 // Components
@@ -63,7 +62,7 @@ const data = computed(() =>
 	})
 );
 
-let values = reactive<Record<string, string>>(
+const values = ref<Record<string, string>>(
 	data.value.reduce((acc, input) => {
 		switch (input.type) {
 			case PdapInputTypes.CHECKBOX:
@@ -101,8 +100,15 @@ export type VuelidateInstance = typeof v$.value;
 const errorMessage = ref(props.error);
 
 // Handlers
-function updateForm(fieldName: string, value: string) {
-	values[fieldName] = value;
+function updateForm(fieldName: string, event: Event) {
+	const target = event.target as HTMLInputElement;
+	const update =
+		target.type === PdapInputTypes.CHECKBOX &&
+		typeof target.checked === 'boolean'
+			? target.checked.toString()
+			: target.value;
+
+	values.value[fieldName] = update;
 	change();
 }
 
@@ -133,7 +139,7 @@ watchEffect(() => {
 });
 
 function change() {
-	emit('change', { ...values });
+	emit('change', { ...values.value });
 }
 
 async function submit(event: Event) {
@@ -141,16 +147,17 @@ async function submit(event: Event) {
 	const isValidSubmission = await v$.value.$validate();
 	if (isValidSubmission) {
 		// Emit submit event (spread to new object to create new object, this allows us to reset `values` without messing with the data returned)
-		emit('submit', { ...values });
+		emit('submit', { ...values.value });
 		// Reset vuelidate and form
 		v$.value.$reset();
 		const form = <HTMLFormElement>event.target;
 		form.reset();
 
-		// Wipe values state ('' for text inputs, as-was for everything else)
-		values = Object.entries(values).reduce((acc, [key, value]) => {
-			return { ...acc, [key]: ['true', 'false'].includes(value) ? value : '' };
+		// Wipe values state
+		values.value = Object.entries(values).reduce((acc, [key]) => {
+			return { ...acc, [key]: '' };
 		}, {});
+
 		return;
 	}
 }
