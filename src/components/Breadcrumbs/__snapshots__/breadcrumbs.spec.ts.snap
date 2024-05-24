@@ -2,7 +2,7 @@
 
 exports[`PdapBreadcrumbs > renders breadcrumbs correctly for a double-nested route 1`] = `
 <nav aria-label="Breadcrumb">
-  <ol class="breadcrumbs">
+  <ol class="pdap-breadcrumbs">
     <li class>
       <a>Product</a>
     </li>
@@ -18,7 +18,7 @@ exports[`PdapBreadcrumbs > renders breadcrumbs correctly for a double-nested rou
 
 exports[`PdapBreadcrumbs > renders breadcrumbs correctly for a single-nested route 1`] = `
 <nav aria-label="Breadcrumb">
-  <ol class="breadcrumbs">
+  <ol class="pdap-breadcrumbs">
     <li class>
       <a>Product</a>
     </li>

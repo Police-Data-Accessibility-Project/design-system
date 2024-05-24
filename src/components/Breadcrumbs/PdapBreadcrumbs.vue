@@ -1,6 +1,6 @@
 <template>
 	<nav aria-label="Breadcrumb">
-		<ol class="breadcrumbs">
+		<ol class="pdap-breadcrumbs">
 			<li
 				v-for="(breadcrumb, index) in breadcrumbs"
 				:key="index"
@@ -26,21 +26,21 @@ const breadcrumbs = computed(() => getBreadcrumbs(route));
 </script>
 
 <style scoped>
-.breadcrumbs {
+.pdap-breadcrumbs {
 	@apply flex items-center;
 }
 
-.breadcrumbs li {
+.pdap-breadcrumbs li {
 	@apply flex items-center;
 }
 
-.breadcrumbs li:not(:last-child)::after {
+.pdap-breadcrumbs li:not(:last-child)::after {
 	@apply mx-2;
 
 	content: '/';
 }
 
-.breadcrumbs .is-active {
+.pdap-breadcrumbs .is-active {
 	@apply text-neutral-950;
 }
 </style>
