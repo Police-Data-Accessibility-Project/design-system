@@ -4,44 +4,79 @@ Documentation for PDAP component usage
 
 ## Table of Contents
 
-- [Button](#button)
+- [Breadcrumbs](#breadcrumbs)
+
   - [Props](#props)
   - [Example](#example)
-- [FlexContainer](#flexcontainer)
+
+- [Button](#button)
+
   - [Props](#props-1)
   - [Example](#example-1)
-- [Footer](#footer)
+
+- [FlexContainer](#flexcontainer)
+
   - [Props](#props-2)
   - [Example](#example-2)
-- [Form](#form)
+
+- [Footer](#footer)
+
   - [Props](#props-3)
   - [Example](#example-3)
-- [GridContainer](#gridcontainer)
+
+- [Form](#form)
+
   - [Props](#props-4)
   - [Example](#example-4)
-- [GridItem](#griditem)
+
+- [GridContainer](#gridcontainer)
+
   - [Props](#props-5)
   - [Example](#example-5)
-- [Header](#header)
+
+- [GridItem](#griditem)
+
   - [Props](#props-6)
   - [Example](#example-6)
-- [Input](#input)
-- [Nav](#nav)
-  - [Example](#example-7)
-- [QuickSearchForm](#quicksearchform)
+
+- [Header](#header)
+
   - [Props](#props-7)
-- [TileIcon](#tileicon)
-  - [Props](#props-8)
+  - [Example](#example-7)
+
+- [Input](#input)
+
+- [Nav](#nav)
+
   - [Example](#example-8)
+
+- [QuickSearchForm](#quicksearchform)
+
+  - [Props](#props-8)
+
+- [TileIcon](#tileicon)
+
+  - [Props](#props-9)
+  - [Example](#example-9)
 
 ## Button
 
 ### _Props_
 
-| name        | required? | types                    | description                | default   |
-| ----------- | --------- | ------------------------ | -------------------------- | --------- |
-| `isLoading` | no        | `boolean`                | Request state              | `false`   |
-| `intent`    | yes       | `primary` \| `secondary` | Determines style of button | `primary` |
+None
+
+### _Example_
+
+See the Demo application [page](../src/demo/pages/ComponentDemo.vue) and [router](../src/demo/router.js)
+
+## Button
+
+### _Props_
+
+name        | required? | types       | description   | default
+----------- | --------- | ----------- | ------------- | --------------------------
+`isLoading` | no        | `boolean`   | Request state | `false`
+`intent`    | yes       | `primary` \ | `secondary`   | Determines style of button | `primary`
 
 ### _Example_
 
@@ -73,27 +108,27 @@ export default {
 ```
 
 ## FlexContainer
-_DEPRECATED_
-All container components are designed to be dynamic and take any `HTMLElement` tag as the component to be rendered. `FlexContainer` can itself be passed as the element type for `GridItem`, for example, or vice versa, allowing us to easily compose complex layouts (more on this later with the `GridContainer` and `GridItem` documentation).
+
+_DEPRECATED_ All container components are designed to be dynamic and take any `HTMLElement` tag as the component to be rendered. `FlexContainer` can itself be passed as the element type for `GridItem`, for example, or vice versa, allowing us to easily compose complex layouts (more on this later with the `GridContainer` and `GridItem` documentation).
 
 ### _Props_
 
-| name        | required? | types               | description                         | default |
-| ----------- | --------- | ------------------- | ----------------------------------- | ------- |
-| `component` | no        | `string`            | HTML Element to render as container | `'div'` |
-| `alignment` | no        | `start` \| `center` | Flex alignment presets              | `start` |
+name        | required? | types     | description                         | default
+----------- | --------- | --------- | ----------------------------------- | ----------------------
+`component` | no        | `string`  | HTML Element to render as container | `'div'`
+`alignment` | no        | `start` \ | `center`                            | Flex alignment presets | `start`
 
 ### _Example_
 
 ```
 <template>
-	<FlexContainer alignment="center" component="card">
+    <FlexContainer alignment="center" component="card">
       <h2>Some content goes here</h2>
       <p>More content goes here.</p>
       <Button class="custom-button-class-name" :isLoading="isLoading" @click="() => console.log('hello world')">
         Say hello with this button
       </Button>
-	</FlexContainer>
+    </FlexContainer>
 </template>
 
 ...
@@ -120,10 +155,10 @@ export default {
 
 ### _Props_
 
-| name                  | required? | types    | description            | default                                                     |
-| --------------------- | --------- | -------- | ---------------------- | ----------------------------------------------------------- |
-| `logoImageSrc`        | no        | `string` | Source of logo image   | `'node_modules/pdap-design-system/dist/images/acronym.svg'` |
-| `logoImageAnchorPath` | no        | `string` | Flex alignment presets | `/`                                                         |
+name                  | required? | types    | description            | default
+--------------------- | --------- | -------- | ---------------------- | -----------------------------------------------------------
+`logoImageSrc`        | no        | `string` | Source of logo image   | `'node_modules/pdap-design-system/dist/images/acronym.svg'`
+`logoImageAnchorPath` | no        | `string` | Flex alignment presets | `/`
 
 ### _Notes_
 
@@ -135,18 +170,18 @@ export default {
   inject: {
     footerLinks: {
       default: [
-	      {
-	      	to: 'https://github.com/orgs/Police-Data-Accessibility-Project',
-	      	text: 'Github',
-	      },
-	      {
-	      	to: 'ttps://discord.gg/wMqex8nKZJ',
-	      	text: 'Discord',
-	      },
-	      {
-	      	to: 'https://www.linkedin.com/company/pdap',
-	      	text: 'LinkedIn',
-	      },
+          {
+              to: 'https://github.com/orgs/Police-Data-Accessibility-Project',
+              text: 'Github',
+          },
+          {
+              to: 'ttps://discord.gg/wMqex8nKZJ',
+              text: 'Discord',
+          },
+          {
+              to: 'https://www.linkedin.com/company/pdap',
+              text: 'LinkedIn',
+          },
       ]
     }
   },
@@ -186,7 +221,6 @@ export default {
   }
 }
 </script>
-
 ```
 
 ## Form
@@ -195,12 +229,12 @@ The `Form` component is powerful. All you need to do is pass a few props, and th
 
 ### _Props_
 
-| name     | required? | types                             | description                        | default     |
-| -------- | --------- | --------------------------------- | ---------------------------------- | ----------- |
-| `error`  | no        | `string` \| `undefined` \| `null` | Error state                        | `undefined` |
-| `id`     | yes       | `string`                          | Form id                            | none        |
-| `name`   | yes       | `string`                          | Form name                          | none        |
-| `schema` | yes       | `PdapFormSchema`                  | Array of schema entries for inputs | none        |
+name     | required? | types            | description                        | default
+-------- | --------- | ---------------- | ---------------------------------- | -------
+`error`  | no        | `string` \       | `undefined` \                      | `null`  | Error state | `undefined`
+`id`     | yes       | `string`         | Form id                            | none
+`name`   | yes       | `string`         | Form name                          | none
+`schema` | yes       | `PdapFormSchema` | Array of schema entries for inputs | none
 
 ### _Notes_
 
@@ -210,7 +244,6 @@ The `Form` component is powerful. All you need to do is pass a few props, and th
 - Currently available form validations are defined by the `PdapFormValidators` interface:
 
 ```
-
 PdapFormValidators {
   maxLength: {
     message?: string;
@@ -225,7 +258,6 @@ PdapFormValidators {
     value: boolean;
   };
 }
-
 ```
 
 - The `message` property is optional. If it is not passed, Vuelidate will default to a generic error message. The `value` property is the value you want to validate against. (i.e. for a required field with a max length of 12 characters, we might pass:
@@ -258,8 +290,6 @@ PdapFormValidators {
     }
   }
 }
-
-
 ```
 
 )
@@ -267,7 +297,6 @@ PdapFormValidators {
 ### _Example_
 
 ```
-
 <template>
   <Form :schema="formSchema" :on-submit="handleSubmit" id="test-form" name="data-request-form">
     <Button intent="primary" type="submit">Click me</Button>
@@ -338,26 +367,26 @@ export default {
   ...
 }
 </script>
-
 ```
 
 ## GridContainer
-_DEPRECATED_
-All container components are designed to be dynamic and take any `HTMLElement` tag as the component to be rendered. It also works with the `GridItem` component (see example below). `GridContainer` and `GridItem` could both be passed as the element type for `FlexContainer`, for example, or vice versa, allowing us to easily compose complex layouts.
+
+_DEPRECATED_ All container components are designed to be dynamic and take any `HTMLElement` tag as the component to be rendered. It also works with the `GridItem` component (see example below). `GridContainer` and `GridItem` could both be passed as the element type for `FlexContainer`, for example, or vice versa, allowing us to easily compose complex layouts.
 
 ### _Props_
 
-| name              | required? | types                         | description                                         | default             |
-| ----------------- | --------- | ----------------------------- | --------------------------------------------------- | ------------------- |
-| `columns`         | no        | `1` \| `2` \| `3` \| `'auto'` | Number of grid columns                              | `'auto'`            |
-| `component`       | no        | `string`                      | HTML Element to render as container                 | `'div'`             |
-| `rows`            | no        | `number` \| `'auto'`          | Number of grid rows                                 | `'auto'`            |
-| `templateColumns` | no        | `string` \| `undefined`       | Custom `grid-template-columns` value, passed inline | `undefined` (no-op) |
-| `templateRows`    | no        | `string` \| `undefined`       | Custom `grid-template-rows` value, passed inline    | `undefined` (no-op) |
+name              | required? | types      | description                         | default
+----------------- | --------- | ---------- | ----------------------------------- | ---------------------------------------------------
+`columns`         | no        | `1` \      | `2` \                               | `3` \                                               | `'auto'` | Number of grid columns | `'auto'`
+`component`       | no        | `string`   | HTML Element to render as container | `'div'`
+`rows`            | no        | `number` \ | `'auto'`                            | Number of grid rows                                 | `'auto'`
+`templateColumns` | no        | `string` \ | `undefined`                         | Custom `grid-template-columns` value, passed inline | `undefined` (no-op)
+`templateRows`    | no        | `string` \ | `undefined`                         | Custom `grid-template-rows` value, passed inline    | `undefined` (no-op)
 
 ### _Notes_
 
 - Grid layouts max out at 3 columns, and responsiveness is baked in.
+
   - i.e. When you render a 3-column grid layout, it automatically resizes to 2 columns, then 1 column, as screen widths decrease.
   - In this case, it is a best practice to leave the `rows` prop as its default `'auto'` value, to ensure that the layout fills as many rows as are needed when the number of columns decreases
 
@@ -397,18 +426,21 @@ export default {
 ```
 
 ## GridItem
+
 _DEPRECATED_
+
 ### _Props_
 
-| name         | required? | types             | description                         | default |
-| ------------ | --------- | ----------------- | ----------------------------------- | ------- |
-| `component`  | no        | `string`          | HTML Element to render as grid item | `'div'` |
-| `spanColumn` | no        | `1` \| `2` \| `3` | Columns grid item should span       | `1`     |
-| `spanRow`    | no        | `number`          | Rows grid item should span          | `1`     |
+name         | required? | types    | description                         | default
+------------ | --------- | -------- | ----------------------------------- | -------
+`component`  | no        | `string` | HTML Element to render as grid item | `'div'`
+`spanColumn` | no        | `1` \    | `2` \                               | `3`     | Columns grid item should span | `1`
+`spanRow`    | no        | `number` | Rows grid item should span          | `1`
 
 ### _Notes_
 
 - Grid layouts max out at 3 columns, and responsiveness is baked in.
+
   - i.e. When you render a 3-column grid layout, it automatically resizes to 2 columns, then 1 column, as screen widths decrease.
   - In this case, it is a best practice to leave the `rows` prop as its default `'auto'` value, to ensure that the layout fills as many rows as are needed when the number of columns decreases
 
@@ -420,14 +452,14 @@ See `GridContainer` above.
 
 ### _Props_
 
-| name                  | required? | types    | description            | default                                                    |
-| --------------------- | --------- | -------- | ---------------------- | ---------------------------------------------------------- |
-| `logoImageSrc`        | no        | `string` | Source of logo image   | `'node_modules/pdap-design-system/dist/images/lockup.svg'` |
-| `logoImageAnchorPath` | no        | `string` | Flex alignment presets | `/`                                                        |
+name                  | required? | types    | description            | default
+--------------------- | --------- | -------- | ---------------------- | ----------------------------------------------------------
+`logoImageSrc`        | no        | `string` | Source of logo image   | `'node_modules/pdap-design-system/dist/images/lockup.svg'`
+`logoImageAnchorPath` | no        | `string` | Flex alignment presets | `/`
 
 ### _Notes_
 
-The `Header` component does not require any props to be passed. But keep in mind that it is responsible for rendering the `Nav` component. Consuming applications will need to `provide` an array of nav links — **there are no defaults for this**, you must `provide` these links either 1. in a layout component (see example below), at the route level, or at the app level. This allows for flexibility in which links are rendered on which routes
+The `Header` component does not require any props to be passed. But keep in mind that it is responsible for rendering the `Nav` component. Consuming applications will need to `provide` an array of nav links -- **there are no defaults for this**, you must `provide` these links either 1\. in a layout component (see example below), at the route level, or at the app level. This allows for flexibility in which links are rendered on which routes
 
 ### _Example_
 
@@ -455,7 +487,6 @@ export default {
   }
 }
 </script>
-
 ```
 
 ## Input
@@ -469,7 +500,6 @@ You do not need to render `Nav` directly. `Header` takes care of that. But you d
 ### _Example_
 
 ```
-
 <template>
   <Header />
   <router-view />
@@ -497,38 +527,32 @@ export default {
     ]
   }
   ...
-
 ```
 
 ## QuickSearchForm
 
 ### _Props_
 
-| name   | required? | types             | description                                                                | default  |
-| ------ | --------- | ----------------- | -------------------------------------------------------------------------- | -------- |
-| `mode` | no        | `'dev' \| 'prod'` | env. controls which url users are sent to when form is rendered on pdap.io | `'prod'` |
+name   | required? | types    | description | default
+------ | --------- | -------- | ----------- | --------------------------------------------------------------------------
+`mode` | no        | `'dev' \ | 'prod'`     | env. controls which url users are sent to when form is rendered on pdap.io | `'prod'`
 
 ### _Notes_
 
-The different `mode` prop values result the following base url values in the eventual navigation
-| value | base url |
-|--|--|
-| `'dev'` | `'https://data-sources.pdap.dev'` |
-| `'prod'` | `'https://data-sources.pdap.io'` |
+The different `mode` prop values result the following base url values in the eventual navigation | value | base url | |--|--| | `'dev'` | `'https://data-sources.pdap.dev'` | | `'prod'` | `'https://data-sources.pdap.io'` |
 
 ## TileIcon
 
 ### _Props_
 
-| name         | required? | types    | description                   | default |
-| ------------ | --------- | -------- | ----------------------------- | ------- |
-| `imgAltText` | yes       | `string` | Descriptive alt text for icon | none    |
-| `imgSrc`     | yes       | `string` | Source of icon to render      | none    |
+name         | required? | types    | description                   | default
+------------ | --------- | -------- | ----------------------------- | -------
+`imgAltText` | yes       | `string` | Descriptive alt text for icon | none
+`imgSrc`     | yes       | `string` | Source of icon to render      | none
 
 ### _Example_
 
 ```
-
 <template>
   <GridContainer :columns="3" component="section">
     <GridItem>
@@ -557,5 +581,4 @@ export default {
   }
 }
 </script>
-
 ```
