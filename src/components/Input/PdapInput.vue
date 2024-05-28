@@ -1,46 +1,22 @@
 <template>
 	<div
 		:class="{
-			'pdap-grid-container': true,
 			'pdap-input': true,
+			[`pdap-input-${type}`]: true,
+			[`pdap-input-${type}-checked`]:
+				type === PdapInputTypes.CHECKBOX && value === 'true',
 			'pdap-input-error': Number(error?.length) >= 1,
 		}"
 	>
-		<!-- Text -->
-		<input
-			v-if="type === PdapInputTypes.TEXT"
-			:id="id"
-			type="text"
-			:name="name"
-			:placeholder="placeholder"
-			:value="value"
-			v-bind="$attrs"
-			@input="input"
-		/>
-
-		<!-- Password -->
-		<input
-			v-if="type === PdapInputTypes.PASSWORD"
-			:id="id"
-			type="password"
-			:name="name"
-			:placeholder="placeholder"
-			:value="value"
-			v-bind="$attrs"
-			@input="input"
-		/>
-
-		<!-- Checkbox -->
-		<input
-			v-else-if="type === PdapInputTypes.CHECKBOX"
-			:id="id"
+		<PdapInputCheckbox
+			v-if="type === PdapInputTypes.CHECKBOX"
 			class="pdap-input-checkbox"
-			:name="name"
-			:checked="checked"
-			type="checkbox"
-			:value="value"
-			v-bind="$attrs"
-			@change="change"
+			v-bind="{ ...$attrs, ...(props as PdapInputCheckboxProps) }"
+		/>
+
+		<PdapInputText
+			v-else
+			v-bind="{ ...$attrs, ...($props as PdapInputTextProps) }"
 		/>
 
 		<div v-if="error" :id="errorMessageId" class="pdap-input-error-message">
@@ -52,27 +28,17 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue';
-import { PdapInputBaseProps, PdapInputTypes } from './types';
+import { computed } from 'vue';
+import {
+	PdapInputProps,
+	PdapInputTypes,
+	PdapInputCheckboxProps,
+	PdapInputTextProps,
+} from './types';
+import PdapInputText from './Text/InputText.vue';
+import PdapInputCheckbox from './Checkbox/InputCheckbox.vue';
 
-const props = withDefaults(defineProps<PdapInputBaseProps>(), {});
-
-// Emits
-const emit = defineEmits<{
-	(event: 'change', val: string): void;
-	(event: 'input', val: string): void;
-}>();
-
-const change = () => {
-	checked.value = !checked.value;
-	emit('change', checked.value.toString());
-};
-
-const input = (event: Event) => {
-	emit('input', (<HTMLInputElement>event.target).value);
-};
-
-const checked = ref(props.defaultChecked);
+const props = withDefaults(defineProps<PdapInputProps>(), {});
 
 const errorMessageId = computed(() => `pdap-${props.name}-input-error`);
 </script>
@@ -84,10 +50,6 @@ const errorMessageId = computed(() => `pdap-${props.name}-input-error`);
 	/* General input styles  */
 	.pdap-input {
 		@apply h-[max-content] gap-4 leading-normal mb-3 w-full flex flex-col;
-	}
-
-	.pdap-grid-container.pdap-input {
-		@apply p-0 gap-0;
 	}
 
 	.pdap-input input {
@@ -134,12 +96,25 @@ const errorMessageId = computed(() => `pdap-${props.name}-input-error`);
 	}
 
 	/* Input - checkbox */
+	.pdap-input-checkbox {
+		@apply border-2 border-transparent items-center gap-4 flex-row py-1 px-2 w-auto;
+	}
+
+	.pdap-input-checkbox-checked {
+		@apply border-2 border-brand-gold border-solid rounded-md;
+	}
+
 	.pdap-input input[type='checkbox'] {
 		@apply h-6 w-6 accent-brand-gold;
 	}
 
 	.pdap-input input[type='checkbox'] ~ label {
-		@apply pl-0;
+		@apply pl-0 w-full max-w-full;
+	}
+
+	.pdap-input input[type='checkbox'],
+	.pdap-input input[type='checkbox'] ~ label {
+		@apply cursor-pointer;
 	}
 }
 </style>

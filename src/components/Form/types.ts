@@ -1,4 +1,4 @@
-import { PdapInputBaseProps } from '../Input/types';
+import { PdapInputProps } from '../Input/types';
 
 export type PdapLengthRules = 'maxLength' | 'minLength';
 
@@ -21,10 +21,9 @@ export interface PdapFormValidators {
 	password: PdapFormValidator<boolean>;
 }
 
-export interface PdapFormInputProps
-	extends Exclude<PdapInputBaseProps, 'error'> {
+export type PdapFormInputProps = PdapInputProps & {
 	validators?: Partial<PdapFormValidators>;
-}
+};
 export type PdapFormSchema = PdapFormInputProps[];
 export type PdapFormData = Record<string, unknown>;
 

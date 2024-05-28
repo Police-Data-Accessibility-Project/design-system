@@ -215,10 +215,10 @@ describe('Form component', () => {
 		);
 		expect(
 			(inputCheckboxDefaultChecked.element as HTMLInputElement).value
-		).toBe('false');
+		).toBe('true');
 		expect(
 			(inputCheckboxDefaultUnchecked.element as HTMLInputElement).value
-		).toBe('true');
+		).toBe('false');
 	});
 
 	test('Submits with correct values', async () => {
