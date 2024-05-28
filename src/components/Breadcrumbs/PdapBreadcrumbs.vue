@@ -34,7 +34,7 @@ const breadcrumbs = computed(() => getBreadcrumbs(route));
 	@apply flex items-center;
 }
 
-.pdap-breadcrumbs li:not(:last-child)::after {
+.pdap-breadcrumbs li:not(:first-child)::before {
 	@apply mx-2;
 
 	content: '/';
@@ -47,14 +47,11 @@ const breadcrumbs = computed(() => getBreadcrumbs(route));
 /* Animations */
 .pdap-breadcrumbs-enter-active,
 .pdap-breadcrumbs-leave-active {
-	transition:
-		opacity 0.2s ease,
-		transform 0.3s ease;
+	transition: opacity 0.2s ease;
 }
 
 .pdap-breadcrumbs-enter-from,
 .pdap-breadcrumbs-leave-to {
 	opacity: 0;
-	transform: translateX(30%);
 }
 </style>
