@@ -10,15 +10,16 @@ export interface PdapInputBaseProps {
 	label: string;
 	name: string;
 	placeholder?: string;
-	type: PdapInputTypes;
 	value?: string;
-	defaultChecked?: boolean;
 }
 
 export interface PdapInputTextProps extends PdapInputBaseProps {
-	type: PdapInputTypes.TEXT;
+	type: PdapInputTypes.TEXT | PdapInputTypes.PASSWORD;
 }
 
 export interface PdapInputCheckboxProps extends PdapInputBaseProps {
+	defaultChecked?: boolean;
 	type: PdapInputTypes.CHECKBOX;
 }
+
+export type PdapInputProps = PdapInputTextProps | PdapInputCheckboxProps;

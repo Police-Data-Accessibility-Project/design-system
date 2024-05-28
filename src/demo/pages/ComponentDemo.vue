@@ -78,6 +78,11 @@ const mockFormSchema = [
 		type: PdapInputTypes.TEXT,
 		placeholder: 'John',
 		value: '',
+		validators: {
+			required: {
+				value: true,
+			},
+		},
 	},
 	{
 		id: 'last-name',
@@ -86,6 +91,37 @@ const mockFormSchema = [
 		type: PdapInputTypes.TEXT,
 		placeholder: 'Doe',
 		value: '',
+		validators: {
+			required: {
+				value: true,
+			},
+		},
+	},
+	{
+		id: 'password',
+		name: 'password',
+		label: 'Password',
+		type: PdapInputTypes.PASSWORD,
+		placeholder: 'Password',
+		value: '',
+		validators: {
+			password: {
+				message: 'Please enter a valid password',
+				value: true,
+			},
+			required: {
+				message: 'Please enter a valid password',
+				value: true,
+			},
+		},
+	},
+	{
+		id: 'likes-ice-cream',
+		defaultChecked: true,
+		name: 'iceCream',
+		label: 'Do you like ice cream?',
+		type: PdapInputTypes.CHECKBOX,
+		value: '',
 	},
 ];
 
@@ -93,12 +129,17 @@ function buttonAlert(msg: string) {
 	alert(msg);
 }
 
-function submit(values: Record<'firstName' | 'lastName', string>) {
-	const alertString = `Howdy, ${values.firstName} ${values.lastName}`;
+function submit(values: Record<'firstName' | 'lastName' | 'iceCream', string>) {
+	console.debug({ values });
+	const alertString = `Howdy, ${values.firstName} ${values.lastName}\n${
+		values.iceCream === 'true'
+			? 'We like ice cream, too'
+			: "Who doesn't like ice cream?"
+	}`;
 	alert(alertString);
 }
 
-function change(values: Record<'firstName' | 'lastName', string>) {
+function change(values: Record<'firstName' | 'lastName' | 'iceCream', string>) {
 	console.log('onChange', { values });
 }
 </script>
