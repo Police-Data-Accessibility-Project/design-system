@@ -1,6 +1,6 @@
 <template>
 	<nav aria-label="Breadcrumb">
-		<ol class="pdap-breadcrumbs">
+		<transition-group class="pdap-breadcrumbs" name="pdap-breadcrumbs" tag="ul">
 			<li
 				v-for="(breadcrumb, index) in breadcrumbs"
 				:key="index"
@@ -11,7 +11,7 @@
 				</router-link>
 				<span v-else>{{ breadcrumb.text }}</span>
 			</li>
-		</ol>
+		</transition-group>
 	</nav>
 </template>
 
@@ -42,5 +42,17 @@ const breadcrumbs = computed(() => getBreadcrumbs(route));
 
 .pdap-breadcrumbs .is-active {
 	@apply text-neutral-950;
+}
+
+/* Animations */
+.pdap-breadcrumbs-enter-active,
+.pdap-breadcrumbs-leave-active {
+	transition: all 0.5s ease;
+}
+
+.pdap-breadcrumbs-enter-from,
+.pdap-breadcrumbs-leave-to {
+	opacity: 0;
+	transform: translateX(30%);
 }
 </style>
