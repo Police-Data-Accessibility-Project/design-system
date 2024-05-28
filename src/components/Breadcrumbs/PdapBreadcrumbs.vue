@@ -2,8 +2,8 @@
 	<nav aria-label="Breadcrumb">
 		<transition-group class="pdap-breadcrumbs" name="pdap-breadcrumbs" tag="ul">
 			<li
-				v-for="(breadcrumb, index) in breadcrumbs"
-				:key="index"
+				v-for="breadcrumb in breadcrumbs"
+				:key="breadcrumb.text"
 				:class="{ 'is-active': breadcrumb.active }"
 			>
 				<router-link v-if="!breadcrumb.active" :to="breadcrumb.path">
@@ -47,7 +47,9 @@ const breadcrumbs = computed(() => getBreadcrumbs(route));
 /* Animations */
 .pdap-breadcrumbs-enter-active,
 .pdap-breadcrumbs-leave-active {
-	transition: all 0.5s ease;
+	transition:
+		opacity 0.2s ease,
+		transform 0.3s ease;
 }
 
 .pdap-breadcrumbs-enter-from,
