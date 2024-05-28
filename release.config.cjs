@@ -15,6 +15,7 @@ module.exports = {
 					{ type: 'docs', message: '*README*', release: 'patch' },
 					{ type: 'refactor', release: 'patch' },
 					{ type: 'style', release: 'patch' },
+					{ type: 'chore', release: 'patch' },
 				],
 				parserOpts: {
 					noteKeywords: ['BREAKING CHANGE', 'BREAKING CHANGES', 'BREAKING'],
