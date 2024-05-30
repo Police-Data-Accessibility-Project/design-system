@@ -6,6 +6,39 @@ const routes = [
 		path: '/',
 		component: ComponentDemo,
 		name: 'ComponentDemo',
+		meta: {
+			breadcrumbText: 'Home',
+		},
+		children: [
+			{
+				path: '/foo',
+				component: ComponentDemo,
+				name: 'ComponentDemoFoo',
+				meta: {
+					breadcrumbText: 'Foo',
+				},
+				children: [
+					{
+						path: '/foo/bar',
+						component: ComponentDemo,
+						name: 'ComponentDemoFooBar',
+						meta: {
+							breadcrumbText: 'Bar',
+						},
+						children: [
+							{
+								path: '/foo/bar/baz',
+								component: ComponentDemo,
+								name: 'ComponentDemoFooBarBaz',
+								meta: {
+									breadcrumbText: 'Baz',
+								},
+							},
+						],
+					},
+				],
+			},
+		],
 	},
 ];
 

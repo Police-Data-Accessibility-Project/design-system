@@ -15,6 +15,19 @@
 		<h6>This is a sixth-level heading</h6>
 
 		<div class="pdap-grid-container mt-5">
+			<h2 class="col-span-full">Breadcrumbs</h2>
+			<div
+				class="col-span-2 pdap-flex-container flex-row justify-between w-full"
+			>
+				Click to navigate:
+				<router-link to="/">Home</router-link>
+				<router-link to="/foo">Foo</router-link>
+				<router-link to="/foo/bar">FooBar</router-link>
+				<router-link to="/foo/bar/baz">FooBarBaz</router-link>
+			</div>
+
+			<Breadcrumbs class="col-span-full" />
+
 			<h2 class="col-span-full mb-0">Buttons</h2>
 			<p class="col-span-full max-w-none">
 				These are all contained within a grid container, defined by using the
@@ -68,7 +81,7 @@
 
 <script setup lang="ts">
 import { PdapInputTypes } from '../../components/Input/types';
-import { Button, Form, QuickSearchForm } from '../../components';
+import { Breadcrumbs, Button, Form, QuickSearchForm } from '../../components';
 
 const mockFormSchema = [
 	{

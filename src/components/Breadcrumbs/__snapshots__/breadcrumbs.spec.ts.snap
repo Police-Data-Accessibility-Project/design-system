@@ -1,0 +1,30 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`PdapBreadcrumbs > renders breadcrumbs correctly for a double-nested route 1`] = `
+<nav aria-label="Breadcrumb">
+  <transition-group-stub appear="false" class="pdap-breadcrumbs" css="true" name="pdap-breadcrumbs" persisted="false" tag="ul">
+    <li class>
+      <a>Product</a>
+    </li>
+    <li class>
+      <a>Product ID</a>
+    </li>
+    <li class="is-active">
+      <span>Edit Product ID</span>
+    </li>
+  </transition-group-stub>
+</nav>
+`;
+
+exports[`PdapBreadcrumbs > renders breadcrumbs correctly for a single-nested route 1`] = `
+<nav aria-label="Breadcrumb">
+  <transition-group-stub appear="false" class="pdap-breadcrumbs" css="true" name="pdap-breadcrumbs" persisted="false" tag="ul">
+    <li class>
+      <a>Product</a>
+    </li>
+    <li class="is-active">
+      <span>Product ID</span>
+    </li>
+  </transition-group-stub>
+</nav>
+`;
