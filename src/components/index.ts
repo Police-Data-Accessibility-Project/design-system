@@ -9,3 +9,4 @@ export { Header } from './Header';
 export { Nav } from './Nav';
 export { QuickSearchForm } from './QuickSearchForm';
 export { TileIcon } from './TileIcon';
+export { Breadcrumbs } from './Breadcrumbs';
