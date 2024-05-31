@@ -4,60 +4,83 @@ Documentation for PDAP component usage
 
 ## Table of Contents
 
-- [Button](#button)
+- [Breadcrumbs](#breadcrumbs)
 
   - [Props](#props)
   - [Example](#example)
 
-- [FlexContainer](#flexcontainer)
+- [Button](#button)
 
   - [Props](#props-1)
+
   - [Example](#example-1)
+
+- [FlexContainer](#flexcontainer)
+
+- [Props](#props-2)
+
+- [Example](#example-2)
 
 - [Footer](#footer)
 
-  - [Props](#props-2)
-  - [Example](#example-2)
+- [Props](#props-3)
+
+- [Example](#example-3)
 
 - [Form](#form)
 
-  - [Props](#props-3)
-  - [Example](#example-3)
+- [Props](#props-4)
+
+- [Example](#example-4)
 
 - [GridContainer](#gridcontainer)
 
-  - [Props](#props-4)
-  - [Example](#example-4)
+- [Props](#props-5)
+
+- [Example](#example-5)
 
 - [GridItem](#griditem)
 
-  - [Props](#props-5)
-  - [Example](#example-5)
+- [Props](#props-6)
+
+- [Example](#example-6)
 
 - [Header](#header)
 
-  - [Props](#props-6)
-  - [Example](#example-6)
+  - [Props](#props-7)
+  - [Example](#example-7)
 
 - [Input](#input)
 
 - [Nav](#nav)
 
-  - [Example](#example-7)
+- [Example](#example-8)
 
 - [QuickSearchForm](#quicksearchform)
 
-  - [Props](#props-7)
+- [Props](#props-8)
 
 - [TileIcon](#tileicon)
 
-  - [Props](#props-8)
-  - [Example](#example-8)
+- [Props](#props-9)
+
+- [Example](#example-9)
 
 - [Dropdown](#dropdown)
 
   - [Props](#props-9)
+
   - [Example](#example-9)
+
+## Button
+
+### _Props_
+
+None
+
+### _Example_
+
+See the Demo application [page](../src/demo/pages/ComponentDemo.vue) and [router](../src/demo/router.js)
 
 ...
 
