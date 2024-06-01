@@ -97,7 +97,7 @@ function getMaxHeight() {
 	const root = document?.querySelector(':root') as HTMLElement;
 
 	if (contentRef.value && root)
-		root.style.setProperty('--content-max-height', String(height));
+		root.style.setProperty('--dropdown-content-max-height', String(height));
 }
 
 onMounted(() => {
