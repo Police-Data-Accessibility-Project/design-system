@@ -113,7 +113,7 @@
 				<span
 					:class="{
 						// ...like this
-						'font-semibold': dropDownPressIsOpen,
+						'font-semibold': dropDownHoverIsOpen,
 					}"
 				>
 					Hover or focus to toggle dropdown open/closed</span
