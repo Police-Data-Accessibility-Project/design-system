@@ -29,7 +29,6 @@ describe('PdapDropdown', () => {
 
 		await trigger.trigger('click');
 		expect(content.isVisible()).toBe(false);
-
 		expect(wrapper.html()).toMatchSnapshot();
 	});
 
@@ -79,13 +78,11 @@ describe('PdapDropdown', () => {
 		trigger = wrapper.find('[data-test="dropdown-trigger"]');
 		content = wrapper.find('[data-test="dropdown-content"]');
 
-		// TODO: figure out how to test this::::
+		await trigger.trigger('focusin');
+		expect(content.isVisible()).toBe(true);
 
-		// await trigger.trigger('mouseover');
-		// expect(content.isVisible()).toBe(true);
-
-		// await trigger.trigger('mouseleave');
-		// expect(content.isVisible()).toBe(false);
+		await trigger.trigger('focusout');
+		expect(content.isVisible()).toBe(false);
 
 		expect(wrapper.html()).toMatchSnapshot();
 	});

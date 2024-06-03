@@ -75,7 +75,7 @@
 						'font-semibold': dropDownPressIsOpen,
 					}"
 				>
-					Click to toggle dropdown open/closed</span
+					Press to toggle dropdown open/closed</span
 				></template
 			>
 			<template #content>
@@ -95,6 +95,10 @@
 
 				<a href="https://pdap.io" target="_blank" rel="noreferrer">
 					Go to pdap.io
+				</a>
+
+				<a href="https://pdap.dev" target="_blank" rel="noreferrer">
+					Go to pdap.dev
 				</a>
 			</template>
 		</Dropdown>

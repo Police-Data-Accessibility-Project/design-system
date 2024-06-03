@@ -4,6 +4,7 @@
 		v-click-outside="closeDropdown"
 		class="pdap-dropdown"
 		@keydown.escape="closeDropdown"
+		v-on="dropdownHandlers"
 	>
 		<Button
 			:aria-controls="dropdownId"
@@ -17,8 +18,8 @@
 				'cursor-not-allowed': disabled,
 			}"
 			data-test="dropdown-trigger"
-			@click.prevent="press"
-			@keydown.enter.space.prevent="press"
+			@click.prevent.stop="press"
+			@keydown.enter.space.prevent.stop="press"
 		>
 			<slot name="trigger" />
 		</Button>
@@ -40,13 +41,10 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, onUnmounted, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { PdapDropdownProps, PdapDropdownTriggerType } from './types';
 import { default as vClickOutside } from '../../directives/click-outside';
 import { Button } from '../Button';
-// Constants
-const EVENTS_OPEN_ON_HOVER = ['mouseenter', 'focus', 'focusin'];
-const EVENTS_CLOSE_ON_HOVER = ['focusout', 'mouseleave', 'blur'];
 
 // Props
 const props = withDefaults(defineProps<PdapDropdownProps>(), {
@@ -69,7 +67,7 @@ const triggerOnHover = computed(
 
 function press(event: Event) {
 	emit('press', event);
-	if (props.triggerOn !== PdapDropdownTriggerType.HOVER) toggleDropdown();
+	if (props.triggerOn === PdapDropdownTriggerType.PRESS) toggleDropdown();
 }
 
 const toggleDropdown = () => {
@@ -91,46 +89,36 @@ function closeDropdown() {
 
 function getMaxHeight() {
 	if (!contentRef.value) return;
-	contentRef.value.style.display = 'block';
-	const height = window.getComputedStyle(contentRef.value).height;
+	contentRef.value.style.display = 'flex';
+	contentRef.value.style.setProperty('max-height', 'max-content');
+	const height = contentRef.value.scrollHeight;
 	contentRef.value.style.display = 'none';
+	contentRef.value.style.removeProperty('max-height');
 	const root = document?.querySelector(':root') as HTMLElement;
 
+	const previousMaxHeight = root?.style?.getPropertyValue(
+		'--dropdown-content-max-height'
+	);
+
+	// If current dropdown shorter than current max height var, return
+	if (Number(previousMaxHeight?.match(/\d+/)?.join('')) >= height) return;
+
+	// Otherwise, increase var
 	if (contentRef.value && root)
-		root.style.setProperty('--dropdown-content-max-height', String(height));
+		root.style.setProperty('--dropdown-content-max-height', `${height + 16}px`);
 }
 
-onMounted(() => {
-	if (triggerOnHover.value) {
-		EVENTS_OPEN_ON_HOVER.forEach((event) => {
-			if (dropdownRef.value) {
-				dropdownRef.value.addEventListener(event, openDropdown);
-			}
-		});
-		EVENTS_CLOSE_ON_HOVER.forEach((event) => {
-			if (dropdownRef.value) {
-				dropdownRef.value.addEventListener(event, closeDropdown);
-			}
-		});
-	}
-	getMaxHeight();
-});
+const dropdownHandlers = {
+	mouseenter: triggerOnHover.value ? openDropdown : undefined,
+	focus: triggerOnHover.value ? openDropdown : undefined,
+	focusin: triggerOnHover.value ? openDropdown : undefined,
+	focusout: triggerOnHover.value ? closeDropdown : undefined,
+	mouseleave: triggerOnHover.value ? closeDropdown : undefined,
+	blur: triggerOnHover.value ? closeDropdown : undefined,
+};
 
-// TODO: figure out how to test unmounting listener. Not a big deal, but for the sake of full coverage...
-/* c8 ignore next 14 */
-onUnmounted(() => {
-	if (triggerOnHover.value) {
-		EVENTS_OPEN_ON_HOVER.forEach((event) => {
-			if (dropdownRef.value) {
-				dropdownRef.value.addEventListener(event, openDropdown);
-			}
-		});
-		EVENTS_CLOSE_ON_HOVER.forEach((event) => {
-			if (dropdownRef.value) {
-				dropdownRef.value.addEventListener(event, closeDropdown);
-			}
-		});
-	}
+onMounted(() => {
+	getMaxHeight();
 });
 </script>
 
@@ -138,27 +126,27 @@ onUnmounted(() => {
 @tailwind components;
 
 :root {
-	--dropdown-content-max-height: 200px;
+	--dropdown-content-max-height: 0px;
 }
 
 @layer components {
 	.pdap-dropdown {
-		@apply relative inline-block;
+		@apply relative inline-block w-max;
 	}
 
 	.pdap-dropdown-trigger {
-		@apply cursor-pointer p-0;
+		@apply cursor-pointer p-0 px-2;
 	}
 
 	.pdap-dropdown-content {
-		@apply flex flex-col w-full p-2 overflow-hidden relative max-h-[var(--dropdown-content-max-height)];
+		@apply flex flex-col w-full overflow-hidden relative max-h-[var(--dropdown-content-max-height)] px-2;
 	}
 
 	.pdap-dropdown-content.dropdown-enter-active,
 	.pdap-dropdown-content.dropdown-leave-active {
 		transition:
-			opacity 0.3s ease-in-out,
-			max-height 0.5s ease-in;
+			opacity 0.5s ease-in,
+			max-height 0.7s ease;
 	}
 
 	.pdap-dropdown-content.dropdown-enter-from,
@@ -167,7 +155,7 @@ onUnmounted(() => {
 	}
 
 	.pdap-dropdown-content > * {
-		@apply p-0 my-2 w-full max-w-[unset] items-start text-start;
+		@apply my-2 p-0 w-full max-w-[calc(100%-4px)] items-start text-start;
 	}
 }
 </style>
