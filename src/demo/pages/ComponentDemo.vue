@@ -16,9 +16,7 @@
 
 		<div class="pdap-grid-container mt-5">
 			<h2 class="col-span-full">Breadcrumbs</h2>
-			<div
-				class="col-span-2 pdap-flex-container flex-row justify-between w-full"
-			>
+			<div class="col-span-2 pdap-flex-container flex-row justify-between w-full">
 				Click to navigate:
 				<router-link to="/">Home</router-link>
 				<router-link to="/foo">Foo</router-link>
@@ -37,25 +35,17 @@
 			</p>
 			<div>
 				<h3>Button primary</h3>
-				<Button @click="() => buttonAlert('hello from primary button')"
-					>Primary button</Button
-				>
+				<Button @click="() => buttonAlert('hello from primary button')">Primary button</Button>
 			</div>
 			<div>
 				<h3>Button secondary</h3>
-				<Button
-					intent="secondary"
-					@click="() => buttonAlert('hello from secondary button')"
-					>Secondary button</Button
-				>
+				<Button intent="secondary"
+					@click="() => buttonAlert('hello from secondary button')">Secondary button</Button>
 			</div>
 			<div>
 				<h3>Button tertiary</h3>
-				<Button
-					intent="tertiary"
-					@click="() => buttonAlert('hello from tertiary button')"
-					>Tertiary button</Button
-				>
+				<Button intent="tertiary" @click="() => buttonAlert('hello from tertiary button')">Tertiary
+					button</Button>
 				<p>
 					This is an unstyled button meant to take any styling (see the
 					clickable pills in current data sources search results)
@@ -65,31 +55,19 @@
 
 		<h2>Dropdown: click or press to open</h2>
 		<!-- Dropdown emits an update:open event we can use to apply state-based classes to slot elements... -->
-		<Dropdown
-			@update:open="(isOpen: boolean) => (dropDownPressIsOpen = isOpen)"
-		>
+		<Dropdown @update:open="(isOpen: boolean) => (dropDownPressIsOpen = isOpen)">
 			<template #trigger>
-				<span
-					:class="{
-						// ...like this
-						'font-semibold': dropDownPressIsOpen,
-					}"
-				>
-					Press to toggle dropdown open/closed</span
-				></template
-			>
+				<span :class="{
+					// ...like this
+					'font-semibold': dropDownPressIsOpen,
+				}">
+					Press to toggle dropdown open/closed</span></template>
 			<template #content>
-				<Button
-					intent="tertiary"
-					@click="buttonAlert('Apples dropdown button clicked')"
-				>
+				<Button intent="tertiary" @click="buttonAlert('Apples dropdown button clicked')">
 					Apples
 				</Button>
 
-				<Button
-					intent="tertiary"
-					@click="buttonAlert('Oranges dropdown button clicked')"
-				>
+				<Button intent="tertiary" @click="buttonAlert('Oranges dropdown button clicked')">
 					Oranges
 				</Button>
 
@@ -108,33 +86,21 @@
 			button)
 		</h2>
 		<!-- Dropdown emits an update:open event we can use to apply state-based classes to slot elements... -->
-		<Dropdown
-			:trigger-on="PdapDropdownTriggerType.HOVER"
+		<Dropdown :trigger-on="PdapDropdownTriggerType.HOVER"
 			@update:open="(isOpen: boolean) => (dropDownHoverIsOpen = isOpen)"
-			@press="() => buttonAlert('Hello from top-level button')"
-		>
+			@press="() => buttonAlert('Hello from top-level button')">
 			<template #trigger>
-				<span
-					:class="{
-						// ...like this
-						'font-semibold': dropDownHoverIsOpen,
-					}"
-				>
-					Hover or focus to toggle dropdown open/closed</span
-				></template
-			>
+				<span :class="{
+					// ...like this
+					'font-semibold': dropDownHoverIsOpen,
+				}">
+					Hover or focus to toggle dropdown open/closed</span></template>
 			<template #content>
-				<Button
-					intent="tertiary"
-					@click="buttonAlert('Apples dropdown button clicked')"
-				>
+				<Button intent="tertiary" @click="buttonAlert('Apples dropdown button clicked')">
 					Apples
 				</Button>
 
-				<Button
-					intent="tertiary"
-					@click="buttonAlert('Oranges dropdown button clicked')"
-				>
+				<Button intent="tertiary" @click="buttonAlert('Oranges dropdown button clicked')">
 					Oranges
 				</Button>
 
@@ -145,13 +111,7 @@
 		</Dropdown>
 
 		<h2>Here is a form using the <code>Form</code> component directly</h2>
-		<Form
-			id="test"
-			name="test"
-			:schema="mockFormSchema"
-			@change="change"
-			@submit="submit"
-		>
+		<Form id="test" name="test" :schema="mockFormSchema" @change="change" @submit="submit">
 			<Button type="submit">Say hello</Button>
 		</Form>
 
@@ -236,11 +196,10 @@ function buttonAlert(msg: string) {
 
 function submit(values: Record<'firstName' | 'lastName' | 'iceCream', string>) {
 	console.debug({ values });
-	const alertString = `Howdy, ${values.firstName} ${values.lastName}\n${
-		values.iceCream === 'true'
-			? 'We like ice cream, too'
-			: "Who doesn't like ice cream?"
-	}`;
+	const alertString = `Howdy, ${values.firstName} ${values.lastName}\n${values.iceCream === 'true'
+		? 'We like ice cream, too'
+		: "Who doesn't like ice cream?"
+		}`;
 	alert(alertString);
 }
 
