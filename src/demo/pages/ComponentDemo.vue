@@ -16,15 +16,61 @@
 
 		<div class="pdap-grid-container mt-5">
 			<h2 class="col-span-full">Breadcrumbs</h2>
-			<div class="col-span-2 pdap-flex-container flex-row justify-between w-full">
+			<div
+				class="col-span-full lg:col-span-2 pdap-flex-container flex-row justify-between w-full"
+			>
 				Click to navigate:
-				<router-link to="/">Home</router-link>
-				<router-link to="/foo">Foo</router-link>
-				<router-link to="/foo/bar">FooBar</router-link>
-				<router-link to="/foo/bar/baz">FooBarBaz</router-link>
+				<router-link to="/"> Home </router-link>
+				<router-link to="/foo"> Foo </router-link>
+				<router-link to="/foo/bar"> FooBar </router-link>
+				<router-link to="/foo/bar/baz"> FooBarBaz </router-link>
 			</div>
 
 			<Breadcrumbs class="col-span-full" />
+
+			<h2 class="col-span-full">Loading</h2>
+			<h3 class="col-span-full">
+				The <code>loading-shimmer</code> class (which is just a wrapper around
+				the TailwindCSS <code>animate-pulse</code> class) can be applied to
+				anything.
+			</h3>
+			<div>
+				<h4>Like this:</h4>
+				<div class="loading-shimmer h-48 bg-neutral-500" />
+			</div>
+			<div>
+				<h4>Or this:</h4>
+				<div
+					class="loading-shimmer h-48 bg-brand-gold flex flex-col justify-center items-center"
+				>
+					<Spinner :show="true" text="Hello from the loading div" />
+				</div>
+			</div>
+			<div>
+				<h4>Or this:</h4>
+				<div class="loading-shimmer h-48 from-current bg-gradient-to-tr" />
+			</div>
+			<div>
+				<h4>Or this:</h4>
+				<div class="loading-shimmer h-48 from-brand-wine bg-gradient-to-r" />
+			</div>
+
+			<h3 class="col-span-full">Loading spinner:</h3>
+
+			<Spinner
+				class="col-span-full"
+				:show="true"
+				:size="48"
+				:text="loadingText"
+			/>
+
+			<Spinner class="col-span-full" :show="true" :size="128" />
+
+			<Spinner class="col-span-full" :show="true" :size="64" />
+
+			<Spinner class="col-span-full" :show="true" :size="32" />
+
+			<Spinner class="col-span-full" :show="true" :size="16" />
 
 			<h2 class="col-span-full mb-0">Buttons</h2>
 			<p class="col-span-full max-w-none">
@@ -35,17 +81,27 @@
 			</p>
 			<div>
 				<h3>Button primary</h3>
-				<Button @click="() => buttonAlert('hello from primary button')">Primary button</Button>
+				<Button @click="() => buttonAlert('hello from primary button')">
+					Primary button
+				</Button>
 			</div>
 			<div>
 				<h3>Button secondary</h3>
-				<Button intent="secondary"
-					@click="() => buttonAlert('hello from secondary button')">Secondary button</Button>
+				<Button
+					intent="secondary"
+					@click="() => buttonAlert('hello from secondary button')"
+				>
+					Secondary button
+				</Button>
 			</div>
 			<div>
 				<h3>Button tertiary</h3>
-				<Button intent="tertiary" @click="() => buttonAlert('hello from tertiary button')">Tertiary
-					button</Button>
+				<Button
+					intent="tertiary"
+					@click="() => buttonAlert('hello from tertiary button')"
+				>
+					Tertiary button
+				</Button>
 				<p>
 					This is an unstyled button meant to take any styling (see the
 					clickable pills in current data sources search results)
@@ -55,19 +111,31 @@
 
 		<h2>Dropdown: click or press to open</h2>
 		<!-- Dropdown emits an update:open event we can use to apply state-based classes to slot elements... -->
-		<Dropdown @update:open="(isOpen: boolean) => (dropDownPressIsOpen = isOpen)">
+		<Dropdown
+			@update:open="(isOpen: boolean) => (dropDownPressIsOpen = isOpen)"
+		>
 			<template #trigger>
-				<span :class="{
-					// ...like this
-					'font-semibold': dropDownPressIsOpen,
-				}">
-					Press to toggle dropdown open/closed</span></template>
+				<span
+					:class="{
+						// ...like this
+						'font-semibold': dropDownPressIsOpen,
+					}"
+				>
+					Press to toggle dropdown open/closed</span
+				>
+			</template>
 			<template #content>
-				<Button intent="tertiary" @click="buttonAlert('Apples dropdown button clicked')">
+				<Button
+					intent="tertiary"
+					@click="buttonAlert('Apples dropdown button clicked')"
+				>
 					Apples
 				</Button>
 
-				<Button intent="tertiary" @click="buttonAlert('Oranges dropdown button clicked')">
+				<Button
+					intent="tertiary"
+					@click="buttonAlert('Oranges dropdown button clicked')"
+				>
 					Oranges
 				</Button>
 
@@ -86,21 +154,33 @@
 			button)
 		</h2>
 		<!-- Dropdown emits an update:open event we can use to apply state-based classes to slot elements... -->
-		<Dropdown :trigger-on="PdapDropdownTriggerType.HOVER"
+		<Dropdown
+			:trigger-on="PdapDropdownTriggerType.HOVER"
 			@update:open="(isOpen: boolean) => (dropDownHoverIsOpen = isOpen)"
-			@press="() => buttonAlert('Hello from top-level button')">
+			@press="() => buttonAlert('Hello from top-level button')"
+		>
 			<template #trigger>
-				<span :class="{
-					// ...like this
-					'font-semibold': dropDownHoverIsOpen,
-				}">
-					Hover or focus to toggle dropdown open/closed</span></template>
+				<span
+					:class="{
+						// ...like this
+						'font-semibold': dropDownHoverIsOpen,
+					}"
+				>
+					Hover or focus to toggle dropdown open/closed</span
+				>
+			</template>
 			<template #content>
-				<Button intent="tertiary" @click="buttonAlert('Apples dropdown button clicked')">
+				<Button
+					intent="tertiary"
+					@click="buttonAlert('Apples dropdown button clicked')"
+				>
 					Apples
 				</Button>
 
-				<Button intent="tertiary" @click="buttonAlert('Oranges dropdown button clicked')">
+				<Button
+					intent="tertiary"
+					@click="buttonAlert('Oranges dropdown button clicked')"
+				>
 					Oranges
 				</Button>
 
@@ -111,8 +191,14 @@
 		</Dropdown>
 
 		<h2>Here is a form using the <code>Form</code> component directly</h2>
-		<Form id="test" name="test" :schema="mockFormSchema" @change="change" @submit="submit">
-			<Button type="submit">Say hello</Button>
+		<Form
+			id="test"
+			name="test"
+			:schema="mockFormSchema"
+			@change="change"
+			@submit="submit"
+		>
+			<Button type="submit"> Say hello </Button>
 		</Form>
 
 		<h2>And here is the Quick Search Form component</h2>
@@ -128,8 +214,9 @@ import {
 	Dropdown,
 	Form,
 	QuickSearchForm,
+	Spinner,
 } from '../../components';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { PdapDropdownTriggerType } from '../../components/Dropdown/types';
 
 const mockFormSchema = [
@@ -189,21 +276,49 @@ const mockFormSchema = [
 
 const dropDownPressIsOpen = ref(false);
 const dropDownHoverIsOpen = ref(false);
+const loadingText = ref('customizable, with optional text...');
 
 function buttonAlert(msg: string) {
 	alert(msg);
 }
 
+function updateLoadingText() {
+	let index = 0;
+	const text = [
+		'that can even update, like so:',
+		'loading...',
+		'still loading...',
+		'we might be here a while...',
+		'seriously, go get a coffee or something...',
+		"but wait, there's more... loading",
+		'refresh to see the text change again.',
+	];
+
+	const interval = setInterval(() => {
+		if (index === text.length) {
+			clearInterval(interval);
+			return;
+		}
+
+		loadingText.value = text[index];
+		index++;
+		console.debug({ loadingText: loadingText.value });
+	}, 3 * 1000);
+}
+
 function submit(values: Record<'firstName' | 'lastName' | 'iceCream', string>) {
 	console.debug({ values });
-	const alertString = `Howdy, ${values.firstName} ${values.lastName}\n${values.iceCream === 'true'
-		? 'We like ice cream, too'
-		: "Who doesn't like ice cream?"
-		}`;
+	const alertString = `Howdy, ${values.firstName} ${values.lastName}\n${
+		values.iceCream === 'true'
+			? 'We like ice cream, too'
+			: "Who doesn't like ice cream?"
+	}`;
 	alert(alertString);
 }
 
 function change(values: Record<'firstName' | 'lastName' | 'iceCream', string>) {
 	console.log('onChange', { values });
 }
+
+onMounted(updateLoadingText);
 </script>
