@@ -12,32 +12,38 @@ Documentation for PDAP component usage
 - [Button](#button)
 
   - [Props](#props-1)
+
   - [Example](#example-1)
 
 - [FlexContainer](#flexcontainer)
 
-  - [Props](#props-2)
-  - [Example](#example-2)
+- [Props](#props-2)
+
+- [Example](#example-2)
 
 - [Footer](#footer)
 
-  - [Props](#props-3)
-  - [Example](#example-3)
+- [Props](#props-3)
+
+- [Example](#example-3)
 
 - [Form](#form)
 
-  - [Props](#props-4)
-  - [Example](#example-4)
+- [Props](#props-4)
+
+- [Example](#example-4)
 
 - [GridContainer](#gridcontainer)
 
-  - [Props](#props-5)
-  - [Example](#example-5)
+- [Props](#props-5)
+
+- [Example](#example-5)
 
 - [GridItem](#griditem)
 
-  - [Props](#props-6)
-  - [Example](#example-6)
+- [Props](#props-6)
+
+- [Example](#example-6)
 
 - [Header](#header)
 
@@ -48,15 +54,22 @@ Documentation for PDAP component usage
 
 - [Nav](#nav)
 
-  - [Example](#example-8)
+- [Example](#example-8)
 
 - [QuickSearchForm](#quicksearchform)
 
-  - [Props](#props-8)
+- [Props](#props-8)
 
 - [TileIcon](#tileicon)
 
+- [Props](#props-9)
+
+- [Example](#example-9)
+
+- [Dropdown](#dropdown)
+
   - [Props](#props-9)
+
   - [Example](#example-9)
 
 ## Button
@@ -69,87 +82,7 @@ None
 
 See the Demo application [page](../src/demo/pages/ComponentDemo.vue) and [router](../src/demo/router.js)
 
-## Button
-
-### _Props_
-
-name        | required? | types       | description   | default
------------ | --------- | ----------- | ------------- | --------------------------
-`isLoading` | no        | `boolean`   | Request state | `false`
-`intent`    | yes       | `primary` \ | `secondary`   | Determines style of button | `primary`
-
-### _Example_
-
-```
-<template>
-  <Button class="custom-btn-class" intent="primary" @click="() => console.log('hello world')" type="button">Click me</Button>
-</template>
-
 ...
-
-<script>
-import { Button } from 'pdap-design-system';
-
-...
-
-export default {
-  components: ['Button'],
-  ...
-}
-</script>
-
-...
-
-<style>
-.custom-btn-class {
-  padding: 12px;
-}
-</style>
-```
-
-## FlexContainer
-
-_DEPRECATED_ All container components are designed to be dynamic and take any `HTMLElement` tag as the component to be rendered. `FlexContainer` can itself be passed as the element type for `GridItem`, for example, or vice versa, allowing us to easily compose complex layouts (more on this later with the `GridContainer` and `GridItem` documentation).
-
-### _Props_
-
-name        | required? | types     | description                         | default
------------ | --------- | --------- | ----------------------------------- | ----------------------
-`component` | no        | `string`  | HTML Element to render as container | `'div'`
-`alignment` | no        | `start` \ | `center`                            | Flex alignment presets | `start`
-
-### _Example_
-
-```
-<template>
-    <FlexContainer alignment="center" component="card">
-      <h2>Some content goes here</h2>
-      <p>More content goes here.</p>
-      <Button class="custom-button-class-name" :isLoading="isLoading" @click="() => console.log('hello world')">
-        Say hello with this button
-      </Button>
-    </FlexContainer>
-</template>
-
-...
-
-<script>
-import { Button, FlexContainer } from 'pdap-design-system';
-
-...
-
-export default {
-  components: ['Button', 'FlexContainer'],
-  props: ['requestPending', ...],
-  data() {
-    return {
-      isLoading: this.requestPending
-    }
-  }
-  ...
-}
-</script>
-```
 
 ## Footer
 
@@ -582,3 +515,19 @@ export default {
 }
 </script>
 ```
+
+## Dropdown
+
+The Dropdown component is an accessible dropdown menu that can be triggered by click or hover and positioned in various placements. It provides keyboard accessibility features such as toggling the dropdown on enter/space and closing on escape.
+
+### _Props_
+
+name          | required? | types                     | description                                        | default
+------------- | --------- | ------------------------- | -------------------------------------------------- | -------------------------------
+`defaultOpen` | no        | `boolean`                 | Whether the dropdown is initially open             | `false`
+`disabled`    | no        | `boolean`                 | Whether the dropdown should be disabled            | `false`
+`triggerType` | no        | `PdapDropdownTriggerType` | The type of event that should trigger the dropdown | `PdapDropdownTriggerType.PRESS`
+
+### _Example_
+
+See [Component demo](../src/demo/pages/ComponentDemo.vue)

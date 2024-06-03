@@ -63,6 +63,87 @@
 			</div>
 		</div>
 
+		<h2>Dropdown: click or press to open</h2>
+		<!-- Dropdown emits an update:open event we can use to apply state-based classes to slot elements... -->
+		<Dropdown
+			@update:open="(isOpen: boolean) => (dropDownPressIsOpen = isOpen)"
+		>
+			<template #trigger>
+				<span
+					:class="{
+						// ...like this
+						'font-semibold': dropDownPressIsOpen,
+					}"
+				>
+					Press to toggle dropdown open/closed</span
+				></template
+			>
+			<template #content>
+				<Button
+					intent="tertiary"
+					@click="buttonAlert('Apples dropdown button clicked')"
+				>
+					Apples
+				</Button>
+
+				<Button
+					intent="tertiary"
+					@click="buttonAlert('Oranges dropdown button clicked')"
+				>
+					Oranges
+				</Button>
+
+				<a href="https://pdap.io" target="_blank" rel="noreferrer">
+					Go to pdap.io
+				</a>
+
+				<a href="https://pdap.dev" target="_blank" rel="noreferrer">
+					Go to pdap.dev
+				</a>
+			</template>
+		</Dropdown>
+
+		<h2>
+			Dropdown: hover or focus to open (with alternate press on top-level
+			button)
+		</h2>
+		<!-- Dropdown emits an update:open event we can use to apply state-based classes to slot elements... -->
+		<Dropdown
+			:trigger-on="PdapDropdownTriggerType.HOVER"
+			@update:open="(isOpen: boolean) => (dropDownHoverIsOpen = isOpen)"
+			@press="() => buttonAlert('Hello from top-level button')"
+		>
+			<template #trigger>
+				<span
+					:class="{
+						// ...like this
+						'font-semibold': dropDownHoverIsOpen,
+					}"
+				>
+					Hover or focus to toggle dropdown open/closed</span
+				></template
+			>
+			<template #content>
+				<Button
+					intent="tertiary"
+					@click="buttonAlert('Apples dropdown button clicked')"
+				>
+					Apples
+				</Button>
+
+				<Button
+					intent="tertiary"
+					@click="buttonAlert('Oranges dropdown button clicked')"
+				>
+					Oranges
+				</Button>
+
+				<a href="https://pdap.io" target="_blank" rel="noreferrer">
+					Go to pdap.io
+				</a>
+			</template>
+		</Dropdown>
+
 		<h2>Here is a form using the <code>Form</code> component directly</h2>
 		<Form
 			id="test"
@@ -81,7 +162,15 @@
 
 <script setup lang="ts">
 import { PdapInputTypes } from '../../components/Input/types';
-import { Breadcrumbs, Button, Form, QuickSearchForm } from '../../components';
+import {
+	Breadcrumbs,
+	Button,
+	Dropdown,
+	Form,
+	QuickSearchForm,
+} from '../../components';
+import { ref } from 'vue';
+import { PdapDropdownTriggerType } from '../../components/Dropdown/types';
 
 const mockFormSchema = [
 	{
@@ -137,6 +226,9 @@ const mockFormSchema = [
 		value: '',
 	},
 ];
+
+const dropDownPressIsOpen = ref(false);
+const dropDownHoverIsOpen = ref(false);
 
 function buttonAlert(msg: string) {
 	alert(msg);
