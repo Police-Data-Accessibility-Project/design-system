@@ -1,6 +1,6 @@
 <template>
 	<div class="pdap-spinner">
-		<Transition :appear="true">
+		<Transition appear>
 			<svg
 				v-if="show"
 				:width="size"
@@ -36,7 +36,6 @@
 import { Transition } from 'vue';
 import { PdapSpinnerProps } from './types';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 withDefaults(defineProps<PdapSpinnerProps>(), {
 	color: 'currentColor',
 	size: 24,
