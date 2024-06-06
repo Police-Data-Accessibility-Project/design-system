@@ -1,3 +1,1 @@
-import PdapBreadcrumbs from './PdapBreadcrumbs.vue';
-
-export { PdapBreadcrumbs as Breadcrumbs };
+export { default as Breadcrumbs } from './PdapBreadcrumbs.vue';

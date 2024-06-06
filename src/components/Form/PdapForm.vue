@@ -93,9 +93,6 @@ const rules = props.schema.reduce((acc, input) => {
 }, {});
 const v$ = useVuelidate(rules, values, { $autoDirty: false, $lazy: true });
 
-// Types
-export type VuelidateInstance = typeof v$.value;
-
 // Vars
 const errorMessage = ref(props.error);
 
@@ -161,6 +158,117 @@ async function submit(event: Event) {
 		return;
 	}
 }
+</script>
+
+<script lang="ts">
+/**
+ * # `Form`
+ * The `Form` component is powerful. All you need to do is pass a few props, and the component will generate inputs and render them in the UI, complete with customizable form validation and both form-level and input-level error states.
+ *
+ *
+ * ## Props
+ * @prop {string | undefined | null} error Error state. Only a non-falsy string results in a form-level error being displayed
+ * @prop {string} id Passed through to the `form` element as its `id`
+ * @prop {string} name Passed through to the `form` element as its `name`
+ * @prop {PdapFormSchema} schema Array of `PdapFormInputProps` objects.
+ *
+ * ## Notes
+ *
+ * - Form schema entries can look different depending on the type of input. We currently only use text inputs, so the example only displays these.
+ * - To properly submit the form, you must render a button with `type="submit"` _inside_ of the `Form` component.
+ * - `Form` emits a `submit` event and passes all values to the handler you pass to `on-submit`
+ * - Currently available form validations are defined by the `PdapFormValidators` interface:
+ *
+ * ```
+ * PdapFormValidators {
+ *   maxLength: {
+ *     message?: string;
+ *     value: number;
+ *   };
+ *   minLength: {
+ *     message?: string;
+ *     value: number;
+ *   };
+ *   required: {
+ *     message?: string;
+ *     value: boolean;
+ *   };
+ * }
+ * ```
+ *
+ *
+ * @example
+ *
+ * <template>
+ *  <Form :schema="formSchema" :on-submit="handleSubmit" id="test-form" name="data-request-form">
+ *    <Button intent="primary" type="submit">Click me</Button>
+ *  </Form>
+ * </template>
+ *
+ *
+ * <st>
+ * import { Button, Form, PdapInputTypes } from 'pdap-design-system';
+ *
+ * export default {
+ *  components: ['Button', 'Form'],
+ *  data() {
+ *    return {
+ *      formSchema: [
+ *        {
+ *          id: 'testfirstname',
+ *          name: 'firstName',
+ *          label: 'First Name',
+ *          type: 'text',
+ *          placeholder: 'John',
+ *          value: '',
+ *          validators: {
+ *            minLength: {
+ *              value: 3
+ *            },
+ *            required: {
+ *              message: 'Please provide this information',
+ *              value: true
+ *            }
+ *          },
+ *        },
+ *        {
+ *          id: 'testlastname',
+ *          name: 'lastName',
+ *          label: 'Last Name',
+ *          type: 'text',
+ *          placeholder: 'Doe',
+ *          value: '',
+ *          validators: {
+ *            minLength: {
+ *              value: 3
+ *            },
+ *            maxLength: {
+ *              message: 'A thousand characters for your surname? Are you a bot?',
+ *              value: 999
+ *            },
+ *          },
+ *        {
+ *          id: 'ice-cream',
+ *          name: 'iceCream',
+ *          label: 'Do you like ice cream?',
+ *          type: 'checkbox',
+ *          defaultChecked: true,
+ *        }
+ *      ]
+ *    }
+ *  },
+ *  methods: {
+ *    handleSubmit: async function(data) {
+ *      await doRequestStuff(data);
+ *      this.$router.push('/')
+ *    }
+ *  }
+ *}
+ * </scriptt>
+ */
+export default {
+	name: 'PdapForm',
+};
 </script>
 
 <style>

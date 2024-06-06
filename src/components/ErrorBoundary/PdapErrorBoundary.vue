@@ -13,6 +13,24 @@
 	<slot v-else />
 </template>
 <script>
+/**
+ * # `ErrorBoundary`
+ * Intercepts uncaught errors from its children and renders an error UI in place of its children.
+ *
+ * @prop {string} component Optional: the component to render as a fallback, defaults to 'div'
+ *
+ * @example
+ *
+ * <template>
+ * 	<AuthWrapper>
+ * 		<Header :logo-image-src="lockup" />
+ * 		<ErrorBoundary component="main">
+ * 			<router-view />
+ * 		</ErrorBoundary>
+ * 		<Footer :logo-image-src="acronym" />
+ * 	</AuthWrapper>
+ * </template>
+ */
 export default {
 	props: {
 		component: {
