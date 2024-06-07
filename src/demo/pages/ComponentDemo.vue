@@ -190,7 +190,7 @@
 			</template>
 		</Dropdown>
 
-		<h2>Here is a form using the <code>Form</code> component directly</h2>
+		<h2>Form</h2>
 		<Form
 			id="test"
 			name="test"
@@ -201,8 +201,19 @@
 			<Button type="submit"> Say hello </Button>
 		</Form>
 
-		<h2>And here is the Quick Search Form component</h2>
+		<h2>Quick Search Form</h2>
 		<QuickSearchForm />
+
+		<h2>Error Boundary</h2>
+		<ErrorBoundary class="col-span-full items-start" component="div">
+			<div class="col-span-full">
+				<p>
+					This is the content that will render inside the error boundary if
+					there is no error
+				</p>
+				<Button @click="triggerError">Click here to trigger error</Button>
+			</div>
+		</ErrorBoundary>
 	</main>
 </template>
 
@@ -212,6 +223,7 @@ import {
 	Breadcrumbs,
 	Button,
 	Dropdown,
+	ErrorBoundary,
 	Form,
 	QuickSearchForm,
 	Spinner,
@@ -304,6 +316,10 @@ function updateLoadingText() {
 		index++;
 		console.debug({ loadingText: loadingText.value });
 	}, 3 * 1000);
+}
+
+function triggerError() {
+	throw new Error('Trigger error fallback');
 }
 
 function submit(values: Record<'firstName' | 'lastName' | 'iceCream', string>) {
