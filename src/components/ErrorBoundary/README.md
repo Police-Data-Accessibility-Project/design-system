@@ -2,9 +2,11 @@
 Intercepts uncaught errors from its children and renders an error UI in place of its children.
 
 ## Props
-| name        | required? | types    | description                     | default |
-| ----------- | --------- | -------- | ------------------------------- | ------- |
-| `component` | no        | `string` | component to render as fallback | `'div'` |
+| name        | required? | types                                                                           | description                     | default     |
+| ----------- | --------- | ------------------------------------------------------------------------------- | ------------------------------- | ----------- |
+| `component` | no        | `string`                                                                        | component to render as fallback | `'div'`     |
+| `onError`   | no        | `(error: Error, target?: ComponentPublicInstance \| null \| undefined) => void` | callback to run on error        | `undefined` |
+| `params`    | no        | `Record<string,string>`                                                         | params to forward to fallback   | `undefined` |
 
 ## Example
 _From data-sources `App.vue`: This will catch any uncaught error at the route level and render the error fallback_

@@ -1,3 +1,0 @@
-// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
-
-exports[`Renders container component > Renders a container 1`] = `<div class="pdap-flex-container pdap-flex-container-start">Container Content</div>`;
