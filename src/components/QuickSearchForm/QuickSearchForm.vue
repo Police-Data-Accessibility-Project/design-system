@@ -130,6 +130,26 @@ function handleSubmit(values: { location: string; searchTerm: string }) {
 }
 </script>
 
+<script lang="ts">
+/**
+ * # QuickSearchForm
+ * Renders a form to search the API `/search` endpoint with a search term and a location.
+ *
+ * ## Notes
+ *
+ * The different `mode` prop values result the following base url values in the eventual navigation
+ *
+ * | value    | base url                          |
+ * | -------- | --------------------------------- |
+ * | `'dev'`  | `'https://data-sources.pdap.dev'` |
+ * | `'prod'` | `'https://data-sources.pdap.io'`  |
+ *
+ */
+export default {
+	name: 'QuickSearchForm',
+};
+</script>
+
 <style>
 @tailwind components;
 

@@ -122,6 +122,22 @@ onMounted(() => {
 });
 </script>
 
+<script lang="ts">
+/**
+ * # `Dropdown`
+ * An accessible dropdown menu that can be triggered by click or hover and positioned in various placements. It provides keyboard accessibility features such as toggling the dropdown on enter/space and closing on escape.
+ *
+ * ## Props
+ * @prop {boolean} defaultOpen Controls the initial `isOpen` state
+ * @prop {boolean} disabled Disabled state (forwarded to trigger button)
+ * @prop {PdapDropdownTriggerType} triggerType `'press' | 'hover'`
+ *
+ */
+export default {
+	name: 'PdapButton',
+};
+</script>
+
 <style>
 @tailwind components;
 

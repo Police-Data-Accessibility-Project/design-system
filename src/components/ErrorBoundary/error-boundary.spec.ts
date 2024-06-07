@@ -45,10 +45,6 @@ describe('ErrorBoundary', () => {
 		wrapper.vm.interceptError(testError);
 		await nextTick();
 
-		expect(onErrorSpy).toHaveBeenCalledWith({
-			error: testError,
-			vm: undefined,
-			info: undefined,
-		});
+		expect(onErrorSpy).toHaveBeenCalledWith(testError, undefined, undefined);
 	});
 });

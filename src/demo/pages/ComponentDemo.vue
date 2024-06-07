@@ -205,7 +205,11 @@
 		<QuickSearchForm />
 
 		<h2>Error Boundary</h2>
-		<ErrorBoundary class="col-span-full items-start" component="div">
+		<ErrorBoundary
+			class="col-span-full items-start"
+			component="div"
+			@on-error="({ error, vm, info }) => console.debug({ error, vm, info })"
+		>
 			<div class="col-span-full">
 				<p>
 					This is the content that will render inside the error boundary if
