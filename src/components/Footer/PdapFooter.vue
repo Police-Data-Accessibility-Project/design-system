@@ -102,6 +102,20 @@ const links = inject<PdapFooterSocialLinks[]>('footerLinks', [
 const navLogoLinkIsPath = props.logoImageAnchorPath.startsWith('/');
 </script>
 
+<script lang="ts">
+/**
+ * # `Footer`
+ *
+ * ## Props
+ * @prop {string} logoImageSrc Src for the PDAP logo image to be displayed
+ * @prop {string } logoImageAnchorPath Path for the link that wraps the PDAP logo image
+ *
+ */
+export default {
+	name: 'PdapFooter',
+};
+</script>
+
 <style>
 @tailwind components;
 

@@ -25,6 +25,21 @@ const route = useRoute();
 const breadcrumbs = computed(() => getBreadcrumbs(route));
 </script>
 
+<script lang="ts">
+/**
+ * # `Breadcrumbs`
+ *
+ * Renders a hierarchy of matching links for all paths matching the current path.
+ *
+ * The rendered text of each link will default to the `name` value in each matching route's object, unless `meta.breadcrumbText` is set.
+ *
+ *
+ */
+export default {
+	name: 'PdapBreadcrumbs',
+};
+</script>
+
 <style scoped>
 .pdap-breadcrumbs {
 	@apply flex items-center;

@@ -120,24 +120,25 @@ Use these [brand assets](https://docs.pdap.io/meta/about/staff/brand-assets). Us
 
 ## Scripts reference
 
-Script         | What it does
--------------- | -------------------------------------------------------
-`_commit`      | Create conventional commits
-`build`        | Builds the library
-`build:watch`  | Builds the library and watches for file changes
-`ci`           | Remove all generated files and re-installs deps
-`clean`        | Remove all generated files (except `package-lock.json`)
-`clean:deps`   | Remove node_modules directory
-`clean:build`  | Remove dist directory
-`clean:test`   | Remove testing coverage reports
-`lint`         | Lint everything
-`lint:es`      | Lint `ts` and `vue` with `eslint`
-`lint:css`     | Lint `css` and `vue` with `stylelint`
-`lint:ts`      | Lint `ts` with `tsc`
-`test`         | Run all test suites
-`test:changed` | Run only test suites affected by changed files
-`typecheck`    | Run type check on all `ts` and `vue` files
-`dev`          | Run demo app to check visual changes to components
+| Script         | What it does                                                            |
+| -------------- | ----------------------------------------------------------------------- |
+| `_commit`      | Create conventional commits                                             |
+| `build`        | Builds the library                                                      |
+| `build:watch`  | Builds the library and watches for file changes                         |
+| `ci`           | Remove all generated files and re-installs deps                         |
+| `clean`        | Remove all generated files (except `package-lock.json`)                 |
+| `clean:deps`   | Remove node_modules directory                                           |
+| `clean:build`  | Remove dist directory                                                   |
+| `clean:test`   | Remove testing coverage reports                                         |
+| `lint`         | Lint everything                                                         |
+| `lint:es`      | Lint `ts` and `vue` with `eslint`                                       |
+| `lint:css`     | Lint `css` and `vue` with `stylelint`                                   |
+| `lint:ts`      | Lint `ts` with `tsc`                                                    |
+| `test`         | Run all test suites                                                     |
+| `test:changed` | Run only test suites affected by changed files                          |
+| `typecheck`    | Run type check on all `ts` and `vue` files                              |
+| `dev`          | Run demo app to check visual changes to components                      |
+| `docs`         | Run script to automatically aggregate links to component `README` files |
 
 _n.b. There are some other scripts defined in the `package.json` `"scripts"` field, but they are mostly for CI or cleanup post-build, etc. You shouldn't need them._
 
