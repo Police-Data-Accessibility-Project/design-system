@@ -9,3 +9,4 @@ export { QuickSearchForm } from './QuickSearchForm';
 export { TileIcon } from './TileIcon';
 export { Dropdown } from './Dropdown';
 export { Breadcrumbs } from './Breadcrumbs';
+export { Spinner } from './Spinner';
