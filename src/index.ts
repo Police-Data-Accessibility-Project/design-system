@@ -7,6 +7,7 @@ import './styles/styles.css';
 // Types
 export * from './components/Button/types';
 export * from './components/Dropdown/types';
+export * from './components/ErrorBoundary/types';
 export * from './components/Footer/types';
 export * from './components/Form/types';
 export * from './components/Header/types';
