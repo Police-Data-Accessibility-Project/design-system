@@ -20,7 +20,7 @@ done
 
 # create a commit, only if there are changes
 if git diff --quiet docs/$output_file; then
-    echo -e "No new component README files detected.\n Proceeding with push"
+    echo -e "No new component README files detected.\nProceeding with push"
     exit 0
 else
     commit_msg="chore(docs): auto-update to component docs"
