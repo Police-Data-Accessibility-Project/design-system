@@ -4,11 +4,12 @@ The Dropdown component is an accessible dropdown menu that can be triggered by c
 
 ## Props
 
-| name          | required? | types                | description                                        | default   |
-| ------------- | --------- | -------------------- | -------------------------------------------------- | --------- |
-| `defaultOpen` | no        | `boolean`            | Whether the dropdown is initially open             | `false`   |
-| `disabled`    | no        | `boolean`            | Whether the dropdown should be disabled            | `false`   |
-| `triggerType` | no        | `"press" \| "hover"` | The type of event that should trigger the dropdown | `"press"` |
+| name          | required? | types                | description                                        | default        |
+| ------------- | --------- | -------------------- | -------------------------------------------------- | -------------- |
+| `defaultOpen` | no        | `boolean`            | Whether the dropdown is initially open             | `false`        |
+| `disabled`    | no        | `boolean`            | Whether the dropdown should be disabled            | `false`        |
+| `dropdownId`  | yes       | `string`             | ID of dropdown content, must be unique             | none, required |
+| `triggerType` | no        | `"press" \| "hover"` | The type of event that should trigger the dropdown | `"press"`      |
 
 ## Slots
 
