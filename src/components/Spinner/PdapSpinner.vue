@@ -44,6 +44,18 @@ withDefaults(defineProps<PdapSpinnerProps>(), {
 });
 </script>
 
+<script lang="ts">
+/**
+ * # `Spinner`
+ * Loading spinner component
+ *
+ * @preserve
+ */
+export default {
+	name: 'PdapSpinner',
+};
+</script>
+
 <style>
 @tailwind components;
 
