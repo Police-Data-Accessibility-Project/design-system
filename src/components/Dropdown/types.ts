@@ -6,5 +6,6 @@ export enum PdapDropdownTriggerType {
 export interface PdapDropdownProps {
 	defaultOpen?: boolean;
 	disabled?: boolean;
+	dropdownId: string;
 	triggerOn?: PdapDropdownTriggerType;
 }

@@ -112,6 +112,7 @@
 		<h2>Dropdown: click or press to open</h2>
 		<!-- Dropdown emits an update:open event we can use to apply state-based classes to slot elements... -->
 		<Dropdown
+			dropdown-id="demo-press"
 			@update:open="(isOpen: boolean) => (dropDownPressIsOpen = isOpen)"
 		>
 			<template #trigger>
@@ -155,6 +156,7 @@
 		</h2>
 		<!-- Dropdown emits an update:open event we can use to apply state-based classes to slot elements... -->
 		<Dropdown
+			dropdown-id="demo-hover"
 			:trigger-on="PdapDropdownTriggerType.HOVER"
 			@update:open="(isOpen: boolean) => (dropDownHoverIsOpen = isOpen)"
 			@press="() => buttonAlert('Hello from top-level button')"

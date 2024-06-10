@@ -10,6 +10,9 @@ let content;
 describe('PdapDropdown', () => {
 	beforeEach(() => {
 		wrapper = shallowMount(PdapDropdown, {
+			props: {
+				dropdownId: 'test-dropdown',
+			},
 			slots: {
 				trigger: 'Toggle Dropdown',
 				content: '<ul><li>Option 1</li><li>Option 2</li><li>Option 3</li></ul>',
@@ -48,6 +51,7 @@ describe('PdapDropdown', () => {
 		wrapper = shallowMount(PdapDropdown, {
 			props: {
 				disabled: true,
+				dropdownId: 'test-dropdown',
 			},
 			slots: {
 				trigger: 'Toggle Dropdown',
@@ -67,6 +71,7 @@ describe('PdapDropdown', () => {
 	it('should respect the triggerOn prop', async () => {
 		wrapper = shallowMount(PdapDropdown, {
 			props: {
+				dropdownId: 'test-dropdown',
 				triggerOn: PdapDropdownTriggerType.HOVER,
 			},
 			slots: {

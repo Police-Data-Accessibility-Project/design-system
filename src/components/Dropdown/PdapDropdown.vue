@@ -57,7 +57,6 @@ const props = withDefaults(defineProps<PdapDropdownProps>(), {
 const emit = defineEmits(['update:open', 'press']);
 
 // Vars
-const dropdownId = 'pdap-dropdown';
 const contentRef = ref<HTMLElement | null>(null);
 const dropdownRef = ref<HTMLElement | null>(null);
 const open = ref<boolean>(props.defaultOpen);
