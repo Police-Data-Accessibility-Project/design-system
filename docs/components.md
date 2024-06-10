@@ -11,3 +11,4 @@
 - [Input](../src/components/Input//README.md)
 - [Nav](../src/components/Nav//README.md)
 - [QuickSearchForm](../src/components/QuickSearchForm//README.md)
+- [Spinner](../src/components/Spinner//README.md)
