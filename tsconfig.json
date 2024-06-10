@@ -41,7 +41,6 @@
 		"src/**/*.ts",
 		"src/**/*.d.ts",
 		"src/**/*.vue",
-		"src/utils/vuelidate.ts"
 	],
 	"references": [
 		{

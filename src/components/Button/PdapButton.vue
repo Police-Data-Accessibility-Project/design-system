@@ -25,6 +25,21 @@ const classes = reactive({
 });
 </script>
 
+<script lang="ts">
+/**
+ * # `Button`
+ * Styled button with PDAP branding. DOM attributes are forwarded to the HTML element, and most functionality works well this way.
+ *
+ * ## Props
+ * @prop {'primary' | 'secondary' | 'tertiary'} intent controls the styling of the button
+ * @prop {boolean} isLoading loading state of button
+ *
+ */
+export default {
+	name: 'PdapButton',
+};
+</script>
+
 <style>
 @tailwind components;
 
