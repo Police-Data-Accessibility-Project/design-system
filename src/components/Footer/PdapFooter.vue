@@ -44,9 +44,12 @@
 
 			<!-- Widget / logo links -->
 			<div class="pdap-footer-widget-links">
-				<a href="https://www.guidestar.org/profile/85-4207132" target="_blank"
-					><img src="https://widgets.guidestar.org/gximage2?o=9973356&l=v4"
-				/></a>
+				<a href="https://www.guidestar.org/profile/85-4207132" target="_blank">
+					<img
+						alt="platinum transparency"
+						src="https://widgets.guidestar.org/gximage2?o=9973356&l=v4"
+					/>
+				</a>
 
 				<a
 					v-if="!navLogoLinkIsPath"

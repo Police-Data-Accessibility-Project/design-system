@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`PdapDropdown > should be accessible with keyboard 1`] = `
-<div class="pdap-dropdown">
+<div class="pdap-dropdown" role="presentation">
   <pdap-button-stub aria-controls="test-dropdown" aria-expanded="false" aria-haspopup="true" class="pdap-dropdown-trigger" disabled="false" intent="tertiary" isloading="false"></pdap-button-stub>
   <transition-stub appear="true" css="true" name="dropdown" persisted="true">
     <div aria-hidden="true" class="pdap-dropdown-content" id="test-dropdown" role="menu" style="display: none;">
@@ -16,7 +16,7 @@ exports[`PdapDropdown > should be accessible with keyboard 1`] = `
 `;
 
 exports[`PdapDropdown > should open and close dropdown correctly 1`] = `
-<div class="pdap-dropdown">
+<div class="pdap-dropdown" role="presentation">
   <pdap-button-stub aria-controls="test-dropdown" aria-expanded="false" aria-haspopup="true" class="pdap-dropdown-trigger" disabled="false" intent="tertiary" isloading="false"></pdap-button-stub>
   <transition-stub appear="true" css="true" name="dropdown" persisted="true">
     <div aria-hidden="true" class="pdap-dropdown-content" id="test-dropdown" role="menu" style="display: none;">
@@ -31,7 +31,7 @@ exports[`PdapDropdown > should open and close dropdown correctly 1`] = `
 `;
 
 exports[`PdapDropdown > should respect disabled prop 1`] = `
-<div class="pdap-dropdown">
+<div class="pdap-dropdown" role="presentation">
   <pdap-button-stub aria-controls="test-dropdown" aria-expanded="false" aria-haspopup="true" class="pdap-dropdown-trigger pointer-events-none cursor-not-allowed" disabled="true" intent="tertiary" isloading="false"></pdap-button-stub>
   <transition-stub appear="true" css="true" name="dropdown" persisted="true">
     <div aria-hidden="true" class="pdap-dropdown-content" id="test-dropdown" role="menu" style="display: none;">
@@ -46,7 +46,7 @@ exports[`PdapDropdown > should respect disabled prop 1`] = `
 `;
 
 exports[`PdapDropdown > should respect the triggerOn prop 1`] = `
-<div class="pdap-dropdown">
+<div class="pdap-dropdown" role="presentation">
   <pdap-button-stub aria-controls="test-dropdown" aria-expanded="false" aria-haspopup="true" class="pdap-dropdown-trigger" disabled="false" intent="tertiary" isloading="false"></pdap-button-stub>
   <transition-stub appear="true" css="true" name="dropdown" persisted="true">
     <div aria-hidden="true" class="pdap-dropdown-content" id="test-dropdown" role="menu" style="display: none;">

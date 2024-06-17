@@ -3,6 +3,7 @@
 		ref="dropdownRef"
 		v-click-outside="closeDropdown"
 		class="pdap-dropdown"
+		role="presentation"
 		@keydown.escape="closeDropdown"
 		v-on="dropdownHandlers"
 	>
@@ -157,20 +158,22 @@ export default {
 		@apply flex flex-col w-full overflow-hidden relative max-h-[var(--dropdown-content-max-height)] px-2;
 	}
 
-	.pdap-dropdown-content.dropdown-enter-active,
-	.pdap-dropdown-content.dropdown-leave-active {
-		transition:
-			opacity 0.5s ease-in,
-			max-height 0.7s ease;
-	}
-
-	.pdap-dropdown-content.dropdown-enter-from,
-	.pdap-dropdown-content.dropdown-leave-to {
-		@apply max-h-0 opacity-0;
-	}
-
 	.pdap-dropdown-content > * {
 		@apply my-2 p-0 w-full max-w-[calc(100%-4px)] items-start text-start;
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		.pdap-dropdown-content.dropdown-enter-active,
+		.pdap-dropdown-content.dropdown-leave-active {
+			transition:
+				opacity 0.5s ease-in,
+				max-height 0.7s ease;
+		}
+
+		.pdap-dropdown-content.dropdown-enter-from,
+		.pdap-dropdown-content.dropdown-leave-to {
+			@apply max-h-0 opacity-0;
+		}
 	}
 }
 </style>

@@ -14,7 +14,7 @@
 				width="250"
 				alt="Police Data Accessibility Project Logo"
 		/></router-link>
-		<PdapNav :top-position="height" />
+		<PdapNav />
 	</header>
 </template>
 
@@ -31,27 +31,28 @@ const props = withDefaults(defineProps<PdapHeaderProps>(), {
 	logoImageAnchorPath: '/',
 });
 
-// State
-const height = ref();
-
 // Vars
 const el = ref<HTMLElement | null>(null);
 const navLogoLinkIsPath = props.logoImageAnchorPath.startsWith('/');
 
 // Lifecycle methods
 onMounted(() => {
-	getHeight();
-	window.addEventListener('resize', getHeight);
+	console.debug('on mounted');
+	getHeightAndSetToCSSVar();
+	window.addEventListener('resize', getHeightAndSetToCSSVar);
 });
 
 onBeforeUnmount(() => {
-	window.removeEventListener('resize', getHeight);
+	window.removeEventListener('resize', getHeightAndSetToCSSVar);
 });
 
 // Utils
-function getHeight() {
+function getHeightAndSetToCSSVar() {
 	if (el.value) {
-		height.value = el.value.offsetHeight;
+		(document.querySelector(':root') as HTMLElement)?.style.setProperty(
+			'--header-height',
+			`${el.value.clientHeight}px`
+		);
 	}
 }
 </script>
