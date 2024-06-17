@@ -65,7 +65,7 @@ export default {
 		@apply items-center bg-inherit flex flex-col gap-4 h-auto justify-center w-auto z-30;
 	}
 
-	@media (prefers-reduced-motion) {
+	@media (prefers-reduced-motion: no-preference) {
 		.pdap-spinner-innards {
 			transform-origin: center;
 			animation: spinner 0.85s infinite linear;

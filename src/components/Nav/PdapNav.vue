@@ -26,7 +26,7 @@
 
 	<transition>
 		<nav
-			v-show="state.isMobile && state.isExpanded"
+			v-show="(state.isMobile && state.isExpanded) || !state.isMobile"
 			id="nav"
 			:aria-hidden="!(state.isMobile && state.isExpanded)"
 			class="pdap-nav"
@@ -173,10 +173,8 @@ export default {
 @layer components {
 	/* Nav */
 	.pdap-nav {
-		@apply items-start bg-neutral-300 flex relative z-40;
-		@apply lg:bg-transparent lg:justify-center max-lg:absolute max-lg:flex-col max-lg:left-0 max-lg:h-[calc(100vh-var(--header-height))] max-lg:p-6 max-lg:w-full;
-
-		top: var(--header-height);
+		@apply bg-neutral-300 flex relative z-40 items-center max-lg:items-start lg:gap-2;
+		@apply lg:bg-transparent lg:justify-center max-lg:absolute max-lg:flex-col max-lg:left-0 max-lg:h-[calc(100vh-var(--header-height))] max-lg:p-6 max-lg:w-full max-lg:top-[var(--header-height)];
 	}
 
 	.pdap-nav[aria-hidden='true'],
@@ -185,8 +183,8 @@ export default {
 	}
 
 	.pdap-nav-link-container {
-		@apply align-top basis-[max-content] p-2 lg:p-0 inline-block list-none relative;
-		@apply lg:flex-shrink-0 lg:flex-grow lg:mx-2 lg:mb-2;
+		@apply align-top basis-[max-content] p-2 lg:p-0 inline-block list-none relative m-0;
+		@apply lg:flex-shrink-0 lg:flex-grow;
 	}
 
 	.pdap-nav-link {
