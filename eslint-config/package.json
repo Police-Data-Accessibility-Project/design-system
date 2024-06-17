@@ -1,6 +1,6 @@
 {
   "name": "@pdap-design-system/eslint-config",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "eslint config for PDAP client apps",
   "main": "index.js",
   "type": "commonjs",
