@@ -47,6 +47,7 @@ import { PdapInputTypes } from '../Input/types';
 // Props
 const props = withDefaults(defineProps<PdapFormProps>(), {
 	error: null,
+	resetOn: 'submit',
 });
 
 // Emits
@@ -119,21 +120,21 @@ watchEffect(() => {
 		errorMessage.value = 'Please update this form to correct the errors';
 });
 
-// Effect - Debug logger - following comment ignores in coverage report
-/* c8 ignore next 12 */
 watchEffect(() => {
-	if (import.meta.env.MODE === 'development') {
-		console.debug(`PdapForm ${props.name}\n`, {
-			errorMessage: errorMessage.value,
-			props,
-			values,
-			vuelidate: {
-				rules,
-				v$,
-			},
-		});
+	if (props.resetOn && props.resetOn !== 'submit') {
+		resetForm();
 	}
 });
+
+/**
+ * Reset vuelidate and wipe values state
+ */
+function resetForm() {
+	v$.value.$reset();
+	values.value = Object.entries(values).reduce((acc, [key]) => {
+		return { ...acc, [key]: '' };
+	}, {});
+}
 
 function change() {
 	emit('change', { ...values.value });
@@ -145,17 +146,10 @@ async function submit(event: Event) {
 	if (isValidSubmission) {
 		// Emit submit event (spread to new object to create new object, this allows us to reset `values` without messing with the data returned)
 		emit('submit', { ...values.value });
-		// Reset vuelidate and form
-		v$.value.$reset();
-		const form = <HTMLFormElement>event.target;
-		form.reset();
 
-		// Wipe values state
-		values.value = Object.entries(values).reduce((acc, [key]) => {
-			return { ...acc, [key]: '' };
-		}, {});
-
-		return;
+		if (props.resetOn === 'submit') {
+			resetForm();
+		}
 	}
 }
 </script>
