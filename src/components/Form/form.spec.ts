@@ -288,4 +288,22 @@ describe('Form component', () => {
 		// Assert error message no longer present
 		expect(wrapper.find('.pdap-form-error-message').exists()).toBe(false);
 	});
+
+	test('Form waits to reset until resetOn prop switches to `true` and error is falsy', async () => {
+		const wrapper = mount(PdapForm, {
+			...base,
+			props: { ...base.props, error: 'foo', resetOn: false },
+		});
+
+		// Assert error state
+		expect(wrapper.find('.pdap-form-error-message').exists()).toBe(true);
+		// Assert error message
+		expect(wrapper.find('.pdap-form-error-message').text()).toBe('foo');
+
+		// Set values to correct values
+		await wrapper.setProps({ error: '', resetOn: true });
+
+		// Assert error message no longer present
+		expect(wrapper.find('.pdap-form-error-message').exists()).toBe(false);
+	});
 });
