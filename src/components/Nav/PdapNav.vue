@@ -1,12 +1,22 @@
 <!-- eslint-disable vue/no-multiple-template-root -->
 <template>
 	<div
+		:aria-label="
+			state.isExpanded ? 'close navigation menu' : 'open navigation menu'
+		"
+		:aria-expanded="state.isMobile && state.isExpanded"
 		aria-controls="nav"
 		class="pdap-nav-open-button"
 		role="button"
+		:tabindex="0"
 		@click="toggleIsExpanded"
+		@keyup.enter="toggleIsExpanded"
 	>
-		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+		<svg
+			aria-label="Menu"
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 448 512"
+		>
 			<!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
 			<path
 				d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"
@@ -14,33 +24,39 @@
 		</svg>
 	</div>
 
-	<nav
-		id="nav"
-		:aria-expanded="(state.isMobile && state.isExpanded) || !state.isMobile"
-		:class="classes"
-		:style="state.isMobile ? { top: `${topPosition}px` } : {}"
-	>
-		<li v-for="link in links" :key="link.text" class="pdap-nav-link-container">
-			<a
-				v-if="link.href"
-				class="pdap-nav-link"
-				:href="link.href"
-				target="_blank"
-				referrerpolicy="no-referrer"
-				@click="toggleIsExpanded"
-				>{{ link.text }}</a
+	<transition>
+		<nav
+			v-show="(state.isMobile && state.isExpanded) || !state.isMobile"
+			id="nav"
+			:aria-hidden="!(state.isMobile && state.isExpanded)"
+			class="pdap-nav"
+		>
+			<li
+				v-for="link in links"
+				:key="link.text"
+				class="pdap-nav-link-container"
 			>
-			<router-link
-				v-if="link.path"
-				active-class="pdap-nav-link-current"
-				exact-active-class="pdap-nav-link-current-exact"
-				class="pdap-nav-link"
-				:to="link.path"
-				@click="toggleIsExpanded"
-				>{{ link.text }}</router-link
-			>
-		</li>
-	</nav>
+				<a
+					v-if="link.href"
+					class="pdap-nav-link"
+					:href="link.href"
+					target="_blank"
+					referrerpolicy="no-referrer"
+					@click="toggleIsExpanded"
+					>{{ link.text }}</a
+				>
+				<router-link
+					v-if="link.path"
+					active-class="pdap-nav-link-current"
+					exact-active-class="pdap-nav-link-current-exact"
+					class="pdap-nav-link"
+					:to="link.path"
+					@click="toggleIsExpanded"
+					>{{ link.text }}</router-link
+				>
+			</li>
+		</nav>
+	</transition>
 </template>
 
 <script setup lang="ts">
@@ -54,7 +70,7 @@ import {
 } from 'vue';
 import { RouterLink } from 'vue-router';
 // Types
-import { PdapLinkData, PdapNavProps } from './types';
+import { PdapLinkData } from './types';
 
 // Inject
 let links: PdapLinkData[] | undefined = inject('navLinks');
@@ -67,18 +83,10 @@ if (typeof links === 'undefined') {
 	);
 }
 
-// Props
-const { topPosition } = defineProps<PdapNavProps>();
-
 // Refs
 const state = reactive<{ isExpanded: boolean; isMobile: boolean }>({
 	isExpanded: false,
 	isMobile: true,
-});
-
-// CSS class map
-const classes = reactive({
-	'pdap-nav': true,
 });
 
 // Life cycle methods
@@ -165,18 +173,18 @@ export default {
 @layer components {
 	/* Nav */
 	.pdap-nav {
-		@apply items-start bg-neutral-300 flex relative z-40;
-		@apply lg:bg-transparent lg:justify-center max-lg:absolute max-lg:flex-col max-lg:left-0 max-lg:h-[calc(100vh-104px)] max-lg:p-6 max-lg:top-[104px] max-lg:w-full;
+		@apply bg-neutral-300 flex relative z-40 items-center max-lg:items-start lg:gap-2;
+		@apply lg:bg-transparent lg:justify-center max-lg:absolute max-lg:flex-col max-lg:left-0 max-lg:h-[calc(100vh-var(--header-height))] max-lg:p-6 max-lg:w-full max-lg:top-[var(--header-height)];
 	}
 
-	.pdap-nav[aria-expanded='false'],
+	.pdap-nav[aria-hidden='true'],
 	.pdap-nav-open-button {
 		@apply max-lg:hidden;
 	}
 
 	.pdap-nav-link-container {
-		@apply align-top basis-[max-content] p-2 lg:p-0 inline-block list-none relative;
-		@apply lg:flex-shrink-0 lg:flex-grow lg:mx-2 lg:mb-2;
+		@apply align-top basis-[max-content] p-2 lg:p-0 inline-block list-none relative m-0;
+		@apply lg:flex-shrink-0 lg:flex-grow;
 	}
 
 	.pdap-nav-link {
@@ -198,6 +206,20 @@ export default {
 
 	.pdap-nav-open-button svg {
 		@apply fill-neutral-950 h-5;
+	}
+}
+</style>
+<style scoped>
+/* Transition styles - scoped to avoid collision */
+@media (prefers-reduced-motion: no-preference) {
+	.v-enter-active,
+	.v-leave-active {
+		transition: opacity 0.5s ease;
+	}
+
+	.v-enter-from,
+	.v-leave-to {
+		opacity: 0;
 	}
 }
 </style>

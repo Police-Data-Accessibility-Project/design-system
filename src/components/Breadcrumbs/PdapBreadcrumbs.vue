@@ -1,6 +1,6 @@
 <template>
 	<nav aria-label="Breadcrumb">
-		<transition-group class="pdap-breadcrumbs" name="pdap-breadcrumbs" tag="ul">
+		<transition-group class="pdap-breadcrumbs" tag="ul">
 			<li
 				v-for="breadcrumb in breadcrumbs"
 				:key="breadcrumb.text"
@@ -58,15 +58,19 @@ export default {
 .pdap-breadcrumbs .is-active {
 	@apply text-neutral-950;
 }
+</style>
 
-/* Animations */
-.pdap-breadcrumbs-enter-active,
-.pdap-breadcrumbs-leave-active {
-	transition: opacity 0.2s ease;
-}
+<style scoped>
+@media (prefers-reduced-motion: no-preference) {
+	/* Animations */
+	.v-enter-active,
+	.v-leave-active {
+		transition: opacity 0.2s ease;
+	}
 
-.pdap-breadcrumbs-enter-from,
-.pdap-breadcrumbs-leave-to {
-	opacity: 0;
+	.v-enter-from,
+	.v-leave-to {
+		opacity: 0;
+	}
 }
 </style>
