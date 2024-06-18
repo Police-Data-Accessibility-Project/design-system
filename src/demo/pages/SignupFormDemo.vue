@@ -7,7 +7,7 @@
 			:reset-on="reset"
 			name="foo"
 			@submit="onSubmit"
-			@change="handleChangeOnError"
+			@change="handleChange"
 		>
 			<Button type="submit">Submit</Button>
 		</Form>
@@ -74,10 +74,8 @@ const reset = ref(false);
 /**
  * When signing up: handles clearing pw-match form errors on change if they exist
  */
-function handleChangeOnError(formValues: Record<string, string>) {
-	console.debug('onchange', { e: error.value, formValues: formValues.value });
-
-	if (error.value && formValues.password !== formValues.confirmPassword) {
+function handleChange(formValues: Record<string, string>) {
+	if (error.value) {
 		handlePasswordValidation(formValues);
 	}
 }
@@ -87,8 +85,6 @@ function handleChangeOnError(formValues: Record<string, string>) {
  * @returns {boolean} `false` if passwords do not match, `true` if they do
  */
 function handlePasswordValidation(formValues: Record<string, string>) {
-	console.debug('validate', { e: error.value });
-
 	if (formValues.password !== formValues.confirmPassword) {
 		if (!error.value) {
 			error.value = 'Passwords do not match, please try again.';
@@ -104,7 +100,6 @@ function handlePasswordValidation(formValues: Record<string, string>) {
  * Logs user in or signs user up
  */
 function onSubmit(formValues: Record<string, string>) {
-	console.debug('onsubmit', { e: error.value });
 	if (!handlePasswordValidation(formValues)) {
 		return;
 	} else {

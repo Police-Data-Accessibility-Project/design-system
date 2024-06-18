@@ -1,11 +1,5 @@
 <template>
-	<form
-		:id="id"
-		:name="name"
-		class="pdap-form"
-		@change="change"
-		@submit.prevent="submit()"
-	>
+	<form :id="id" :name="name" class="pdap-form" @submit.prevent="submit">
 		<div
 			v-if="typeof errorMessage === 'string'"
 			class="pdap-form-error-message"
@@ -23,7 +17,7 @@
 					: ''
 			"
 			:value="values[field.name]"
-			@change="updateForm(field.name, $event)"
+			@input="updateForm(field.name, $event)"
 		/>
 		<slot />
 	</form>
@@ -107,7 +101,7 @@ function updateForm(fieldName: string, event: Event) {
 			: target.value;
 
 	values.value[fieldName] = update;
-	change();
+	emit('change', values.value);
 }
 
 // Effects
@@ -134,10 +128,6 @@ function resetForm() {
 	values.value = Object.entries(values).reduce((acc, [key]) => {
 		return { ...acc, [key]: '' };
 	}, {});
-}
-
-function change() {
-	emit('change', { ...values.value });
 }
 
 async function submit() {
