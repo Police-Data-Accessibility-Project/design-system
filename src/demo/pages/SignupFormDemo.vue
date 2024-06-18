@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import { PdapInputTypes } from 'src/components/Input/types';
+import { PdapInputTypes } from '../../components/Input/types';
 import { Button, Form } from '../../components';
 import { ref } from 'vue';
 
