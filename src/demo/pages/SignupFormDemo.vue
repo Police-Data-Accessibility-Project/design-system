@@ -1,9 +1,11 @@
 <template>
 	<main>
 		<Form
+			id="bar"
 			:error="error"
 			:schema="SCHEMA"
 			:reset-on="reset"
+			name="foo"
 			@submit="onSubmit"
 			@change="handleChangeOnError"
 		>
@@ -13,6 +15,7 @@
 </template>
 
 <script setup lang="ts">
+import { PdapInputTypes } from 'src/components/Input/types';
 import { Button, Form } from '../../components';
 import { ref } from 'vue';
 
@@ -23,7 +26,7 @@ const SCHEMA = [
 		id: 'email',
 		name: 'email',
 		label: 'Email',
-		type: 'text',
+		type: PdapInputTypes.TEXT,
 		placeholder: 'Your email address',
 		value: '',
 		validators: {
@@ -38,7 +41,7 @@ const SCHEMA = [
 		id: 'password',
 		name: 'password',
 		label: 'Password',
-		type: 'password',
+		type: PdapInputTypes.PASSWORD,
 		placeholder: 'Your password',
 		value: '',
 		validators: {
@@ -53,7 +56,7 @@ const SCHEMA = [
 		id: 'confirmPassword',
 		name: 'confirmPassword',
 		label: 'Confirm Password',
-		type: 'password',
+		type: PdapInputTypes.PASSWORD,
 		placeholder: 'Confirm your password',
 		value: '',
 		validators: {
@@ -65,13 +68,13 @@ const SCHEMA = [
 	},
 ];
 
-const error = ref(undefined);
+const error = ref<undefined | string>(undefined);
 const reset = ref(false);
 
 /**
  * When signing up: handles clearing pw-match form errors on change if they exist
  */
-function handleChangeOnError(formValues) {
+function handleChangeOnError(formValues: Record<string, string>) {
 	console.debug('onchange', { e: error.value, formValues: formValues.value });
 
 	if (error.value && formValues.password !== formValues.confirmPassword) {
@@ -83,7 +86,7 @@ function handleChangeOnError(formValues) {
  * When signing up: validates that passwords match
  * @returns {boolean} `false` if passwords do not match, `true` if they do
  */
-function handlePasswordValidation(formValues) {
+function handlePasswordValidation(formValues: Record<string, string>) {
 	console.debug('validate', { e: error.value });
 
 	if (formValues.password !== formValues.confirmPassword) {
@@ -100,7 +103,7 @@ function handlePasswordValidation(formValues) {
 /**
  * Logs user in or signs user up
  */
-function onSubmit(formValues) {
+function onSubmit(formValues: Record<string, string>) {
 	console.debug('onsubmit', { e: error.value });
 	if (!handlePasswordValidation(formValues)) {
 		return;

@@ -4,7 +4,7 @@
 		:name="name"
 		class="pdap-form"
 		@change="change"
-		@submit.prevent="submit($event)"
+		@submit.prevent="submit()"
 	>
 		<div
 			v-if="typeof errorMessage === 'string'"
@@ -140,7 +140,7 @@ function change() {
 	emit('change', { ...values.value });
 }
 
-async function submit(event: Event) {
+async function submit() {
 	// Check form submission
 	const isValidSubmission = await v$.value.$validate();
 	if (isValidSubmission) {
