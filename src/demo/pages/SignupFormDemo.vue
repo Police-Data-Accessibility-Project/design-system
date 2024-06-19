@@ -101,6 +101,7 @@ function handlePasswordValidation(formValues: Record<string, string>) {
  */
 function onSubmit(formValues: Record<string, string>) {
 	if (!handlePasswordValidation(formValues)) {
+		reset.value = false;
 		return;
 	} else {
 		reset.value = true;

@@ -4,13 +4,13 @@ The `Form` component is powerful. All you need to do is pass a few props, and th
 
 ## Props
 
-| name      | required? | types                                                    | description                                                                                                                             | default     |
-| --------- | --------- | -------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| `error`   | no        | `string` \| `undefined` \| `null`                        | Error state                                                                                                                             | `undefined` |
-| `id`      | yes       | `string`                                                 | Form id                                                                                                                                 | none        |
-| `name`    | yes       | `string`                                                 | Form name                                                                                                                               | none        |
-| `schema`  | yes       | `PdapFormSchema` (array of `PdapFormInputProps` objects) | Array of schema entries for inputs                                                                                                      | none        |
-| `resetOn` | no        | `'submit'` \| `boolean`                                  | When to reset form - if `'submit'`, it happens during submission. If `boolean`, it happens when the value of the prop changes to `true` | none        |
+| name      | required? | types                                                    | description                                                                                                                    | default     |
+| --------- | --------- | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | ----------- |
+| `error`   | no        | `string` \| `undefined` \| `null`                        | Error state                                                                                                                    | `undefined` |
+| `id`      | yes       | `string`                                                 | Form id                                                                                                                        | none        |
+| `name`    | yes       | `string`                                                 | Form name                                                                                                                      | none        |
+| `schema`  | yes       | `PdapFormSchema` (array of `PdapFormInputProps` objects) | Array of schema entries for inputs                                                                                             | none        |
+| `resetOn` | no        | `'submit'` \| `boolean`                                  | When to reset form - if `'submit'`, it happens during submission. If `boolean`, it happens on any change of the prop to `true` | `'submit'`  |
 
 
 
