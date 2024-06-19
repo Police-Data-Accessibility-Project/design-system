@@ -105,8 +105,7 @@ function onSubmit(formValues: Record<string, string>) {
 		return;
 	} else {
 		reset.value = true;
+		console.debug({ formValues });
 	}
-
-	console.debug({ formValues });
 }
 </script>

@@ -35,5 +35,5 @@ export interface PdapFormProps {
 	id: string;
 	name: string;
 	schema: PdapFormSchema;
-	resetOn: 'submit' | boolean;
+	resetOn?: 'submit' | boolean;
 }
