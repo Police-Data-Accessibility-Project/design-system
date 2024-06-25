@@ -41,7 +41,7 @@
 			<div>
 				<h4>Or this:</h4>
 				<div
-					class="loading-shimmer h-48 bg-brand-gold flex flex-col justify-center items-center"
+					class="loading-shimmer h-48 bg-brand-gold flex flex-col justify-center items-center text-neutral-50"
 				>
 					<Spinner :show="true" text="Hello from the loading div" />
 				</div>
@@ -239,6 +239,7 @@ import { PdapDropdownTriggerType } from '../../components/Dropdown/types';
 
 const mockFormSchema = [
 	{
+		autocomplete: 'given-name',
 		id: 'first-name',
 		name: 'firstName',
 		label: 'What is your first name?',
@@ -252,6 +253,7 @@ const mockFormSchema = [
 		},
 	},
 	{
+		autocomplete: 'family-name',
 		id: 'last-name',
 		name: 'lastName',
 		label: 'What is your last name?',
@@ -339,7 +341,7 @@ function submit(values: Record<'firstName' | 'lastName' | 'iceCream', string>) {
 }
 
 function change(values: Record<'firstName' | 'lastName' | 'iceCream', string>) {
-	console.log('onChange', { values });
+	console.debug('onChange', { values });
 }
 
 onMounted(updateLoadingText);

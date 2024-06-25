@@ -22,6 +22,7 @@ import { ref } from 'vue';
 // Constants
 const SCHEMA = [
 	{
+		autocomplete: 'home email',
 		'data-test': 'email',
 		id: 'email',
 		name: 'email',
@@ -37,6 +38,7 @@ const SCHEMA = [
 		},
 	},
 	{
+		autocomplete: 'current-password',
 		'data-test': 'password',
 		id: 'password',
 		name: 'password',
@@ -52,6 +54,7 @@ const SCHEMA = [
 		},
 	},
 	{
+		autocomplete: 'current-password',
 		'data-test': 'confirm-password',
 		id: 'confirmPassword',
 		name: 'confirmPassword',

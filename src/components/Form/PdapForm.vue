@@ -94,13 +94,8 @@ const errorMessage = ref(props.error);
 // Handlers
 function updateForm(fieldName: string, event: Event) {
 	const target = event.target as HTMLInputElement;
-	const update =
-		target.type === PdapInputTypes.CHECKBOX &&
-		typeof target.checked === 'boolean'
-			? target.checked.toString()
-			: target.value;
 
-	values.value[fieldName] = update;
+	values.value[fieldName] = target.value;
 	emit('change', values.value);
 }
 
