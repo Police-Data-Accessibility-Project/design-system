@@ -200,8 +200,8 @@ describe('Form component', () => {
 		await inputTextTwo.setValue('bar');
 		await inputEmail.setValue('hello@hello.com');
 		await inputPassword.setValue('P@ssword1!');
-		await inputCheckboxDefaultChecked.trigger('change');
-		await inputCheckboxDefaultUnchecked.trigger('change');
+		await inputCheckboxDefaultChecked.trigger('input');
+		await inputCheckboxDefaultUnchecked.trigger('input');
 		await nextTick();
 
 		// Assert new values

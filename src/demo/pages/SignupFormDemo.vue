@@ -48,7 +48,7 @@ const SCHEMA = [
 		value: '',
 		validators: {
 			password: {
-				message: 'Please provide your password',
+				message: 'Please provide a valid password',
 				value: true,
 			},
 		},
@@ -64,7 +64,7 @@ const SCHEMA = [
 		value: '',
 		validators: {
 			password: {
-				message: 'Please confirm your password',
+				message: 'Please confirm your valid password',
 				value: true,
 			},
 		},

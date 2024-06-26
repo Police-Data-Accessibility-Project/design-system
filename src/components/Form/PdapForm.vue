@@ -17,7 +17,7 @@
 					: ''
 			"
 			:value="values[field.name]"
-			@input="updateForm(field.name, $event)"
+			@input="updateForm(field, $event)"
 		/>
 		<slot />
 	</form>
@@ -36,7 +36,7 @@ import { createRule } from '../../utils/vuelidate';
 
 // Types
 import { PdapFormProps } from './types';
-import { PdapInputTypes } from '../Input/types';
+import { PdapInputProps, PdapInputTypes } from '../Input/types';
 
 // Props
 const props = withDefaults(defineProps<PdapFormProps>(), {
@@ -92,10 +92,19 @@ const v$ = useVuelidate(rules, values, { $autoDirty: false, $lazy: true });
 const errorMessage = ref(props.error);
 
 // Handlers
-function updateForm(fieldName: string, event: Event) {
+function updateForm(field: PdapInputProps, event: Event) {
 	const target = event.target as HTMLInputElement;
 
-	values.value[fieldName] = target.value;
+	const update = (() => {
+		switch (field.type) {
+			case PdapInputTypes.CHECKBOX:
+				return target.checked ? 'true' : 'false';
+			default:
+				return target.value;
+		}
+	})();
+
+	values.value[field.name] = update;
 	emit('change', values.value);
 }
 
