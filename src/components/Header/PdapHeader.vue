@@ -37,7 +37,6 @@ const navLogoLinkIsPath = props.logoImageAnchorPath.startsWith('/');
 
 // Lifecycle methods
 onMounted(() => {
-	console.debug('on mounted');
 	getHeightAndSetToCSSVar();
 	window.addEventListener('resize', getHeightAndSetToCSSVar);
 });

@@ -200,8 +200,8 @@ describe('Form component', () => {
 		await inputTextTwo.setValue('bar');
 		await inputEmail.setValue('hello@hello.com');
 		await inputPassword.setValue('P@ssword1!');
-		await inputCheckboxDefaultChecked.trigger('change');
-		await inputCheckboxDefaultUnchecked.trigger('change');
+		await inputCheckboxDefaultChecked.trigger('input');
+		await inputCheckboxDefaultUnchecked.trigger('input');
 		await nextTick();
 
 		// Assert new values
@@ -284,6 +284,24 @@ describe('Form component', () => {
 		await inputPassword.setValue('P@ssword1!');
 		await nextTick();
 		wrapper.vm.$forceUpdate();
+
+		// Assert error message no longer present
+		expect(wrapper.find('.pdap-form-error-message').exists()).toBe(false);
+	});
+
+	test('Form waits to reset until resetOn prop switches to `true` and error is falsy', async () => {
+		const wrapper = mount(PdapForm, {
+			...base,
+			props: { ...base.props, error: 'foo', resetOn: false },
+		});
+
+		// Assert error state
+		expect(wrapper.find('.pdap-form-error-message').exists()).toBe(true);
+		// Assert error message
+		expect(wrapper.find('.pdap-form-error-message').text()).toBe('foo');
+
+		// Set values to correct values
+		await wrapper.setProps({ error: '', resetOn: true });
 
 		// Assert error message no longer present
 		expect(wrapper.find('.pdap-form-error-message').exists()).toBe(false);

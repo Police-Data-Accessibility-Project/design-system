@@ -6,7 +6,6 @@
 		:placeholder="placeholder"
 		:value="value"
 		v-bind="$attrs"
-		@change="change"
 		@input="input"
 	/>
 </template>
@@ -18,13 +17,8 @@ defineProps<PdapInputTextProps>();
 
 // Emits
 const emit = defineEmits<{
-	(event: 'change', val: Event): void;
 	(event: 'input', val: Event): void;
 }>();
-
-const change = (event: Event) => {
-	emit('change', event);
-};
 
 const input = (event: Event) => {
 	emit('input', event);
