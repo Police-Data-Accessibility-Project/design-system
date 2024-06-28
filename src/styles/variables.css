@@ -21,11 +21,9 @@
 		--color-neutral-900: 26 26 26;
 		--color-neutral-950: 0 0 0;
 
-		/* Brand */
-		--color-brand-blue-light: 56 152 236;
-		--color-brand-blue-medium: 0 130 243;
- 		--color-brand-gold: 213 162 60;
-		--color-brand-wine: 81 42 79;
+		/* Blue */
+		--color-blue-light: 56 152 236;
+		--color-blue-medium: 0 130 243;
 		
 		/* Brand Gold */
 		--color-brand-gold-50: 253 240 221;

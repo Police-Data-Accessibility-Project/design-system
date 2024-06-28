@@ -5,10 +5,6 @@ export const tailwindConfig = {
 		extend: {
 			colors: {
 				brand: {
-					blue: {
-						light: 'rgba(var(--color-brand-blue-light)/<alpha-value>)',
-						medium: 'rgba(var(--color-brand-blue-medium)/<alpha-value>)',
-					},
 					gold: {
 						DEFAULT: 'rgba(var(--color-brand-gold-600) / <alpha-value>)',
 						50: 'rgba(var(--color-brand-gold-50) / <alpha-value>)',
@@ -76,6 +72,10 @@ export const tailwindConfig = {
 					800: 'rgba(var(--color-wine-neutral-800)/<alpha-value>)',
 					900: 'rgba(var(--color-wine-neutral-900)/<alpha-value>)',
 					950: 'rgba(var(--color-wine-neutral-950)/<alpha-value>)',
+				},
+				blue: {
+					light: 'rgba(var(--color-blue-light)/<alpha-value>)',
+					medium: 'rgba(var(--color-blue-medium)/<alpha-value>)',
 				},
 			},
 			brightness: {
