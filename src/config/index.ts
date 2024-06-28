@@ -10,7 +10,7 @@ export const tailwindConfig = {
 						medium: 'rgba(var(--color-brand-blue-medium)/<alpha-value>)',
 					},
 					gold: {
-						DEFAULT: 'rgba(var(--color-brand-gold-500) / <alpha-value>)',
+						DEFAULT: 'rgba(var(--color-brand-gold-600) / <alpha-value>)',
 						50: 'rgba(var(--color-brand-gold-50) / <alpha-value>)',
 						100: 'rgba(var(--color-brand-gold-100) / <alpha-value>)',
 						200: 'rgba(var(--color-brand-gold-200) / <alpha-value>)',
