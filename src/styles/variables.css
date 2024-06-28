@@ -24,52 +24,60 @@
 		/* Brand */
 		--color-brand-blue-light: 56 152 236;
 		--color-brand-blue-medium: 0 130 243;
-		--color-brand-gold: 213 162 60;
+ 		--color-brand-gold: 213 162 60;
 		--color-brand-wine: 81 42 79;
-		--color-brand-gold-50: 39, 30, 16;
-		--color-brand-gold-100: 74, 56, 22;
-		--color-brand-gold-200: 111, 83, 27;
-		--color-brand-gold-300: 149, 111, 32;
-		--color-brand-gold-400: 184, 138, 42;
-		--color-brand-gold-500: 213, 162, 60;
-		--color-brand-gold-600: 233, 182, 86;
-		--color-brand-gold-700: 245, 199, 117;
-		--color-brand-gold-800: 251, 213, 151;
-		--color-brand-gold-900: 253, 227, 186;
-		--color-brand-gold-950: 253, 240, 221;
-		--color-brand-wine-50: 19, 9, 18;
-		--color-brand-wine-100: 29, 15, 28;
-		--color-brand-wine-200: 39, 17, 38;
-		--color-brand-wine-300: 50, 21, 49;
-		--color-brand-wine-400: 64, 28, 62;
-		--color-brand-wine-500: 81, 42, 79;
-		--color-brand-wine-600: 103, 64, 100;
-		--color-brand-wine-700: 129, 95, 126;
-		--color-brand-wine-800: 159, 131, 156;
-		--color-brand-wine-900: 191, 172, 189;
-		--color-brand-wine-950: 223, 214, 222;
-		--color-brand-gold-gray-50: 30, 29, 26;
-		--color-brand-gold-gray-100: 56, 52, 46;
-		--color-brand-gold-gray-200: 83, 77, 68;
-		--color-brand-gold-gray-300: 110, 102, 90;
-		--color-brand-gold-gray-400: 137, 127, 112;
-		--color-brand-gold-gray-500: 161, 150, 134;
-		--color-brand-gold-gray-600: 181, 171, 155;
-		--color-brand-gold-gray-700: 198, 189, 175;
-		--color-brand-gold-gray-800: 213, 205, 195;
-		--color-brand-gold-gray-900: 226, 221, 214;
-		--color-brand-gold-gray-950: 240, 238, 234;
-		--color-brand-wine-gray-50: 20, 17, 19;
-		--color-brand-wine-gray-100: 31, 26, 31;
-		--color-brand-wine-gray-200: 43, 35, 43;
-		--color-brand-wine-gray-300: 56, 46, 56;
-		--color-brand-wine-gray-400: 72, 59, 71;
-		--color-brand-wine-gray-500: 90, 76, 89;
-		--color-brand-wine-gray-600: 112, 98, 111;
-		--color-brand-wine-gray-700: 137, 125, 136;
-		--color-brand-wine-gray-800: 165, 155, 164;
-		--color-brand-wine-gray-900: 194, 188, 194;
-		--color-brand-wine-gray-950: 225, 222, 225;
+		
+		/* Brand Gold */
+		--color-brand-gold-50: 253 240 221;
+		--color-brand-gold-100: 253 227 186;
+		--color-brand-gold-200: 251 213 151;
+		--color-brand-gold-300: 245 199 117;
+		--color-brand-gold-400: 233 182 86;
+		--color-brand-gold-500: 213 162 60;
+		--color-brand-gold-600: 184 138 42;
+		--color-brand-gold-700: 149 111 32;
+		--color-brand-gold-800: 111 83 27;
+		--color-brand-gold-900: 74 56 22;
+		--color-brand-gold-950: 39 30 16;
+
+		/* Brand Wine */
+		--color-brand-wine-50: 223 214 222;
+		--color-brand-wine-100: 191 172 189;
+		--color-brand-wine-200: 159 131 156;
+		--color-brand-wine-300: 129 95 126;
+		--color-brand-wine-400: 103 64 100;
+		--color-brand-wine-500: 81 42 79;
+		--color-brand-wine-600: 64 28 62;
+		--color-brand-wine-700: 50 21 49;
+		--color-brand-wine-800: 39 17 38;
+		--color-brand-wine-900: 29 15 28;
+		--color-brand-wine-950: 19 9 18;
+
+		/* Gold Neutral */
+		--color-gold-neutral-50: 244 244 242;
+		--color-gold-neutral-100: 228 227 221;
+		--color-gold-neutral-200: 204 199 188;
+		--color-gold-neutral-300: 174 165 150;
+		--color-gold-neutral-400: 161 150 134;
+		--color-gold-neutral-500: 136 123 106;
+		--color-gold-neutral-600: 116 103 90;
+		--color-gold-neutral-700: 94 82 74;
+		--color-gold-neutral-800: 81 71 66;
+		--color-gold-neutral-900: 72 62 59;
+		--color-gold-neutral-950: 40 33 32;
+
+		/* Wine Neutral */
+		--color-wine-neutral-50: 247 247 248;
+		--color-wine-neutral-100: 242 240 243;
+		--color-wine-neutral-200: 232 226 232;
+		--color-wine-neutral-300: 212 204 213;
+		--color-wine-neutral-400: 187 171 187;
+		--color-wine-neutral-500: 163 144 164;
+		--color-wine-neutral-600: 140 118 140;
+		--color-wine-neutral-700: 117 97 116;
+		--color-wine-neutral-800: 98 82 96;
+		--color-wine-neutral-900: 90 76 89;
+		--color-wine-neutral-950: 48 39 48;
 	}
 
 	/* Dark mode */
@@ -89,6 +97,32 @@
 			--color-neutral-800: 255 251 250;
 			--color-neutral-800: 255 253 253;
 			--color-neutral-950: 255 255 255;
+
+			/* Reverse gold neutral */
+			--color-gold-neutral-50: 30 29 26;
+			--color-gold-neutral-100: 56 52 46;
+			--color-gold-neutral-200: 83 77 68;
+			--color-gold-neutral-300: 110 102 90;
+			--color-gold-neutral-400: 137 127 112;
+			--color-gold-neutral-500: 161 150 134;
+			--color-gold-neutral-600: 181 171 155;
+			--color-gold-neutral-700: 198 189 175;
+			--color-gold-neutral-800: 213 205 195;
+			--color-gold-neutral-900: 226 221 214;
+			--color-gold-neutral-950: 240 238 234;
+			
+			/* Reverse wine neutral */
+			--color-wine-neutral-50: 48 39 48;
+			--color-wine-neutral-100: 90 76 89;
+			--color-wine-neutral-200: 98 82 96;
+			--color-wine-neutral-300: 117 97 116;
+			--color-wine-neutral-400: 140 118 140;
+			--color-wine-neutral-500: 163 144 164;
+			--color-wine-neutral-600: 187 171 187;
+			--color-wine-neutral-700: 212 204 213;
+			--color-wine-neutral-800: 232 226 232;
+			--color-wine-neutral-900: 242 240 243;
+			--color-wine-neutral-950: 247 247 248;
 		}
 	}
 }
