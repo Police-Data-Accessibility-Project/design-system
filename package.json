@@ -46,7 +46,7 @@
 	"devDependencies": {
 		"@commitlint/cli": "^18.4.3",
 		"@commitlint/config-conventional": "^18.4.3",
-		"@pdap-design-system/eslint-config": "^1.0.0",
+		"@pdap-design-system/eslint-config": "^1.0.1",
 		"@semantic-release/changelog": "^6.0.3",
 		"@semantic-release/git": "^10.0.1",
 		"@semantic-release/release-notes-generator": "^12.1.0",
@@ -103,7 +103,7 @@
 		"clean:test": "rimraf coverage",
 		"lint": "run-p lint:*",
 		"lint:css": "stylelint 'src/**/*.{css,vue}'",
-		"lint:es": "eslint src --ext .ts .",
+		"lint:es": "eslint --ext .ts,.vue src",
 		"lint:ts": "vue-tsc",
 		"postbuild": "rimraf dist/{config,utils}",
 		"posttest": "npm run clean:test",

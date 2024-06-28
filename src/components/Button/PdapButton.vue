@@ -50,7 +50,7 @@ export default {
 	}
 
 	.pdap-button-primary {
-		@apply pdap-button bg-brand-gold text-white;
+		@apply pdap-button bg-brand-gold text-neutral-50;
 	}
 
 	.pdap-button-primary[type='submit'] {

@@ -49,7 +49,7 @@ const errorMessageId = computed(() => `pdap-${props.name}-input-error`);
 @layer components {
 	/* General input styles  */
 	.pdap-input {
-		@apply h-[max-content] gap-4 leading-normal mb-3 w-full flex flex-col;
+		@apply h-[max-content] gap-1 leading-normal mb-3 w-full flex flex-col;
 	}
 
 	.pdap-input input {
@@ -78,7 +78,7 @@ const errorMessageId = computed(() => `pdap-${props.name}-input-error`);
 	}
 
 	.pdap-input-error label {
-		@apply justify-start text-sm;
+		@apply justify-start;
 	}
 
 	.pdap-input-error input {

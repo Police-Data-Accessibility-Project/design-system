@@ -32,7 +32,7 @@ exports[`Footer component > Renders a footer 1`] = `
     </p><!-- Widget / logo links -->
     <div class="pdap-footer-widget-links">
       <a href="https://www.guidestar.org/profile/85-4207132" target="_blank">
-        <img src="https://widgets.guidestar.org/gximage2?o=9973356&amp;l=v4">
+        <img alt="platinum transparency" src="https://widgets.guidestar.org/gximage2?o=9973356&amp;l=v4">
       </a>
       <router-link class="pdap-footer-logo" to="/">
         <img alt="Police Data Accessibility Project Logo" src="/src/assets/acronym.svg" width="250">
