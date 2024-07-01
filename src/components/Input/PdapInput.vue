@@ -63,7 +63,7 @@ const errorMessageId = computed(() => `pdap-${props.name}-input-error`);
 	.pdap-input input:focus,
 	.pdap-input input:focus-within,
 	.pdap-input input:focus-visible {
-		@apply border-2 border-brand-blue-light border-solid outline-none;
+		@apply border-2 border-blue-light border-solid outline-none;
 	}
 
 	.pdap-input label {
