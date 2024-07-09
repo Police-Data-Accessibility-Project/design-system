@@ -1,6 +1,6 @@
 <template>
-	<div v-if="show" class="pdap-spinner">
-		<Transition appear>
+	<Transition appear>
+		<div v-if="show" class="pdap-spinner">
 			<svg
 				aria-label="loading"
 				:width="size"
@@ -21,14 +21,14 @@
 					:fill="color"
 				/>
 			</svg>
-		</Transition>
 
-		<Transition :key="text" appear mode="out-in">
-			<p v-if="text && show" aria-live="polite">
-				{{ text }}
-			</p>
-		</Transition>
-	</div>
+			<Transition :key="text" appear mode="out-in">
+				<p v-if="text && show" aria-live="polite">
+					{{ text }}
+				</p>
+			</Transition>
+		</div>
+	</Transition>
 </template>
 
 <script setup lang="ts">
