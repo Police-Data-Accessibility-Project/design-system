@@ -1,8 +1,7 @@
 <template>
-	<div class="pdap-spinner">
+	<div v-if="show" class="pdap-spinner">
 		<Transition appear>
 			<svg
-				v-if="show"
 				aria-label="loading"
 				:width="size"
 				:height="size"
