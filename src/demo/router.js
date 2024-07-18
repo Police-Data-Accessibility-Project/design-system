@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import ComponentDemo from './pages/ComponentDemo.vue';
+import SignupFormDemo from './pages/SignupFormDemo.vue';
 
 const routes = [
 	{
@@ -39,6 +40,11 @@ const routes = [
 				],
 			},
 		],
+	},
+	{
+		path: '/sign-up-demo',
+		component: SignupFormDemo,
+		name: 'Login Demo',
 	},
 ];
 

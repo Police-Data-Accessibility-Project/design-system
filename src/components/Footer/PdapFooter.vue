@@ -44,9 +44,12 @@
 
 			<!-- Widget / logo links -->
 			<div class="pdap-footer-widget-links">
-				<a href="https://www.guidestar.org/profile/85-4207132" target="_blank"
-					><img src="https://widgets.guidestar.org/gximage2?o=9973356&l=v4"
-				/></a>
+				<a href="https://www.guidestar.org/profile/85-4207132" target="_blank">
+					<img
+						alt="platinum transparency"
+						src="https://widgets.guidestar.org/gximage2?o=9973356&l=v4"
+					/>
+				</a>
 
 				<a
 					v-if="!navLogoLinkIsPath"
@@ -121,7 +124,7 @@ export default {
 
 @layer components {
 	.pdap-footer {
-		@apply bg-brand-wine mt-auto mx-auto px-2 pt-2 pb-0 relative text-center text-[rgba(255,251,250)] text-lg;
+		@apply bg-brand-wine mt-auto mx-auto px-2 py-6 relative text-center text-[rgba(255,251,250)] text-lg;
 		@apply md:py-8 md:px-2;
 	}
 
@@ -156,7 +159,7 @@ export default {
 	}
 
 	.pdap-footer-social-link {
-		@apply cursor-pointer border-2 border-brand-gold decoration-0 disabled:opacity-50 font-semibold inline-block mx-1 px-6 py-2 rounded-none text-center text-lg w-full bg-brand-gold text-white;
+		@apply cursor-pointer border-2 border-brand-gold decoration-0 disabled:opacity-50 font-semibold inline-block mx-1 px-6 py-2 rounded-none text-center text-lg w-full bg-brand-gold text-neutral-50;
 		@apply hover:brightness-85 lg:text-xl sm:max-w-max;
 	}
 }

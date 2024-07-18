@@ -1,11 +1,5 @@
 <template>
-	<form
-		:id="id"
-		:name="name"
-		class="pdap-form"
-		@change="change"
-		@submit.prevent="submit($event)"
-	>
+	<form :id="id" :name="name" class="pdap-form" @submit.prevent="submit">
 		<div
 			v-if="typeof errorMessage === 'string'"
 			class="pdap-form-error-message"
@@ -23,7 +17,7 @@
 					: ''
 			"
 			:value="values[field.name]"
-			@change="updateForm(field.name, $event)"
+			@input="updateForm(field, $event)"
 		/>
 		<slot />
 	</form>
@@ -42,11 +36,12 @@ import { createRule } from '../../utils/vuelidate';
 
 // Types
 import { PdapFormProps } from './types';
-import { PdapInputTypes } from '../Input/types';
+import { PdapInputProps, PdapInputTypes } from '../Input/types';
 
 // Props
 const props = withDefaults(defineProps<PdapFormProps>(), {
 	error: null,
+	resetOn: 'submit',
 });
 
 // Emits
@@ -97,16 +92,20 @@ const v$ = useVuelidate(rules, values, { $autoDirty: false, $lazy: true });
 const errorMessage = ref(props.error);
 
 // Handlers
-function updateForm(fieldName: string, event: Event) {
+function updateForm(field: PdapInputProps, event: Event) {
 	const target = event.target as HTMLInputElement;
-	const update =
-		target.type === PdapInputTypes.CHECKBOX &&
-		typeof target.checked === 'boolean'
-			? target.checked.toString()
-			: target.value;
 
-	values.value[fieldName] = update;
-	change();
+	const update = (() => {
+		switch (field.type) {
+			case PdapInputTypes.CHECKBOX:
+				return target.checked ? 'true' : 'false';
+			default:
+				return target.value;
+		}
+	})();
+
+	values.value[field.name] = update;
+	emit('change', values.value);
 }
 
 // Effects
@@ -119,43 +118,32 @@ watchEffect(() => {
 		errorMessage.value = 'Please update this form to correct the errors';
 });
 
-// Effect - Debug logger - following comment ignores in coverage report
-/* c8 ignore next 12 */
 watchEffect(() => {
-	if (import.meta.env.MODE === 'development') {
-		console.debug(`PdapForm ${props.name}\n`, {
-			errorMessage: errorMessage.value,
-			props,
-			values,
-			vuelidate: {
-				rules,
-				v$,
-			},
-		});
+	if (props.resetOn && props.resetOn !== 'submit') {
+		resetForm();
 	}
 });
 
-function change() {
-	emit('change', { ...values.value });
+/**
+ * Reset vuelidate and wipe values state
+ */
+function resetForm() {
+	v$.value.$reset();
+	values.value = Object.entries(values).reduce((acc, [key]) => {
+		return { ...acc, [key]: '' };
+	}, {});
 }
 
-async function submit(event: Event) {
+async function submit() {
 	// Check form submission
 	const isValidSubmission = await v$.value.$validate();
 	if (isValidSubmission) {
 		// Emit submit event (spread to new object to create new object, this allows us to reset `values` without messing with the data returned)
 		emit('submit', { ...values.value });
-		// Reset vuelidate and form
-		v$.value.$reset();
-		const form = <HTMLFormElement>event.target;
-		form.reset();
 
-		// Wipe values state
-		values.value = Object.entries(values).reduce((acc, [key]) => {
-			return { ...acc, [key]: '' };
-		}, {});
-
-		return;
+		if (props.resetOn === 'submit') {
+			resetForm();
+		}
 	}
 }
 </script>

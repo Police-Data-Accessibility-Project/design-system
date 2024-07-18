@@ -87,11 +87,11 @@ describe('Nav component', () => {
 
 		button.trigger('click');
 		await nextTick();
-		expect(nav.attributes('aria-expanded')).toBe('true');
+		expect(nav.attributes('aria-hidden')).toBe('false');
 		await nextTick();
 		button.trigger('click');
 		await nextTick();
-		expect(nav.attributes('aria-expanded')).toBe('false');
+		expect(nav.attributes('aria-hidden')).toBe('true');
 	});
 
 	test('Nav is unmounted from the DOM', async () => {
