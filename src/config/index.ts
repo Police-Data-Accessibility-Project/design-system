@@ -92,6 +92,7 @@ export const tailwindConfig = {
 		// Using properties directly - overrides tailwind theme defaults for entire section
 		fontFamily: {
 			sans: [
+				'"Public Sans"',
 				'"Libre Franklin"',
 				'ui-sans-serif',
 				'system-ui',
