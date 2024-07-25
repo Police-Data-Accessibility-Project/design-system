@@ -1,6 +1,6 @@
 export default {
   extends: ['@commitlint/config-conventional'],
   rules: {
-    'footer-max-length': [1, 'always', 200]
+    'footer-max-length': [2, 'never']
   }
 };
