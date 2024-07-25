@@ -1,6 +1,6 @@
 {
   "name": "@pdap-design-system/eslint-config",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "eslint config for PDAP client apps",
   "main": "index.js",
   "type": "commonjs",
@@ -16,5 +16,9 @@
   "homepage": "https://github.com/Police-Data-Accessibility-Project/design-system#readme",
   "peerDependencies": {
     "eslint": ">= 8"
+  },
+  "devDependencies": {
+    "@ronilaukkarinen/stylelint-a11y": "^1.2.9",
+    "eslint-plugin-vuejs-accessibility": "^2.3.0"
   }
 }

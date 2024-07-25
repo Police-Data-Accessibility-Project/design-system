@@ -1,8 +1,8 @@
 <template>
-	<div class="pdap-spinner">
-		<Transition appear>
+	<Transition appear>
+		<div v-if="show" class="pdap-spinner">
 			<svg
-				v-if="show"
+				aria-label="loading"
 				:width="size"
 				:height="size"
 				viewBox="0 0 24 24"
@@ -21,14 +21,14 @@
 					:fill="color"
 				/>
 			</svg>
-		</Transition>
 
-		<Transition :key="text" appear mode="out-in">
-			<p v-if="text && show" aria-live="polite">
-				{{ text }}
-			</p>
-		</Transition>
-	</div>
+			<Transition :key="text" appear mode="out-in">
+				<p v-if="text && show" aria-live="polite">
+					{{ text }}
+				</p>
+			</Transition>
+		</div>
+	</Transition>
 </template>
 
 <script setup lang="ts">
@@ -64,9 +64,11 @@ export default {
 		@apply items-center bg-inherit flex flex-col gap-4 h-auto justify-center w-auto z-30;
 	}
 
-	.pdap-spinner-innards {
-		transform-origin: center;
-		animation: spinner 0.85s infinite linear;
+	@media (prefers-reduced-motion: no-preference) {
+		.pdap-spinner-innards {
+			transform-origin: center;
+			animation: spinner 0.85s infinite linear;
+		}
 	}
 }
 
@@ -78,13 +80,15 @@ export default {
 </style>
 
 <style scoped>
-.v-enter-active,
-.v-leave-active {
-	transition: opacity 0.5s ease-in;
-}
+@media (prefers-reduced-motion: no-preference) {
+	.v-enter-active,
+	.v-leave-active {
+		transition: opacity 0.5s ease-in;
+	}
 
-.v-enter-from,
-.v-leave-to {
-	@apply opacity-0;
+	.v-enter-from,
+	.v-leave-to {
+		@apply opacity-0;
+	}
 }
 </style>

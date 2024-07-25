@@ -3,11 +3,6 @@ export interface PdapLinkData {
 	path?: string;
 	text: string;
 }
-
-export interface PdapNavProps {
-	topPosition?: number;
-}
-
 export interface PdapNavState {
 	isExpanded: boolean;
 	isMobile: boolean | undefined;
