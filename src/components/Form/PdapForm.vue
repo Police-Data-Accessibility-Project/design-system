@@ -1,11 +1,5 @@
 <template>
-	<form
-		:id="id"
-		:name="name"
-		:v-bind="$attrs"
-		class="pdap-form"
-		@submit.prevent="submit"
-	>
+	<form :id="id" :name="name" class="pdap-form" @submit.prevent="submit">
 		<div
 			v-if="typeof errorMessage === 'string'"
 			class="pdap-form-error-message"
