@@ -195,6 +195,7 @@
 		<h2>Form</h2>
 		<Form
 			id="test"
+			ref="formRef"
 			name="test"
 			:schema="mockFormSchema"
 			@change="change"
@@ -267,24 +268,6 @@ const mockFormSchema = [
 		},
 	},
 	{
-		id: 'password',
-		name: 'password',
-		label: 'Password',
-		type: PdapInputTypes.PASSWORD,
-		placeholder: 'Password',
-		value: '',
-		validators: {
-			password: {
-				message: 'Please enter a valid password',
-				value: true,
-			},
-			required: {
-				message: 'Please enter a valid password',
-				value: true,
-			},
-		},
-	},
-	{
 		id: 'likes-ice-cream',
 		defaultChecked: true,
 		name: 'iceCream',
@@ -294,6 +277,7 @@ const mockFormSchema = [
 	},
 ];
 
+const formRef = ref();
 const dropDownPressIsOpen = ref(false);
 const dropDownHoverIsOpen = ref(false);
 const loadingText = ref('customizable, with optional text...');
@@ -340,8 +324,14 @@ function submit(values: Record<'firstName' | 'lastName' | 'iceCream', string>) {
 	alert(alertString);
 }
 
-function change(values: Record<'firstName' | 'lastName' | 'iceCream', string>) {
-	console.debug('onChange', { values });
+function change(
+	values: Record<'firstName' | 'lastName' | 'iceCream', string>,
+	event: Event
+) {
+	if (formRef.value) {
+		console.debug({ ref: formRef.value });
+	}
+	console.debug('onChange', { values, event });
 }
 
 onMounted(updateLoadingText);

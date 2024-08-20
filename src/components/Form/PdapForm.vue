@@ -47,6 +47,11 @@ const props = withDefaults(defineProps<PdapFormProps>(), {
 // Emits
 const emit = defineEmits(['submit', 'change']);
 
+// Expose
+defineExpose({
+	setValues,
+});
+
 // State
 const data = computed(() =>
 	props.schema.map((input) => {
@@ -91,23 +96,6 @@ const v$ = useVuelidate(rules, values, { $autoDirty: false, $lazy: true });
 // Vars
 const errorMessage = ref(props.error);
 
-// Handlers
-function updateForm(field: PdapInputProps, event: Event) {
-	const target = event.target as HTMLInputElement;
-
-	const update = (() => {
-		switch (field.type) {
-			case PdapInputTypes.CHECKBOX:
-				return target.checked ? 'true' : 'false';
-			default:
-				return target.value;
-		}
-	})();
-
-	values.value[field.name] = update;
-	emit('change', values.value);
-}
-
 // Effects
 // Effect - Updates form error state based on input error state and/or props
 watchEffect(() => {
@@ -124,6 +112,23 @@ watchEffect(() => {
 	}
 });
 
+// Handlers
+function updateForm(field: PdapInputProps, event: Event) {
+	const target = event.target as HTMLInputElement;
+
+	const update = (() => {
+		switch (field.type) {
+			case PdapInputTypes.CHECKBOX:
+				return target.checked ? 'true' : 'false';
+			default:
+				return target.value;
+		}
+	})();
+
+	values.value[field.name] = update;
+	emit('change', values.value, event);
+}
+
 /**
  * Reset vuelidate and wipe values state
  */
@@ -134,12 +139,16 @@ function resetForm() {
 	}, {});
 }
 
-async function submit() {
+function setValues<T extends typeof values.value>(update: T) {
+	values.value = update;
+}
+
+async function submit(e: Event) {
 	// Check form submission
 	const isValidSubmission = await v$.value.$validate();
 	if (isValidSubmission) {
 		// Emit submit event (spread to new object to create new object, this allows us to reset `values` without messing with the data returned)
-		emit('submit', { ...values.value });
+		emit('submit', { ...values.value }, e);
 
 		if (props.resetOn === 'submit') {
 			resetForm();
