@@ -1,5 +1,11 @@
 <template>
-	<form :id="id" :name="name" class="pdap-form" @submit.prevent="submit">
+	<form
+		:id="id"
+		:name="name"
+		class="pdap-form"
+		v-bind="$attrs"
+		@submit.prevent="submit"
+	>
 		<div
 			v-if="typeof errorMessage === 'string'"
 			class="pdap-form-error-message"
@@ -105,7 +111,7 @@ function updateForm(field: PdapInputProps, event: Event) {
 	})();
 
 	values.value[field.name] = update;
-	emit('change', values.value);
+	emit('change', values.value, event);
 }
 
 // Effects
@@ -134,12 +140,12 @@ function resetForm() {
 	}, {});
 }
 
-async function submit() {
+async function submit(e: Event) {
 	// Check form submission
 	const isValidSubmission = await v$.value.$validate();
 	if (isValidSubmission) {
 		// Emit submit event (spread to new object to create new object, this allows us to reset `values` without messing with the data returned)
-		emit('submit', { ...values.value });
+		emit('submit', { ...values.value }, e);
 
 		if (props.resetOn === 'submit') {
 			resetForm();

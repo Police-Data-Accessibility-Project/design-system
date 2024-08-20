@@ -340,8 +340,11 @@ function submit(values: Record<'firstName' | 'lastName' | 'iceCream', string>) {
 	alert(alertString);
 }
 
-function change(values: Record<'firstName' | 'lastName' | 'iceCream', string>) {
-	console.debug('onChange', { values });
+function change(
+	values: Record<'firstName' | 'lastName' | 'iceCream', string>,
+	event: Event
+) {
+	console.debug('onChange', { values, event });
 }
 
 onMounted(updateLoadingText);
