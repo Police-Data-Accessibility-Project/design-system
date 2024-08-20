@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Form component > Renders component in form error state 1`] = `
-<form class="pdap-form" id="test" name="test">
+<form class="pdap-form" id="test" name="test" v-bind="[object Object]">
   <div class="pdap-form-error-message">This form is incorrect</div>
   <div class="pdap-input pdap-input-text">
     <input id="test-1" name="testOne" placeholder="Enter a value here" type="text">
@@ -38,7 +38,7 @@ exports[`Form component > Renders component in form error state 1`] = `
 `;
 
 exports[`Form component > Renders component in static state 1`] = `
-<form class="pdap-form" id="test" name="test">
+<form class="pdap-form" id="test" name="test" v-bind="[object Object]">
   <!--v-if-->
   <div class="pdap-input pdap-input-text">
     <input id="test-1" name="testOne" placeholder="Enter a value here" type="text">

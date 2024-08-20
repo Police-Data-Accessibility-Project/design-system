@@ -2,8 +2,8 @@
 	<form
 		:id="id"
 		:name="name"
+		:v-bind="$attrs"
 		class="pdap-form"
-		v-bind="$attrs"
 		@submit.prevent="submit"
 	>
 		<div
