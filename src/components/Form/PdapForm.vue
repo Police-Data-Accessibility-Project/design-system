@@ -53,6 +53,11 @@ const props = withDefaults(defineProps<PdapFormProps>(), {
 // Emits
 const emit = defineEmits(['submit', 'change']);
 
+// Expose
+defineExpose({
+	setValues,
+});
+
 // State
 const data = computed(() =>
 	props.schema.map((input) => {
@@ -97,6 +102,22 @@ const v$ = useVuelidate(rules, values, { $autoDirty: false, $lazy: true });
 // Vars
 const errorMessage = ref(props.error);
 
+// Effects
+// Effect - Updates form error state based on input error state and/or props
+watchEffect(() => {
+	if (props.error) errorMessage.value = props.error;
+	else if (errorMessage.value && v$.value.$errors.length === 0)
+		errorMessage.value = null;
+	else if (!errorMessage.value && v$.value.$errors.length > 0)
+		errorMessage.value = 'Please update this form to correct the errors';
+});
+
+watchEffect(() => {
+	if (props.resetOn && props.resetOn !== 'submit') {
+		resetForm();
+	}
+});
+
 // Handlers
 function updateForm(field: PdapInputProps, event: Event) {
 	const target = event.target as HTMLInputElement;
@@ -114,22 +135,6 @@ function updateForm(field: PdapInputProps, event: Event) {
 	emit('change', values.value, event);
 }
 
-// Effects
-// Effect - Updates form error state based on input error state and/or props
-watchEffect(() => {
-	if (props.error) errorMessage.value = props.error;
-	else if (errorMessage.value && v$.value.$errors.length === 0)
-		errorMessage.value = null;
-	else if (!errorMessage.value && v$.value.$errors.length > 0)
-		errorMessage.value = 'Please update this form to correct the errors';
-});
-
-watchEffect(() => {
-	if (props.resetOn && props.resetOn !== 'submit') {
-		resetForm();
-	}
-});
-
 /**
  * Reset vuelidate and wipe values state
  */
@@ -138,6 +143,10 @@ function resetForm() {
 	values.value = Object.entries(values).reduce((acc, [key]) => {
 		return { ...acc, [key]: '' };
 	}, {});
+}
+
+function setValues<T extends typeof values.value>(update: T) {
+	values.value = update;
 }
 
 async function submit(e: Event) {
