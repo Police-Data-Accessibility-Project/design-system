@@ -6,32 +6,56 @@ exports[`Form component > Renders component in form error state 1`] = `
   <div class="pdap-input pdap-input-text">
     <input id="test-1" name="testOne" placeholder="Enter a value here" type="text">
     <!--v-if-->
-    <label class="pdap-input-label" for="test-1">First test input</label>
+    <label class="pdap-input-label" for="test-1">First test input
+      <!-- This is a hacky and extremely implementation-specific way to render these icons. Would be better to decouple Form and Input rendering a bit more so that we can more easily use slots, etc. -->
+      <!-- Issue created to create V2 of form and input components to handle more flexible UI: https://github.com/Police-Data-Accessibility-Project/design-system/issues/102 -->
+      <!--v-if-->
+    </label>
   </div>
   <div class="pdap-input pdap-input-text">
     <input id="test-email" name="email" placeholder="Email" type="text">
     <!--v-if-->
-    <label class="pdap-input-label" for="test-email">Email test input</label>
+    <label class="pdap-input-label" for="test-email">Email test input
+      <!-- This is a hacky and extremely implementation-specific way to render these icons. Would be better to decouple Form and Input rendering a bit more so that we can more easily use slots, etc. -->
+      <!-- Issue created to create V2 of form and input components to handle more flexible UI: https://github.com/Police-Data-Accessibility-Project/design-system/issues/102 -->
+      <!--v-if-->
+    </label>
   </div>
   <div class="pdap-input pdap-input-password">
     <input id="test-password" name="password" placeholder="Password" type="password">
     <!--v-if-->
-    <label class="pdap-input-label" for="test-password">Password test input</label>
+    <label class="pdap-input-label" for="test-password">Password test input
+      <!-- This is a hacky and extremely implementation-specific way to render these icons. Would be better to decouple Form and Input rendering a bit more so that we can more easily use slots, etc. -->
+      <!-- Issue created to create V2 of form and input components to handle more flexible UI: https://github.com/Police-Data-Accessibility-Project/design-system/issues/102 -->
+      <!--v-if-->
+    </label>
   </div>
   <div class="pdap-input pdap-input-text">
     <input id="test-2" name="testTwo" placeholder="Enter another value here" type="text">
     <!--v-if-->
-    <label class="pdap-input-label" for="test-2">Second test input</label>
+    <label class="pdap-input-label" for="test-2">Second test input
+      <!-- This is a hacky and extremely implementation-specific way to render these icons. Would be better to decouple Form and Input rendering a bit more so that we can more easily use slots, etc. -->
+      <!-- Issue created to create V2 of form and input components to handle more flexible UI: https://github.com/Police-Data-Accessibility-Project/design-system/issues/102 -->
+      <!--v-if-->
+    </label>
   </div>
   <div class="pdap-input pdap-input-checkbox pdap-input-checkbox-checked">
     <input checked class="pdap-input-checkbox" id="checkbox-default-checked" name="checkboxDefaultChecked" type="checkbox" value="true">
     <!--v-if-->
-    <label class="pdap-input-label" for="checkbox-default-checked">Keep this box checked?</label>
+    <label class="pdap-input-label" for="checkbox-default-checked">Keep this box checked?
+      <!-- This is a hacky and extremely implementation-specific way to render these icons. Would be better to decouple Form and Input rendering a bit more so that we can more easily use slots, etc. -->
+      <!-- Issue created to create V2 of form and input components to handle more flexible UI: https://github.com/Police-Data-Accessibility-Project/design-system/issues/102 -->
+      <!--v-if-->
+    </label>
   </div>
   <div class="pdap-input pdap-input-checkbox">
     <input class="pdap-input-checkbox" id="checkbox-default-unchecked" name="checkboxDefaultUnchecked" type="checkbox" value="false">
     <!--v-if-->
-    <label class="pdap-input-label" for="checkbox-default-unchecked">Check this box?</label>
+    <label class="pdap-input-label" for="checkbox-default-unchecked">Check this box?
+      <!-- This is a hacky and extremely implementation-specific way to render these icons. Would be better to decouple Form and Input rendering a bit more so that we can more easily use slots, etc. -->
+      <!-- Issue created to create V2 of form and input components to handle more flexible UI: https://github.com/Police-Data-Accessibility-Project/design-system/issues/102 -->
+      <!--v-if-->
+    </label>
   </div>
   <button type="submit">Submit</button>
 </form>
@@ -43,32 +67,56 @@ exports[`Form component > Renders component in static state 1`] = `
   <div class="pdap-input pdap-input-text">
     <input id="test-1" name="testOne" placeholder="Enter a value here" type="text">
     <!--v-if-->
-    <label class="pdap-input-label" for="test-1">First test input</label>
+    <label class="pdap-input-label" for="test-1">First test input
+      <!-- This is a hacky and extremely implementation-specific way to render these icons. Would be better to decouple Form and Input rendering a bit more so that we can more easily use slots, etc. -->
+      <!-- Issue created to create V2 of form and input components to handle more flexible UI: https://github.com/Police-Data-Accessibility-Project/design-system/issues/102 -->
+      <!--v-if-->
+    </label>
   </div>
   <div class="pdap-input pdap-input-text">
     <input id="test-email" name="email" placeholder="Email" type="text">
     <!--v-if-->
-    <label class="pdap-input-label" for="test-email">Email test input</label>
+    <label class="pdap-input-label" for="test-email">Email test input
+      <!-- This is a hacky and extremely implementation-specific way to render these icons. Would be better to decouple Form and Input rendering a bit more so that we can more easily use slots, etc. -->
+      <!-- Issue created to create V2 of form and input components to handle more flexible UI: https://github.com/Police-Data-Accessibility-Project/design-system/issues/102 -->
+      <!--v-if-->
+    </label>
   </div>
   <div class="pdap-input pdap-input-password">
     <input id="test-password" name="password" placeholder="Password" type="password">
     <!--v-if-->
-    <label class="pdap-input-label" for="test-password">Password test input</label>
+    <label class="pdap-input-label" for="test-password">Password test input
+      <!-- This is a hacky and extremely implementation-specific way to render these icons. Would be better to decouple Form and Input rendering a bit more so that we can more easily use slots, etc. -->
+      <!-- Issue created to create V2 of form and input components to handle more flexible UI: https://github.com/Police-Data-Accessibility-Project/design-system/issues/102 -->
+      <!--v-if-->
+    </label>
   </div>
   <div class="pdap-input pdap-input-text">
     <input id="test-2" name="testTwo" placeholder="Enter another value here" type="text">
     <!--v-if-->
-    <label class="pdap-input-label" for="test-2">Second test input</label>
+    <label class="pdap-input-label" for="test-2">Second test input
+      <!-- This is a hacky and extremely implementation-specific way to render these icons. Would be better to decouple Form and Input rendering a bit more so that we can more easily use slots, etc. -->
+      <!-- Issue created to create V2 of form and input components to handle more flexible UI: https://github.com/Police-Data-Accessibility-Project/design-system/issues/102 -->
+      <!--v-if-->
+    </label>
   </div>
   <div class="pdap-input pdap-input-checkbox pdap-input-checkbox-checked">
     <input checked class="pdap-input-checkbox" id="checkbox-default-checked" name="checkboxDefaultChecked" type="checkbox" value="true">
     <!--v-if-->
-    <label class="pdap-input-label" for="checkbox-default-checked">Keep this box checked?</label>
+    <label class="pdap-input-label" for="checkbox-default-checked">Keep this box checked?
+      <!-- This is a hacky and extremely implementation-specific way to render these icons. Would be better to decouple Form and Input rendering a bit more so that we can more easily use slots, etc. -->
+      <!-- Issue created to create V2 of form and input components to handle more flexible UI: https://github.com/Police-Data-Accessibility-Project/design-system/issues/102 -->
+      <!--v-if-->
+    </label>
   </div>
   <div class="pdap-input pdap-input-checkbox">
     <input class="pdap-input-checkbox" id="checkbox-default-unchecked" name="checkboxDefaultUnchecked" type="checkbox" value="false">
     <!--v-if-->
-    <label class="pdap-input-label" for="checkbox-default-unchecked">Check this box?</label>
+    <label class="pdap-input-label" for="checkbox-default-unchecked">Check this box?
+      <!-- This is a hacky and extremely implementation-specific way to render these icons. Would be better to decouple Form and Input rendering a bit more so that we can more easily use slots, etc. -->
+      <!-- Issue created to create V2 of form and input components to handle more flexible UI: https://github.com/Police-Data-Accessibility-Project/design-system/issues/102 -->
+      <!--v-if-->
+    </label>
   </div>
   <button type="submit">Submit</button>
 </form>

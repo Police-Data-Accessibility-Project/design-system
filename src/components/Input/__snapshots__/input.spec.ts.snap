@@ -4,7 +4,11 @@ exports[`Input component > Renders checkbox input in error state 1`] = `
 <div class="pdap-input pdap-input-checkbox pdap-input-error">
   <input class="pdap-input-checkbox" id="test-checked" name="testCheckbox" type="checkbox">
   <div class="pdap-input-error-message" id="pdap-testCheckbox-input-error">error message</div>
-  <label class="pdap-input-label" for="test-checked">test this checkbox input</label>
+  <label class="pdap-input-label" for="test-checked">test this checkbox input
+    <!-- This is a hacky and extremely implementation-specific way to render these icons. Would be better to decouple Form and Input rendering a bit more so that we can more easily use slots, etc. -->
+    <!-- Issue created to create V2 of form and input components to handle more flexible UI: https://github.com/Police-Data-Accessibility-Project/design-system/issues/102 -->
+    <!--v-if-->
+  </label>
 </div>
 `;
 
@@ -12,7 +16,11 @@ exports[`Input component > Renders checkbox input in okay state 1`] = `
 <div class="pdap-input pdap-input-checkbox">
   <input class="pdap-input-checkbox" id="test-checked" name="testCheckbox" type="checkbox">
   <!--v-if-->
-  <label class="pdap-input-label" for="test-checked">test this checkbox input</label>
+  <label class="pdap-input-label" for="test-checked">test this checkbox input
+    <!-- This is a hacky and extremely implementation-specific way to render these icons. Would be better to decouple Form and Input rendering a bit more so that we can more easily use slots, etc. -->
+    <!-- Issue created to create V2 of form and input components to handle more flexible UI: https://github.com/Police-Data-Accessibility-Project/design-system/issues/102 -->
+    <!--v-if-->
+  </label>
 </div>
 `;
 
@@ -20,7 +28,11 @@ exports[`Input component > Renders password input in error state 1`] = `
 <div class="pdap-input pdap-input-password pdap-input-error">
   <input id="test-text" name="testText" placeholder="This is testing testing" type="password">
   <div class="pdap-input-error-message" id="pdap-testText-input-error">error message</div>
-  <label class="pdap-input-label" for="test-text">test this text input</label>
+  <label class="pdap-input-label" for="test-text">test this text input
+    <!-- This is a hacky and extremely implementation-specific way to render these icons. Would be better to decouple Form and Input rendering a bit more so that we can more easily use slots, etc. -->
+    <!-- Issue created to create V2 of form and input components to handle more flexible UI: https://github.com/Police-Data-Accessibility-Project/design-system/issues/102 -->
+    <!--v-if-->
+  </label>
 </div>
 `;
 
@@ -28,7 +40,11 @@ exports[`Input component > Renders password input in okay state 1`] = `
 <div class="pdap-input pdap-input-password">
   <input id="test-text" name="testText" placeholder="This is testing testing" type="password">
   <!--v-if-->
-  <label class="pdap-input-label" for="test-text">test this text input</label>
+  <label class="pdap-input-label" for="test-text">test this text input
+    <!-- This is a hacky and extremely implementation-specific way to render these icons. Would be better to decouple Form and Input rendering a bit more so that we can more easily use slots, etc. -->
+    <!-- Issue created to create V2 of form and input components to handle more flexible UI: https://github.com/Police-Data-Accessibility-Project/design-system/issues/102 -->
+    <!--v-if-->
+  </label>
 </div>
 `;
 
@@ -36,7 +52,11 @@ exports[`Input component > Renders text input in error state 1`] = `
 <div class="pdap-input pdap-input-text pdap-input-error">
   <input id="test-text" name="testText" placeholder="This is testing testing" type="text">
   <div class="pdap-input-error-message" id="pdap-testText-input-error">error message</div>
-  <label class="pdap-input-label" for="test-text">test this text input</label>
+  <label class="pdap-input-label" for="test-text">test this text input
+    <!-- This is a hacky and extremely implementation-specific way to render these icons. Would be better to decouple Form and Input rendering a bit more so that we can more easily use slots, etc. -->
+    <!-- Issue created to create V2 of form and input components to handle more flexible UI: https://github.com/Police-Data-Accessibility-Project/design-system/issues/102 -->
+    <!--v-if-->
+  </label>
 </div>
 `;
 
@@ -44,6 +64,10 @@ exports[`Input component > Renders text input in okay state 1`] = `
 <div class="pdap-input pdap-input-text">
   <input id="test-text" name="testText" placeholder="This is testing testing" type="text">
   <!--v-if-->
-  <label class="pdap-input-label" for="test-text">test this text input</label>
+  <label class="pdap-input-label" for="test-text">test this text input
+    <!-- This is a hacky and extremely implementation-specific way to render these icons. Would be better to decouple Form and Input rendering a bit more so that we can more easily use slots, etc. -->
+    <!-- Issue created to create V2 of form and input components to handle more flexible UI: https://github.com/Police-Data-Accessibility-Project/design-system/issues/102 -->
+    <!--v-if-->
+  </label>
 </div>
 `;
