@@ -11,7 +11,7 @@
 		/* Neutral */
 		--color-neutral-50: 255 255 255;
 		--color-neutral-100: 255 253 253;
-		--color-neutral-200: 255 251 250;
+		--color-neutral-200: 240 240 240;
 		--color-neutral-300: 204 204 204;
 		--color-neutral-400: 191 192 192;
 		--color-neutral-500: 153 153 153;
@@ -92,7 +92,7 @@
 			--color-neutral-500: 153 153 153;
 			--color-neutral-600: 191 192 192;
 			--color-neutral-700: 204 204 204;
-			--color-neutral-800: 255 251 250;
+			--color-neutral-800: 240 240 240;
 			--color-neutral-800: 255 253 253;
 			--color-neutral-950: 255 255 255;
 
