@@ -23,7 +23,12 @@
 			{{ error }}
 		</div>
 
-		<label class="pdap-input-label" :for="id">{{ label }}</label>
+		<label class="pdap-input-label" :for="id">
+			{{ label }}
+			<!-- This is a hacky and extremely implementation-specific way to render these icons. Would be better to decouple Form and Input rendering a bit more so that we can more easily use slots, etc. -->
+			<!-- Issue created to create V2 of form and input components to handle more flexible UI: https://github.com/Police-Data-Accessibility-Project/design-system/issues/102 -->
+			<RecordTypeIcon :record-type="label" />
+		</label>
 	</div>
 </template>
 
@@ -37,6 +42,7 @@ import {
 } from './types';
 import PdapInputText from './Text/InputText.vue';
 import PdapInputCheckbox from './Checkbox/InputCheckbox.vue';
+import RecordTypeIcon from '../RecordTypeIcon/RecordTypeIcon.vue';
 
 const props = withDefaults(defineProps<PdapInputProps>(), {});
 
@@ -117,4 +123,10 @@ const errorMessageId = computed(() => `pdap-${props.name}-input-error`);
 		@apply cursor-pointer;
 	}
 }
+
+/* stylelint-disable */
+.svg-inline--fa {
+	@apply ml-2;
+}
+/* stylelint-enable */
 </style>
