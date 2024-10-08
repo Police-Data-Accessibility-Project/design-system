@@ -78,9 +78,7 @@ const errorMessageId = computed(() => `pdap-${props.name}-input-error`);
 
 	/* Error state */
 	.pdap-input-error {
-		@apply flex-wrap;
-
-		row-gap: 0;
+		@apply flex-wrap gap-x-0;
 	}
 
 	.pdap-input-error label {

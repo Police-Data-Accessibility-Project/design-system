@@ -163,6 +163,9 @@ async function submit(e: Event) {
  * The `Form` component is powerful. All you need to do is pass a few props, and the component will generate inputs and render them in the UI, complete with customizable form validation and both form-level and input-level error states.
  *
  *
+ * @deprecated use FormV2 with the PdapInputCheckbox, ...Text, and ...Password components instead
+ *
+ *
  * ## Props
  * @prop {string | undefined | null} error Error state. Only a non-falsy string results in a form-level error being displayed
  * @prop {string} id Passed through to the `form` element as its `id`
