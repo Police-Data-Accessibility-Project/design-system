@@ -8,6 +8,7 @@
 		>
 			<InputText
 				:id="INPUT_TEXT_NAME"
+				autocomplete="off"
 				:name="INPUT_TEXT_NAME"
 				:placeholder="PLACEHOLDER"
 			>
@@ -18,6 +19,7 @@
 
 			<InputPassword
 				:id="INPUT_PASSWORD_NAME"
+				autocomplete="off"
 				:name="INPUT_PASSWORD_NAME"
 				placeholder="Password"
 				label="Type your password here"
@@ -59,6 +61,9 @@ const SCHEMA = [
 	{
 		name: INPUT_PASSWORD_NAME,
 		validators: {
+			required: {
+				value: true,
+			},
 			password: {
 				value: true,
 				message: 'Your password should be a valid password',

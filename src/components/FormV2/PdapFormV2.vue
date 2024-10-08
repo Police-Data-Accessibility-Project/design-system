@@ -1,5 +1,5 @@
 <template>
-	<form :id="id" :name="name" class="pdap-form" @submit="submit">
+	<form :id="id" :name="name" class="pdap-form" @submit.prevent="submit">
 		<slot v-if="$slots.error" name="error" />
 		<div
 			v-else-if="typeof errorMessage === 'string'"
