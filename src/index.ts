@@ -10,6 +10,7 @@ export * from './components/Dropdown/types';
 export * from './components/ErrorBoundary/types';
 export * from './components/Footer/types';
 export * from './components/Form/types';
+export * from './components/FormV2/types';
 export * from './components/Header/types';
 export * from './components/Input/types';
 export * from './components/Nav/types';
