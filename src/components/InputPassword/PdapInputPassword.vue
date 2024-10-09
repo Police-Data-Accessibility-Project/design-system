@@ -26,7 +26,7 @@
 			</button>
 		</div>
 
-		<slot v-if="$slots.label" name="label" :for="id" />
+		<label v-if="$slots.label" :for="id"><slot name="label" /></label>
 		<label v-else-if="label" :for="id">{{ label }}</label>
 	</div>
 </template>
