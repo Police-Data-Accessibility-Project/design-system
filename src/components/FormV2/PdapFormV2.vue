@@ -1,5 +1,11 @@
 <template>
-	<form :id="id" :name="name" class="pdap-form" @submit.prevent="submit">
+	<form
+		:id="id"
+		:name="name"
+		class="pdap-form"
+		@submit.prevent="submit"
+		@change="emit('change', values, $event)"
+	>
 		<slot v-if="$slots.error" name="error" />
 		<div
 			v-else-if="typeof errorMessage === 'string'"
@@ -29,12 +35,12 @@ const { defaultValues, error, schema } = withDefaults(
 );
 
 // Emits
-const emit = defineEmits(['submit']);
+const emit = defineEmits(['submit', 'change']);
 
 // Constants
 const errorMessage = ref(error);
 const values = ref(defaultValues ?? {});
-const rules = makeRules(schema);
+const rules = schema ? makeRules(schema) : {};
 const v$ = useVuelidate(rules, values, { $autoDirty: false, $lazy: true });
 
 // Provide

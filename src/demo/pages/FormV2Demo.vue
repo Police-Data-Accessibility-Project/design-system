@@ -5,6 +5,7 @@
 			name="form-name"
 			:schema="SCHEMA"
 			@submit="(values) => console.log({ values })"
+			@change="(values, event) => console.log({ values, event })"
 		>
 			<InputText
 				:id="INPUT_TEXT_NAME"
