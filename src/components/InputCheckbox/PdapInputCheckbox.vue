@@ -3,7 +3,9 @@
 		class="pdap-input pdap-input-checkbox"
 		:class="{ ['pdap-input-error']: error }"
 	>
-		<slot v-if="$slots.error" name="error" class="pdap-input-error-message" />
+		<div v-if="$slots.error && error" class="pdap-input-error-message">
+			<slot name="error" />
+		</div>
 		<div v-else-if="error" class="pdap-input-error-message">{{ error }}</div>
 
 		<input

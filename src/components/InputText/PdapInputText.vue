@@ -1,6 +1,10 @@
 <template>
 	<div class="pdap-input" :class="{ ['pdap-input-error']: error }">
-		<slot v-if="$slots.error" name="error" class="pdap-input-error-message" />
+		<label v-if="$slots.label" :for="id"><slot name="label" /></label>
+		<label v-else-if="label" :for="id">{{ label }}</label>
+		<div v-if="$slots.error && error" class="pdap-input-error-message">
+			<slot name="error" />
+		</div>
 		<div v-else-if="error" class="pdap-input-error-message">{{ error }}</div>
 
 		<input
@@ -12,9 +16,6 @@
 			type="text"
 			@input="onInput"
 		/>
-
-		<label v-if="$slots.label" :for="id"><slot name="label" /></label>
-		<label v-else-if="label" :for="id">{{ label }}</label>
 	</div>
 </template>
 
