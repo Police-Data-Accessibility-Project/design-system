@@ -68,7 +68,8 @@
 		@apply justify-start;
 	}
 
-	.pdap-input-error input {
+	.pdap-input-error input,
+	.pdap-input-error div[role="combobox"] {
 		@apply border-red-800 dark:border-red-300;
 	}
 

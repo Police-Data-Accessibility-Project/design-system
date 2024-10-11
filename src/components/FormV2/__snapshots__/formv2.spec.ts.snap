@@ -4,16 +4,17 @@ exports[`PdapFormV2 > calls submit event with form values on valid submission 1`
 <form class="pdap-form" id="test" name="test">
   <!--v-if-->
   <div class="pdap-input">
+    <label for="name">Name</label>
     <!--v-if-->
     <input id="name" name="name" placeholder="Name" type="text">
-    <label for="name">Name</label>
   </div>
   <div class="pdap-input">
+    <label for="email">Email</label>
     <!--v-if-->
     <input id="email" name="email" placeholder="Email" type="text">
-    <label for="email">Email</label>
   </div>
   <div class="pdap-input pdap-input-password">
+    <label for="password">Password</label>
     <!--v-if-->
     <div class="pdap-input-password-wrapper">
       <input id="password" name="password" placeholder="Password" type="password">
@@ -23,7 +24,6 @@ exports[`PdapFormV2 > calls submit event with form values on valid submission 1`
         </svg>
       </button>
     </div>
-    <label for="password">Password</label>
   </div>
   <div class="pdap-input pdap-input-checkbox">
     <!--v-if-->
@@ -37,16 +37,17 @@ exports[`PdapFormV2 > renders default error message when form has errors 1`] = `
 <form class="pdap-form" id="test" name="test">
   <div class="pdap-form-error-message">Please update this form to correct the errors</div>
   <div class="pdap-input pdap-input-error">
+    <label for="name">Name</label>
     <div class="pdap-input-error-message">Value is required</div>
     <input id="name" name="name" placeholder="Name" type="text">
-    <label for="name">Name</label>
   </div>
   <div class="pdap-input pdap-input-error">
+    <label for="email">Email</label>
     <div class="pdap-input-error-message">Value is required</div>
     <input id="email" name="email" placeholder="Email" type="text">
-    <label for="email">Email</label>
   </div>
   <div class="pdap-input pdap-input-password">
+    <label for="password">Password</label>
     <!--v-if-->
     <div class="pdap-input-password-wrapper">
       <input id="password" name="password" placeholder="Password" type="password">
@@ -56,7 +57,6 @@ exports[`PdapFormV2 > renders default error message when form has errors 1`] = `
         </svg>
       </button>
     </div>
-    <label for="password">Password</label>
   </div>
   <div class="pdap-input pdap-input-checkbox">
     <!--v-if-->
@@ -76,16 +76,17 @@ exports[`PdapFormV2 > renders error message when errorMessage prop is provided 1
 <form class="pdap-form" id="test" name="test">
   <div class="pdap-form-error-message">Form Error</div>
   <div class="pdap-input">
+    <label for="name">Name</label>
     <!--v-if-->
     <input id="name" name="name" placeholder="Name" type="text">
-    <label for="name">Name</label>
   </div>
   <div class="pdap-input">
+    <label for="email">Email</label>
     <!--v-if-->
     <input id="email" name="email" placeholder="Email" type="text">
-    <label for="email">Email</label>
   </div>
   <div class="pdap-input pdap-input-password">
+    <label for="password">Password</label>
     <!--v-if-->
     <div class="pdap-input-password-wrapper">
       <input id="password" name="password" placeholder="Password" type="password">
@@ -95,7 +96,6 @@ exports[`PdapFormV2 > renders error message when errorMessage prop is provided 1
         </svg>
       </button>
     </div>
-    <label for="password">Password</label>
   </div>
   <div class="pdap-input pdap-input-checkbox">
     <!--v-if-->
@@ -109,16 +109,17 @@ exports[`PdapFormV2 > renders the form element 1`] = `
 <form class="pdap-form" id="test" name="test">
   <!--v-if-->
   <div class="pdap-input">
+    <label for="name">Name</label>
     <!--v-if-->
     <input id="name" name="name" placeholder="Name" type="text">
-    <label for="name">Name</label>
   </div>
   <div class="pdap-input">
+    <label for="email">Email</label>
     <!--v-if-->
     <input id="email" name="email" placeholder="Email" type="text">
-    <label for="email">Email</label>
   </div>
   <div class="pdap-input pdap-input-password">
+    <label for="password">Password</label>
     <!--v-if-->
     <div class="pdap-input-password-wrapper">
       <input id="password" name="password" placeholder="Password" type="password">
@@ -128,7 +129,6 @@ exports[`PdapFormV2 > renders the form element 1`] = `
         </svg>
       </button>
     </div>
-    <label for="password">Password</label>
   </div>
   <div class="pdap-input pdap-input-checkbox">
     <!--v-if-->

@@ -11,7 +11,7 @@
 				:id="INPUT_TEXT_NAME"
 				autocomplete="off"
 				:name="INPUT_TEXT_NAME"
-				:placeholder="PLACEHOLDER"
+				:placeholder="INPUT_TEXT_PLACEHOLDER"
 			>
 				<template #label>
 					<h4>Your name</h4>
@@ -34,6 +34,24 @@
 				label="Do you like ice cream?"
 			/>
 
+			<InputSelect
+				:id="INPUT_SELECT_NAME"
+				:name="INPUT_SELECT_NAME"
+				:options="ICE_CREAM_FLAVORS"
+				placeholder="Select flavor"
+			>
+				<template #label>
+					<h4>What is your favorite flavor?</h4>
+				</template>
+				<template #error>
+					<p class="p-4">
+						Custom error slot with
+						<a class="text-wineneutral-50" href="#">a link</a> and more padding
+						than one would usually care for. Only rendered if an error exists.
+					</p>
+				</template>
+			</InputSelect>
+
 			<Button type="submit">Submit</Button>
 		</FormV2>
 	</main>
@@ -45,11 +63,41 @@ import { FormV2 } from '../../components/FormV2';
 import { InputText } from '../../components/InputText';
 import { InputCheckbox } from '../../components/InputCheckbox';
 import { InputPassword } from '../../components/InputPassword';
+import { InputSelect } from '../../components/InputSelect';
 
 const INPUT_CHECKBOX_NAME = 'ice-cream';
+const INPUT_TEXT_PLACEHOLDER = 'Paul';
 const INPUT_TEXT_NAME = 'first-name';
 const INPUT_PASSWORD_NAME = 'password';
-const PLACEHOLDER = 'Paul';
+const INPUT_SELECT_NAME = 'flavors';
+
+const ICE_CREAM_FLAVORS = [
+	{
+		value: 'vanilla',
+		label: 'Vanilla',
+	},
+	{
+		value: 'chocolate',
+		label: 'Chocolate',
+	},
+	{
+		value: 'neapolitan',
+		label: 'Neapolitan',
+	},
+	{
+		value: 'rocky-road',
+		label: 'Rocky Road',
+	},
+	{
+		value: 'chunky-monkey',
+		label: 'Chunky Monkey',
+	},
+	{
+		value: 'mint-choc',
+		label: 'Mint Chocolate Chip',
+	},
+];
+
 const SCHEMA = [
 	{
 		name: INPUT_TEXT_NAME,
@@ -68,6 +116,15 @@ const SCHEMA = [
 			password: {
 				value: true,
 				message: 'Your password should be a valid password',
+			},
+		},
+	},
+	{
+		name: INPUT_SELECT_NAME,
+		validators: {
+			required: {
+				message: 'Please select your favorite flavor of ice cream.',
+				value: true,
 			},
 		},
 	},
