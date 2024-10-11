@@ -41,22 +41,22 @@ describe('PdapInputSelect', () => {
 		const wrapper = mount(PdapInputSelect, BASE_DEFAULT);
 		expect(wrapper.find('label').text()).toBe('Test Label');
 		expect(wrapper.find('.selected-value').text()).toBe('Select an option');
-		expect(wrapper.findAll('.option').length).toBe(3);
+		expect(wrapper.findAll('.pdap-custom-select-option').length).toBe(3);
 	});
 
 	it('opens options when clicked', async () => {
 		const wrapper = mount(PdapInputSelect, BASE_DEFAULT);
 
-		await wrapper.find('.custom-select').trigger('click');
-		expect(wrapper.find('.custom-select').classes()).toContain('open');
-		expect(wrapper.find('.options').isVisible()).toBe(true);
+		await wrapper.find('.pdap-custom-select').trigger('click');
+		expect(wrapper.find('.pdap-custom-select').classes()).toContain('open');
+		expect(wrapper.find('.pdap-custom-select-options').isVisible()).toBe(true);
 	});
 
 	it('selects an option when clicked', async () => {
 		const wrapper = mount(PdapInputSelect, BASE_DEFAULT);
 
-		await wrapper.find('.custom-select').trigger('click');
-		await wrapper.findAll('.option')[1].trigger('click');
+		await wrapper.find('.pdap-custom-select').trigger('click');
+		await wrapper.findAll('.pdap-custom-select-option')[1].trigger('click');
 
 		expect(wrapper.find('.selected-value').text()).toBe('Option 2');
 		expect(mockFormProvide.setValues).toHaveBeenCalledWith({
@@ -67,26 +67,32 @@ describe('PdapInputSelect', () => {
 	it('handles keyboard navigation', async () => {
 		const wrapper = mount(PdapInputSelect, BASE_DEFAULT);
 
-		await wrapper.find('.custom-select').trigger('keydown', { key: 'Enter' });
-		expect(wrapper.find('.custom-select').classes()).toContain('open');
+		await wrapper
+			.find('.pdap-custom-select')
+			.trigger('keydown', { key: 'Enter' });
+		expect(wrapper.find('.pdap-custom-select').classes()).toContain('open');
 
 		await wrapper
-			.find('.custom-select')
+			.find('.pdap-custom-select')
 			.trigger('keydown', { key: 'ArrowDown' });
 		// @ts-expect-error vm doesn't play well with TS
 		expect(wrapper.vm.focusedOptionIndex).toBe(0);
 
 		await wrapper
-			.find('.custom-select')
+			.find('.pdap-custom-select')
 			.trigger('keydown', { key: 'ArrowDown' });
 		// @ts-expect-error vm doesn't play well with TS
 		expect(wrapper.vm.focusedOptionIndex).toBe(1);
 
-		await wrapper.find('.custom-select').trigger('keydown', { key: 'Enter' });
+		await wrapper
+			.find('.pdap-custom-select')
+			.trigger('keydown', { key: 'Enter' });
 		expect(wrapper.find('.selected-value').text()).toBe('Option 2');
 
-		await wrapper.find('.custom-select').trigger('keydown', { key: 'Escape' });
-		expect(wrapper.find('.custom-select').classes()).not.toContain('open');
+		await wrapper
+			.find('.pdap-custom-select')
+			.trigger('keydown', { key: 'Escape' });
+		expect(wrapper.find('.pdap-custom-select').classes()).not.toContain('open');
 	});
 
 	it('displays error message when provided', async () => {
@@ -140,19 +146,25 @@ describe('PdapInputSelect', () => {
 	it('handles Tab key navigation', async () => {
 		const wrapper = mount(PdapInputSelect, BASE_DEFAULT);
 
-		// const options = wrapper.findAll('.option');
+		// const options = wrapper.findAll('.pdap-custom-select-option');
 
-		await wrapper.find('.custom-select').trigger('keydown', { key: 'Tab' });
-		expect(wrapper.find('.custom-select').classes()).not.toContain('open');
+		await wrapper
+			.find('.pdap-custom-select')
+			.trigger('keydown', { key: 'Tab' });
+		expect(wrapper.find('.pdap-custom-select').classes()).not.toContain('open');
 
-		await wrapper.find('.custom-select').trigger('keydown', { key: 'Enter' });
-		expect(wrapper.find('.custom-select').classes()).toContain('open');
+		await wrapper
+			.find('.pdap-custom-select')
+			.trigger('keydown', { key: 'Enter' });
+		expect(wrapper.find('.pdap-custom-select').classes()).toContain('open');
 
 		// TODO: figure out why this test isn't working
-		// await wrapper.find('.custom-select').trigger('keydown', { key: 'Tab' });
+		// await wrapper.find('.pdap-custom-select').trigger('keydown', { key: 'Tab' });
 		// expect(options[0].classes()).toContain('selected');
 
-		await wrapper.find('.custom-select').trigger('keydown', { key: 'Tab' });
+		await wrapper
+			.find('.pdap-custom-select')
+			.trigger('keydown', { key: 'Tab' });
 		expect(wrapper.emitted('keydown')).toBeTruthy();
 	});
 
@@ -160,30 +172,30 @@ describe('PdapInputSelect', () => {
 		const wrapper = mount(PdapInputSelect, BASE_DEFAULT);
 
 		await wrapper
-			.find('.custom-select')
+			.find('.pdap-custom-select')
 			.trigger('keydown', { key: 'ArrowDown' });
-		expect(wrapper.find('.custom-select').classes()).toContain('open');
+		expect(wrapper.find('.pdap-custom-select').classes()).toContain('open');
 
 		await wrapper
-			.find('.custom-select')
+			.find('.pdap-custom-select')
 			.trigger('keydown', { key: 'ArrowDown' });
 		// @ts-expect-error vm doesn't play well with TS
 		expect(wrapper.vm.focusedOptionIndex).toBe(0);
 
 		await wrapper
-			.find('.custom-select')
+			.find('.pdap-custom-select')
 			.trigger('keydown', { key: 'ArrowDown' });
 		// @ts-expect-error vm doesn't play well with TS
 		expect(wrapper.vm.focusedOptionIndex).toBe(1);
 
 		await wrapper
-			.find('.custom-select')
+			.find('.pdap-custom-select')
 			.trigger('keydown', { key: 'ArrowDown' });
 		// @ts-expect-error vm doesn't play well with TS
 		expect(wrapper.vm.focusedOptionIndex).toBe(2);
 
 		await wrapper
-			.find('.custom-select')
+			.find('.pdap-custom-select')
 			.trigger('keydown', { key: 'ArrowDown' });
 		// @ts-expect-error vm doesn't play well with TS
 		expect(wrapper.vm.focusedOptionIndex).toBe(2);
@@ -192,23 +204,31 @@ describe('PdapInputSelect', () => {
 	it('handles ArrowUp key navigation', async () => {
 		const wrapper = mount(PdapInputSelect, BASE_DEFAULT);
 
-		await wrapper.find('.custom-select').trigger('keydown', { key: 'Enter' });
-		expect(wrapper.find('.custom-select').classes()).toContain('open');
-
-		await wrapper.find('.custom-select').trigger('keydown', { key: 'ArrowUp' });
-		expect(wrapper.find('.custom-select').classes()).not.toContain('open');
-
-		await wrapper.find('.custom-select').trigger('keydown', { key: 'Enter' });
-		expect(wrapper.find('.custom-select').classes()).toContain('open');
+		await wrapper
+			.find('.pdap-custom-select')
+			.trigger('keydown', { key: 'Enter' });
+		expect(wrapper.find('.pdap-custom-select').classes()).toContain('open');
 
 		await wrapper
-			.find('.custom-select')
+			.find('.pdap-custom-select')
+			.trigger('keydown', { key: 'ArrowUp' });
+		expect(wrapper.find('.pdap-custom-select').classes()).not.toContain('open');
+
+		await wrapper
+			.find('.pdap-custom-select')
+			.trigger('keydown', { key: 'Enter' });
+		expect(wrapper.find('.pdap-custom-select').classes()).toContain('open');
+
+		await wrapper
+			.find('.pdap-custom-select')
 			.trigger('keydown', { key: 'ArrowDown' });
 
 		// @ts-expect-error vm doesn't play well with TS
 		expect(wrapper.vm.focusedOptionIndex).toBe(0);
 
-		await wrapper.find('.custom-select').trigger('keydown', { key: 'ArrowUp' });
+		await wrapper
+			.find('.pdap-custom-select')
+			.trigger('keydown', { key: 'ArrowUp' });
 		// @ts-expect-error vm doesn't play well with TS
 		expect(wrapper.vm.focusedOptionIndex).toBe(-1);
 	});
@@ -216,30 +236,40 @@ describe('PdapInputSelect', () => {
 	it('handles Enter key navigation', async () => {
 		const wrapper = mount(PdapInputSelect, BASE_DEFAULT);
 
-		await wrapper.find('.custom-select').trigger('keydown', { key: 'Enter' });
-		expect(wrapper.find('.custom-select').classes()).toContain('open');
+		await wrapper
+			.find('.pdap-custom-select')
+			.trigger('keydown', { key: 'Enter' });
+		expect(wrapper.find('.pdap-custom-select').classes()).toContain('open');
 
 		await wrapper
-			.find('.custom-select')
+			.find('.pdap-custom-select')
 			.trigger('keydown', { key: 'ArrowDown' });
 		// @ts-expect-error vm doesn't play well with TS
 		expect(wrapper.vm.focusedOptionIndex).toBe(0);
 
-		await wrapper.find('.custom-select').trigger('keydown', { key: 'Enter' });
+		await wrapper
+			.find('.pdap-custom-select')
+			.trigger('keydown', { key: 'Enter' });
 		expect(wrapper.find('.selected-value').text()).toBe('Option 1');
-		expect(wrapper.find('.custom-select').classes()).not.toContain('open');
+		expect(wrapper.find('.pdap-custom-select').classes()).not.toContain('open');
 
-		await wrapper.find('.custom-select').trigger('keydown', { key: 'Enter' });
-		expect(wrapper.find('.custom-select').classes()).toContain('open');
+		await wrapper
+			.find('.pdap-custom-select')
+			.trigger('keydown', { key: 'Enter' });
+		expect(wrapper.find('.pdap-custom-select').classes()).toContain('open');
 	});
 
 	it('handles Escape key navigation', async () => {
 		const wrapper = mount(PdapInputSelect, BASE_DEFAULT);
 
-		await wrapper.find('.custom-select').trigger('keydown', { key: 'Enter' });
-		expect(wrapper.find('.custom-select').classes()).toContain('open');
+		await wrapper
+			.find('.pdap-custom-select')
+			.trigger('keydown', { key: 'Enter' });
+		expect(wrapper.find('.pdap-custom-select').classes()).toContain('open');
 
-		await wrapper.find('.custom-select').trigger('keydown', { key: 'Escape' });
-		expect(wrapper.find('.custom-select').classes()).not.toContain('open');
+		await wrapper
+			.find('.pdap-custom-select')
+			.trigger('keydown', { key: 'Escape' });
+		expect(wrapper.find('.pdap-custom-select').classes()).not.toContain('open');
 	});
 });
