@@ -52,6 +52,13 @@
 				</template>
 			</InputSelect>
 
+			<PdapInputTextArea
+				:id="INPUT_TEXT_AREA_NAME"
+				:name="INPUT_TEXT_AREA_NAME"
+				label="Any notes to share?"
+				:rows="5"
+			/>
+
 			<Button type="submit">Submit</Button>
 		</FormV2>
 	</main>
@@ -64,12 +71,14 @@ import { InputText } from '../../components/InputText';
 import { InputCheckbox } from '../../components/InputCheckbox';
 import { InputPassword } from '../../components/InputPassword';
 import { InputSelect } from '../../components/InputSelect';
+import PdapInputTextArea from '../../components/InputTextArea/PdapInputTextArea.vue';
 
 const INPUT_CHECKBOX_NAME = 'ice-cream';
 const INPUT_TEXT_PLACEHOLDER = 'Paul';
 const INPUT_TEXT_NAME = 'first-name';
 const INPUT_PASSWORD_NAME = 'password';
 const INPUT_SELECT_NAME = 'flavors';
+const INPUT_TEXT_AREA_NAME = 'notes';
 
 const ICE_CREAM_FLAVORS = [
 	{
@@ -128,6 +137,15 @@ const SCHEMA = [
 			},
 		},
 	},
+	// {
+	// 	name: INPUT_TEXT_AREA_NAME,
+	// 	validators: {
+	// 		required: {
+	// 			message: 'Please add some notes.',
+	// 			value: true,
+	// 		},
+	// 	},
+	// },
 ];
 </script>
 

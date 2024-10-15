@@ -30,6 +30,11 @@ exports[`PdapFormV2 > calls submit event with form values on valid submission 1`
     <input checked id="ice-cream" name="ice-cream" type="checkbox" value="true">
     <label for="ice-cream">Ice Cream</label>
   </div>
+  <div class="pdap-input">
+    <label for="notes">Notes?</label>
+    <!--v-if-->
+    <textarea id="notes" name="notes" placeholder="Notes" type="text"></textarea>
+  </div>
 </form>
 `;
 
@@ -62,6 +67,11 @@ exports[`PdapFormV2 > renders default error message when form has errors 1`] = `
     <!--v-if-->
     <input id="ice-cream" name="ice-cream" type="checkbox" value="false">
     <label for="ice-cream">Ice Cream</label>
+  </div>
+  <div class="pdap-input pdap-input-error">
+    <label for="notes">Notes?</label>
+    <div class="pdap-input-error-message">Notes are required</div>
+    <textarea id="notes" name="notes" placeholder="Notes" type="text"></textarea>
   </div>
 </form>
 `;
@@ -102,6 +112,11 @@ exports[`PdapFormV2 > renders error message when errorMessage prop is provided 1
     <input id="ice-cream" name="ice-cream" type="checkbox" value="false">
     <label for="ice-cream">Ice Cream</label>
   </div>
+  <div class="pdap-input">
+    <label for="notes">Notes?</label>
+    <!--v-if-->
+    <textarea id="notes" name="notes" placeholder="Notes" type="text"></textarea>
+  </div>
 </form>
 `;
 
@@ -134,6 +149,11 @@ exports[`PdapFormV2 > renders the form element 1`] = `
     <!--v-if-->
     <input id="ice-cream" name="ice-cream" type="checkbox" value="false">
     <label for="ice-cream">Ice Cream</label>
+  </div>
+  <div class="pdap-input">
+    <label for="notes">Notes?</label>
+    <!--v-if-->
+    <textarea id="notes" name="notes" placeholder="Notes" type="text"></textarea>
   </div>
 </form>
 `;
