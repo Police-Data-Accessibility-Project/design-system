@@ -41,17 +41,22 @@
 		@apply h-[max-content] gap-1 leading-normal mb-3 w-full flex flex-col;
 	}
 
-	.pdap-input input {
+	.pdap-input input,
+	.pdap-input textarea {
 		@apply dark:bg-neutral-950 border border-neutral-500 border-solid px-3 py-2 text-[rgba(0,0,0)];
 	}
 
-	.pdap-input input::placeholder {
+	.pdap-input input::placeholder,
+	.pdap-input textarea::placeholder{
 		@apply text-neutral-600 text-lg;
 	}
 
 	.pdap-input input:focus,
 	.pdap-input input:focus-within,
-	.pdap-input input:focus-visible {
+	.pdap-input input:focus-visible,
+	.pdap-input textarea:focus,
+	.pdap-input textarea:focus-within,
+	.pdap-input textarea:focus-visible {
 		@apply border-2 border-blue-light border-solid outline-none;
 	}
 
@@ -69,7 +74,8 @@
 	}
 
 	.pdap-input-error input,
-	.pdap-input-error div[role="combobox"] {
+	.pdap-input-error div[role="combobox"],
+	.pdap-input-error textarea {
 		@apply border-red-800 dark:border-red-300;
 	}
 
@@ -106,4 +112,8 @@
 		@apply cursor-pointer;
 	}
 
+	/* Text area */
+	.pdap-input textarea {
+	  @apply text-lg;
+	}
 }

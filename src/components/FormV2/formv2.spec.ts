@@ -5,6 +5,7 @@ import PdapFormV2 from './PdapFormV2.vue';
 import InputCheckbox from '../InputCheckbox/PdapInputCheckbox.vue';
 import InputText from '../InputText/PdapInputText.vue';
 import InputPassword from '../InputPassword/PdapInputPassword.vue';
+import InputTextArea from '../InputTextArea/PdapInputTextArea.vue';
 
 vi.mock('vue-router');
 vi.mock('vue', async () => {
@@ -46,6 +47,7 @@ const BASE_CONFIG = {
 			email: '',
 			password: '',
 			'ice-cream': false,
+			notes: '',
 		},
 		schema: [
 			{
@@ -67,6 +69,12 @@ const BASE_CONFIG = {
 				name: 'password',
 				validators: {
 					password: { value: true, message: 'Password is too weak' },
+				},
+			},
+			{
+				name: 'notes',
+				validators: {
+					required: { value: true, message: 'Notes are required' },
 				},
 			},
 		],
@@ -102,6 +110,12 @@ const BASE_CONFIG = {
         label="Ice Cream"
         :defaultChecked="false"
       />
+			<InputTextArea
+        id="notes"
+        name="notes"
+        label="Notes?"
+        placeholder="Notes"
+      />
     `,
 	},
 	global: {
@@ -109,6 +123,7 @@ const BASE_CONFIG = {
 			InputCheckbox,
 			InputText,
 			InputPassword,
+			InputTextArea,
 		},
 	},
 };
@@ -164,6 +179,7 @@ describe('PdapFormV2', () => {
 		await form.find('input[name="email"]').setValue('john@example.com');
 		await form.find('input[name="password"]').setValue('Password123!');
 		await form.find('input[name="ice-cream"]').setChecked();
+		await form.find('textarea[name="notes"]').setValue('This is a note');
 
 		await form.trigger('submit');
 		await wrapper.vm.$forceUpdate();
@@ -175,6 +191,7 @@ describe('PdapFormV2', () => {
 				email: 'john@example.com',
 				password: 'Password123!',
 				'ice-cream': true,
+				notes: 'This is a note',
 			},
 			expect.any(Event)
 		);
