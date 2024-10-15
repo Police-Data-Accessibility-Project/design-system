@@ -11,7 +11,7 @@
 			:id="id"
 			:name="name"
 			:placeholder="placeholder"
-			:value="value"
+			:value="String(value)"
 			v-bind="$attrs"
 			type="text"
 			@input="onInput"
@@ -40,9 +40,7 @@ const { values, setValues, v$ } = inject<PdapFormProvideV2>(provideKey)!;
 const error = computed(() => {
 	return v$.value[name]?.$error ? v$.value[name]?.$errors?.[0]?.$message : '';
 });
-const value = computed(() =>
-	typeof values.value?.[name] === 'string' ? values.value[name] : ''
-);
+const value = computed(() => values.value[name] ?? '');
 
 function onInput(e: Event) {
 	setValues({ [name]: (e.target as unknown as HTMLInputElement).value });
