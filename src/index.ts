@@ -12,7 +12,10 @@ export * from './components/Footer/types';
 export * from './components/Form/types';
 export * from './components/FormV2/types';
 export * from './components/Header/types';
-export * from './components/Input/types';
+// export * from './components/Input/types';
+export * from './components/InputCheckbox/types';
+export * from './components/InputText/types';
+export * from './components/InputTextArea/types';
 export * from './components/Nav/types';
 export * from './components/TileIcon/types';
 
