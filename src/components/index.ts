@@ -7,6 +7,7 @@ export { Input } from './Input';
 export { InputCheckbox } from './InputCheckbox';
 export { InputPassword } from './InputPassword';
 export { InputText } from './InputText';
+export { InputSelect } from './InputSelect';
 export { InputTextArea } from './InputTextArea';
 export { Header } from './Header';
 export { Nav } from './Nav';
