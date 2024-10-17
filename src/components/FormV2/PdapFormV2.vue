@@ -54,6 +54,7 @@ provide(provideKey, {
 // Expose
 defineExpose({
 	setValues,
+	v$,
 });
 
 // Helpers
