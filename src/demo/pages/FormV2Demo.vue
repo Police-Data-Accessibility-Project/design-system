@@ -4,6 +4,7 @@
 			id="form-id"
 			name="form-name"
 			:schema="SCHEMA"
+			@error="(v$) => console.debug({ v$ })"
 			@submit="(values) => console.log({ values })"
 			@change="(values, event) => console.log({ values, event })"
 		>

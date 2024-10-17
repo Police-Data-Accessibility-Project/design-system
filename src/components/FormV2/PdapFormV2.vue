@@ -35,7 +35,7 @@ const { defaultValues, error, schema } = withDefaults(
 );
 
 // Emits
-const emit = defineEmits(['submit', 'change']);
+const emit = defineEmits(['submit', 'change', 'error']);
 
 // Constants
 const errorMessage = ref(error);
@@ -76,6 +76,7 @@ function resetForm() {
 async function submit(e: Event) {
 	// Check form submission
 	const isValidSubmission = await v$.value.$validate();
+	if (!isValidSubmission) emit('error', v$);
 	if (isValidSubmission) {
 		// Emit submit event (spread to new object to create new object, this allows us to reset `values` without messing with the data returned)
 		emit('submit', { ...values.value }, e);
