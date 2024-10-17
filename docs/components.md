@@ -9,6 +9,7 @@
 - [Form](../src/components/Form//README.md)
 - [Header](../src/components/Header//README.md)
 - [Input](../src/components/Input//README.md)
+- [InputSelect](../src/components/InputSelect//README.md)
 - [Nav](../src/components/Nav//README.md)
 - [QuickSearchForm](../src/components/QuickSearchForm//README.md)
 - [Spinner](../src/components/Spinner//README.md)
