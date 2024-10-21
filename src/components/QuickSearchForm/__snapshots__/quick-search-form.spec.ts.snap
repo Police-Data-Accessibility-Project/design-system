@@ -12,12 +12,20 @@ exports[`QuickSearchForm component > Renders a QuickSearchForm 1`] = `
     <div class="pdap-input pdap-input-text">
       <input id="search-term" name="searchTerm" placeholder="Enter a keyword, or &#x27;all&#x27;" type="text">
       <!--v-if-->
-      <label class="pdap-input-label" for="search-term">What are you looking for?</label>
+      <label class="pdap-input-label" for="search-term">What are you looking for?
+        <!-- This is a hacky and extremely implementation-specific way to render these icons. Would be better to decouple Form and Input rendering a bit more so that we can more easily use slots, etc. -->
+        <!-- Issue created to create V2 of form and input components to handle more flexible UI: https://github.com/Police-Data-Accessibility-Project/design-system/issues/102 -->
+        <!--v-if-->
+      </label>
     </div>
     <div class="pdap-input pdap-input-text">
       <input id="location" name="location" placeholder="Enter a place, or &#x27;all&#x27;" type="text">
       <!--v-if-->
-      <label class="pdap-input-label" for="location">From where?</label>
+      <label class="pdap-input-label" for="location">From where?
+        <!-- This is a hacky and extremely implementation-specific way to render these icons. Would be better to decouple Form and Input rendering a bit more so that we can more easily use slots, etc. -->
+        <!-- Issue created to create V2 of form and input components to handle more flexible UI: https://github.com/Police-Data-Accessibility-Project/design-system/issues/102 -->
+        <!--v-if-->
+      </label>
     </div>
     <button class="pdap-button pdap-button-primary flex-grow-0 flex-shrink-0 basis-full max-w-[unset] mt-4" type="submit">Search Data Sources</button>
   </form>
