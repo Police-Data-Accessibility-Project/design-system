@@ -19,7 +19,7 @@
 </template>
 <script setup lang="ts">
 // Globals
-import { provide, ref, watchEffect } from 'vue';
+import { provide, ref, watch } from 'vue';
 import { useVuelidate } from '@vuelidate/core';
 
 // Types
@@ -27,20 +27,15 @@ import { PdapFormPropsV2 } from './types';
 import { provideKey, makeRules } from './util';
 
 // Props
-const { defaultValues, error, schema } = withDefaults(
-	defineProps<PdapFormPropsV2>(),
-	{
-		error: null,
-	}
-);
+const props = defineProps<PdapFormPropsV2>();
 
 // Emits
 const emit = defineEmits(['submit', 'change', 'error']);
 
 // Constants
-const errorMessage = ref(error);
-const values = ref(defaultValues ?? {});
-const rules = schema ? makeRules(schema) : {};
+const errorMessage = ref(props.error);
+const values = ref(props.defaultValues ?? {});
+const rules = props.schema ? makeRules(props.schema) : {};
 const v$ = useVuelidate(rules, values, { $autoDirty: false, $lazy: true });
 
 // Provide
@@ -69,7 +64,7 @@ function resetForm() {
 			[key]:
 				typeof values.value[key] === 'string'
 					? ''
-					: Boolean(defaultValues?.[key]),
+					: Boolean(props.defaultValues?.[key]),
 		};
 	}, {});
 }
@@ -87,13 +82,16 @@ async function submit(e: Event) {
 
 // Effects
 // Effect - Updates form error state based on input error state and/or props
-watchEffect(() => {
-	if (error) errorMessage.value = error;
-	else if (errorMessage.value && v$.value.$errors.length === 0)
-		errorMessage.value = null;
-	else if (!errorMessage.value && v$.value.$errors.length > 0)
-		errorMessage.value = 'Please update this form to correct the errors';
-});
+watch(
+	() => props.error,
+	(error) => {
+		if (error) errorMessage.value = error;
+		else if (errorMessage.value && v$.value.$errors.length === 0)
+			errorMessage.value = null;
+		else if (!errorMessage.value && v$.value.$errors.length > 0)
+			errorMessage.value = 'Please update this form to correct the errors';
+	}
+);
 </script>
 
 <style>
