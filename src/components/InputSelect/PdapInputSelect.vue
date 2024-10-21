@@ -250,11 +250,11 @@ watch(
 
 @layer components {
 	.pdap-custom-select {
-		@apply relative w-full bg-neutral-50 dark:bg-neutral-950 border-2 border-solid border-neutral-500 cursor-pointer;
+		@apply relative w-full bg-neutral-50 dark:bg-neutral-950 border border-solid border-neutral-500 cursor-pointer;
 	}
 
 	.pdap-custom-select-options {
-		@apply absolute top-[115%] left-[-2px] w-[calc(100%+4px)] bg-neutral-50 dark:bg-neutral-950 border-solid border-2 border-neutral-500 max-h-48 overflow-y-auto z-20 p-1;
+		@apply absolute top-[115%] left-[-2px] w-[calc(100%+4px)] bg-neutral-50 dark:bg-neutral-950 border-solid border border-neutral-500 max-h-48 overflow-y-auto z-20 p-1;
 	}
 
 	.pdap-custom-select-option {
