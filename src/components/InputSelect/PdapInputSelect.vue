@@ -27,7 +27,10 @@
 			@click="toggleOpen"
 			@keydown="handleKeyDown"
 		>
-			<div class="selected-value">
+			<div
+				class="selected-value"
+				:class="{ 'value-is-placeholder': !selectedOption }"
+			>
 				{{ selectedOption ? selectedOption.label : placeholder }}
 			</div>
 			<div class="arrow" :class="{ open: isOpen }" />
@@ -269,6 +272,10 @@ watch(
 
 .selected-value {
 	@apply py-2 px-3 text-neutral-950 dark:text-neutral-50;
+}
+
+.selected-value.value-is-placeholder {
+	@apply text-neutral-600;
 }
 
 .arrow {
