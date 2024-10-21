@@ -19,7 +19,7 @@
 </template>
 <script setup lang="ts">
 // Globals
-import { provide, ref, watch } from 'vue';
+import { provide, ref, watchEffect } from 'vue';
 import { useVuelidate } from '@vuelidate/core';
 
 // Types
@@ -82,16 +82,13 @@ async function submit(e: Event) {
 
 // Effects
 // Effect - Updates form error state based on input error state and/or props
-watch(
-	() => props.error,
-	(error) => {
-		if (error) errorMessage.value = error;
-		else if (errorMessage.value && v$.value.$errors.length === 0)
-			errorMessage.value = null;
-		else if (!errorMessage.value && v$.value.$errors.length > 0)
-			errorMessage.value = 'Please update this form to correct the errors';
-	}
-);
+watchEffect(() => {
+	if (props.error) errorMessage.value = props.error;
+	else if (errorMessage.value && v$.value.$errors.length === 0)
+		errorMessage.value = null;
+	else if (!errorMessage.value && v$.value.$errors.length > 0)
+		errorMessage.value = 'Please update this form to correct the errors';
+});
 </script>
 
 <style>
