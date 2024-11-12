@@ -27,11 +27,11 @@ exports[`QuickSearchForm component > Renders a QuickSearchForm 1`] = `
         <!--v-if-->
       </label>
     </div>
-    <button class="pdap-button pdap-button-primary flex-grow-0 flex-shrink-0 basis-full max-w-[unset] mt-4" type="submit">Search Data Sources
-      <!--v-if-->
-      <transition-stub appear="true" css="true" persisted="false">
+    <button class="pdap-button pdap-button-primary flex-grow-0 flex-shrink-0 basis-full max-w-[unset] mt-4" type="submit">
+      <transition-group-stub appear="false" css="true" mode="out-in" persisted="false">Search Data Sources
         <!--v-if-->
-      </transition-stub>
+        <!--v-if-->
+      </transition-group-stub>
     </button>
   </form>
   <p class="max-w-[unset] text-med"> For example, you could search for <a> stops in Pittsburgh </a> or <a> complaints everywhere </a> . </p>
