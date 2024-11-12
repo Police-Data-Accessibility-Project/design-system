@@ -1,8 +1,10 @@
 <template>
 	<button :class="classes">
-		<slot v-if="!isLoading" />
-		<slot v-if="isLoading && $slots.loading" name="loading" />
-		<Spinner :show="isLoading && !$slots.loading" />
+		<TransitionGroup>
+			<slot v-if="!isLoading" />
+			<slot v-if="isLoading && $slots.loading" name="loading" />
+			<Spinner v-if="isLoading && !$slots.loading" :show="isLoading" />
+		</TransitionGroup>
 	</button>
 </template>
 
@@ -74,6 +76,20 @@ export default {
 
 	.pdap-button-tertiary[type='submit'] {
 		@apply bg-transparent;
+	}
+}
+</style>
+
+<style scoped>
+@media (prefers-reduced-motion: no-preference) {
+	.v-enter-active,
+	.v-leave-active {
+		transition: opacity 0.5s ease;
+	}
+
+	.v-enter-from,
+	.v-leave-to {
+		opacity: 0;
 	}
 }
 </style>
