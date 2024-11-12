@@ -253,7 +253,7 @@ watch(
 
 @layer components {
 	.pdap-custom-select {
-		@apply relative w-full bg-neutral-50 dark:bg-neutral-950 border-2 border-solid border-neutral-500 cursor-pointer text-lg;
+		@apply relative w-full bg-neutral-50 dark:bg-neutral-950 border-2 border-solid border-neutral-500 cursor-pointer text-lg rounded-md;
 	}
 
 	.pdap-custom-select-options {
