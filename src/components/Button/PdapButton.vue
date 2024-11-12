@@ -1,10 +1,17 @@
 <template>
 	<button :class="classes">
-		<TransitionGroup mode="out-in">
-			<slot v-if="!isLoading" />
-			<slot v-if="isLoading && $slots.loading" name="loading" />
-			<Spinner v-if="isLoading && !$slots.loading" :show="isLoading" />
-		</TransitionGroup>
+		<Transition mode="out-in">
+			<component
+				:is="
+					isLoading && $slots.loading
+						? $slots.loading
+						: isLoading
+						? Spinner
+						: $slots.default
+				"
+				v-bind="isLoading ? loadingProps : undefined"
+			/>
+		</Transition>
 	</button>
 </template>
 
@@ -21,6 +28,10 @@ const props = withDefaults(defineProps<PdapButtonProps>(), {
 	intent: 'primary',
 	isLoading: false,
 });
+
+const loadingProps = {
+	show: props.isLoading,
+};
 
 // CSS class map
 const classes = reactive({
