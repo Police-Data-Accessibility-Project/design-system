@@ -1,6 +1,6 @@
 <template>
 	<button :class="classes">
-		<TransitionGroup>
+		<TransitionGroup mode="out-in">
 			<slot v-if="!isLoading" />
 			<slot v-if="isLoading && $slots.loading" name="loading" />
 			<Spinner v-if="isLoading && !$slots.loading" :show="isLoading" />
