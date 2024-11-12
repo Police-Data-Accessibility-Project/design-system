@@ -1,12 +1,15 @@
 <template>
 	<button :class="classes">
-		<slot />
+		<slot v-if="!isLoading" />
+		<slot v-if="isLoading && $slots.loading" name="loading" />
+		<Spinner :show="isLoading && !$slots.loading" />
 	</button>
 </template>
 
 <script setup lang="ts">
 // Imports
 import { reactive } from 'vue';
+import { Spinner } from '../Spinner';
 
 // Types
 import { PdapButtonProps } from './types';
