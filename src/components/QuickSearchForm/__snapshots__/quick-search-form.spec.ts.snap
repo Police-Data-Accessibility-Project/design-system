@@ -28,7 +28,7 @@ exports[`QuickSearchForm component > Renders a QuickSearchForm 1`] = `
       </label>
     </div>
     <button class="pdap-button pdap-button-primary flex-grow-0 flex-shrink-0 basis-full max-w-[unset] mt-4" type="submit">
-      <transition-group-stub appear="false" css="true" persisted="false">Search Data Sources
+      <transition-group-stub appear="false" css="true" mode="out-in" persisted="false">Search Data Sources
         <!--v-if-->
         <!--v-if-->
       </transition-group-stub>

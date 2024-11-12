@@ -2,7 +2,7 @@
 
 exports[`Renders button component > Renders a button 1`] = `
 <button class="pdap-button pdap-button-primary">
-  <transition-group-stub appear="false" css="true" persisted="false">Button Content
+  <transition-group-stub appear="false" css="true" mode="out-in" persisted="false">Button Content
     <!--v-if-->
     <!--v-if-->
   </transition-group-stub>
