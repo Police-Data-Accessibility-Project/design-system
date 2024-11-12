@@ -1,7 +1,3 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Renders button component > Renders a button 1`] = `
-<button class="pdap-button pdap-button-primary">
-  <transition-stub appear="false" css="true" mode="out-in" persisted="false">Button Content</transition-stub>
-</button>
-`;
+exports[`Renders button component > Renders a button 1`] = `<button class="pdap-button pdap-button-primary">Button Content</button>`;

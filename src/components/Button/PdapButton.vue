@@ -1,24 +1,16 @@
 <template>
 	<button :class="classes">
-		<Transition mode="out-in">
-			<component
-				:is="
-					isLoading && $slots.loading
-						? $slots.loading
-						: isLoading
-						? Spinner
-						: $slots.default
-				"
-				v-bind="isLoading ? loadingProps : undefined"
-			/>
-		</Transition>
+		<component
+			:is="isLoading ? Spinner : $slots.default"
+			v-bind="isLoading ? loadingProps : undefined"
+		/>
 	</button>
 </template>
 
 <script setup lang="ts">
 // Imports
 import { reactive } from 'vue';
-import { Spinner } from '../Spinner';
+import Spinner from '../Spinner/PdapSpinner.vue';
 
 // Types
 import { PdapButtonProps } from './types';
