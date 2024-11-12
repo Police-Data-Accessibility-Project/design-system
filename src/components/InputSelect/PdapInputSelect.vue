@@ -253,7 +253,7 @@ watch(
 
 @layer components {
 	.pdap-custom-select {
-		@apply relative w-full bg-neutral-50 dark:bg-neutral-950 border border-solid border-neutral-500 cursor-pointer;
+		@apply relative w-full bg-neutral-50 dark:bg-neutral-950 border-2 border-solid border-neutral-500 cursor-pointer text-lg rounded-md;
 	}
 
 	.pdap-custom-select-options {
@@ -261,7 +261,13 @@ watch(
 	}
 
 	.pdap-custom-select-option {
-		@apply text-neutral-950 dark:text-neutral-50 p-2 w-full max-w-full cursor-pointer;
+		@apply text-neutral-950 dark:text-neutral-50 p-2 w-full max-w-full cursor-pointer border-2 border-solid border-transparent;
+	}
+
+	.pdap-custom-select:focus,
+	.pdap-custom-select-option:hover,
+	.pdap-custom-select-option:focus {
+		@apply border-2 border-brand-gold-500 border-solid outline-none;
 	}
 
 	.pdap-custom-select-option:hover,

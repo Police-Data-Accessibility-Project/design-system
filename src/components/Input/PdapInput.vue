@@ -49,7 +49,7 @@ const props = withDefaults(defineProps<PdapInputProps>(), {});
 const errorMessageId = computed(() => `pdap-${props.name}-input-error`);
 </script>
 
-<style>
+<style scoped>
 @tailwind components;
 
 @layer components {

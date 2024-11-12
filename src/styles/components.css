@@ -43,7 +43,7 @@
 
 	.pdap-input input,
 	.pdap-input textarea {
-		@apply dark:bg-neutral-950 border border-neutral-500 border-solid px-3 py-2 text-[rgba(0,0,0)];
+		@apply dark:bg-neutral-950 border-neutral-500 border-solid border-2 px-3 py-2 text-[rgba(0,0,0)] rounded-md;
 	}
 
 	.pdap-input input::placeholder,
@@ -56,8 +56,9 @@
 	.pdap-input input:focus-visible,
 	.pdap-input textarea:focus,
 	.pdap-input textarea:focus-within,
-	.pdap-input textarea:focus-visible {
-		@apply border-2 border-blue-light border-solid outline-none;
+	.pdap-input textarea:focus-visible, 
+	.pdap-input-checkbox:has(input[type="checkbox"]:focus) {
+		@apply border-2 border-brand-gold-500 border-solid outline-none;
 	}
 
 	.pdap-input label {
@@ -92,10 +93,11 @@
 
 	/* Input - checkbox */
 	.pdap-input-checkbox {
-		@apply border-2 border-transparent items-center gap-4 flex-row py-1 px-2 w-auto;
+		@apply border-2 border-transparent items-center gap-4 flex-row py-1 px-2 w-auto rounded-md;
 	}
 
-	.pdap-input-checkbox:has(input:checked) {
+	.pdap-input-checkbox:has(input:checked),
+	.pdap-input-checkbox:has(input:checked):has(input[type="checkbox"]:focus) {
 		@apply border-2 border-brand-gold border-solid rounded-md;
 	}
 
@@ -111,6 +113,7 @@
 	.pdap-input input[type='checkbox'] ~ label {
 		@apply cursor-pointer;
 	}
+
 
 	/* Text area */
 	.pdap-input textarea {
