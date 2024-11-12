@@ -261,7 +261,7 @@ watch(
 	}
 
 	.pdap-custom-select-option {
-		@apply text-neutral-950 dark:text-neutral-50 p-2 w-full max-w-full cursor-pointer border-2 border-solid;
+		@apply text-neutral-950 dark:text-neutral-50 p-2 w-full max-w-full cursor-pointer border-2 border-solid border-transparent;
 	}
 
 	.pdap-custom-select:focus,
