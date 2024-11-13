@@ -4,7 +4,8 @@
 		:name="name"
 		class="pdap-form"
 		@submit.prevent="submit"
-		@change="emit('change', values, $event)"
+		@input.prevent="change"
+		@change.prevent="change"
 	>
 		<slot v-if="$slots.error" name="error" />
 		<div
@@ -68,6 +69,10 @@ function resetForm() {
 		};
 	}, {});
 }
+function change(event: Event) {
+	emit('change', values.value, event);
+}
+
 async function submit(e: Event) {
 	// Check form submission
 	const isValidSubmission = await v$.value.$validate();
