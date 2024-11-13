@@ -1,16 +1,14 @@
 <template>
 	<button :class="classes">
-		<component
-			:is="isLoading ? Spinner : $slots.default"
-			v-bind="isLoading ? loadingProps : undefined"
-		/>
+		<slot v-if="!isLoading" />
+		<Spinner v-if="isLoading" :show="isLoading" />
 	</button>
 </template>
 
 <script setup lang="ts">
 // Imports
 import { reactive } from 'vue';
-import Spinner from '../Spinner/PdapSpinner.vue';
+import { Spinner } from '../Spinner';
 
 // Types
 import { PdapButtonProps } from './types';
@@ -20,10 +18,6 @@ const props = withDefaults(defineProps<PdapButtonProps>(), {
 	intent: 'primary',
 	isLoading: false,
 });
-
-const loadingProps = {
-	show: props.isLoading,
-};
 
 // CSS class map
 const classes = reactive({
