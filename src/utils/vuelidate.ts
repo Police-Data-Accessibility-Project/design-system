@@ -28,6 +28,10 @@ export function isEmailRule(s: string): s is 'email' {
 	return s === 'email';
 }
 
+export function isUrlRule(s: string): s is 'url' {
+	return s === 'url';
+}
+
 export function isPasswordRule(s: string): s is 'password' {
 	return s === 'password';
 }
@@ -68,6 +72,16 @@ export function makeEmailRuleWithCustomMessage(message: string) {
 	};
 }
 
+export function makeURLRule() {
+	return { email: validators.url };
+}
+
+export function makeURLRuleWithCustomMessage(message: string) {
+	return {
+		email: validators.helpers.withMessage(message, validators.url),
+	};
+}
+
 export function makePasswordRule() {
 	return { password };
 }
@@ -99,6 +113,10 @@ export function createRule<T extends PdapFormValidator<number | boolean>>(
 		typeof validator.value === 'number'
 	) {
 		return makeLengthRule(rule, validator.value);
+	} else if (isUrlRule(rule) && typeof validator.message === 'string') {
+		return makeURLRuleWithCustomMessage(validator.message);
+	} else if (isUrlRule(rule) && typeof validator.message === 'undefined') {
+		return makeURLRule();
 	} else if (isEmailRule(rule) && typeof validator.message === 'string') {
 		return makeEmailRuleWithCustomMessage(validator.message);
 	} else if (isEmailRule(rule) && typeof validator.message === 'undefined') {

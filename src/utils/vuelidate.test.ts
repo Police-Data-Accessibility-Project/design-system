@@ -4,6 +4,10 @@ import {
 	createRule,
 	isLengthRule,
 	isPdapVuelidateValidator,
+	// TODO: tests for url
+	// isUrlRule,
+	// makeURLRule,
+	// makeURLRuleWithCustomMessage,
 	makeEmailRule,
 	makeEmailRuleWithCustomMessage,
 	makeLengthRule,

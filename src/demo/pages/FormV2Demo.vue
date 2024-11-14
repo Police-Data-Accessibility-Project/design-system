@@ -121,8 +121,10 @@ const SCHEMA = [
 	{
 		name: INPUT_TEXT_NAME,
 		validators: {
-			required: {
+			url: {
 				value: true,
+				message:
+					"Please provide the full url, including scheme ('http' or 'https')",
 			},
 		},
 	},
