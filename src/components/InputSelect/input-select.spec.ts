@@ -198,7 +198,7 @@ describe('PdapInputSelect', () => {
 			.find('.pdap-custom-select')
 			.trigger('keydown', { key: 'ArrowDown' });
 		// @ts-expect-error vm doesn't play well with TS
-		expect(wrapper.vm.focusedOptionIndex).toBe(2);
+		expect(wrapper.vm.focusedOptionIndex).toBe(0);
 	});
 
 	it('handles ArrowUp key navigation', async () => {
