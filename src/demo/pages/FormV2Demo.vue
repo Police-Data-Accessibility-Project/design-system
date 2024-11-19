@@ -37,6 +37,7 @@
 
 			<InputSelect
 				:id="INPUT_SELECT_NAME"
+				:combobox="true"
 				:name="INPUT_SELECT_NAME"
 				:options="ICE_CREAM_FLAVORS"
 				placeholder="Select flavor"
@@ -60,7 +61,7 @@
 				:rows="5"
 			/>
 
-			<Button :is-loading="mockLoading" type="submit">Submit</Button>
+			<Button type="submit">Submit</Button>
 		</FormV2>
 	</main>
 </template>
@@ -73,15 +74,6 @@ import { InputCheckbox } from '../../components/InputCheckbox';
 import { InputPassword } from '../../components/InputPassword';
 import { InputSelect } from '../../components/InputSelect';
 import PdapInputTextArea from '../../components/InputTextArea/PdapInputTextArea.vue';
-import { onMounted, ref } from 'vue';
-
-const mockLoading = ref(true);
-
-onMounted(() => {
-	setTimeout(() => {
-		mockLoading.value = false;
-	}, 5000);
-});
 
 const INPUT_CHECKBOX_NAME = 'ice-cream';
 const INPUT_TEXT_PLACEHOLDER = 'Paul';
@@ -121,10 +113,8 @@ const SCHEMA = [
 	{
 		name: INPUT_TEXT_NAME,
 		validators: {
-			url: {
+			required: {
 				value: true,
-				message:
-					"Please provide the full url, including scheme ('http' or 'https')",
 			},
 		},
 	},

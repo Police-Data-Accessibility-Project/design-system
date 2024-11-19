@@ -24,10 +24,22 @@
 			role="combobox"
 			:tabindex="0"
 			v-bind="$attrs"
-			@click="toggleOpen"
+			@click="handleClick"
 			@keydown="handleKeyDown"
 		>
+			<input
+				v-if="combobox"
+				ref="inputRef"
+				v-model="searchText"
+				aria-label="Search from the available options"
+				type="text"
+				:placeholder="selectedOption ? selectedOption.label : placeholder"
+				class="selected-value"
+				@focus="isOpen = true"
+			/>
+
 			<div
+				v-else
 				class="selected-value"
 				:class="{ 'value-is-placeholder': !selectedOption }"
 			>
@@ -45,7 +57,7 @@
 				"
 			>
 				<li
-					v-for="(option, index) in options"
+					v-for="(option, index) in filteredOptions"
 					:id="optionIds.get(index)"
 					:key="option.value + '_select-option'"
 					:ref="(el) => setOptionRef(el as HTMLLIElement, index)"
@@ -75,10 +87,17 @@ import { PdapFormProvideV2 } from '../FormV2/types';
 import { provideKey } from '../FormV2/util';
 import { vOnClickOutside } from '../../directives';
 
-const { name, options, id, label } = withDefaults(
+const { name, options, id, label, combobox, filter } = withDefaults(
 	defineProps<PdapInputSelectProps>(),
 	{
+		combobox: false,
 		placeholder: 'Select an option',
+		filter: (searchText, options) => {
+			if (!searchText) return options;
+			return options.filter((option) =>
+				option.label.toLowerCase().includes(searchText.toLowerCase())
+			);
+		},
 	}
 );
 const slots = useSlots();
@@ -94,6 +113,11 @@ const selectedOption = ref<Option | null>(null);
 const focusedOptionIndex = ref(-1);
 const optionRefs = ref<Map<number, HTMLLIElement>>(new Map());
 const selectRef = ref();
+const inputRef = ref();
+const searchText = ref('');
+const filteredOptions = computed(() => {
+	return combobox ? filter(searchText.value, options) : options;
+});
 
 const optionIds = computed(() => {
 	return new Map(
@@ -112,14 +136,16 @@ function toggleOpen() {
 function closeAndReturnFocus() {
 	if (isOpen.value) {
 		isOpen.value = false;
-		selectRef.value.focus();
+		if (combobox) inputRef.value.focus();
+		else selectRef.value.focus();
 		focusedOptionIndex.value = -1;
 	}
 }
 
 function selectOption(option: Option) {
 	selectedOption.value = option;
-	closeAndReturnFocus();
+	searchText.value = option.label;
+	isOpen.value = false;
 }
 
 function setOptionRef(el: HTMLLIElement | null, index: number) {
@@ -137,16 +163,25 @@ function focusOption(index: number) {
 	}
 }
 
+function handleClick() {
+	if (combobox) inputRef.value.focus();
+	else toggleOpen();
+}
+
 function handleKeyDown(event: KeyboardEvent) {
 	if (event.key === 'Tab') {
-		if (!event.shiftKey && focusedOptionIndex.value === options.length - 1) {
+		if (
+			!event.shiftKey &&
+			focusedOptionIndex.value === filteredOptions.value.length - 1
+		) {
 			event.preventDefault();
 			return;
 		}
 
 		if (event.shiftKey && focusedOptionIndex.value === 0) {
 			event.preventDefault();
-			closeAndReturnFocus();
+			if (combobox) isOpen.value = false;
+			else closeAndReturnFocus();
 			return;
 		}
 
@@ -156,18 +191,20 @@ function handleKeyDown(event: KeyboardEvent) {
 	if (!isOpen.value) {
 		if (['ArrowDown', 'ArrowUp', 'Enter'].includes(event.key)) {
 			event.preventDefault();
-			toggleOpen();
+			isOpen.value = true;
 		}
 		return;
 	}
 
-	event.preventDefault();
 	switch (event.key) {
 		case 'ArrowDown':
-			if (focusedOptionIndex.value === options.length - 1) break;
-			focusedOptionIndex.value = focusedOptionIndex.value + 1;
+			event.preventDefault();
+			if (focusedOptionIndex.value >= filteredOptions.value.length - 1) {
+				focusedOptionIndex.value = 0;
+			} else focusedOptionIndex.value = focusedOptionIndex.value + 1;
 			break;
 		case 'ArrowUp':
+			event.preventDefault();
 			if (focusedOptionIndex.value <= 0) {
 				closeAndReturnFocus();
 				break;
@@ -175,14 +212,20 @@ function handleKeyDown(event: KeyboardEvent) {
 			focusedOptionIndex.value = focusedOptionIndex.value - 1;
 			break;
 		case 'Enter':
+			event.preventDefault();
+			event.stopPropagation();
 			if (focusedOptionIndex.value >= 0) {
-				selectOption(options[focusedOptionIndex.value]);
+				selectOption(filteredOptions.value[focusedOptionIndex.value]);
 			} else {
-				toggleOpen();
+				isOpen.value = true;
 			}
 			break;
 		case 'Escape':
-			closeAndReturnFocus();
+			event.preventDefault();
+			if (combobox) isOpen.value = false;
+			else closeAndReturnFocus();
+			break;
+		default:
 			break;
 	}
 }
@@ -210,9 +253,9 @@ watch(
 watch(
 	() => isOpen.value,
 	(isNowOpen) => {
-		// If menu is opening, find selected option and focus it.
-		if (isNowOpen && selectedOption.value) {
-			const selected = options.find(
+		// If not the combobox, find selected option and focus it on menu open.
+		if (isNowOpen && selectedOption.value && !combobox) {
+			const selected = filteredOptions.value.find(
 				(opt) => opt.value === selectedOption?.value?.value
 			);
 			if (!selected) return;
@@ -241,7 +284,9 @@ watch(
 		if (formValuesUpdated[name] !== selectedOption?.value)
 			selectedOption.value =
 				// a. changed value exists as an option, we override state, or
-				options.find((opt) => opt.value === formValuesUpdated[name]) ??
+				filteredOptions.value.find(
+					(opt) => opt.value === formValuesUpdated[name]
+				) ??
 				// b. changed value does not exist as an option, keep state value.
 				selectedOption.value;
 	}
@@ -273,6 +318,14 @@ watch(
 	.pdap-custom-select-option:hover,
 	.pdap-custom-select-option:focus {
 		@apply bg-neutral-200 dark:bg-neutral-700;
+	}
+
+	.pdap-custom-select input {
+		@apply w-full bg-transparent border-none outline-none py-2 px-3 text-neutral-950 dark:text-neutral-50;
+	}
+
+	.pdap-custom-select input:focus {
+		@apply outline-none;
 	}
 }
 
