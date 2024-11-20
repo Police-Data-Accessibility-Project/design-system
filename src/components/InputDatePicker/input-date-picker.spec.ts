@@ -101,6 +101,7 @@ describe('PdapInputDatePicker', () => {
 			expect(label.attributes('id')).toBe(
 				`${defaultProps.name}-${defaultProps.id}-label`
 			);
+			expect(wrapper.html()).toMatchSnapshot();
 		});
 
 		it('renders label slot when provided', () => {
@@ -134,6 +135,7 @@ describe('PdapInputDatePicker', () => {
 			expect(label.attributes('id')).toBe(
 				`${defaultProps.name}-${defaultProps.id}-label`
 			);
+			expect(wrapper.html()).toMatchSnapshot();
 		});
 
 		it('does not render label when neither prop nor slot is provided', () => {
@@ -158,6 +160,7 @@ describe('PdapInputDatePicker', () => {
 			});
 
 			expect(wrapper.find('label').exists()).toBe(false);
+			expect(wrapper.html()).toMatchSnapshot();
 		});
 
 		it('renders complex label slot content', () => {
@@ -192,6 +195,7 @@ describe('PdapInputDatePicker', () => {
 			expect(label.find('.complex-label').exists()).toBe(true);
 			expect(label.find('.label-title').text()).toBe('Complex Label');
 			expect(label.find('.label-hint').text()).toBe('* Required field');
+			expect(wrapper.html()).toMatchSnapshot();
 		});
 
 		it('renders error slot when slot is provided', () => {
@@ -230,6 +234,7 @@ describe('PdapInputDatePicker', () => {
 			);
 			expect(errorElement.exists()).toBe(true);
 			expect(errorElement.text()).toBe('Custom Error Message');
+			expect(wrapper.html()).toMatchSnapshot();
 		});
 	});
 
