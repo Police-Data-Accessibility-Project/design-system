@@ -5,6 +5,7 @@ export { Form } from './Form';
 export { FormV2 } from './FormV2';
 export { Input } from './Input';
 export { InputCheckbox } from './InputCheckbox';
+export { InputDatePicker } from './InputDatePicker';
 export { InputPassword } from './InputPassword';
 export { InputText } from './InputText';
 export { InputSelect } from './InputSelect';

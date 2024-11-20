@@ -37,7 +37,6 @@
 
 			<InputSelect
 				:id="INPUT_SELECT_NAME"
-				:combobox="true"
 				:name="INPUT_SELECT_NAME"
 				:options="ICE_CREAM_FLAVORS"
 				placeholder="Select flavor"
@@ -53,6 +52,16 @@
 					</p>
 				</template>
 			</InputSelect>
+
+			<InputDatePicker
+				:id="INPUT_DATE_NAME"
+				:name="INPUT_DATE_NAME"
+				position="left"
+			>
+				<template #label>
+					<h4>When will you next consume ice cream?</h4>
+				</template>
+			</InputDatePicker>
 
 			<PdapInputTextArea
 				:id="INPUT_TEXT_AREA_NAME"
@@ -73,11 +82,13 @@ import { InputText } from '../../components/InputText';
 import { InputCheckbox } from '../../components/InputCheckbox';
 import { InputPassword } from '../../components/InputPassword';
 import { InputSelect } from '../../components/InputSelect';
+import { InputDatePicker } from '../../components/InputDatePicker';
 import PdapInputTextArea from '../../components/InputTextArea/PdapInputTextArea.vue';
 
 const INPUT_CHECKBOX_NAME = 'ice-cream';
 const INPUT_TEXT_PLACEHOLDER = 'Paul';
 const INPUT_TEXT_NAME = 'first-name';
+const INPUT_DATE_NAME = 'date';
 const INPUT_PASSWORD_NAME = 'password';
 const INPUT_SELECT_NAME = 'flavors';
 const INPUT_TEXT_AREA_NAME = 'notes';
@@ -135,6 +146,15 @@ const SCHEMA = [
 		validators: {
 			required: {
 				message: 'Please select your favorite flavor of ice cream.',
+				value: true,
+			},
+		},
+	},
+	{
+		name: INPUT_DATE_NAME,
+		validators: {
+			required: {
+				message: "Please select the next date at which you'll get ice cream.",
 				value: true,
 			},
 		},

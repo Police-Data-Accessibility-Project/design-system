@@ -41,9 +41,13 @@
 		@apply h-[max-content] gap-1 leading-normal mb-3 w-full flex flex-col;
 	}
 
+	.pdap-input input {
+		@apply h-12;
+	}
+
 	.pdap-input input,
 	.pdap-input textarea {
-		@apply dark:bg-neutral-950 border-neutral-500 border-solid border-2 px-3 py-2 text-[rgba(0,0,0)] rounded-md;
+		@apply dark:bg-neutral-950 border-neutral-500 border-solid border-2 px-3 py-2 text-[rgba(0,0,0)] text-lg rounded-md;
 	}
 
 	.pdap-input input::placeholder,
@@ -84,13 +88,7 @@
 		@apply items-center justify-start flex bg-red-300 text-red-800 p-1 text-xs;
 	}
 
-			/* Specific inputs */
-	/* Input - text */
-	.pdap-input input[type='text'],
-	.pdap-input input[type='password'] {
-		@apply h-12 text-lg;
-	}
-
+	/* Specific inputs */
 	/* Input - checkbox */
 	.pdap-input-checkbox {
 		@apply border-2 border-transparent items-center gap-4 flex-row py-1 px-2 w-auto rounded-md;
