@@ -21,6 +21,7 @@
 				@input="onInput"
 			/>
 			<button
+				v-if="values?.[name]"
 				type="button"
 				class="pdap-input-password-toggle"
 				:aria-label="isMasked ? 'Show text' : 'Hide text'"
@@ -78,7 +79,7 @@ function toggleMask() {
 	}
 
 	.pdap-input-password-toggle {
-		@apply absolute right-4 cursor-pointer text-[rgba(0_0_0)] top-1/2 translate-y-[-50%];
+		@apply absolute right-4 cursor-pointer top-1/2 translate-y-[-50%] outline-none p-1;
 	}
 }
 </style>

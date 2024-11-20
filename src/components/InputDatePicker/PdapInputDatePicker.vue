@@ -62,6 +62,7 @@ watch(
 	() => values.value,
 	// In the (unlikely, unrecommended, but sometimes unfortunately necessary) event of form values changing upstream from a parent component:
 	(formValuesUpdated) => {
+		const val = formValuesUpdated[name];
 		// Case 0: Values are equivalent, or the change was made here, do nothing.
 
 		/*
@@ -70,11 +71,12 @@ watch(
 		 ** b. has been changed to an empty string by `Form` after submit event
 		 ** In either case, clear state or keep it clear
 		 */
-		if (!formValuesUpdated[name]) date.value = undefined;
+		if (!val) date.value = undefined;
 		// Case 2 (rare): value has been programmatically updated upstream of `Form`
 		else if (
-			!_isEqual(formValuesUpdated[name], date.value) &&
-			formValuesUpdated[name] instanceof Date
+			!_isEqual(val, date.value) &&
+			(val instanceof Date ||
+				(Array.isArray(val) && val.every((date) => date instanceof Date)))
 		) {
 			// Set the date to the value of the form value
 			date.value = formValuesUpdated[name];
@@ -119,12 +121,12 @@ watch(
 }
 
 .dp__theme_light {
-	--dp-primary-color: rgb(var(--color-wine-neutral-700));
+	--dp-primary-color: rgb(var(--color-brand-gold-600));
 	--dp-primary-text-color: rgb(var(--color-neutral-50));
 }
 
 .dp__theme_dark {
-	--dp-primary-color: rgb(var(--color-wine-neutral-300));
+	--dp-primary-color: rgb(var(--color-brand-gold-700));
 	--dp-primary-text-color: rgb(var(--color-neutral-950));
 }
 
@@ -134,5 +136,11 @@ watch(
 
 div[role='gridcell'] {
 	@apply outline-none border-2 border-solid border-transparent;
+}
+
+div[role='gridcell']:hover,
+div[role='gridcell']:focus,
+div[role='gridcell']:focus-visible {
+	@apply border-2 border-brand-gold-500 border-solid outline-none;
 }
 </style>

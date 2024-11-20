@@ -31,7 +31,7 @@ export default {
 		"a11y/line-height-is-vertical-rhythmed": true,
 		"a11y/no-display-none": true,
 		"a11y/no-obsolete-element": true,
-		"selector-class-pattern": "^[.a-z_]+(?:[a-z0-9_]*|-[a-z0-9]+(?:-[a-z0-9]+)*)*$"
+		"selector-class-pattern": "^[.a-z_]+(?:[a-z0-9_]*|-+[a-z0-9]+(?:-[a-z0-9]+)*)*$"
 	},
 	"overrides": [
     {
