@@ -137,4 +137,10 @@ watch(
 div[role='gridcell'] {
 	@apply outline-none border-2 border-solid border-transparent;
 }
+
+div[role='gridcell']:hover,
+div[role='gridcell']:focus,
+div[role='gridcell']:focus-visible {
+	@apply border-2 border-brand-gold-500 border-solid outline-none;
+}
 </style>
