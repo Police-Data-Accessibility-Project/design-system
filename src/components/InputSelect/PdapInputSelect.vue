@@ -199,9 +199,7 @@ function handleKeyDown(event: KeyboardEvent) {
 	switch (event.key) {
 		case 'ArrowDown':
 			event.preventDefault();
-			if (focusedOptionIndex.value >= filteredOptions.value.length - 1) {
-				focusedOptionIndex.value = 0;
-			} else focusedOptionIndex.value = focusedOptionIndex.value + 1;
+			focusedOptionIndex.value = focusedOptionIndex.value + 1;
 			break;
 		case 'ArrowUp':
 			event.preventDefault();
@@ -244,9 +242,15 @@ watch(
 	() => focusedOptionIndex.value,
 	// When the index to focus changes (tracking this state because we need it for other things), focus that input
 	(nextIndexToFocus) => {
-		if (typeof nextIndexToFocus === 'number' && nextIndexToFocus >= 0) {
+		if (typeof nextIndexToFocus === 'number' && nextIndexToFocus < 0) {
+			return;
+		} else if (
+			typeof nextIndexToFocus === 'number' &&
+			nextIndexToFocus >= 0 &&
+			nextIndexToFocus < filteredOptions.value.length
+		) {
 			focusOption(nextIndexToFocus);
-		}
+		} else focusedOptionIndex.value = 0;
 	}
 );
 
@@ -289,6 +293,16 @@ watch(
 				) ??
 				// b. changed value does not exist as an option, keep state value.
 				selectedOption.value;
+	}
+);
+
+watch(
+	() => searchText.value,
+	(newValue) => {
+		if (newValue.length <= 1) {
+			selectedOption.value = null;
+			focusedOptionIndex.value = -1;
+		}
 	}
 );
 </script>
