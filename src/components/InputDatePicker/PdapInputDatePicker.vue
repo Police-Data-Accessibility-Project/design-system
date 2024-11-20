@@ -119,12 +119,12 @@ watch(
 }
 
 .dp__theme_light {
-	--dp-primary-color: rgb(var(--color-wine-neutral-700));
+	--dp-primary-color: rgb(var(--color-brand-gold-600));
 	--dp-primary-text-color: rgb(var(--color-neutral-50));
 }
 
 .dp__theme_dark {
-	--dp-primary-color: rgb(var(--color-wine-neutral-300));
+	--dp-primary-color: rgb(var(--color-brand-gold-700));
 	--dp-primary-text-color: rgb(var(--color-neutral-950));
 }
 

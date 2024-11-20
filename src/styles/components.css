@@ -47,7 +47,7 @@
 
 	.pdap-input input,
 	.pdap-input textarea {
-		@apply dark:bg-neutral-950 border-neutral-500 border-solid border-2 px-3 py-2 text-[rgba(0,0,0)] text-lg rounded-md;
+		@apply bg-neutral-50 border-neutral-500 border-solid border-2 px-3 py-2 text-neutral-950 text-lg rounded-md;
 	}
 
 	.pdap-input input::placeholder,
@@ -112,6 +112,18 @@
 		@apply cursor-pointer;
 	}
 
+
+@media screen and (prefers-reduced-motion: reduce) {
+.pdap-input input:-webkit-autofill,
+  .pdap-input input:-webkit-autofill:focus {
+    transition: none !important;
+}
+}
+
+	.pdap-input input:-webkit-autofill,
+  .pdap-input input:-webkit-autofill:focus {
+    transition: background-color 0s 600000s, color 0s 600000s !important;
+  }
 
 	/* Text area */
 	.pdap-input textarea {

@@ -312,15 +312,15 @@ watch(
 
 @layer components {
 	.pdap-custom-select {
-		@apply relative w-full bg-neutral-50 dark:bg-neutral-950 border-2 border-solid border-neutral-500 cursor-pointer text-lg rounded-md;
+		@apply relative w-full bg-neutral-50 border-2 border-solid border-neutral-500 cursor-pointer text-lg rounded-md;
 	}
 
 	.pdap-custom-select-options {
-		@apply absolute top-[115%] left-[-2px] w-[calc(100%+4px)] bg-neutral-50 dark:bg-neutral-950 border-solid border border-neutral-500 max-h-48 overflow-y-auto z-20 p-1;
+		@apply absolute top-[115%] left-[-2px] w-[calc(100%+4px)] bg-neutral-50 border-solid border border-neutral-500 max-h-48 overflow-y-auto z-20 p-1;
 	}
 
 	.pdap-custom-select-option {
-		@apply text-neutral-950 dark:text-neutral-50 p-2 w-full max-w-full cursor-pointer border-2 border-solid border-transparent;
+		@apply text-neutral-950 p-2 w-full max-w-full cursor-pointer border-2 border-solid border-transparent;
 	}
 
 	.pdap-custom-select:focus,
@@ -331,11 +331,11 @@ watch(
 
 	.pdap-custom-select-option:hover,
 	.pdap-custom-select-option:focus {
-		@apply bg-neutral-200 dark:bg-neutral-700;
+		@apply bg-neutral-200;
 	}
 
 	.pdap-custom-select input {
-		@apply w-full bg-transparent border-none outline-none py-2 px-3 text-neutral-950 dark:text-neutral-50;
+		@apply w-full bg-transparent border-none outline-none py-2 px-3 text-neutral-950;
 	}
 
 	.pdap-custom-select input:focus {
@@ -344,7 +344,7 @@ watch(
 }
 
 .selected-value {
-	@apply py-2 px-3 text-neutral-950 dark:text-neutral-50;
+	@apply py-2 px-3 text-neutral-950;
 }
 
 .selected-value.value-is-placeholder {
@@ -352,7 +352,7 @@ watch(
 }
 
 .arrow {
-	@apply absolute top-1/2 right-3 w-0 h-0 border-l-8 border-r-8 border-t-8 border-solid border-x-transparent border-t-neutral-950 dark:border-t-neutral-50 transition-transform;
+	@apply absolute top-1/2 right-3 w-0 h-0 border-l-8 border-r-8 border-t-8 border-solid border-x-transparent border-t-neutral-950 transition-transform;
 }
 
 .arrow.open {
