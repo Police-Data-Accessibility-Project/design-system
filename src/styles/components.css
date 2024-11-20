@@ -78,14 +78,14 @@
 		@apply justify-start;
 	}
 
-	.pdap-input-error input,
-	.pdap-input-error div[role="combobox"],
-	.pdap-input-error textarea {
+	.pdap-input-error input:not(:focus, :focus-visible, :focus-within),
+	.pdap-input-error div[role="combobox"]:not(:focus, :focus-visible, :focus-within),
+	.pdap-input-error textarea:not(:focus, :focus-visible, :focus-within) {
 		@apply border-red-800 dark:border-red-300;
 	}
 
 	.pdap-input-error-message {
-		@apply items-center justify-start flex bg-red-300 text-red-800 p-1 text-xs;
+		@apply items-center justify-start flex bg-red-300 text-red-800 p-1 text-xs rounded-sm;
 	}
 
 	/* Specific inputs */

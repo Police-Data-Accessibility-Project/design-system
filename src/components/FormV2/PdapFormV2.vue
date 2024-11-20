@@ -101,7 +101,7 @@ watchEffect(() => {
 
 @layer components {
 	.pdap-form-error-message {
-		@apply items-center justify-start basis-full flex-shrink flex bg-red-300 text-red-800 mb-3 p-2 text-sm;
+		@apply items-center justify-start basis-full flex-shrink flex bg-red-300 text-red-800 mb-3 p-2 text-sm rounded-sm;
 	}
 }
 </style>
