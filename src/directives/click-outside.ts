@@ -23,13 +23,11 @@ export default {
 		};
 
 		document.addEventListener('click', element.clickOutsideEvent);
-		document.addEventListener('keyup', element.clickOutsideEvent);
 	},
 	unmounted(element: ElementWithClickOutside) {
 		// Remove the event listener when the bound element is unmounted
 		if (element.clickOutsideEvent) {
 			document.removeEventListener('click', element.clickOutsideEvent);
-			document.removeEventListener('keyup', element.clickOutsideEvent);
 		}
 	},
 };

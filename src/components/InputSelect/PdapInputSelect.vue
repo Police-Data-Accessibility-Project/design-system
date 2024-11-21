@@ -39,7 +39,7 @@
 			/>
 
 			<div
-				v-else
+				v-if="!combobox"
 				class="selected-value"
 				:class="{ 'value-is-placeholder': !selectedOption }"
 			>
@@ -168,25 +168,55 @@ function handleClick() {
 	else toggleOpen();
 }
 
+// function handleKeyUp(event: KeyboardEvent) {
+// 	if (event.key === 'Tab') {
+// 		if (
+// 			!event.shiftKey &&
+// 			focusedOptionIndex.value === filteredOptions.value.length - 1
+// 		) {
+// 			event.preventDefault();
+// 			return;
+// 		}
+
+// 		if (event.shiftKey) {
+// 			if (isOpen.value) {
+// 				if (focusedOptionIndex.value === -1) {
+// 					isOpen.value = false;
+// 				}
+// 				if (focusedOptionIndex.value === 0) {
+// 					event.preventDefault();
+// 					closeAndReturnFocus();
+// 				} else {
+// 					event.preventDefault();
+// 					focusedOptionIndex.value = focusedOptionIndex.value - 1;
+// 				}
+
+// 				return;
+// 			}
+// 		}
+// 	}
+// }
+
 function handleKeyDown(event: KeyboardEvent) {
-	if (event.key === 'Tab') {
-		if (
-			!event.shiftKey &&
-			focusedOptionIndex.value === filteredOptions.value.length - 1
-		) {
-			event.preventDefault();
-			return;
-		}
+	// if (event.key === 'Tab') {
+	// 	if (
+	// 		!event.shiftKey &&
+	// 		focusedOptionIndex.value === filteredOptions.value.length - 1
+	// 	) {
+	// 		event.preventDefault();
+	// 		return;
+	// 	}
 
-		if (event.shiftKey && focusedOptionIndex.value === 0) {
-			event.preventDefault();
-			if (combobox) isOpen.value = false;
-			else closeAndReturnFocus();
-			return;
-		}
+	// 	if (event.shiftKey && focusedOptionIndex.value === 0) {
+	// 		event.preventDefault();
+	// 		closeAndReturnFocus();
+	// 	} else {
+	// 		event.preventDefault();
+	// 		focusedOptionIndex.value = focusedOptionIndex.value - 1;
+	// 	}
 
-		return;
-	}
+	// 	return;
+	// }
 
 	if (!isOpen.value) {
 		if (['ArrowDown', 'ArrowUp', 'Enter'].includes(event.key)) {
