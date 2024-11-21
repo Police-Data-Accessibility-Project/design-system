@@ -37,8 +37,8 @@
 	}
 
 	/* Input styles  */
-	.pdap-input {
-		@apply h-[max-content] gap-1 leading-normal mb-3 w-full flex flex-col;
+	.pdap-input, .pdap-input-radio-group {
+		@apply h-[max-content] gap-1 leading-normal w-full flex flex-col;
 	}
 
 	.pdap-input input {
@@ -89,44 +89,54 @@
 	}
 
 	/* Specific inputs */
-	/* Input - checkbox */
-	.pdap-input-checkbox {
+	/* Input - checkbox and radio */
+	.pdap-input-checkbox,
+	.pdap-input-radio {
 		@apply border-2 border-transparent items-center gap-4 flex-row py-1 px-2 w-auto rounded-md;
 	}
 
 	.pdap-input-checkbox:has(input:checked),
-	.pdap-input-checkbox:has(input:checked):has(input[type="checkbox"]:focus) {
+	.pdap-input-radio:has(input:checked),
+	.pdap-input-checkbox:has(input:checked):has(input[type="checkbox"]:focus),
+	.pdap-input-radio:has(input:checked):has(input[type="checkbox"]:focus) {
 		@apply border-2 border-brand-gold border-solid rounded-md;
 	}
 
-	.pdap-input input[type='checkbox'] {
+	.pdap-input input[type='checkbox'], 
+	.pdap-input input[type='radio'] {
 		@apply h-6 w-6 accent-brand-gold;
 	}
 
-	.pdap-input input[type='checkbox'] ~ label {
+	.pdap-input input[type='checkbox'] ~ label,
+	.pdap-input input[type='radio'] ~ label {
 		@apply pl-0 w-full max-w-full;
 	}
 
 	.pdap-input input[type='checkbox'],
-	.pdap-input input[type='checkbox'] ~ label {
+	.pdap-input input[type='checkbox'] ~ label,
+	.pdap-input input[type='radio'],
+	.pdap-input input[type='radio'] ~ label {
 		@apply cursor-pointer;
 	}
 
 
-@media screen and (prefers-reduced-motion: reduce) {
-.pdap-input input:-webkit-autofill,
-  .pdap-input input:-webkit-autofill:focus {
-    transition: none !important;
-}
-}
-
-	.pdap-input input:-webkit-autofill,
-  .pdap-input input:-webkit-autofill:focus {
-    transition: background-color 0s 600000s, color 0s 600000s !important;
-  }
-
+	
 	/* Text area */
 	.pdap-input textarea {
-	  @apply text-lg;
+		@apply text-lg;
 	}
+
+
+	/* Hacky stuff to get around ugly chrome and ff autofill styles */
+	@media screen and (prefers-reduced-motion: reduce) {
+	.pdap-input input:-webkit-autofill,
+		.pdap-input input:-webkit-autofill:focus {
+			transition: none !important;
+	}
+	}
+	
+		.pdap-input input:-webkit-autofill,
+		.pdap-input input:-webkit-autofill:focus {
+			transition: background-color 0s 600000s, color 0s 600000s !important;
+		}
 }

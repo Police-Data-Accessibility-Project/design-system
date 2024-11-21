@@ -27,8 +27,6 @@
 				label="Type your password here"
 			/>
 
-			<p>Foo bar baz, extra content here</p>
-
 			<InputCheckbox
 				:id="INPUT_CHECKBOX_NAME"
 				:name="INPUT_CHECKBOX_NAME"
@@ -37,6 +35,7 @@
 
 			<InputSelect
 				:id="INPUT_SELECT_NAME"
+				combobox
 				:name="INPUT_SELECT_NAME"
 				:options="ICE_CREAM_FLAVORS"
 				placeholder="Select flavor"
@@ -52,6 +51,21 @@
 					</p>
 				</template>
 			</InputSelect>
+
+			<RadioGroup :name="INPUT_RADIO_GROUP_NAME">
+				<h4 class="text-lg">
+					Select another flavor, with radio buttons this time!
+				</h4>
+				<InputRadio
+					v-for="{ label, value, defaultChecked } of ICE_CREAM_FLAVORS"
+					:id="value"
+					:key="label"
+					:default-checked="defaultChecked"
+					:name="INPUT_RADIO_GROUP_NAME"
+					:value="value"
+					:label="label"
+				/>
+			</RadioGroup>
 
 			<InputDatePicker
 				:id="INPUT_DATE_NAME"
@@ -82,6 +96,8 @@ import { InputText } from '../../components/InputText';
 import { InputCheckbox } from '../../components/InputCheckbox';
 import { InputPassword } from '../../components/InputPassword';
 import { InputSelect } from '../../components/InputSelect';
+import { InputRadio } from '../../components/InputRadio';
+import { RadioGroup } from '../../components/InputRadioGroup';
 import { InputDatePicker } from '../../components/InputDatePicker';
 import PdapInputTextArea from '../../components/InputTextArea/PdapInputTextArea.vue';
 
@@ -91,6 +107,7 @@ const INPUT_TEXT_NAME = 'first-name';
 const INPUT_DATE_NAME = 'date';
 const INPUT_PASSWORD_NAME = 'password';
 const INPUT_SELECT_NAME = 'flavors';
+const INPUT_RADIO_GROUP_NAME = 'flavors_2';
 const INPUT_TEXT_AREA_NAME = 'notes';
 
 const ICE_CREAM_FLAVORS = [
@@ -109,6 +126,7 @@ const ICE_CREAM_FLAVORS = [
 	{
 		value: 'rocky-road',
 		label: 'Rocky Road',
+		defaultChecked: true,
 	},
 	{
 		value: 'chunky-monkey',
@@ -146,6 +164,15 @@ const SCHEMA = [
 		validators: {
 			required: {
 				message: 'Please select your favorite flavor of ice cream.',
+				value: true,
+			},
+		},
+	},
+	{
+		name: INPUT_RADIO_GROUP_NAME,
+		validators: {
+			required: {
+				message: 'Please select your favorite flavor of ice cream. Again.',
 				value: true,
 			},
 		},
