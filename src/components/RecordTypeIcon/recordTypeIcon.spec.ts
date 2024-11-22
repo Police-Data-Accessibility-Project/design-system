@@ -66,7 +66,7 @@ describe('RecordTypeIcon', () => {
 			'Info about officers',
 			'Info about agencies',
 			'Agency-published resources',
-			'Jails & Courts specific',
+			'Jails & courts',
 		];
 
 		const expectedIcons = [
