@@ -1,8 +1,8 @@
 <template>
 	<FontAwesomeIcon
-		v-if="recordTypesToIcons.has(recordType)"
+		v-if="recordTypesToIcons.has(recordType.toLowerCase())"
 		:icon="
-			recordTypesToIcons.get(recordType) ?? []
+			recordTypesToIcons.get(recordType.toLowerCase()) ?? []
 			/* Fallback array is a never case, since TS doesn't infer the typeguard from `v-if` */
 		"
 	/>
@@ -28,69 +28,69 @@ const recordTypesToIcons = ref(
 		/***************************************************
 		 ********* Police and public interactions **********
 		 **************************************************/
-		['Police & public interactions', faPersonMilitaryToPerson], // Top level with ampersand
-		['Police and public interactions', faPersonMilitaryToPerson], // Top level with word
-		['Accident Reports', faPersonMilitaryToPerson],
-		['Arrest Records', faPersonMilitaryToPerson],
-		['Calls for Service', faPersonMilitaryToPerson],
-		['Car GPS', faPersonMilitaryToPerson],
-		['Citations', faPersonMilitaryToPerson],
-		['Dispatch Logs', faPersonMilitaryToPerson],
-		['Dispatch Recordings', faPersonMilitaryToPerson],
-		['Field Contacts', faPersonMilitaryToPerson],
-		['Incident Reports', faPersonMilitaryToPerson],
-		['Misc Police Activity', faPersonMilitaryToPerson],
-		['Officer Involved Shootings', faPersonMilitaryToPerson],
-		['Stops', faPersonMilitaryToPerson],
-		['Surveys', faPersonMilitaryToPerson],
-		['Use of Force Reports', faPersonMilitaryToPerson],
-		['Vehicle Pursuits', faPersonMilitaryToPerson],
+		['police & public interactions', faPersonMilitaryToPerson], // Top level with ampersand
+		['police and public interactions', faPersonMilitaryToPerson], // Top level with word
+		['accident reports', faPersonMilitaryToPerson],
+		['arrest records', faPersonMilitaryToPerson],
+		['calls for service', faPersonMilitaryToPerson],
+		['car gps', faPersonMilitaryToPerson],
+		['citations', faPersonMilitaryToPerson],
+		['dispatch logs', faPersonMilitaryToPerson],
+		['dispatch recordings', faPersonMilitaryToPerson],
+		['field contacts', faPersonMilitaryToPerson],
+		['incident reports', faPersonMilitaryToPerson],
+		['misc police activity', faPersonMilitaryToPerson],
+		['officer involved shootings', faPersonMilitaryToPerson],
+		['stops', faPersonMilitaryToPerson],
+		['surveys', faPersonMilitaryToPerson],
+		['use of force reports', faPersonMilitaryToPerson],
+		['vehicle pursuits', faPersonMilitaryToPerson],
 		/***************************************************
 		 *************  Info about officers  ***************
 		 **************************************************/
-		['Info about officers', faPersonMilitaryPointing], // Top level
-		['Complaints & Misconduct', faPersonMilitaryPointing],
-		['Complaints and Misconduct', faPersonMilitaryPointing],
-		['Daily Activity Logs', faPersonMilitaryPointing],
-		['Training & Hiring Info', faPersonMilitaryPointing],
-		['Training and Hiring Info', faPersonMilitaryPointing],
-		['Personnel Records', faPersonMilitaryPointing],
+		['info about officers', faPersonMilitaryPointing], // Top level
+		['complaints & misconduct', faPersonMilitaryPointing],
+		['complaints and misconduct', faPersonMilitaryPointing],
+		['daily activity logs', faPersonMilitaryPointing],
+		['training & hiring info', faPersonMilitaryPointing],
+		['training and hiring info', faPersonMilitaryPointing],
+		['personnel records', faPersonMilitaryPointing],
 		/***************************************************
 		 *************  Info about agencies  ***************
 		 **************************************************/
-		['Info about agencies', faBuildingShield], // Top level
-		['Annual & Monthly Reports', faBuildingShield],
-		['Annual and Monthly Reports', faBuildingShield],
-		['Budgets & Finances', faBuildingShield],
-		['Budgets and Finances', faBuildingShield],
-		['Contact Info & Agency Meta', faBuildingShield],
-		['Contact Info and Agency Meta', faBuildingShield],
-		['Geographic', faBuildingShield],
-		['List of Data Sources', faBuildingShield],
-		['Policies & Contracts', faBuildingShield],
-		['Policies and Contracts', faBuildingShield],
+		['info about agencies', faBuildingShield], // Top level
+		['annual & monthly reports', faBuildingShield],
+		['annual and monthly reports', faBuildingShield],
+		['budgets & finances', faBuildingShield],
+		['budgets and finances', faBuildingShield],
+		['contact info & agency meta', faBuildingShield],
+		['contact info and agency meta', faBuildingShield],
+		['geographic', faBuildingShield],
+		['list of data sources', faBuildingShield],
+		['policies & contracts', faBuildingShield],
+		['policies and contracts', faBuildingShield],
 		/***************************************************
 		 *********  Agency-published resources  ************
 		 **************************************************/
-		['Agency-published resources', faFileShield], // Top level
-		['Crime Maps & Reports', faFileShield],
-		['Crime Maps and Reports', faFileShield],
-		['Crime Statistics', faFileShield],
-		['Media Bulletins', faFileShield],
-		['Records Request Info', faFileShield],
-		['Resources', faFileShield],
-		['Sex Offender Registry', faFileShield],
-		['Wanted Persons', faFileShield],
+		['agency-published resources', faFileShield], // Top level
+		['crime maps & reports', faFileShield],
+		['crime maps and reports', faFileShield],
+		['crime statistics', faFileShield],
+		['media bulletins', faFileShield],
+		['records request info', faFileShield],
+		['resources', faFileShield],
+		['sex offender registry', faFileShield],
+		['wanted persons', faFileShield],
 		/***************************************************
-		 ***********  Jails & Courts specific  *************
+		 ***************  Jails & Courts  ******************
 		 **************************************************/
-		['Jails & courts', faBuildingColumns], // Top level
-		['Jails and courts', faBuildingColumns], // Top level
-		['Jails & courts specific', faBuildingColumns], // Top level
-		['Jails and courts specific', faBuildingColumns], // Top level
-		['Booking Reports', faBuildingColumns],
-		['Court Cases', faBuildingColumns],
-		['Incarceration Records', faBuildingColumns],
+		['jails & courts', faBuildingColumns], // Top level
+		['jails and courts', faBuildingColumns], // Top level
+		['jails & courts specific', faBuildingColumns], // Top level
+		['jails and courts specific', faBuildingColumns], // Top level
+		['booking reports', faBuildingColumns],
+		['court cases', faBuildingColumns],
+		['incarceration records', faBuildingColumns],
 	])
 );
 
