@@ -14,6 +14,7 @@ export * from './components/FormV2/types';
 export * from './components/Header/types';
 // export * from './components/Input/types';
 export * from './components/InputCheckbox/types';
+export * from './components/InputRadio/types';
 export * from './components/InputDatePicker/types';
 export * from './components/InputText/types';
 export * from './components/InputTextArea/types';
