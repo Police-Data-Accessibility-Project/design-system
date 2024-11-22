@@ -84,6 +84,8 @@ const recordTypesToIcons = ref(
 		/***************************************************
 		 ***********  Jails & Courts specific  *************
 		 **************************************************/
+		['Jails & Courts', faBuildingColumns], // Top level
+		['Jails and Courts', faBuildingColumns], // Top level
 		['Jails & Courts specific', faBuildingColumns], // Top level
 		['Jails and courts specific', faBuildingColumns], // Top level
 		['Booking Reports', faBuildingColumns],
