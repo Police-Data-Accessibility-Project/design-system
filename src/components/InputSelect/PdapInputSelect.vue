@@ -101,6 +101,7 @@ const { name, options, id, label, combobox, filter } = withDefaults(
 		},
 	}
 );
+const emit = defineEmits(['change']);
 const slots = useSlots();
 if (!slots.label && !label)
 	throw new Error(
@@ -239,6 +240,9 @@ watch(
 	(newSelected) => {
 		// Update form values when state changes.
 		if (newSelected) {
+			emit('change', newSelected);
+			const event = new Event('input', { bubbles: true, cancelable: true });
+			selectRef.value.dispatchEvent(event);
 			setValues({ [name]: newSelected.value });
 		}
 	}
