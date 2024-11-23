@@ -26,7 +26,6 @@
 			v-bind="$attrs"
 			@click="handleClick"
 			@keydown="handleKeyDown"
-			@keyup="handleKeyUp"
 		>
 			<input
 				v-if="combobox"
