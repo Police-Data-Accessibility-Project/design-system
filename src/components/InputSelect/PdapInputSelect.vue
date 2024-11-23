@@ -26,6 +26,7 @@
 			v-bind="$attrs"
 			@click="handleClick"
 			@keydown="handleKeyDown"
+			@keyup="handleKeyUp"
 		>
 			<input
 				v-if="combobox"
@@ -86,6 +87,7 @@ import { PdapSelectOption as Option, PdapInputSelectProps } from './types';
 import { PdapFormProvideV2 } from '../FormV2/types';
 import { provideKey } from '../FormV2/util';
 import { vOnClickOutside } from '../../directives';
+import _isEqual from 'lodash/isEqual';
 
 const { name, options, id, label, combobox, filter } = withDefaults(
 	defineProps<PdapInputSelectProps>(),
@@ -168,55 +170,30 @@ function handleClick() {
 	else toggleOpen();
 }
 
-// function handleKeyUp(event: KeyboardEvent) {
-// 	if (event.key === 'Tab') {
-// 		if (
-// 			!event.shiftKey &&
-// 			focusedOptionIndex.value === filteredOptions.value.length - 1
-// 		) {
-// 			event.preventDefault();
-// 			return;
-// 		}
-
-// 		if (event.shiftKey) {
-// 			if (isOpen.value) {
-// 				if (focusedOptionIndex.value === -1) {
-// 					isOpen.value = false;
-// 				}
-// 				if (focusedOptionIndex.value === 0) {
-// 					event.preventDefault();
-// 					closeAndReturnFocus();
-// 				} else {
-// 					event.preventDefault();
-// 					focusedOptionIndex.value = focusedOptionIndex.value - 1;
-// 				}
-
-// 				return;
-// 			}
-// 		}
-// 	}
-// }
-
 function handleKeyDown(event: KeyboardEvent) {
-	// if (event.key === 'Tab') {
-	// 	if (
-	// 		!event.shiftKey &&
-	// 		focusedOptionIndex.value === filteredOptions.value.length - 1
-	// 	) {
-	// 		event.preventDefault();
-	// 		return;
-	// 	}
+	if (event.key === 'Tab') {
+		if (_isEqual(event.target, selectRef.value)) {
+			console.debug('is target', { event });
+			if (combobox && isOpen.value) isOpen.value = !isOpen.value;
+		}
+		// 	if (
+		// 		!event.shiftKey &&
+		// 		focusedOptionIndex.value === filteredOptions.value.length - 1
+		// 	) {
+		// 		event.preventDefault();
+		// 		return;
+		// 	}
 
-	// 	if (event.shiftKey && focusedOptionIndex.value === 0) {
-	// 		event.preventDefault();
-	// 		closeAndReturnFocus();
-	// 	} else {
-	// 		event.preventDefault();
-	// 		focusedOptionIndex.value = focusedOptionIndex.value - 1;
-	// 	}
+		// 	if (event.shiftKey && focusedOptionIndex.value === 0) {
+		// 		event.preventDefault();
+		// 		closeAndReturnFocus();
+		// 	} else {
+		// 		event.preventDefault();
+		// 		focusedOptionIndex.value = focusedOptionIndex.value - 1;
+		// 	}
 
-	// 	return;
-	// }
+		// 	return;
+	}
 
 	if (!isOpen.value) {
 		if (['ArrowDown', 'ArrowUp', 'Enter'].includes(event.key)) {
