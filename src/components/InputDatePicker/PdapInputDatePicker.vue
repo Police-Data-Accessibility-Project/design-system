@@ -14,7 +14,7 @@
 		<VueDatePicker
 			v-bind="{ ...$attrs, ...$props }"
 			v-model="date"
-			:state="error"
+			:state="Boolean(error)"
 			:dark="darkModePreference"
 		/>
 	</div>

@@ -4,24 +4,18 @@ import useVuelidate from '@vuelidate/core';
 import { makeRules } from './util';
 import { Ref } from 'vue';
 
+import * as validators from '@vuelidate/validators';
+
 export interface PdapFormValidatorV2<T> {
 	message?: string;
-	value: T;
+	value?: T;
+	predicate?: (value: T) => boolean;
 }
 
-/**
- * Keyed by currently used validators.
- * Add any Vuelidate validators or custom ones here as we need them.
- * See https://vuelidate-next.netlify.app/validators.html#using-builtin-validators for more.
- *
- */
-export interface PdapFormValidatorsV2 {
-	maxLength: PdapFormValidatorV2<number>;
-	minLength: PdapFormValidatorV2<number>;
-	required: PdapFormValidatorV2<boolean>;
-	email: PdapFormValidatorV2<boolean>;
-	password: PdapFormValidatorV2<boolean>;
-}
+export type PdapFormValidatorsV2 = Record<
+	keyof typeof validators,
+	PdapFormValidatorV2<string | number | boolean>
+>;
 
 export type ValidationSchemaV2 = {
 	name: string;

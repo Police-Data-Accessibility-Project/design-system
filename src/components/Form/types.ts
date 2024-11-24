@@ -1,25 +1,16 @@
 import { PdapInputProps } from '../Input/types';
-
-export type PdapLengthRules = 'maxLength' | 'minLength';
+import * as validators from '@vuelidate/validators';
 
 export interface PdapFormValidator<T> {
 	message?: string;
-	value: T;
+	value?: T;
+	predicate?: (value: T) => boolean;
 }
 
-/**
- * Keyed by currently used validators.
- * Add any Vuelidate validators or custom ones here as we need them.
- * See https://vuelidate-next.netlify.app/validators.html#using-builtin-validators for more.
- *
- */
-export interface PdapFormValidators {
-	maxLength: PdapFormValidator<number>;
-	minLength: PdapFormValidator<number>;
-	required: PdapFormValidator<boolean>;
-	email: PdapFormValidator<boolean>;
-	password: PdapFormValidator<boolean>;
-}
+export type PdapFormValidators = Record<
+	keyof typeof validators,
+	PdapFormValidator<boolean | string | number>
+>;
 
 export type PdapFormInputProps = PdapInputProps & {
 	validators?: Partial<PdapFormValidators>;

@@ -39,6 +39,7 @@
 				:name="INPUT_SELECT_NAME"
 				:options="ICE_CREAM_FLAVORS"
 				placeholder="Select flavor"
+				@change="(value) => console.log({ value })"
 			>
 				<template #label>
 					<h4>What is your favorite flavor?</h4>
@@ -142,17 +143,17 @@ const SCHEMA = [
 	{
 		name: INPUT_TEXT_NAME,
 		validators: {
-			required: {
-				value: true,
+			required: {},
+			minLength: {
+				value: 3,
+				message: 'Your name should be at least 3 characters long',
 			},
 		},
 	},
 	{
 		name: INPUT_PASSWORD_NAME,
 		validators: {
-			required: {
-				value: true,
-			},
+			required: {},
 			password: {
 				value: true,
 				message: 'Your password should be a valid password',
@@ -164,7 +165,6 @@ const SCHEMA = [
 		validators: {
 			required: {
 				message: 'Please select your favorite flavor of ice cream.',
-				value: true,
 			},
 		},
 	},
@@ -173,7 +173,6 @@ const SCHEMA = [
 		validators: {
 			required: {
 				message: 'Please select your favorite flavor of ice cream. Again.',
-				value: true,
 			},
 		},
 	},
@@ -182,7 +181,6 @@ const SCHEMA = [
 		validators: {
 			required: {
 				message: "Please select the next date at which you'll get ice cream.",
-				value: true,
 			},
 		},
 	},
