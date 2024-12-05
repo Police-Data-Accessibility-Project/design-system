@@ -1,7 +1,7 @@
 <template>
 	<footer
 		ref="footerRef"
-		class="bg-brand-wine text-neutral-50 dark:text-neutral-950 flex flex-col lg:flex-row gap-4 xl:gap-12 p-6 lg:p-4 sticky bottom-0 text-med xl:text-xl"
+		class="bg-brand-wine text-neutral-50 dark:text-neutral-950 flex flex-col lg:flex-row gap-4 xl:gap-12 p-6 lg:p-4 relative lg:sticky lg:bottom-0 text-med xl:text-xl"
 	>
 		<!-- LINKS -->
 		<ul
