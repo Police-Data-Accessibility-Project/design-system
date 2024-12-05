@@ -60,8 +60,8 @@ describe('Footer component', () => {
 				.find('a[href="https://pdap.io/donate"]')
 				.text();
 
-			expect(fundraisingText).toContain('$5000');
-			expect(fundraisingText).toContain('$10000');
+			expect(fundraisingText).toContain('$5,000');
+			expect(fundraisingText).toContain('$10,000');
 		});
 
 		test('Shows celebration emoji when goal is met', () => {

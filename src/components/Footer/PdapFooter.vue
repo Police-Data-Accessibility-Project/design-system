@@ -30,7 +30,10 @@
 			<span class="flex gap-1">
 				<a href="https://pdap.io/donate" target="_blank" rel="noreferrer">
 					<span><FontAwesomeIcon :icon="faCircleDollarToSlot" /> Donate</span>
-					(${{ fundraisingData.raised }} of ${{ fundraisingData.goal }} raised
+					(${{ formatWithCommas(fundraisingData.raised) }} of ${{
+						formatWithCommas(fundraisingData.goal)
+					}}
+					raised
 					<span v-if="fundraisingData.raised === fundraisingData.goal">🎉</span
 					>)
 				</a>
@@ -89,6 +92,7 @@ import {
 	faBook,
 	faCircleDollarToSlot,
 } from '@fortawesome/free-solid-svg-icons';
+import { formatWithCommas } from '../../utils/format';
 
 const { fundraisingData } = defineProps<PdapFooterProps>();
 
