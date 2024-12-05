@@ -37,7 +37,7 @@
 			</span>
 
 			<span
-				class="inline-block bg-neutral-50 dark:bg-neutral-950 h-3 w-full rounded-full relative before:inline-block before:h-full before:w-[var(--fundraising-progress)] before:bg-brand-gold before:absolute before:rounded-l-full"
+				class="inline-block bg-neutral-50 dark:bg-neutral-950 h-3 w-full rounded-full relative before:inline-block before:h-full before:bg-brand-gold before:absolute before:rounded-l-full before:transition-[width] before:duration-1000 before:ease-out before:w-[var(--fundraising-progress)]"
 				:class="{
 					'before:rounded-r-full':
 						fundraisingData.raised === fundraisingData.goal,
@@ -141,11 +141,20 @@ onMounted(() => {
 });
 
 function setFundraisingProgress() {
-	const progress = (fundraisingData.raised / fundraisingData.goal) * 100;
+	// Calculate the target percentage
+	const targetProgress = (fundraisingData.raised / fundraisingData.goal) * 100;
 
-	console.debug({ progress });
-	if (footerRef.value)
-		footerRef.value.style.setProperty('--fundraising-progress', progress + '%');
+	// Set the initial progress to 0
+	document.documentElement.style.setProperty('--fundraising-progress', '0%');
+
+	// Use setTimeout to ensure the initial 0% is rendered first
+	setTimeout(() => {
+		// Update to the final percentage
+		document.documentElement.style.setProperty(
+			'--fundraising-progress',
+			`${targetProgress}%`
+		);
+	}, 50);
 }
 </script>
 

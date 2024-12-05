@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Footer component > Renders a footer 1`] = `
-<footer class="bg-brand-wine text-neutral-50 dark:text-neutral-950 flex flex-col lg:flex-row gap-4 xl:gap-12 p-6 lg:p-4 sticky bottom-0 text-med xl:text-xl" style="--fundraising-progress: 50%;">
+<footer class="bg-brand-wine text-neutral-50 dark:text-neutral-950 flex flex-col lg:flex-row gap-4 xl:gap-12 p-6 lg:p-4 sticky bottom-0 text-med xl:text-xl">
   <!-- LINKS -->
   <ul class="grid grid-cols-2 gap-2 md:grid-cols-[auto_auto_auto] lg:w-max lg:gap-x-3 xl:gap-x-4">
     <li>
@@ -64,7 +64,7 @@ exports[`Footer component > Renders a footer 1`] = `
         <!--v-if-->)
       </a>
     </span>
-    <span class="inline-block bg-neutral-50 dark:bg-neutral-950 h-3 w-full rounded-full relative before:inline-block before:h-full before:w-[var(--fundraising-progress)] before:bg-brand-gold before:absolute before:rounded-l-full"></span>
+    <span class="inline-block bg-neutral-50 dark:bg-neutral-950 h-3 w-full rounded-full relative before:inline-block before:h-full before:bg-brand-gold before:absolute before:rounded-l-full before:transition-[width] before:duration-1000 before:ease-out before:w-[var(--fundraising-progress)]"></span>
   </div><!-- COPYRIGHT AND TRANSPARENCY -->
   <div class="flex gap-4 justify-between lg:justify-start lg:ml-auto">
     <p class="lg:max-w-[325px] lg:text-right xl:max-w-[375px]"> © 2024 Police Data Accessibility Project is a non-profit. EIN: 85-4207132. </p><!-- Widget / logo links -->

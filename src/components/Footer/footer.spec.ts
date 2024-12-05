@@ -1,6 +1,6 @@
 import PdapFooter from './PdapFooter.vue';
 import { RouterLinkStub, mount } from '@vue/test-utils';
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test, beforeEach, vi, afterEach } from 'vitest';
 
 const mockFundraisingData = {
 	raised: 5000,
@@ -18,6 +18,18 @@ const base = {
 };
 
 describe('Footer component', () => {
+	beforeEach(() => {
+		// Mock the CSS custom property manipulation
+		document.documentElement.style.setProperty = vi.fn();
+		// Setup fake timers
+		vi.useFakeTimers();
+	});
+
+	afterEach(() => {
+		vi.restoreAllMocks();
+		vi.useRealTimers();
+	});
+
 	// Render
 	test('Renders a footer', () => {
 		const wrapper = mount(PdapFooter, base);
@@ -70,61 +82,104 @@ describe('Footer component', () => {
 			const wrapper = mount(PdapFooter, base);
 			expect(wrapper.html()).not.toContain('🎉');
 		});
+	});
 
-		test('Sets fundraising progress style variable correctly', async () => {
-			const wrapper = mount(PdapFooter, base);
-			await wrapper.vm.$nextTick(); // Wait for mounted hook
+	describe('Progress bar animation', () => {
+		test('Sets initial progress to 0% on mount', () => {
+			mount(PdapFooter, base);
 
-			const footerElement = wrapper.element as HTMLElement;
-			const progressStyle = footerElement.style.getPropertyValue(
-				'--fundraising-progress'
+			expect(document.documentElement.style.setProperty).toHaveBeenCalledWith(
+				'--fundraising-progress',
+				'0%'
 			);
-			expect(progressStyle).toBe('50%'); // 5000/10000 * 100
+		});
+
+		test('Animates to correct percentage after mount', async () => {
+			mount(PdapFooter, base);
+
+			// Fast-forward past the setTimeout
+			vi.runAllTimers();
+
+			expect(document.documentElement.style.setProperty).toHaveBeenCalledWith(
+				'--fundraising-progress',
+				'50%'
+			);
+		});
+
+		test('Progress bar has correct transition classes', () => {
+			const wrapper = mount(PdapFooter, base);
+			const progressBar = wrapper.find('.rounded-full');
+
+			expect(progressBar.classes()).toContain('before:transition-[width]');
+			expect(progressBar.classes()).toContain('before:duration-1000');
+			expect(progressBar.classes()).toContain('before:ease-out');
+		});
+
+		test('Rounds right corner when goal is met', () => {
+			const wrapper = mount(PdapFooter, {
+				...base,
+				props: {
+					fundraisingData: {
+						raised: 10000,
+						goal: 10000,
+					},
+				},
+			});
+
+			const progressBar = wrapper.find('.rounded-full');
+			expect(progressBar.classes()).toContain('before:rounded-r-full');
+		});
+
+		test('Does not round right corner when goal is not met', () => {
+			const wrapper = mount(PdapFooter, base);
+
+			const progressBar = wrapper.find('.rounded-full');
+			expect(progressBar.classes()).not.toContain('before:rounded-r-full');
+		});
+	});
+});
+
+// Copyright Section
+test('Renders current year in copyright notice', () => {
+	const wrapper = mount(PdapFooter, base);
+	const currentYear = new Date().getFullYear();
+	expect(wrapper.html()).toContain(`© ${currentYear}`);
+});
+
+test('Renders EIN number', () => {
+	const wrapper = mount(PdapFooter, base);
+	expect(wrapper.html()).toContain('EIN: 85-4207132');
+});
+
+test('Renders Guidestar badge', () => {
+	const wrapper = mount(PdapFooter, base);
+	const guidestarImg = wrapper.find('img[alt="platinum transparency"]');
+
+	expect(guidestarImg.exists()).toBe(true);
+	expect(guidestarImg.attributes('src')).toBe(
+		'https://widgets.guidestar.org/gximage2?o=9973356&l=v4'
+	);
+});
+
+describe('Link behavior', () => {
+	test('External links should open in new tab', () => {
+		const wrapper = mount(PdapFooter, base);
+		const externalLinks = wrapper.findAll('a[href^="http"]');
+
+		// Verify that all external links have the correct attributes
+		externalLinks.forEach((link) => {
+			expect(link.attributes('target')).toBe('_blank');
+			expect(link.attributes('rel')).toBe('noreferrer');
 		});
 	});
 
-	// Copyright Section
-	test('Renders current year in copyright notice', () => {
+	test('Internal links should not open in new tab', () => {
 		const wrapper = mount(PdapFooter, base);
-		const currentYear = new Date().getFullYear();
-		expect(wrapper.html()).toContain(`© ${currentYear}`);
-	});
+		const internalLinks = wrapper.findAll('a:not([href^="http"])');
 
-	test('Renders EIN number', () => {
-		const wrapper = mount(PdapFooter, base);
-		expect(wrapper.html()).toContain('EIN: 85-4207132');
-	});
-
-	test('Renders Guidestar badge', () => {
-		const wrapper = mount(PdapFooter, base);
-		const guidestarImg = wrapper.find('img[alt="platinum transparency"]');
-
-		expect(guidestarImg.exists()).toBe(true);
-		expect(guidestarImg.attributes('src')).toBe(
-			'https://widgets.guidestar.org/gximage2?o=9973356&l=v4'
-		);
-	});
-
-	describe('Link behavior', () => {
-		test('External links should open in new tab', () => {
-			const wrapper = mount(PdapFooter, base);
-			const externalLinks = wrapper.findAll('a[href^="http"]');
-
-			// Verify that all external links have the correct attributes
-			externalLinks.forEach((link) => {
-				expect(link.attributes('target')).toBe('_blank');
-				expect(link.attributes('rel')).toBe('noreferrer');
-			});
-		});
-
-		test('Internal links should not open in new tab', () => {
-			const wrapper = mount(PdapFooter, base);
-			const internalLinks = wrapper.findAll('a:not([href^="http"])');
-
-			internalLinks.forEach((link) => {
-				expect(link.attributes('target')).toBeFalsy();
-				expect(link.attributes('rel')).toBeFalsy();
-			});
+		internalLinks.forEach((link) => {
+			expect(link.attributes('target')).toBeFalsy();
+			expect(link.attributes('rel')).toBeFalsy();
 		});
 	});
 });
