@@ -1,5 +1,5 @@
 <template>
-	<main class="pdap-flex-container">
+	<main class="pdap-flex-container relative">
 		<h1>PDAP component library demo. This is a top-level heading.</h1>
 		<p>
 			And this is a paragraph. By default it has a max width of 45ch. <br />
