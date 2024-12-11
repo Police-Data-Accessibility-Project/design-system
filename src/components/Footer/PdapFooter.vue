@@ -1,166 +1,174 @@
 <template>
-	<footer class="pdap-footer">
-		<div class="pdap-flex-container-center">
-			<ul class="pdap-footer-social-links">
-				<li
-					v-for="link in links"
-					:key="link.text"
-					class="pdap-footer-link-container"
+	<footer
+		ref="footerRef"
+		class="bg-brand-wine text-neutral-50 dark:text-neutral-950 flex flex-col lg:flex-row gap-4 xl:gap-12 p-6 lg:p-4 relative lg:sticky lg:bottom-0 text-med xl:text-xl"
+	>
+		<!-- LINKS -->
+		<ul
+			class="grid grid-cols-2 gap-2 md:grid-cols-[auto_auto_auto] lg:w-max lg:gap-x-3 xl:gap-x-4"
+		>
+			<li v-for="link in links" :key="link.text">
+				<a v-if="link.href" :href="link.href" target="_blank" rel="noreferrer">
+					<FontAwesomeIcon v-if="link.icon" :icon="iconMap.get(link.icon)!" />
+					{{ link.text }}
+				</a>
+				<router-link
+					v-if="link.path"
+					active-class="pdap-footer-social-link-current"
+					exact-active-class="pdap-footer-social-link-current-exact"
+					class="pdap-footer-social-link"
+					:to="link.path"
 				>
-					<a
-						v-if="link.href"
-						class="pdap-footer-social-link"
-						:href="link.href"
-						target="_blank"
-						referrerpolicy="no-referrer"
-						>{{ link.text }}</a
-					>
-					<router-link
-						v-if="link.path"
-						active-class="pdap-footer-social-link-current"
-						exact-active-class="pdap-footer-social-link-current-exact"
-						class="pdap-footer-social-link"
-						:to="link.path"
-						>{{ link.text }}</router-link
-					>
-				</li>
-			</ul>
+					<FontAwesomeIcon v-if="link.icon" :icon="iconMap.get(link.icon)!" />
+					{{ link.text }}
+				</router-link>
+			</li>
+		</ul>
 
-			<!-- Copyright and policies -->
-			<p class="pdap-footer-copyright">
-				© {{ new Date().getFullYear() }} Police Data Accessibility Project<br />
-			</p>
-			<p class="pdap-footer-copyright">
-				PDAP is a non-profit. EIN: 85-4207132.
-				<a
-					href="https://docs.pdap.io/meta/policy/pdap-privacy-policy"
-					alt="Privacy Policy"
-					target="_blank"
-					><br />
-					Privacy Policy <i class="fa fa-external-link" /></a
-				><br />
-				<a href="mailto:contact@pdap.io">contact@pdap.io</a>
+		<!-- FUNDRAISING METER -->
+		<div>
+			<span class="flex gap-1">
+				<a href="https://pdap.io/donate" target="_blank" rel="noreferrer">
+					<span><FontAwesomeIcon :icon="faCircleDollarToSlot" /> Donate</span>
+					(${{ formatWithCommas(fundraisingData.raised) }} of ${{
+						formatWithCommas(fundraisingData.goal)
+					}}
+					raised
+					<span v-if="fundraisingData.raised === fundraisingData.goal">🎉</span
+					>)
+				</a>
+			</span>
+
+			<span
+				class="inline-block bg-neutral-50 dark:bg-neutral-950 h-3 w-full rounded-full relative before:inline-block before:h-full before:bg-brand-gold before:absolute before:rounded-l-full before:transition-[width] before:duration-1000 before:ease-out before:w-[var(--fundraising-progress)]"
+				:class="{
+					'before:rounded-r-full':
+						fundraisingData.raised === fundraisingData.goal,
+				}"
+			/>
+		</div>
+
+		<!-- COPYRIGHT AND TRANSPARENCY -->
+		<div class="flex gap-4 justify-between lg:justify-start lg:ml-auto">
+			<p class="lg:max-w-[325px] lg:text-right xl:max-w-[375px]">
+				© {{ new Date().getFullYear() }} Police Data Accessibility Project is a
+				non-profit. EIN: 85-4207132.
 			</p>
 
 			<!-- Widget / logo links -->
-			<div class="pdap-footer-widget-links">
-				<a href="https://www.guidestar.org/profile/85-4207132" target="_blank">
-					<img
-						alt="platinum transparency"
-						src="https://widgets.guidestar.org/gximage2?o=9973356&l=v4"
-					/>
-				</a>
-
-				<a
-					v-if="!navLogoLinkIsPath"
-					:href="logoImageAnchorPath"
-					class="pdap-footer-logo"
-					><img
-						:src="logoImageSrc"
-						loading="lazy"
-						width="250"
-						alt="Police Data Accessibility Project Logo"
-				/></a>
-				<router-link v-else :to="logoImageAnchorPath" class="pdap-footer-logo"
-					><img
-						:src="logoImageSrc"
-						loading="lazy"
-						width="250"
-						alt="Police Data Accessibility Project Logo"
-				/></router-link>
-			</div>
+			<a
+				href="https://www.guidestar.org/profile/85-4207132"
+				target="_blank"
+				rel="noreferrer"
+			>
+				<img
+					class="w-14 h-14"
+					alt="platinum transparency"
+					src="https://widgets.guidestar.org/gximage2?o=9973356&l=v4"
+				/>
+			</a>
 		</div>
 	</footer>
 </template>
 
 <script setup lang="ts">
-import { inject } from 'vue';
-import { PdapFooterProps, PdapFooterSocialLinks } from './types';
-import acronym from '../../assets/acronym.svg';
+import { inject, onMounted, ref } from 'vue';
+import {
+	PdapFooterSocialLinks,
+	FooterIconName,
+	PdapFooterProps,
+} from './types';
+import { FOOTER_LINK_ICONS } from './constants';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import {
+	faGithub,
+	faDiscord,
+	faLinkedin,
+	IconDefinition,
+} from '@fortawesome/free-brands-svg-icons';
+import {
+	faSmile,
+	faInbox,
+	faBook,
+	faCircleDollarToSlot,
+} from '@fortawesome/free-solid-svg-icons';
+import { formatWithCommas } from '../../utils/format';
 
-const props = withDefaults(defineProps<PdapFooterProps>(), {
-	logoImageSrc: acronym,
-	logoImageAnchorPath: '/',
-});
+const { fundraisingData } = defineProps<PdapFooterProps>();
+
+const iconMap = new Map<FooterIconName, IconDefinition>([
+	[FOOTER_LINK_ICONS.GITHUB, faGithub],
+	[FOOTER_LINK_ICONS.DISCORD, faDiscord],
+	[FOOTER_LINK_ICONS.LINKEDIN, faLinkedin],
+	[FOOTER_LINK_ICONS.JOBS, faSmile],
+	[FOOTER_LINK_ICONS.NEWSLETTER, faInbox],
+	[FOOTER_LINK_ICONS.DOCS, faBook],
+]);
 
 const links = inject<PdapFooterSocialLinks[]>('footerLinks', [
 	{
 		href: 'https://github.com/orgs/Police-Data-Accessibility-Project',
 		text: 'Github',
+		icon: FOOTER_LINK_ICONS.GITHUB,
 	},
 	{
 		href: 'https://discord.gg/wMqex8nKZJ',
 		text: 'Discord',
+		icon: FOOTER_LINK_ICONS.DISCORD,
 	},
 	{
 		href: 'https://www.linkedin.com/company/pdap',
 		text: 'LinkedIn',
+		icon: FOOTER_LINK_ICONS.LINKEDIN,
 	},
 	{
-		path: '/jobs',
+		href: 'https://pdap.io/jobs',
 		text: 'Jobs',
+		icon: FOOTER_LINK_ICONS.JOBS,
+	},
+	{
+		href: 'https://newsletter.pdap.io/',
+		text: 'Newsletter',
+		icon: FOOTER_LINK_ICONS.NEWSLETTER,
+	},
+	{
+		href: 'https://docs.pdap.io/',
+		text: 'Docs',
+		icon: FOOTER_LINK_ICONS.DOCS,
 	},
 ]);
 
-const navLogoLinkIsPath = props.logoImageAnchorPath.startsWith('/');
+const footerRef = ref();
+
+onMounted(() => {
+	setFundraisingProgress();
+});
+
+function setFundraisingProgress() {
+	// Calculate the target percentage
+	const targetProgress = (fundraisingData.raised / fundraisingData.goal) * 100;
+
+	// Set the initial progress to 0
+	document.documentElement.style.setProperty('--fundraising-progress', '0%');
+
+	// Use setTimeout to ensure the initial 0% is rendered first
+	setTimeout(() => {
+		// Update to the final percentage
+		document.documentElement.style.setProperty(
+			'--fundraising-progress',
+			`${targetProgress}%`
+		);
+	}, 50);
+}
 </script>
 
 <script lang="ts">
 /**
  * # `Footer`
  *
- * ## Props
- * @prop {string} logoImageSrc Src for the PDAP logo image to be displayed
- * @prop {string } logoImageAnchorPath Path for the link that wraps the PDAP logo image
  *
  */
 export default {
 	name: 'PdapFooter',
 };
 </script>
-
-<style>
-@tailwind components;
-
-@layer components {
-	.pdap-footer {
-		@apply bg-brand-wine mt-auto mx-auto px-2 py-6 relative text-center text-[rgba(255,251,250)] text-lg;
-		@apply md:py-8 md:px-2;
-	}
-
-	.pdap-footer-social-links {
-		@apply flex justify-center flex-wrap gap-2;
-		@apply md:flex-nowrap;
-	}
-
-	.pdap-footer-social-links > * {
-		@apply mb-2;
-	}
-
-	.pdap-footer .pdap-flex-container > * {
-		@apply mb-2 text-inherit;
-	}
-
-	.pdap-footer-widget-links {
-		@apply flex justify-center mt-6;
-	}
-
-	.pdap-footer-logo {
-		@apply invert ml-7 w-[10rem];
-	}
-
-	.pdap-footer-logo img {
-		@apply w-full;
-	}
-
-	.pdap-nav-link-container {
-		@apply align-top basis-[max-content] inline-block list-none relative;
-		@apply lg:flex-shrink-0 lg:mx-2 lg:mb-2;
-	}
-
-	.pdap-footer-social-link {
-		@apply cursor-pointer border-2 border-brand-gold decoration-0 disabled:opacity-50 font-semibold inline-block mx-1 px-6 py-2 rounded-none text-center text-lg w-full bg-brand-gold text-neutral-50;
-		@apply hover:brightness-85 lg:text-xl sm:max-w-max;
-	}
-}
-</style>
