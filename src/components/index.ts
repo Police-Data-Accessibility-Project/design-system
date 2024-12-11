@@ -1,6 +1,6 @@
 export { Button } from './Button';
 export { ErrorBoundary } from './ErrorBoundary';
-export { Footer } from './Footer';
+export * from './Footer';
 export { Form } from './Form';
 export { FormV2 } from './FormV2';
 export { Input } from './Input';
