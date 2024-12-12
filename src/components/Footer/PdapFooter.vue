@@ -7,7 +7,7 @@
 		<ul
 			class="grid grid-cols-2 gap-2 md:grid-cols-[auto_auto_auto] lg:w-max lg:gap-x-3 xl:gap-x-4"
 		>
-			<li v-for="link in links" :key="link.text">
+			<li v-for="link in links" :key="link.text" class="w-max">
 				<a
 					v-if="link.href"
 					:href="link.href"
@@ -32,7 +32,7 @@
 		</ul>
 
 		<!-- FUNDRAISING METER -->
-		<div>
+		<div v-if="fundraisingData.goal > 0">
 			<span class="flex gap-1">
 				<a
 					href="https://pdap.io/donate"
