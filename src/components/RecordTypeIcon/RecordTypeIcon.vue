@@ -98,7 +98,7 @@ interface Props {
 	recordType: string;
 }
 
-const { recordType } = defineProps<Props>();
+defineProps<Props>();
 
 defineExpose({
 	recordTypesToIcons,

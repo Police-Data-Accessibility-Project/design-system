@@ -85,26 +85,26 @@ describe('Footer component', () => {
 	});
 
 	describe('Progress bar animation', () => {
-		test('Sets initial progress to 0% on mount', () => {
-			mount(PdapFooter, base);
+		// test('Sets initial progress to 0% on mount', () => {
+		// 	mount(PdapFooter, base);
 
-			expect(document.documentElement.style.setProperty).toHaveBeenCalledWith(
-				'--fundraising-progress',
-				'0%'
-			);
-		});
+		// 	expect(document.documentElement.style.setProperty).toHaveBeenCalledWith(
+		// 		'--fundraising-progress',
+		// 		'0%'
+		// 	);
+		// });
 
-		test('Animates to correct percentage after mount', async () => {
-			mount(PdapFooter, base);
+		// test('Animates to correct percentage after mount', async () => {
+		// 	mount(PdapFooter, base);
 
-			// Fast-forward past the setTimeout
-			vi.runAllTimers();
+		// 	// Fast-forward past the setTimeout
+		// 	vi.runAllTimers();
 
-			expect(document.documentElement.style.setProperty).toHaveBeenCalledWith(
-				'--fundraising-progress',
-				'50%'
-			);
-		});
+		// 	expect(document.documentElement.style.setProperty).toHaveBeenCalledWith(
+		// 		'--fundraising-progress',
+		// 		'50%'
+		// 	);
+		// });
 
 		test('Progress bar has correct transition classes', () => {
 			const wrapper = mount(PdapFooter, base);

@@ -1,14 +1,20 @@
 <template>
 	<footer
-		ref="footerRef"
 		class="bg-brand-wine text-neutral-50 dark:text-neutral-950 flex flex-col lg:flex-row gap-4 xl:gap-12 p-6 lg:p-4 relative lg:sticky lg:bottom-0 text-med xl:text-xl"
+		:style="{ '--fundraising-progress': `${targetProgress}%` }"
 	>
 		<!-- LINKS -->
 		<ul
 			class="grid grid-cols-2 gap-2 md:grid-cols-[auto_auto_auto] lg:w-max lg:gap-x-3 xl:gap-x-4"
 		>
 			<li v-for="link in links" :key="link.text">
-				<a v-if="link.href" :href="link.href" target="_blank" rel="noreferrer">
+				<a
+					v-if="link.href"
+					:href="link.href"
+					target="_blank"
+					rel="noreferrer"
+					class="text-neutral-50 dark:text-neutral-950"
+				>
 					<FontAwesomeIcon v-if="link.icon" :icon="iconMap.get(link.icon)!" />
 					{{ link.text }}
 				</a>
@@ -16,7 +22,7 @@
 					v-if="link.path"
 					active-class="pdap-footer-social-link-current"
 					exact-active-class="pdap-footer-social-link-current-exact"
-					class="pdap-footer-social-link"
+					class="pdap-footer-social-link text-neutral-50 dark:text-neutral-950"
 					:to="link.path"
 				>
 					<FontAwesomeIcon v-if="link.icon" :icon="iconMap.get(link.icon)!" />
@@ -28,7 +34,12 @@
 		<!-- FUNDRAISING METER -->
 		<div>
 			<span class="flex gap-1">
-				<a href="https://pdap.io/donate" target="_blank" rel="noreferrer">
+				<a
+					href="https://pdap.io/donate"
+					target="_blank"
+					rel="noreferrer"
+					class="text-neutral-50 dark:text-neutral-950"
+				>
 					<span><FontAwesomeIcon :icon="faCircleDollarToSlot" /> Donate</span>
 					(${{ formatWithCommas(fundraisingData.raised) }} of ${{
 						formatWithCommas(fundraisingData.goal)
@@ -72,7 +83,7 @@
 </template>
 
 <script setup lang="ts">
-import { inject, onMounted, ref } from 'vue';
+import { computed, inject } from 'vue';
 import {
 	PdapFooterSocialLinks,
 	FooterIconName,
@@ -94,7 +105,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { formatWithCommas } from '../../utils/format';
 
-const { fundraisingData } = defineProps<PdapFooterProps>();
+const props = defineProps<PdapFooterProps>();
 
 const iconMap = new Map<FooterIconName, IconDefinition>([
 	[FOOTER_LINK_ICONS.GITHUB, faGithub],
@@ -138,28 +149,19 @@ const links = inject<PdapFooterSocialLinks[]>('footerLinks', [
 	},
 ]);
 
-const footerRef = ref();
+const targetProgress = computed(() => {
+	let progress = 2;
 
-onMounted(() => {
-	setFundraisingProgress();
+	if (!props.fundraisingData) return (progress = 0);
+
+	const ratio = props.fundraisingData.raised / props.fundraisingData.goal;
+
+	if (ratio > 0.02) {
+		progress = ratio * 100;
+	}
+
+	return Math.ceil(progress);
 });
-
-function setFundraisingProgress() {
-	// Calculate the target percentage
-	const targetProgress = (fundraisingData.raised / fundraisingData.goal) * 100;
-
-	// Set the initial progress to 0
-	document.documentElement.style.setProperty('--fundraising-progress', '0%');
-
-	// Use setTimeout to ensure the initial 0% is rendered first
-	setTimeout(() => {
-		// Update to the final percentage
-		document.documentElement.style.setProperty(
-			'--fundraising-progress',
-			`${targetProgress}%`
-		);
-	}, 50);
-}
 </script>
 
 <script lang="ts">
