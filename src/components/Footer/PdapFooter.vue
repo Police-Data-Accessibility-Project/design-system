@@ -45,8 +45,15 @@
 						formatWithCommas(fundraisingData.goal)
 					}}
 					raised
-					<span v-if="fundraisingData.raised === fundraisingData.goal">🎉</span
-					>)
+					<span
+						v-if="
+							fundraisingData.goal > 0 &&
+							fundraisingData.raised === fundraisingData.goal
+						"
+					>
+						🎉🎉🎉
+					</span>
+					)
 				</a>
 			</span>
 
