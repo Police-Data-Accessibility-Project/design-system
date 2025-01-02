@@ -67,7 +67,7 @@ exports[`Footer component > Renders a footer 1`] = `
     <span class="inline-block bg-neutral-50 dark:bg-neutral-950 h-3 w-full rounded-full relative before:inline-block before:h-full before:bg-brand-gold before:absolute before:rounded-l-full before:transition-[width] before:duration-1000 before:ease-out before:w-[var(--fundraising-progress)]"></span>
   </div><!-- COPYRIGHT AND TRANSPARENCY -->
   <div class="flex gap-4 justify-between lg:justify-start lg:ml-auto">
-    <p class="lg:max-w-[325px] lg:text-right xl:max-w-[375px]"> © 2024 Police Data Accessibility Project is a non-profit. EIN: 85-4207132. </p><!-- Widget / logo links -->
+    <p class="lg:max-w-[325px] lg:text-right xl:max-w-[375px]"> © 2025 Police Data Accessibility Project is a non-profit. EIN: 85-4207132. </p><!-- Widget / logo links -->
     <a href="https://www.guidestar.org/profile/85-4207132" rel="noreferrer" target="_blank">
       <img alt="platinum transparency" class="w-14 h-14" src="https://widgets.guidestar.org/gximage2?o=9973356&amp;l=v4">
     </a>
