@@ -79,7 +79,11 @@ export default {
 }
 
 .logo {
-	@apply decoration-0 relative max-w-[80%] dark:invert;
+	@apply decoration-0 relative max-w-[80%] px-4;
 	@apply xs:max-w-none;
+}
+
+.logo img {
+	@apply dark:invert;
 }
 </style>

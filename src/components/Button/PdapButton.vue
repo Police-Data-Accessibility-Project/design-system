@@ -1,12 +1,14 @@
 <template>
 	<button :class="classes">
-		<slot />
+		<slot v-if="!isLoading" />
+		<Spinner v-if="isLoading" :show="isLoading" />
 	</button>
 </template>
 
 <script setup lang="ts">
 // Imports
 import { reactive } from 'vue';
+import { Spinner } from '../Spinner';
 
 // Types
 import { PdapButtonProps } from './types';
@@ -71,6 +73,20 @@ export default {
 
 	.pdap-button-tertiary[type='submit'] {
 		@apply bg-transparent;
+	}
+}
+</style>
+
+<style scoped>
+@media (prefers-reduced-motion: no-preference) {
+	.v-enter-active,
+	.v-leave-active {
+		transition: opacity 0.5s ease;
+	}
+
+	.v-enter-from,
+	.v-leave-to {
+		opacity: 0;
 	}
 }
 </style>

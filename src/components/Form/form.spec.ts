@@ -289,6 +289,49 @@ describe('Form component', () => {
 		expect(wrapper.find('.pdap-form-error-message').exists()).toBe(false);
 	});
 
+	test('Form updates on call of setValues', async () => {
+		const wrapper = mount(PdapForm, base);
+
+		const inputTextOne = wrapper.find('#test-1');
+		const inputTextTwo = wrapper.find('#test-2');
+		const inputEmail = wrapper.find('#test-email');
+		const inputPassword = wrapper.find('#test-password');
+		const inputCheckboxDefaultChecked = wrapper.find(
+			'#checkbox-default-checked'
+		);
+		const inputCheckboxDefaultUnchecked = wrapper.find(
+			'#checkbox-default-unchecked'
+		);
+
+		await nextTick();
+
+		wrapper.vm.setValues({
+			testOne: 'foo',
+			testTwo: 'bar',
+			email: 'XXXXXXXXXXXXXXX',
+			password: 'XXXXXXXXXX',
+			checkboxDefaultChecked: 'false',
+			checkboxDefaultUnchecked: 'true',
+		});
+
+		await nextTick();
+
+		expect((inputTextOne.element as HTMLInputElement).value).toBe('foo');
+		expect((inputTextTwo.element as HTMLInputElement).value).toBe('bar');
+		expect((inputEmail.element as HTMLInputElement).value).toBe(
+			'XXXXXXXXXXXXXXX'
+		);
+		expect((inputPassword.element as HTMLInputElement).value).toBe(
+			'XXXXXXXXXX'
+		);
+		expect(
+			(inputCheckboxDefaultChecked.element as HTMLInputElement).value
+		).toBe('false');
+		expect(
+			(inputCheckboxDefaultUnchecked.element as HTMLInputElement).value
+		).toBe('true');
+	});
+
 	test('Form waits to reset until resetOn prop switches to `true` and error is falsy', async () => {
 		const wrapper = mount(PdapForm, {
 			...base,

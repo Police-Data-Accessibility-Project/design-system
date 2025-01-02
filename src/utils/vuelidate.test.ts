@@ -2,18 +2,20 @@
 import { describe, expect, test } from 'vitest';
 import {
 	createRule,
-	isLengthRule,
-	isPdapVuelidateValidator,
-	makeEmailRule,
-	makeEmailRuleWithCustomMessage,
-	makeLengthRule,
-	makeLengthRuleWithCustomMessage,
 	makePasswordRule,
 	makePasswordRuleWithCustomMessage,
-	makeRequiredRule,
-	makeRequiredRuleWithCustomMessage,
 } from './vuelidate';
 import { ValidationRuleWithParams } from '@vuelidate/core';
+
+// vi.mock('@vuelidate/validators', () => ({
+// 	helpers: {
+// 		withMessage: vi.fn((message, predicate) => ({
+// 			$message: message,
+// 			$validator: predicate,
+// 		})),
+// 		regex: vi.fn((regex) => (value: string) => regex.test(value)),
+// 	},
+// }));
 
 // Utils
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -26,83 +28,6 @@ function validateMax(max: any, length: any) {
 }
 
 describe('Vuelidate utils', () => {
-	test('isPdapVuelidateValidator', () => {
-		expect(isPdapVuelidateValidator('maxLength')).toBe(true);
-		expect(isPdapVuelidateValidator('minLength')).toBe(true);
-		expect(isPdapVuelidateValidator('required')).toBe(true);
-		expect(isPdapVuelidateValidator('foo')).toBe(false);
-	});
-
-	test('isLengthRule', () => {
-		expect(isLengthRule('maxLength')).toBe(true);
-		expect(isLengthRule('minLength')).toBe(true);
-		expect(isLengthRule('required')).toBe(false);
-		expect(isLengthRule('foo')).toBe(false);
-	});
-
-	test('makeLengthRule - max', () => {
-		const max = makeLengthRule('maxLength', 1);
-		validateMax(max, 1);
-	});
-
-	test('makeLengthRuleWithCustomMessage - max', () => {
-		const maxWithMessage = makeLengthRuleWithCustomMessage(
-			'maxLength',
-			1,
-			'error message'
-		);
-		expect(maxWithMessage).toHaveProperty('maxLength');
-		expect(maxWithMessage.maxLength.$params).toStrictEqual({
-			max: 1,
-			type: 'maxLength',
-		});
-		expect(maxWithMessage.maxLength.$message).toBe('error message');
-	});
-
-	test('makeRequiredRule', () => {
-		const required = makeRequiredRule();
-		expect(required).toHaveProperty('required');
-		expect(
-			(required['required'] as unknown as ValidationRuleWithParams).$params
-		).toStrictEqual({
-			type: 'required',
-		});
-	});
-
-	test('makeRequiredRuleWithCustomMessage', () => {
-		const requiredWithMessage =
-			makeRequiredRuleWithCustomMessage('error message');
-		expect(requiredWithMessage).toHaveProperty('required');
-		expect(
-			(requiredWithMessage['required'] as unknown as ValidationRuleWithParams)
-				.$params
-		).toStrictEqual({
-			type: 'required',
-		});
-		expect(requiredWithMessage['required'].$message).toBe('error message');
-	});
-
-	test('makeEmailRule', () => {
-		const email = makeEmailRule();
-		expect(email).toHaveProperty('email');
-		expect(
-			(email.email as unknown as ValidationRuleWithParams).$params
-		).toStrictEqual({
-			type: 'email',
-		});
-	});
-
-	test('makeEmailRuleWithMessage', () => {
-		const emailWithMessage = makeEmailRuleWithCustomMessage('error message');
-		expect(emailWithMessage).toHaveProperty('email');
-		expect(
-			(emailWithMessage.email as unknown as ValidationRuleWithParams).$params
-		).toStrictEqual({
-			type: 'email',
-		});
-		expect(emailWithMessage.email.$message).toBe('error message');
-	});
-
 	test('makePasswordRule', () => {
 		const password = makePasswordRule();
 		expect(typeof password.password).toBe('function');
@@ -175,6 +100,29 @@ describe('Vuelidate utils', () => {
 			expect(emailWithMessage.email.$message).toBe('error message');
 		});
 
+		test('creates url rules', () => {
+			const url = createRule('url', { value: true });
+			expect(url).toHaveProperty('url');
+			// @ts-expect-error
+			expect(url?.url.$params).toStrictEqual({
+				type: 'url',
+			});
+
+			const urlWithMesage = createRule('url', {
+				value: true,
+				message: 'error message',
+			});
+			expect(urlWithMesage).toHaveProperty('url');
+
+			// @ts-expect-error
+			expect(urlWithMesage?.url.$params).toStrictEqual({
+				type: 'url',
+			});
+
+			// @ts-expect-error
+			expect(urlWithMesage.url.$message).toBe('error message');
+		});
+
 		test('creates password rules', () => {
 			const password = createRule('password', { value: true });
 			expect(password).toHaveProperty('password');
@@ -191,9 +139,27 @@ describe('Vuelidate utils', () => {
 			// @ts-expect-error
 			expect(passwordWithMessage.password.$message).toBe('error message');
 		});
+	});
 
-		test('Throw error with unsuppored rule', () => {
-			expect(() => createRule('foo', { value: true })).toThrow();
+	test('creates custom rules', () => {
+		const customPredicate = (value: string) => value.length > 0;
+		const custom = createRule('custom', {
+			predicate: customPredicate,
 		});
+
+		expect(custom).toHaveProperty('custom');
+		// @ts-expect-error
+		expect(custom.custom).toBe(customPredicate);
+
+		const customWithMessage = createRule('custom', {
+			predicate: customPredicate,
+			message: 'error message',
+		});
+
+		expect(customWithMessage).toHaveProperty('custom');
+		// @ts-expect-error
+		expect(customWithMessage.custom.$message).toBe('error message');
+		// @ts-expect-error
+		expect(customWithMessage.custom.$validator).toBe(customPredicate);
 	});
 });

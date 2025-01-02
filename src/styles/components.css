@@ -35,4 +35,146 @@
 	.pdap-flex-container-center {
 		@apply pdap-flex-container items-center justify-center;
 	}
+
+	/* Input styles  */
+	.pdap-input, .pdap-input-radio-group {
+		@apply h-[max-content] gap-1 leading-normal w-full flex flex-col;
+	}
+
+	.pdap-input input {
+		@apply h-12;
+	}
+
+	.pdap-input input,
+	.pdap-input textarea {
+		@apply bg-neutral-50 border-neutral-500 border-solid border-2 px-3 py-2 text-neutral-950 text-lg rounded-md;
+	}
+
+	.pdap-input input::placeholder,
+	.pdap-input textarea::placeholder{
+		@apply text-neutral-600 text-lg;
+	}
+
+	.pdap-input input:focus,
+	.pdap-input input:focus-within,
+	.pdap-input input:focus-visible,
+	.pdap-input textarea:focus,
+	.pdap-input textarea:focus-within,
+	.pdap-input textarea:focus-visible, 
+	.pdap-input-checkbox:has(input[type="checkbox"]:focus) {
+		@apply border-2 border-brand-gold-500 border-solid outline-none;
+	}
+
+	.pdap-input label {
+		@apply max-w-[max-content] text-lg py-1 font-medium;
+	}
+
+	/* Error state */
+	.pdap-input-error {
+		@apply flex-wrap gap-x-0;
+	}
+
+	.pdap-input-error label {
+		@apply justify-start;
+	}
+
+	.pdap-input-error input:not(:focus, :focus-visible, :focus-within),
+	.pdap-input-error div[role="combobox"]:not(:focus, :focus-visible, :focus-within),
+	.pdap-input-error textarea:not(:focus, :focus-visible, :focus-within) {
+		@apply border-red-800 dark:border-red-300;
+	}
+
+	.pdap-input-error-message {
+		@apply items-center justify-start flex bg-red-300 text-red-800 p-1 text-xs rounded-sm;
+	}
+
+	/* Specific inputs */
+	/* Input - checkbox and radio */
+	.pdap-input-checkbox,
+	.pdap-input-radio {
+		@apply border-2 border-transparent items-center py-1 px-2 w-auto rounded-md;
+	}
+
+	.pdap-input-checkbox:has(input:checked),
+	.pdap-input-radio:has(input:checked),
+	.pdap-input-checkbox:has(input:checked):has(input[type="checkbox"]:focus),
+	.pdap-input-radio:has(input:checked):has(input[type="checkbox"]:focus) {
+		@apply border-2 border-brand-gold border-solid rounded-md;
+	}
+
+	.pdap-input input[type='checkbox'], 
+	.pdap-input input[type='radio'] {
+		@apply absolute overflow-hidden h-[1px] w-[1px] m-[-1px] p-0 border-0;
+		
+		clip: rect(0 0 0 0); 
+	}
+	
+
+	.pdap-input input[type='checkbox'] ~ label,
+	.pdap-input input[type='radio'] ~ label {
+		@apply pl-0 w-full max-w-full flex gap-4;
+	}
+
+	.pdap-input input[type='checkbox'] ~ label::before,
+	.pdap-input input[type='radio'] ~ label::before {
+		@apply block border-2 border-solid border-neutral-800 h-6 w-6 content-['']; 
+	}
+
+	.pdap-input input[type='checkbox'] ~ label::before {
+		@apply rounded-sm;
+	}
+
+
+	.pdap-input input[type='checkbox']:checked ~ label::before, 
+	.pdap-input input[type='radio']:checked ~ label::before 
+	{
+		@apply bg-brand-gold border-brand-gold;
+	}
+	
+	.pdap-input input[type='checkbox']:checked ~ label::before {
+		background-repeat: no-repeat;
+		background-size: 16px 16px;
+		background-position: center;
+		background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjZmZmYWZmIiBkPSJNMTczLjg5OCA0MzkuNDA0bC0xNjYuNC0xNjYuNGMtOS45OTctOS45OTctOS45OTctMjYuMjA2IDAtMzYuMjA0bDM2LjIwMy0zNi4yMDRjOS45OTctOS45OTggMjYuMjA3LTkuOTk4IDM2LjIwNCAwTDE5MiAzMTIuNjkgNDMyLjA5NSA3Mi41OTZjOS45OTctOS45OTcgMjYuMjA3LTkuOTk3IDM2LjIwNCAwbDM2LjIwMyAzNi4yMDRjOS45OTcgOS45OTcgOS45OTcgMjYuMjA2IDAgMzYuMjA0bC0yOTQuNCAyOTQuNDAxYy05Ljk5OCA5Ljk5Ny0yNi4yMDcgOS45OTctMzYuMjA0LS4wMDF6Ii8+PC9zdmc+");
+	}
+
+
+	.pdap-input input[type='radio'] ~ label::before {
+		@apply rounded-full; 
+	}
+
+	.pdap-input input[type='radio']:checked ~ label::before {
+		box-shadow: inset 0 0 1px 2px rgba(var(--color-brand-gold-600) / 70%),
+								inset 0 0 1px 5px rgba(240 240 240 / 70%);
+
+		@apply bg-brand-gold;
+	}
+
+	.pdap-input input[type='checkbox'],
+	.pdap-input input[type='checkbox'] ~ label,
+	.pdap-input input[type='radio'],
+	.pdap-input input[type='radio'] ~ label {
+		@apply cursor-pointer;
+	}
+
+
+	
+	/* Text area */
+	.pdap-input textarea {
+		@apply text-lg;
+	}
+
+
+	/* Hacky stuff to get around ugly chrome and ff autofill styles */
+	@media screen and (prefers-reduced-motion: reduce) {
+	.pdap-input input:-webkit-autofill,
+		.pdap-input input:-webkit-autofill:focus {
+			transition: none !important;
+	}
+	}
+	
+		.pdap-input input:-webkit-autofill,
+		.pdap-input input:-webkit-autofill:focus {
+			transition: background-color 0s 600000s, color 0s 600000s !important;
+		}
 }

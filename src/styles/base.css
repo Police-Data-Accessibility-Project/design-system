@@ -137,4 +137,21 @@
 	pre code {
 		@apply block border-[1px] border-opacity-20 border-solid border-brand-wine max-w-full overflow-scroll p-5 text-left text-xl whitespace-pre;
 	}
+
+
+	button,
+	a,
+	[role="button"] {
+		@apply border-2 border-transparent border-solid outline-none;
+	}
+
+a:focus,
+a:focus-visible,
+button:focus,
+button:focus-visible,
+[role="button"]:focus,
+[role="button"]:focus-visible {
+		@apply border-2 border-brand-gold-500 border-solid outline-none;
+	}
+
 }
