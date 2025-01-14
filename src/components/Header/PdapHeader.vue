@@ -1,19 +1,9 @@
 <template>
 	<header ref="el" class="pdap-header">
-		<a v-if="!navLogoLinkIsPath" :href="logoImageAnchorPath" class="logo"
-			><img
-				:src="logoImageSrc"
-				loading="lazy"
-				width="250"
-				alt="Police Data Accessibility Project Logo"
-		/></a>
-		<router-link v-else :to="logoImageAnchorPath" class="logo"
-			><img
-				:src="logoImageSrc"
-				loading="lazy"
-				width="250"
-				alt="Police Data Accessibility Project Logo"
-		/></router-link>
+		<a v-if="!navLogoLinkIsPath" :href="logoAnchorPath" class="logo"
+			>Police Data Access Point</a>
+		<router-link v-else :to="logoAnchorPath" class="logo"
+			>Police Data Access Point</router-link>
 		<PdapNav />
 	</header>
 </template>
@@ -23,17 +13,15 @@ import { onBeforeUnmount, onMounted, ref } from 'vue';
 import { RouterLink } from 'vue-router';
 import PdapNav from '../Nav/PdapNav.vue';
 import { PdapHeaderProps } from './types';
-import lockup from '../../assets/lockup.svg';
 
 // Props
 const props = withDefaults(defineProps<PdapHeaderProps>(), {
-	logoImageSrc: lockup,
-	logoImageAnchorPath: '/',
+	logoAnchorPath: '/',
 });
 
 // Vars
 const el = ref<HTMLElement | null>(null);
-const navLogoLinkIsPath = props.logoImageAnchorPath.startsWith('/');
+const navLogoLinkIsPath = props.logoAnchorPath.startsWith('/');
 
 // Lifecycle methods
 onMounted(() => {
@@ -62,7 +50,7 @@ function getHeightAndSetToCSSVar() {
  *
  * ## Props
  * @prop {string} logoImageSrc Src for the PDAP logo image to be displayed
- * @prop {string } logoImageAnchorPath Path for the link that wraps the PDAP logo image
+ * @prop {string } logoAnchorPath Path for the link that wraps the PDAP logo image
  *
  * ## Notes
  * The `Header` component does not require any props to be passed. But keep in mind that it is responsible for rendering the `Nav` component. Consuming applications will need to `provide` an array of nav links -- **there are no defaults for this**, you must `provide` these links either 1\. in a layout component (see example below), at the route level, or at the app level. This allows for flexibility in which links are rendered on which routes
@@ -83,7 +71,4 @@ export default {
 	@apply xs:max-w-none;
 }
 
-.logo img {
-	@apply dark:invert;
-}
 </style>

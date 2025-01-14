@@ -2,8 +2,6 @@
 import { Header, Footer } from '../components';
 import { provide } from 'vue';
 import { RouterView } from 'vue-router';
-// import acronym from '';
-// import lockup from 'pdap-design-system/images/lockup.svg';
 
 const links = [
 	{
