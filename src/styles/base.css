@@ -145,8 +145,8 @@
 		@apply border-2 border-transparent border-solid outline-none;
 	}
 
-a:focus,
-a:focus-visible,
+a:focus:not(.pdap-nav-link),
+a:focus-visible:not(.pdap-nav-link),
 button:focus,
 button:focus-visible,
 [role="button"]:focus,
