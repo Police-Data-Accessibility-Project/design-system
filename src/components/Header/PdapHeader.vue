@@ -67,7 +67,7 @@ export default {
 }
 
 .logo {
-	@apply decoration-0 relative max-w-[80%] text-xl font-semibold px-4 text-brand-wine-400;
+	@apply decoration-0 relative max-w-[80%] text-xl font-bold p-2 outline outline-wineneutral-500 text-brand-wine-400;
 	@apply lg:text-lg;
 	@apply xs:max-w-none;
 }
