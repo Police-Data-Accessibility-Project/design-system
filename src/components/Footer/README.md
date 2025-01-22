@@ -27,11 +27,6 @@ export default {
             icon: FOOTER_LINK_ICONS.DISCORD,
           },
           {
-            href: 'https://www.linkedin.com/company/pdap',
-            text: 'LinkedIn',
-            icon: FOOTER_LINK_ICONS.LINKEDIN,
-          },
-          {
             href: 'https://pdap.io/jobs',
             text: 'Jobs',
             icon: FOOTER_LINK_ICONS.JOBS,
@@ -45,6 +40,11 @@ export default {
             href: 'https://docs.pdap.io/',
             text: 'Docs',
             icon: FOOTER_LINK_ICONS.DOCS,
+          },
+          {
+            href: 'mailto:contact@pdap.io',
+            text: 'Email',
+            icon: FOOTER_LINK_ICONS.EMAIL,
           },
       ]
     }

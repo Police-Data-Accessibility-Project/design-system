@@ -46,10 +46,10 @@ describe('Footer component', () => {
 		// Verify specific links exist
 		expect(wrapper.html()).toContain('Github');
 		expect(wrapper.html()).toContain('Discord');
-		expect(wrapper.html()).toContain('LinkedIn');
 		expect(wrapper.html()).toContain('Jobs');
 		expect(wrapper.html()).toContain('Newsletter');
 		expect(wrapper.html()).toContain('Docs');
+		expect(wrapper.html()).toContain('Email');
 	});
 
 	// Fundraising Section
@@ -175,7 +175,7 @@ describe('Link behavior', () => {
 
 	test('Internal links should not open in new tab', () => {
 		const wrapper = mount(PdapFooter, base);
-		const internalLinks = wrapper.findAll('a:not([href^="http"])');
+		const internalLinks = wrapper.findAll('a:not([href^="http"]):not([href^="mailto"])');
 
 		internalLinks.forEach((link) => {
 			expect(link.attributes('target')).toBeFalsy();

@@ -101,7 +101,6 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import {
 	faGithub,
 	faDiscord,
-	faLinkedin,
 	IconDefinition,
 } from '@fortawesome/free-brands-svg-icons';
 import {
@@ -109,6 +108,7 @@ import {
 	faInbox,
 	faBook,
 	faCircleDollarToSlot,
+	faEnvelope,
 } from '@fortawesome/free-solid-svg-icons';
 import { formatWithCommas } from '../../utils/format';
 
@@ -117,7 +117,7 @@ const props = defineProps<PdapFooterProps>();
 const iconMap = new Map<FooterIconName, IconDefinition>([
 	[FOOTER_LINK_ICONS.GITHUB, faGithub],
 	[FOOTER_LINK_ICONS.DISCORD, faDiscord],
-	[FOOTER_LINK_ICONS.LINKEDIN, faLinkedin],
+	[FOOTER_LINK_ICONS.EMAIL, faEnvelope],
 	[FOOTER_LINK_ICONS.JOBS, faSmile],
 	[FOOTER_LINK_ICONS.NEWSLETTER, faInbox],
 	[FOOTER_LINK_ICONS.DOCS, faBook],
@@ -135,11 +135,6 @@ const links = inject<PdapFooterSocialLinks[]>('footerLinks', [
 		icon: FOOTER_LINK_ICONS.DISCORD,
 	},
 	{
-		href: 'https://www.linkedin.com/company/pdap',
-		text: 'LinkedIn',
-		icon: FOOTER_LINK_ICONS.LINKEDIN,
-	},
-	{
 		href: 'https://pdap.io/jobs',
 		text: 'Jobs',
 		icon: FOOTER_LINK_ICONS.JOBS,
@@ -153,6 +148,11 @@ const links = inject<PdapFooterSocialLinks[]>('footerLinks', [
 		href: 'https://docs.pdap.io/',
 		text: 'Docs',
 		icon: FOOTER_LINK_ICONS.DOCS,
+	},
+	{
+		href: 'mailto:contact@pdap.io',
+		text: 'Email',
+		icon: FOOTER_LINK_ICONS.EMAIL,
 	},
 ]);
 
