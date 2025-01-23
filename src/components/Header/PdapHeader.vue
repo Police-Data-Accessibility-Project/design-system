@@ -1,9 +1,13 @@
 <template>
 	<header ref="el" class="pdap-header">
 		<a v-if="!navLogoLinkIsPath" :href="logoAnchorPath" class="logo"
-			>Police Data Access Point</a>
+			>
+			<FontAwesomeIcon :icon="faArrowsToCircle" />
+			&nbsp;Police Data Access Point</a>
 		<router-link v-else :to="logoAnchorPath" class="logo"
-			>Police Data Access Point</router-link>
+			>
+			<FontAwesomeIcon :icon="faArrowsToCircle" />
+			&nbsp;Police Data Access Point</router-link>
 		<PdapNav />
 	</header>
 </template>
@@ -13,6 +17,8 @@ import { onBeforeUnmount, onMounted, ref } from 'vue';
 import { RouterLink } from 'vue-router';
 import PdapNav from '../Nav/PdapNav.vue';
 import { PdapHeaderProps } from './types';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { faArrowsToCircle } from '@fortawesome/free-solid-svg-icons';
 
 // Props
 const props = withDefaults(defineProps<PdapHeaderProps>(), {
