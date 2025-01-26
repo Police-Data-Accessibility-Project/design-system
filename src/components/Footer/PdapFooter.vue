@@ -1,7 +1,6 @@
 <template>
 	<footer
-		class="bg-brand-wine text-neutral-50 dark:text-neutral-950 flex flex-col lg:flex-row gap-4 xl:gap-12 p-6 lg:p-4 relative lg:sticky lg:bottom-0 text-med xl:text-xl"
-		:style="{ '--fundraising-progress': `${targetProgress}%` }"
+		class="bg-brand-wine text-wineneutral-50 dark:text-wineneutral-950 flex flex-col justify-center lg:flex-row gap-4 xl:gap-12 p-2 lg:p-2 lg:px-8 relative lg:sticky lg:bottom-0 text-med xl:text-xl"
 	>
 		<!-- LINKS -->
 		<ul
@@ -29,45 +28,8 @@
 					{{ link.text }}
 				</router-link>
 			</li>
-		</ul>
-
-		<!-- FUNDRAISING METER -->
-		<div v-if="fundraisingData.goal > 0">
-			<span class="flex gap-1">
-				<a
-					href="https://pdap.io/donate"
-					target="_blank"
-					rel="noreferrer"
-					class="text-neutral-50 dark:text-neutral-950"
-				>
-					<span><FontAwesomeIcon :icon="faCircleDollarToSlot" /> Donate</span>
-					(${{ formatWithCommas(fundraisingData.raised) }} of ${{
-						formatWithCommas(fundraisingData.goal)
-					}}
-					raised
-					<span
-						v-if="
-							fundraisingData.goal > 0 &&
-							fundraisingData.raised === fundraisingData.goal
-						"
-					>
-						🎉🎉🎉
-					</span>
-					)
-				</a>
-			</span>
-
-			<span
-				class="inline-block bg-neutral-50 dark:bg-neutral-950 h-3 w-full rounded-full relative before:inline-block before:h-full before:bg-brand-gold before:absolute before:rounded-l-full before:transition-[width] before:duration-1000 before:ease-out before:w-[var(--fundraising-progress)]"
-				:class="{
-					'before:rounded-r-full':
-						fundraisingData.raised === fundraisingData.goal,
-				}"
-			/>
-		</div>
-
-		<!-- COPYRIGHT AND TRANSPARENCY -->
-		<div class="flex gap-4 justify-between lg:justify-start lg:ml-auto">
+		</ul><!-- COPYRIGHT AND TRANSPARENCY -->
+		<div class="flex gap-4 justify-between text-lg lg:justify-start lg:items-center lg:ml-auto">
 			<p class="lg:max-w-[325px] lg:text-right xl:max-w-[375px]">
 				© {{ new Date().getFullYear() }} Police Data Accessibility Project is a
 				non-profit. EIN: 85-4207132.
@@ -90,11 +52,10 @@
 </template>
 
 <script setup lang="ts">
-import { computed, inject } from 'vue';
+import { inject } from 'vue';
 import {
 	PdapFooterSocialLinks,
 	FooterIconName,
-	PdapFooterProps,
 } from './types';
 import { FOOTER_LINK_ICONS } from './constants';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
@@ -107,12 +68,8 @@ import {
 	faSmile,
 	faInbox,
 	faBook,
-	faCircleDollarToSlot,
 	faEnvelope,
 } from '@fortawesome/free-solid-svg-icons';
-import { formatWithCommas } from '../../utils/format';
-
-const props = defineProps<PdapFooterProps>();
 
 const iconMap = new Map<FooterIconName, IconDefinition>([
 	[FOOTER_LINK_ICONS.GITHUB, faGithub],
@@ -155,20 +112,6 @@ const links = inject<PdapFooterSocialLinks[]>('footerLinks', [
 		icon: FOOTER_LINK_ICONS.EMAIL,
 	},
 ]);
-
-const targetProgress = computed(() => {
-	let progress = 2;
-
-	if (!props.fundraisingData) return (progress = 0);
-
-	const ratio = props.fundraisingData.raised / props.fundraisingData.goal;
-
-	if (ratio > 0.02) {
-		progress = ratio * 100;
-	}
-
-	return Math.ceil(progress);
-});
 </script>
 
 <script lang="ts">

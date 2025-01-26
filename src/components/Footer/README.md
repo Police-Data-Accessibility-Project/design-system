@@ -1,11 +1,5 @@
 # Footer
 
-## Props
-
-| name              | required? | types                              | description                  | default |
-| ----------------- | --------- | ---------------------------------- | ---------------------------- | ------- |
-| `fundraisingData` | yes       | `{ raised: string; goal: string }` | data from donor box campaign |         |
-
 ## Notes
 
 The `Footer` component provides support for overriding the default social links. The `links` variable is `inject`ed by the component, using the following defaults:

@@ -43,5 +43,5 @@ provide('navLinks', links);
 <template>
 	<Header />
 	<RouterView />
-	<Footer :fundraising-data="{ raised: 1000, goal: 5000 }" />
+	<Footer />
 </template>

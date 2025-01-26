@@ -2,15 +2,7 @@ import PdapFooter from './PdapFooter.vue';
 import { RouterLinkStub, mount } from '@vue/test-utils';
 import { describe, expect, test, beforeEach, vi, afterEach } from 'vitest';
 
-const mockFundraisingData = {
-	raised: 5000,
-	goal: 10000,
-};
-
 const base = {
-	props: {
-		fundraisingData: mockFundraisingData,
-	},
 	stubs: {
 		RouterLink: RouterLinkStub,
 		FontAwesomeIcon: true,
@@ -50,92 +42,6 @@ describe('Footer component', () => {
 		expect(wrapper.html()).toContain('Newsletter');
 		expect(wrapper.html()).toContain('Docs');
 		expect(wrapper.html()).toContain('Email');
-	});
-
-	// Fundraising Section
-	describe('Fundraising meter', () => {
-		test('Displays correct fundraising amounts', () => {
-			const wrapper = mount(PdapFooter, base);
-			const fundraisingText = wrapper
-				.find('a[href="https://pdap.io/donate"]')
-				.text();
-
-			expect(fundraisingText).toContain('$5,000');
-			expect(fundraisingText).toContain('$10,000');
-		});
-
-		test('Shows celebration emoji when goal is met', () => {
-			const wrapper = mount(PdapFooter, {
-				...base,
-				props: {
-					fundraisingData: {
-						raised: 10000,
-						goal: 10000,
-					},
-				},
-			});
-
-			expect(wrapper.html()).toContain('🎉');
-		});
-
-		test('Does not show celebration emoji when goal is not met', () => {
-			const wrapper = mount(PdapFooter, base);
-			expect(wrapper.html()).not.toContain('🎉');
-		});
-	});
-
-	describe('Progress bar animation', () => {
-		// test('Sets initial progress to 0% on mount', () => {
-		// 	mount(PdapFooter, base);
-
-		// 	expect(document.documentElement.style.setProperty).toHaveBeenCalledWith(
-		// 		'--fundraising-progress',
-		// 		'0%'
-		// 	);
-		// });
-
-		// test('Animates to correct percentage after mount', async () => {
-		// 	mount(PdapFooter, base);
-
-		// 	// Fast-forward past the setTimeout
-		// 	vi.runAllTimers();
-
-		// 	expect(document.documentElement.style.setProperty).toHaveBeenCalledWith(
-		// 		'--fundraising-progress',
-		// 		'50%'
-		// 	);
-		// });
-
-		test('Progress bar has correct transition classes', () => {
-			const wrapper = mount(PdapFooter, base);
-			const progressBar = wrapper.find('.rounded-full');
-
-			expect(progressBar.classes()).toContain('before:transition-[width]');
-			expect(progressBar.classes()).toContain('before:duration-1000');
-			expect(progressBar.classes()).toContain('before:ease-out');
-		});
-
-		test('Rounds right corner when goal is met', () => {
-			const wrapper = mount(PdapFooter, {
-				...base,
-				props: {
-					fundraisingData: {
-						raised: 10000,
-						goal: 10000,
-					},
-				},
-			});
-
-			const progressBar = wrapper.find('.rounded-full');
-			expect(progressBar.classes()).toContain('before:rounded-r-full');
-		});
-
-		test('Does not round right corner when goal is not met', () => {
-			const wrapper = mount(PdapFooter, base);
-
-			const progressBar = wrapper.find('.rounded-full');
-			expect(progressBar.classes()).not.toContain('before:rounded-r-full');
-		});
 	});
 });
 
