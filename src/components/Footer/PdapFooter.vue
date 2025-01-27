@@ -14,14 +14,14 @@
 					rel="noreferrer"
 					class="text-neutral-50 dark:text-neutral-950"
 				>
-					<FontAwesomeIcon v-if="link.icon" :icon="iconMap.get(link.icon)!" />
+					<FontAwesomeIcon v-if="link.icon" :icon="iconMap.get(link.icon)!" class="text-brand-wine-100 dark:text-brand-wine-800"/>
 					{{ link.text }}
 				</a>
 				<router-link
 					v-if="link.path"
 					active-class="pdap-footer-social-link-current"
 					exact-active-class="pdap-footer-social-link-current-exact"
-					class="pdap-footer-social-link text-neutral-50 dark:text-neutral-950"
+					class="pdap-footer-social-link text-wineneutral-50 dark:text-wineneutral-950"
 					:to="link.path"
 				>
 					<FontAwesomeIcon v-if="link.icon" :icon="iconMap.get(link.icon)!" />
