@@ -1,6 +1,7 @@
 # Component Documentation
 <!-- This file is auto-generated from README.md files contained in the components directory, no need to edit this file directly. -->
 
+- [AsyncTypeahead](../src/components/AsyncTypeahead//README.md)
 - [Breadcrumbs](../src/components/Breadcrumbs//README.md)
 - [Button](../src/components/Button//README.md)
 - [Dropdown](../src/components/Dropdown//README.md)
