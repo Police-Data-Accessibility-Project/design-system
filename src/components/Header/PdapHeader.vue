@@ -1,13 +1,13 @@
 <template>
 	<header ref="el" class="pdap-header">
-		<a v-if="!navLogoLinkIsPath" :href="logoAnchorPath" class="logo"
-			>
+		<a v-if="!navLogoLinkIsPath" :href="logoAnchorPath" class="logo">
 			<FontAwesomeIcon :icon="faArrowsToCircle" />
-			&nbsp;Police Data Access Point</a>
-		<router-link v-else :to="logoAnchorPath" class="logo"
-			>
+			&nbsp;Police Data Access Point</a
+		>
+		<router-link v-else :to="logoAnchorPath" class="logo">
 			<FontAwesomeIcon :icon="faArrowsToCircle" />
-			&nbsp;Police Data Access Point</router-link>
+			&nbsp;Police Data Access Point</router-link
+		>
 		<PdapNav />
 	</header>
 </template>
@@ -77,5 +77,4 @@ export default {
 	@apply lg:text-lg;
 	@apply xs:max-w-none;
 }
-
 </style>

@@ -81,7 +81,9 @@ describe('Link behavior', () => {
 
 	test('Internal links should not open in new tab', () => {
 		const wrapper = mount(PdapFooter, base);
-		const internalLinks = wrapper.findAll('a:not([href^="http"]):not([href^="mailto"])');
+		const internalLinks = wrapper.findAll(
+			'a:not([href^="http"]):not([href^="mailto"])'
+		);
 
 		internalLinks.forEach((link) => {
 			expect(link.attributes('target')).toBeFalsy();

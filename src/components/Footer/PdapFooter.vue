@@ -14,7 +14,11 @@
 					rel="noreferrer"
 					class="text-neutral-50 dark:text-neutral-950"
 				>
-					<FontAwesomeIcon v-if="link.icon" :icon="iconMap.get(link.icon)!" class="text-brand-wine-100 dark:text-brand-wine-800"/>
+					<FontAwesomeIcon
+						v-if="link.icon"
+						:icon="iconMap.get(link.icon)!"
+						class="text-brand-wine-100 dark:text-brand-wine-800"
+					/>
 					{{ link.text }}
 				</a>
 				<router-link
@@ -28,8 +32,11 @@
 					{{ link.text }}
 				</router-link>
 			</li>
-		</ul><!-- COPYRIGHT AND TRANSPARENCY -->
-		<div class="flex gap-4 justify-between text-lg lg:justify-start lg:items-center lg:ml-auto">
+		</ul>
+		<!-- COPYRIGHT AND TRANSPARENCY -->
+		<div
+			class="flex gap-4 justify-between text-lg lg:justify-start lg:items-center lg:ml-auto"
+		>
 			<p class="lg:max-w-[325px] lg:text-right xl:max-w-[375px]">
 				© {{ new Date().getFullYear() }} Police Data Accessibility Project is a
 				non-profit. EIN: 85-4207132.
@@ -53,10 +60,7 @@
 
 <script setup lang="ts">
 import { inject } from 'vue';
-import {
-	PdapFooterSocialLinks,
-	FooterIconName,
-} from './types';
+import { PdapFooterSocialLinks, FooterIconName } from './types';
 import { FOOTER_LINK_ICONS } from './constants';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import {
