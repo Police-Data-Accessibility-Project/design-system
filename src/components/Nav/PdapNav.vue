@@ -191,7 +191,7 @@ export default {
 	}
 
 	.pdap-nav-link-current {
-		@apply lg:outline-neutral-800 lg:outline text-neutral-950;
+		@apply lg:outline-wineneutral-800 lg:outline text-neutral-950;
 	}
 
 	.pdap-nav-link-current-exact {

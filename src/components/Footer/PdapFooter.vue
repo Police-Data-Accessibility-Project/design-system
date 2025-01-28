@@ -17,7 +17,7 @@
 					<FontAwesomeIcon
 						v-if="link.icon"
 						:icon="iconMap.get(link.icon)!"
-						class="text-brand-wine-100 dark:text-brand-wine-800"
+						class="text-brand-wine-100"
 					/>
 					{{ link.text }}
 				</a>
