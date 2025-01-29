@@ -4,8 +4,7 @@
 
 | name                  | required? | types    | description            | default                                                    |
 | --------------------- | --------- | -------- | ---------------------- | ---------------------------------------------------------- |
-| `logoImageSrc`        | no        | `string` | Source of logo image   | `'node_modules/pdap-design-system/dist/images/lockup.svg'` |
-| `logoImageAnchorPath` | no        | `string` | Flex alignment presets | `/`                                                        |
+| `logoAnchorPath` | no        | `string` | Flex alignment presets | `/`                                                        |
 
 ## Notes
 

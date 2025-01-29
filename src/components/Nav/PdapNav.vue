@@ -187,11 +187,11 @@ export default {
 	}
 
 	.pdap-nav-link {
-		@apply decoration-0 font-medium p-2 text-left text-xl lg:text-lg text-neutral-950;
+		@apply decoration-0 font-medium py-1 px-2 text-left text-xl lg:text-lg text-neutral-950;
 	}
 
 	.pdap-nav-link-current {
-		@apply lg:outline-neutral-800 lg:outline text-neutral-950;
+		@apply lg:outline-wineneutral-800 lg:outline text-neutral-950;
 	}
 
 	.pdap-nav-link-current-exact {
