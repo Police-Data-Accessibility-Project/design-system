@@ -27,7 +27,7 @@
 			</template>
 			<template #not-found>
 				<span>
-					We don't have agencies in the place you're looking for. Is it spelled
+					We can't find the person you're looking for. Is their name spelled
 					correctly? If our database is missing something, please reach us at
 					<a href="mailto:contact@pdap.io">contact@pdap.io</a>
 				</span>
