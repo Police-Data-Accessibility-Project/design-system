@@ -1,4 +1,3 @@
-<!-- TODO: Once this component is sufficiently generic, move to design-system? -->
 <template>
 	<div
 		:id="wrapperId"
