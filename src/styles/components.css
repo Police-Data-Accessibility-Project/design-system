@@ -47,7 +47,7 @@
 
 	.pdap-input input,
 	.pdap-input textarea {
-		@apply bg-neutral-50 border-neutral-500 border-solid border-2 px-3 py-2 text-neutral-950 text-lg rounded-md;
+		@apply bg-neutral-50 border-goldneutral-500 border-solid border-2 px-3 py-2 text-neutral-950 text-lg rounded-sm;
 	}
 
 	.pdap-input input::placeholder,
@@ -62,7 +62,7 @@
 	.pdap-input textarea:focus-within,
 	.pdap-input textarea:focus-visible, 
 	.pdap-input-checkbox:has(input[type="checkbox"]:focus) {
-		@apply border-2 border-brand-gold-500 border-solid outline-none;
+		@apply border-2 border-brand-gold-300 border-solid outline-none;
 	}
 
 	.pdap-input label {
@@ -92,14 +92,14 @@
 	/* Input - checkbox and radio */
 	.pdap-input-checkbox,
 	.pdap-input-radio {
-		@apply border-2 border-transparent items-center py-1 px-2 w-auto rounded-md;
+		@apply border-2 border-transparent items-center py-1 px-2 w-auto rounded-sm;
 	}
 
 	.pdap-input-checkbox:has(input:checked),
 	.pdap-input-radio:has(input:checked),
 	.pdap-input-checkbox:has(input:checked):has(input[type="checkbox"]:focus),
 	.pdap-input-radio:has(input:checked):has(input[type="checkbox"]:focus) {
-		@apply border-2 border-brand-gold border-solid rounded-md;
+		@apply border-2 border-brand-gold-300 border-solid rounded-sm;
 	}
 
 	.pdap-input input[type='checkbox'], 
@@ -117,7 +117,7 @@
 
 	.pdap-input input[type='checkbox'] ~ label::before,
 	.pdap-input input[type='radio'] ~ label::before {
-		@apply block border-2 border-solid border-neutral-800 h-6 w-6 content-['']; 
+		@apply block border-2 border-solid border-goldneutral-800 h-6 w-6 content-['']; 
 	}
 
 	.pdap-input input[type='checkbox'] ~ label::before {

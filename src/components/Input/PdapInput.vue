@@ -56,7 +56,7 @@ const errorMessageId = computed(() => `pdap-${props.name}-input-error`);
 }
 
 .pdap-input input {
-	@apply dark:bg-neutral-950 border border-neutral-500 border-solid px-3 py-2 text-[rgba(0,0,0)];
+	@apply dark:bg-neutral-950 border border-goldneutral-500 border-solid px-3 py-2 text-[rgba(0,0,0)];
 }
 
 .pdap-input input::placeholder {
@@ -102,7 +102,7 @@ const errorMessageId = computed(() => `pdap-${props.name}-input-error`);
 }
 
 .pdap-input-checkbox-checked {
-	@apply border-2 border-brand-gold border-solid rounded-md;
+	@apply border-2 border-brand-gold border-solid rounded-sm;
 }
 
 .pdap-input input[type='checkbox'] {

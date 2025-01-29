@@ -1,6 +1,6 @@
 <template>
 	<footer
-		class="bg-brand-wine text-wineneutral-50 dark:text-wineneutral-950 flex flex-col justify-center lg:flex-row gap-4 xl:gap-12 p-2 lg:p-2 lg:px-8 relative lg:sticky lg:bottom-0 text-med xl:text-xl"
+		class="bg-brand-wine text-wineneutral-50 dark:text-wineneutral-950 flex flex-col justify-center lg:flex-row gap-4 xl:gap-12 p-2 md:p-3 relative lg:sticky lg:bottom-0 text-med xl:text-xl"
 	>
 		<!-- LINKS -->
 		<ul
@@ -73,6 +73,7 @@ import {
 	faInbox,
 	faBook,
 	faEnvelope,
+	faArrowsToDot,
 } from '@fortawesome/free-solid-svg-icons';
 
 const iconMap = new Map<FooterIconName, IconDefinition>([
@@ -82,6 +83,7 @@ const iconMap = new Map<FooterIconName, IconDefinition>([
 	[FOOTER_LINK_ICONS.JOBS, faSmile],
 	[FOOTER_LINK_ICONS.NEWSLETTER, faInbox],
 	[FOOTER_LINK_ICONS.DOCS, faBook],
+	[FOOTER_LINK_ICONS.PUBLISH, faArrowsToDot],
 ]);
 
 const links = inject<PdapFooterSocialLinks[]>('footerLinks', [
