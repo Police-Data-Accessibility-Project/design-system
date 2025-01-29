@@ -85,7 +85,8 @@ import { PdapAsyncTypeaheadProps } from './types';
 /* Props and emits */
 const props = withDefaults(defineProps<PdapAsyncTypeaheadProps<T>>(), {
 	placeholder: '',
-	formatItemForDisplay: (item: T) => JSON.stringify(item),
+	formatItemForDisplay: (item: T) =>
+		typeof item === 'string' ? item : JSON.stringify(item),
 });
 const emit = defineEmits(['onInput', 'onFocus', 'onBlur', 'selectItem']);
 

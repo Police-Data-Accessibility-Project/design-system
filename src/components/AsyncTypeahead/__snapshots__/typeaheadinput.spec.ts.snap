@@ -34,16 +34,24 @@ exports[`TypeaheadInput > focuses input on arrow up from first list item 1`] = `
   <input autocomplete="off" class="pdap-typeahead-input" id placeholder type="text">
   <ul class="pdap-typeahead-list">
     <li class="pdap-typeahead-list-item" role="button" tabindex="0">
-      <span>"<strong>Lev</strong>antine"</span>
+      <span>
+        <strong>Lev</strong>antine
+      </span>
     </li>
     <li class="pdap-typeahead-list-item" role="button" tabindex="0">
-      <span>"<strong>Lev</strong>iathan"</span>
+      <span>
+        <strong>Lev</strong>iathan
+      </span>
     </li>
     <li class="pdap-typeahead-list-item" role="button" tabindex="0">
-      <span>"<strong>Lev</strong>i"</span>
+      <span>
+        <strong>Lev</strong>i
+      </span>
     </li>
     <li class="pdap-typeahead-list-item" role="button" tabindex="0">
-      <span>"<strong>Lev</strong>ant"</span>
+      <span>
+        <strong>Lev</strong>ant
+      </span>
     </li>
   </ul>
 </div>
@@ -56,16 +64,24 @@ exports[`TypeaheadInput > focuses next list item on arrow down 1`] = `
   <input autocomplete="off" class="pdap-typeahead-input" id placeholder type="text">
   <ul class="pdap-typeahead-list">
     <li class="pdap-typeahead-list-item" role="button" tabindex="0">
-      <span>"<strong>Lev</strong>antine"</span>
+      <span>
+        <strong>Lev</strong>antine
+      </span>
     </li>
     <li class="pdap-typeahead-list-item" role="button" tabindex="0">
-      <span>"<strong>Lev</strong>iathan"</span>
+      <span>
+        <strong>Lev</strong>iathan
+      </span>
     </li>
     <li class="pdap-typeahead-list-item" role="button" tabindex="0">
-      <span>"<strong>Lev</strong>i"</span>
+      <span>
+        <strong>Lev</strong>i
+      </span>
     </li>
     <li class="pdap-typeahead-list-item" role="button" tabindex="0">
-      <span>"<strong>Lev</strong>ant"</span>
+      <span>
+        <strong>Lev</strong>ant
+      </span>
     </li>
   </ul>
 </div>
@@ -78,16 +94,24 @@ exports[`TypeaheadInput > focuses previous list item on arrow up 1`] = `
   <input autocomplete="off" class="pdap-typeahead-input" id placeholder type="text">
   <ul class="pdap-typeahead-list">
     <li class="pdap-typeahead-list-item" role="button" tabindex="0">
-      <span>"<strong>Lev</strong>antine"</span>
+      <span>
+        <strong>Lev</strong>antine
+      </span>
     </li>
     <li class="pdap-typeahead-list-item" role="button" tabindex="0">
-      <span>"<strong>Lev</strong>iathan"</span>
+      <span>
+        <strong>Lev</strong>iathan
+      </span>
     </li>
     <li class="pdap-typeahead-list-item" role="button" tabindex="0">
-      <span>"<strong>Lev</strong>i"</span>
+      <span>
+        <strong>Lev</strong>i
+      </span>
     </li>
     <li class="pdap-typeahead-list-item" role="button" tabindex="0">
-      <span>"<strong>Lev</strong>ant"</span>
+      <span>
+        <strong>Lev</strong>ant
+      </span>
     </li>
   </ul>
 </div>
