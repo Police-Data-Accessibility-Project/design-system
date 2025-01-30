@@ -51,40 +51,27 @@ describe('Header component', () => {
 	});
 
 	// Props
-	// Props - logo src
-	test('Renders header with default logo src', () => {
-		const wrapper = mount(PdapHeader, base);
-		expect(wrapper.props().logoImageSrc).toBe('/src/assets/lockup.svg');
-	});
-
-	test('Renders header with custom logo src', () => {
-		const wrapper = mount(PdapHeader, {
-			...base,
-			props: { logoImageSrc: 'test' },
-		});
-		expect(wrapper.props().logoImageSrc).toBe('test');
-	});
 
 	// Props - anchor path
 	test('Renders header with default logo anchor path', () => {
 		const wrapper = mount(PdapHeader, base);
-		expect(wrapper.props().logoImageAnchorPath).toBe('/');
+		expect(wrapper.props().logoAnchorPath).toBe('/');
 	});
 
 	test('Renders header with custom logo anchor path', () => {
 		const wrapper = mount(PdapHeader, {
 			...base,
-			props: { logoImageAnchorPath: '/test' },
+			props: { logoAnchorPath: '/test' },
 		});
-		expect(wrapper.props().logoImageAnchorPath).toBe('/test');
+		expect(wrapper.props().logoAnchorPath).toBe('/test');
 	});
 
 	test('Renders header with custom logo anchor href', () => {
 		const wrapper = mount(PdapHeader, {
 			...base,
-			props: { logoImageAnchorPath: 'www.test.com' },
+			props: { logoAnchorPath: 'www.test.com' },
 		});
-		expect(wrapper.props().logoImageAnchorPath).toBe('www.test.com');
+		expect(wrapper.props().logoAnchorPath).toBe('www.test.com');
 	});
 
 	test('Header is unmounted from the DOM', async () => {

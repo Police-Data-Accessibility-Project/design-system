@@ -66,11 +66,11 @@ onErrorCaptured((err, vm, info) => {
  *
  * <template>
  * 	<AuthWrapper>
- * 		<Header :logo-image-src="lockup" />
+ * 		<Header />
  * 		<ErrorBoundary component="main">
  * 			<router-view />
  * 		</ErrorBoundary>
- * 		<Footer :logo-image-src="acronym" />
+ * 		<Footer />
  * 	</AuthWrapper>
  * </template>
  *

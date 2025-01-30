@@ -2,8 +2,6 @@
 import { Header, Footer } from '../components';
 import { provide } from 'vue';
 import { RouterView } from 'vue-router';
-// import acronym from '';
-// import lockup from 'pdap-design-system/images/lockup.svg';
 
 const links = [
 	{
@@ -45,5 +43,5 @@ provide('navLinks', links);
 <template>
 	<Header />
 	<RouterView />
-	<Footer :fundraising-data="{ raised: 1000, goal: 5000 }" />
+	<Footer />
 </template>

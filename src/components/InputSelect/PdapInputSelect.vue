@@ -322,11 +322,11 @@ watch(
 
 @layer components {
 	.pdap-custom-select {
-		@apply relative w-full bg-neutral-50 border-2 border-solid border-neutral-500 cursor-pointer text-lg rounded-md;
+		@apply relative w-full bg-neutral-50 border-2 border-solid border-goldneutral-500 cursor-pointer text-lg rounded-sm;
 	}
 
 	.pdap-custom-select-options {
-		@apply absolute top-[115%] left-[-2px] w-[calc(100%+4px)] bg-neutral-50 border-solid border border-neutral-500 max-h-48 overflow-y-auto z-20 p-1;
+		@apply absolute top-[115%] left-[-2px] w-[calc(100%+4px)] bg-neutral-50 border-solid border border-goldneutral-500 max-h-48 overflow-y-auto z-20 p-1;
 	}
 
 	.pdap-custom-select-option {
@@ -336,12 +336,12 @@ watch(
 	.pdap-custom-select:focus,
 	.pdap-custom-select-option:hover,
 	.pdap-custom-select-option:focus {
-		@apply border-2 border-brand-gold-500 border-solid outline-none;
+		@apply border-2 border-brand-gold-300 border-solid outline-none;
 	}
 
 	.pdap-custom-select-option:hover,
 	.pdap-custom-select-option:focus {
-		@apply bg-neutral-200;
+		@apply bg-goldneutral-200;
 	}
 
 	.pdap-custom-select input {

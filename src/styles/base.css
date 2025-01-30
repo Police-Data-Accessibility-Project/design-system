@@ -20,7 +20,7 @@
 	}
 
 	main {
-		@apply p-8;
+		@apply p-2 md:p-4 lg:p-8;
 	}
 
 	/* Images */
@@ -76,12 +76,12 @@
 	}
 
 	h2 {
-		@apply font-bold mb-4 mt-8 text-2xl;
+		@apply font-semibold mb-4 mt-8 text-2xl;
 		@apply md:text-4xl;
 	}
 
 	h3 {
-		@apply font-extrabold mb-2 mt-8 text-med tracking-[.1em] uppercase;
+		@apply font-bold mb-2 mt-8 text-med tracking-[.1em] uppercase;
 		@apply md:text-lg;
 	}
 
@@ -151,7 +151,7 @@ button:focus,
 button:focus-visible,
 [role="button"]:focus,
 [role="button"]:focus-visible {
-		@apply border-2 border-brand-gold-500 border-solid outline-none;
+		@apply border-2 border-brand-gold-300 border-solid outline-none;
 	}
 
 }
