@@ -229,12 +229,12 @@ defineExpose({
 }
 
 .pdap-typeahead-input {
-	@apply rounded-md;
+	@apply rounded-sm;
 }
 
 .pdap-typeahead-input,
 .pdap-typeahead-list {
-	@apply bg-neutral-50 border-2 border-neutral-500 border-solid p-2 text-neutral-950;
+	@apply bg-neutral-50 border-2 border-brand-gold-300 border-solid p-2 text-neutral-950;
 }
 
 .pdap-typeahead-input::placeholder {
@@ -244,7 +244,7 @@ defineExpose({
 .pdap-typeahead-input:focus,
 .pdap-typeahead-input:focus-within,
 .pdap-typeahead-input:focus-visible {
-	@apply border-2 border-brand-gold border-solid outline-none;
+	@apply border-2 border-brand-gold-300 border-solid outline-none;
 }
 
 .pdap-typeahead-list {

@@ -141,6 +141,6 @@ div[role='gridcell'] {
 div[role='gridcell']:hover,
 div[role='gridcell']:focus,
 div[role='gridcell']:focus-visible {
-	@apply border-2 border-brand-gold-500 border-solid outline-none;
+	@apply border-2 border-brand-gold-300 border-solid outline-none;
 }
 </style>

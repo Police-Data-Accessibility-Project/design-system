@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Footer component > Renders a footer 1`] = `
-<footer class="bg-brand-wine text-wineneutral-50 dark:text-wineneutral-950 flex flex-col justify-center lg:flex-row gap-4 xl:gap-12 p-2 lg:p-2 lg:px-8 relative lg:sticky lg:bottom-0 text-med xl:text-xl">
+<footer class="bg-brand-wine text-wineneutral-50 dark:text-wineneutral-950 flex flex-col justify-center lg:flex-row gap-4 xl:gap-12 p-2 md:p-3 relative lg:sticky lg:bottom-0 text-med xl:text-xl">
   <!-- LINKS -->
   <ul class="grid grid-cols-2 gap-2 md:grid-cols-[auto_auto_auto] lg:w-max lg:gap-x-3 xl:gap-x-4">
     <li class="w-max">
@@ -53,11 +53,12 @@ exports[`Footer component > Renders a footer 1`] = `
       <!--v-if-->
     </li>
   </ul><!-- COPYRIGHT AND TRANSPARENCY -->
-  <div class="flex gap-4 justify-between text-lg lg:justify-start lg:items-center lg:ml-auto">
-    <p class="lg:max-w-[325px] lg:text-right xl:max-w-[375px]"> © 2025 Police Data Accessibility Project is a non-profit. EIN: 85-4207132. </p><!-- Widget / logo links -->
-    <a href="https://www.guidestar.org/profile/85-4207132" rel="noreferrer" target="_blank">
-      <img alt="platinum transparency" class="w-14 h-14" src="https://widgets.guidestar.org/gximage2?o=9973356&amp;l=v4">
+  <div class="flex flex-col md:flex-row-reverse gap-4 justify-between text-med lg:justify-start lg:items-center lg:ml-auto">
+    <!-- Widget / logo links -->
+    <a href="https://www.guidestar.org/profile/shared/2ca08a66-da60-4a83-a4c2-c9ddadbc416d" rel="noreferrer" target="_blank">
+      <img alt="guidestar transparency seal" class="w-14 h-14 overflow-hidden" src="/src/assets/candid-platinum.svg">
     </a>
+    <p class="lg:max-w-[325px] lg:text-right xl:max-w-[375px]"> © 2025 Police Data Accessibility Project is a non-profit. EIN: 85-4207132. </p>
   </div>
 </footer>
 `;

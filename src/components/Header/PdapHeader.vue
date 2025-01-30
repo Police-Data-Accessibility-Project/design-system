@@ -69,12 +69,12 @@ export default {
 
 <style>
 .pdap-header {
-	@apply dark:bg-brand-wine-800 relative bg-neutral-50 flex justify-between p-4 md:p-4 w-full z-50;
+	@apply dark:bg-brand-wine-800 relative bg-neutral-50 flex justify-between p-2 md:p-3  w-full z-50;
 }
 
 .logo {
-	@apply decoration-0 relative max-w-[80%] text-xl font-bold px-2 py-1;
-	@apply outline outline-wineneutral-500 text-brand-wine-400 dark:outline-wineneutral-500 dark:text-brand-wine-50;
+	@apply decoration-0 relative max-w-[80%] text-xl font-bold px-3 py-1.5;
+	@apply border-2 border-wineneutral-500 text-brand-wine-400 dark:border-wineneutral-500 dark:text-brand-wine-50;
 	@apply lg:text-lg;
 	@apply xs:max-w-none;
 }

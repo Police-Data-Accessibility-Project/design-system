@@ -8,4 +8,5 @@ export const FOOTER_LINK_ICONS = {
 	NEWSLETTER: 'newsletter',
 	DOCS: 'docs',
 	EMAIL: 'email',
+	PUBLISH: 'publish',
 } as const;

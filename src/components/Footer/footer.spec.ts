@@ -59,11 +59,11 @@ test('Renders EIN number', () => {
 
 test('Renders Guidestar badge', () => {
 	const wrapper = mount(PdapFooter, base);
-	const guidestarImg = wrapper.find('img[alt="platinum transparency"]');
+	const guidestarImg = wrapper.find('img[alt="guidestar transparency seal"]');
 
 	expect(guidestarImg.exists()).toBe(true);
 	expect(guidestarImg.attributes('src')).toBe(
-		'https://widgets.guidestar.org/gximage2?o=9973356&l=v4'
+		'/src/assets/candid-platinum.svg'
 	);
 });
 
