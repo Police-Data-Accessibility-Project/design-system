@@ -75,7 +75,7 @@ export default {
 
 <style>
 .pdap-header {
-	@apply dark:bg-neutral-300 relative bg-neutral-50 flex justify-between p-4 md:p-6 w-full z-50;
+	@apply dark:bg-brand-wine-800 relative bg-neutral-50 flex flex-row items-center justify-between p-2 md:p-3  w-full z-50;
 }
 
 .logo {
