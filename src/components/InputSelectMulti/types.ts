@@ -10,9 +10,4 @@ export interface PdapInputSelectProps {
 	placeholder?: string;
 	position?: 'top' | 'bottom';
 	options: PdapSelectOption[];
-	combobox?: boolean;
-	filter?: (
-		searchText: string,
-		options: PdapSelectOption[]
-	) => PdapSelectOption[];
 }

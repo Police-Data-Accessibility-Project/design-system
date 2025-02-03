@@ -1,5 +1,5 @@
-# InputSelect
-Accessible, flexible custom select component.
+# InputSelectMulti
+Accessible, flexible custom multi-select component.
 
 _Note: Only works with `FormV2`. The `FormV1` schema system is not set up to handle this input._
 
@@ -36,7 +36,7 @@ _Note: Only works with `FormV2`. The `FormV1` schema system is not set up to han
   >
   <!-- Other inputs... -->
 
-    <InputSelect
+    <InputSelectMulti
     :id="INPUT_SELECT_NAME"
     :name="INPUT_SELECT_NAME"
     :options="ICE_CREAM_FLAVORS"
@@ -45,7 +45,7 @@ _Note: Only works with `FormV2`. The `FormV1` schema system is not set up to han
       <template #label>
         <h4>What is your favorite flavor?</h4>
       </template>
-    </InputSelect>
+    </InputSelectMulti>
   </FormV2>
 </template>
 

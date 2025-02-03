@@ -27,23 +27,15 @@
 			@click="handleClick"
 			@keydown="handleKeyDown"
 		>
-			<input
-				v-if="combobox"
-				ref="inputRef"
-				v-model="searchText"
-				aria-label="Search from the available options"
-				type="text"
-				:placeholder="selectedOption ? selectedOption.label : placeholder"
-				class="selected-value"
-				@focus="isOpen = true"
-			/>
-
 			<div
-				v-if="!combobox"
 				class="selected-value"
-				:class="{ 'value-is-placeholder': !selectedOption }"
+				:class="{ 'value-is-placeholder': !selectedOptions?.length }"
 			>
-				{{ selectedOption ? selectedOption.label : placeholder }}
+				{{
+					selectedOptions?.length
+						? selectedOptions?.map((opt) => opt.label).join(', ')
+						: placeholder
+				}}
 			</div>
 			<div
 				class="arrow"
@@ -56,9 +48,7 @@
 				:class="{ [position]: true }"
 				role="listbox"
 				:tabindex="-1"
-				:aria-activedescendant="
-					optionIds.get(focusedOptionIndex) ?? selectedOption?.label
-				"
+				:aria-activedescendant="optionIds?.get(focusedOptionIndex) ?? undefined"
 			>
 				<li
 					v-for="(option, index) in filteredOptions"
@@ -66,9 +56,16 @@
 					:key="option.value + '_select-option'"
 					:ref="(el) => setOptionRef(el as HTMLLIElement, index)"
 					class="pdap-custom-select-option"
-					:class="{ selected: focusedOptionIndex === index }"
+					:class="{
+						selected:
+							focusedOptionIndex === index ||
+							selectedOptions.findIndex(({ value }) => value === option.value) >
+								-1,
+					}"
 					role="option"
-					:aria-selected="option.value === selectedOption?.value"
+					:aria-selected="
+						selectedOptions?.some(({ value }) => value === option.value)
+					"
 					tabindex="0"
 					@click.stop="selectOption(option)"
 					@keydown.enter.stop="selectOption(option)"
@@ -92,18 +89,11 @@ import { provideKey } from '../FormV2/util';
 import { vOnClickOutside } from '../../directives';
 import _isEqual from 'lodash/isEqual';
 
-const { name, options, id, label, combobox, position, filter } = withDefaults(
+const { name, options, id, label, position } = withDefaults(
 	defineProps<PdapInputSelectProps>(),
 	{
-		combobox: false,
-		placeholder: 'Select an option',
+		placeholder: 'Select options',
 		position: 'bottom',
-		filter: (searchText, options) => {
-			if (!searchText) return options;
-			return options.filter((option) =>
-				option.label.toLowerCase().includes(searchText.toLowerCase())
-			);
-		},
 	}
 );
 const emit = defineEmits(['change']);
@@ -113,18 +103,14 @@ if (!slots.label && !label)
 		'All form inputs must have a label, passed as a slot or a prop'
 	);
 
-const { setValues, values, v$ } = inject<PdapFormProvideV2>(provideKey)!;
+const { setValues, v$ } = inject<PdapFormProvideV2>(provideKey)!;
 
 const isOpen = ref(false);
-const selectedOption = ref<Option | null>(null);
+const selectedOptions = ref<Option[]>([]);
 const focusedOptionIndex = ref(-1);
 const optionRefs = ref<Map<number, HTMLLIElement>>(new Map());
 const selectRef = ref();
-const inputRef = ref();
-const searchText = ref('');
-const filteredOptions = computed(() => {
-	return combobox ? filter(searchText.value, options) : options;
-});
+const filteredOptions = computed(() => options);
 
 const optionIds = computed(() => {
 	return new Map(
@@ -143,16 +129,24 @@ function toggleOpen() {
 function closeAndReturnFocus() {
 	if (isOpen.value) {
 		isOpen.value = false;
-		if (combobox) inputRef.value.focus();
-		else selectRef.value.focus();
+		selectRef.value.focus();
 		focusedOptionIndex.value = -1;
 	}
 }
 
 function selectOption(option: Option) {
-	selectedOption.value = option;
-	searchText.value = option.label;
-	isOpen.value = false;
+	const index = selectedOptions.value.findIndex(
+		(opt) => opt.value === option.value
+	);
+	if (index >= 0) {
+		// Remove if already selected
+		selectedOptions.value = selectedOptions.value.filter(
+			(opt) => opt.value !== option.value
+		);
+	} else {
+		// Add new selection
+		selectedOptions.value = [...selectedOptions.value, option];
+	}
 }
 
 function setOptionRef(el: HTMLLIElement | null, index: number) {
@@ -171,32 +165,14 @@ function focusOption(index: number) {
 }
 
 function handleClick() {
-	if (combobox) inputRef.value.focus();
-	else toggleOpen();
+	toggleOpen();
 }
 
 function handleKeyDown(event: KeyboardEvent) {
 	if (event.key === 'Tab') {
 		if (_isEqual(event.target, selectRef.value)) {
-			if (combobox && isOpen.value) isOpen.value = !isOpen.value;
+			if (isOpen.value) isOpen.value = !isOpen.value;
 		}
-		// 	if (
-		// 		!event.shiftKey &&
-		// 		focusedOptionIndex.value === filteredOptions.value.length - 1
-		// 	) {
-		// 		event.preventDefault();
-		// 		return;
-		// 	}
-
-		// 	if (event.shiftKey && focusedOptionIndex.value === 0) {
-		// 		event.preventDefault();
-		// 		closeAndReturnFocus();
-		// 	} else {
-		// 		event.preventDefault();
-		// 		focusedOptionIndex.value = focusedOptionIndex.value - 1;
-		// 	}
-
-		// 	return;
 	}
 
 	if (!isOpen.value) {
@@ -231,8 +207,7 @@ function handleKeyDown(event: KeyboardEvent) {
 			break;
 		case 'Escape':
 			event.preventDefault();
-			if (combobox) isOpen.value = false;
-			else closeAndReturnFocus();
+			closeAndReturnFocus();
 			break;
 		default:
 			break;
@@ -240,14 +215,14 @@ function handleKeyDown(event: KeyboardEvent) {
 }
 
 watch(
-	() => selectedOption.value,
+	() => selectedOptions.value,
 	(newSelected) => {
-		// Update form values when state changes.
 		if (newSelected) {
 			emit('change', newSelected);
 			const event = new Event('input', { bubbles: true, cancelable: true });
 			selectRef.value.dispatchEvent(event);
-			setValues({ [name]: newSelected.value });
+			// Store array of values instead of single value
+			setValues({ [name]: newSelected.map((opt) => opt.value) });
 		}
 	}
 );
@@ -267,58 +242,6 @@ watch(
 		} else focusedOptionIndex.value = 0;
 	}
 );
-
-watch(
-	() => isOpen.value,
-	(isNowOpen) => {
-		// If not the combobox, find selected option and focus it on menu open.
-		if (isNowOpen && selectedOption.value && !combobox) {
-			const selected = filteredOptions.value.find(
-				(opt) => opt.value === selectedOption?.value?.value
-			);
-			if (!selected) return;
-			const index = options.indexOf(selected);
-			focusedOptionIndex.value = index;
-		}
-	}
-);
-
-watch(
-	// Welcome to the land of edge-cases.
-	() => values.value,
-	// In the (unlikely, unrecommended, but sometimes unfortunately necessary) event of form values changing upstream from a parent component:
-	(formValuesUpdated) => {
-		// Case 0: Values are equivalent, or the change was made here, do nothing.
-
-		/*
-		 * Case 1: Value does not exist in form values object, meaning either:
-		 ** a. it has not been set by the upstream change, or
-		 ** b. has been changed to an empty string by `Form` after submit event
-		 ** In either case, clear state or keep it clear
-		 */
-		if (!formValuesUpdated[name]) selectedOption.value = null;
-
-		// Case 2 (rare): value has been programmatically updated upstream of `Form`, handle either:
-		if (formValuesUpdated[name] !== selectedOption?.value)
-			selectedOption.value =
-				// a. changed value exists as an option, we override state, or
-				filteredOptions.value.find(
-					(opt) => opt.value === formValuesUpdated[name]
-				) ??
-				// b. changed value does not exist as an option, keep state value.
-				selectedOption.value;
-	}
-);
-
-watch(
-	() => searchText.value,
-	(newValue) => {
-		if (newValue.length <= 1) {
-			selectedOption.value = null;
-			focusedOptionIndex.value = -1;
-		}
-	}
-);
 </script>
 
 <style>
@@ -330,7 +253,7 @@ watch(
 	}
 
 	.pdap-custom-select-options {
-		@apply absolute left-[-2px] w-[calc(100%+4px)] bg-neutral-50 border-solid border border-goldneutral-500 max-h-48 overflow-y-auto z-20 p-1;
+		@apply absolute top-[115%] left-[-2px] w-[calc(100%+4px)] bg-neutral-50 border-solid border border-goldneutral-500 max-h-48 overflow-y-auto z-20 p-1;
 	}
 
 	.pdap-custom-select-options.bottom {
@@ -338,7 +261,7 @@ watch(
 	}
 
 	.pdap-custom-select-options.top {
-		@apply top-[unset] bottom-[15%];
+		@apply top-[calc(-12rem-15%)];
 	}
 
 	.pdap-custom-select-option {
@@ -347,7 +270,8 @@ watch(
 
 	.pdap-custom-select:focus,
 	.pdap-custom-select-option:hover,
-	.pdap-custom-select-option:focus {
+	.pdap-custom-select-option:focus,
+	.selected {
 		@apply border-2 border-brand-gold-300 border-solid outline-none;
 	}
 
@@ -363,6 +287,10 @@ watch(
 	.pdap-custom-select input:focus {
 		@apply outline-none;
 	}
+}
+
+.selected {
+	@apply bg-goldneutral-200;
 }
 
 .selected-value {

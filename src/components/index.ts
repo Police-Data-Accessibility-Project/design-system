@@ -10,6 +10,7 @@ export { InputPassword } from './InputPassword';
 export { InputRadio } from './InputRadio';
 export { RadioGroup } from './InputRadioGroup';
 export { InputSelect } from './InputSelect';
+export { InputSelectMulti } from './InputSelectMulti';
 export { InputText } from './InputText';
 export { InputTextArea } from './InputTextArea';
 export { Header } from './Header';
