@@ -1,4 +1,5 @@
 <template>
+	<div>foo</div>
 	<main>
 		<FormV2
 			id="form-id"
@@ -53,6 +54,24 @@
 				</template>
 			</InputSelect>
 
+			<InputSelectMulti
+				:id="INPUT_SELECT_MULTI_NAME"
+				:name="INPUT_SELECT_MULTI_NAME"
+				:options="ICE_CREAM_FLAVORS"
+				placeholder="Select flavor"
+				@change="(value) => console.log({ value })"
+			>
+				<template #label>
+					<h4>What are your favorite flavors (multi-select)?</h4>
+				</template>
+				<template #error>
+					<p class="p-2">
+						Custom error slot with
+						<a class="text-wineneutral-50" href="#">a link</a>
+					</p>
+				</template>
+			</InputSelectMulti>
+
 			<RadioGroup :name="INPUT_RADIO_GROUP_NAME">
 				<h4 class="text-lg">
 					Select another flavor, with radio buttons this time!
@@ -97,10 +116,18 @@ import { InputText } from '../../components/InputText';
 import { InputCheckbox } from '../../components/InputCheckbox';
 import { InputPassword } from '../../components/InputPassword';
 import { InputSelect } from '../../components/InputSelect';
+import InputSelectMulti from '../../components/InputSelectMulti/PdapInputSelectMulti.vue';
 import { InputRadio } from '../../components/InputRadio';
 import { RadioGroup } from '../../components/InputRadioGroup';
 import { InputDatePicker } from '../../components/InputDatePicker';
 import PdapInputTextArea from '../../components/InputTextArea/PdapInputTextArea.vue';
+
+import { defineComponent } from 'vue';
+defineComponent({
+	name: 'FormV2Demo',
+});
+
+console.log('mounting FormV2Demo');
 
 const INPUT_CHECKBOX_NAME = 'ice-cream';
 const INPUT_TEXT_PLACEHOLDER = 'Paul';
@@ -108,6 +135,7 @@ const INPUT_TEXT_NAME = 'first-name';
 const INPUT_DATE_NAME = 'date';
 const INPUT_PASSWORD_NAME = 'password';
 const INPUT_SELECT_NAME = 'flavors';
+const INPUT_SELECT_MULTI_NAME = 'flavors_multi';
 const INPUT_RADIO_GROUP_NAME = 'flavors_2';
 const INPUT_TEXT_AREA_NAME = 'notes';
 
@@ -163,6 +191,18 @@ const SCHEMA = [
 	{
 		name: INPUT_SELECT_NAME,
 		validators: {
+			required: {
+				message: 'Please select your favorite flavor of ice cream.',
+			},
+		},
+	},
+	{
+		name: INPUT_SELECT_MULTI_NAME,
+		validators: {
+			custom: {
+				predicate: (s: []) => s.length,
+				message: 'Please select at least two flavors of ice cream.',
+			},
 			required: {
 				message: 'Please select your favorite flavor of ice cream.',
 			},
