@@ -13,6 +13,7 @@
 - [InputDatePicker](../src/components/InputDatePicker//README.md)
 - [InputRadio](../src/components/InputRadio//README.md)
 - [InputSelect](../src/components/InputSelect//README.md)
+- [InputSelectMulti](../src/components/InputSelectMulti//README.md)
 - [Nav](../src/components/Nav//README.md)
 - [QuickSearchForm](../src/components/QuickSearchForm//README.md)
 - [Spinner](../src/components/Spinner//README.md)
