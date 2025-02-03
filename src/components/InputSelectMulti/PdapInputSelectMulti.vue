@@ -37,11 +37,15 @@
 						: placeholder
 				}}
 			</div>
-			<div class="arrow" :class="{ open: isOpen }" />
+			<div
+				class="arrow"
+				:class="{ open: isOpen, swapped: position === 'top' }"
+			/>
 			<ul
 				v-show="isOpen"
 				ref="listRef"
 				class="pdap-custom-select-options"
+				:class="{ [position]: true }"
 				role="listbox"
 				:tabindex="-1"
 				:aria-activedescendant="optionIds?.get(focusedOptionIndex) ?? undefined"
@@ -85,10 +89,11 @@ import { provideKey } from '../FormV2/util';
 import { vOnClickOutside } from '../../directives';
 import _isEqual from 'lodash/isEqual';
 
-const { name, options, id, label } = withDefaults(
+const { name, options, id, label, position } = withDefaults(
 	defineProps<PdapInputSelectProps>(),
 	{
 		placeholder: 'Select options',
+		position: 'bottom',
 	}
 );
 const emit = defineEmits(['change']);
@@ -251,6 +256,14 @@ watch(
 		@apply absolute top-[115%] left-[-2px] w-[calc(100%+4px)] bg-neutral-50 border-solid border border-goldneutral-500 max-h-48 overflow-y-auto z-20 p-1;
 	}
 
+	.pdap-custom-select-options.bottom {
+		@apply top-[115%];
+	}
+
+	.pdap-custom-select-options.top {
+		@apply top-[calc(-12rem-15%)];
+	}
+
 	.pdap-custom-select-option {
 		@apply text-neutral-950 p-2 w-full max-w-full cursor-pointer border-2 border-solid border-transparent;
 	}
@@ -292,7 +305,12 @@ watch(
 	@apply absolute top-1/2 right-3 w-0 h-0 border-l-8 border-r-8 border-t-8 border-solid border-x-transparent border-t-neutral-950 transition-transform;
 }
 
-.arrow.open {
+.arrow.open,
+.arrow.swapped {
 	@apply rotate-180;
+}
+
+.arrow.swapped.open {
+	@apply rotate-0;
 }
 </style>

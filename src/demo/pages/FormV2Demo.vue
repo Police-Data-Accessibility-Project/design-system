@@ -39,6 +39,7 @@
 				combobox
 				:name="INPUT_SELECT_NAME"
 				:options="ICE_CREAM_FLAVORS"
+				position="top"
 				placeholder="Select flavor"
 				@change="(value) => console.log({ value })"
 			>
@@ -59,6 +60,7 @@
 				:name="INPUT_SELECT_MULTI_NAME"
 				:options="ICE_CREAM_FLAVORS"
 				placeholder="Select flavor"
+				position="top"
 				@change="(value) => console.log({ value })"
 			>
 				<template #label>

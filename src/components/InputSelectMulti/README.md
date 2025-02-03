@@ -5,13 +5,14 @@ _Note: Only works with `FormV2`. The `FormV1` schema system is not set up to han
 
 ## Props
 
-| name          | required?                     | types                                   | description      | default            |
-| ------------- | ----------------------------- | --------------------------------------- | ---------------- | ------------------ |
-| `id`          | yes                           | `string`                                | id attr          |                    |
-| `label`       | yes, if label slot not passed | `string`                                | label content    |                    |
-| `name`        | yes                           | `string`                                | name attr        |                    |
-| `placeholder` | no                            | `string`                                | placeholder attr | "Select an option" |
-| `options`     | yes                           | `Array<{value: string; label: string}>` | options          |                    |
+| name          | required?                     | types                                   | description         | default            |
+| ------------- | ----------------------------- | --------------------------------------- | ------------------- | ------------------ |
+| `id`          | yes                           | `string`                                | id attr             |                    |
+| `label`       | yes, if label slot not passed | `string`                                | label content       |                    |
+| `name`        | yes                           | `string`                                | name attr           |                    |
+| `placeholder` | no                            | `string`                                | placeholder attr    | "Select an option" |
+| `position`    | no                            | `"top" \| "bottom"`                     | position of options | "bottom"           |
+| `options`     | yes                           | `Array<{value: string; label: string}>` | options             |                    |
 
 ## Slots
 

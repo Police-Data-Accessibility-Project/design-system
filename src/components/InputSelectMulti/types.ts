@@ -8,5 +8,6 @@ export interface PdapInputSelectProps {
 	label?: string;
 	name: string;
 	placeholder?: string;
+	position?: 'top' | 'bottom';
 	options: PdapSelectOption[];
 }
