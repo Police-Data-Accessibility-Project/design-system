@@ -182,20 +182,20 @@ export default {
 	}
 
 	.pdap-nav-link-container {
-		@apply align-top basis-[max-content] p-2 lg:p-0 inline-block list-none relative m-0;
+		@apply flex align-top basis-[max-content] p-2 lg:p-0 inline-block list-none relative m-0;
 		@apply lg:flex-shrink-0 lg:flex-grow;
 	}
 
 	.pdap-nav-link {
-		@apply decoration-0 font-medium py-1 px-2 text-left text-xl lg:text-lg text-neutral-950;
+		@apply decoration-0 font-medium py-1.5 px-3 text-left text-xl lg:text-lg text-wineneutral-950;
 	}
 
 	.pdap-nav-link-current {
-		@apply lg:outline-wineneutral-800 lg:outline text-neutral-950;
+		@apply lg:border-wineneutral-800 text-neutral-950;
 	}
 
 	.pdap-nav-link-current-exact {
-		@apply pdap-nav-link-current lg:outline-neutral-800;
+		@apply pdap-nav-link-current lg:border-wineneutral-800;
 	}
 
 	.pdap-nav-open-button {
