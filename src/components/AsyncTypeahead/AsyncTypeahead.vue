@@ -34,6 +34,7 @@
 			v-if="itemsToDisplay?.length && inputRef?.value"
 			data-test="typeahead-list"
 			class="pdap-typeahead-list"
+			:class="{ [`pdap-typeahead-list--${position}`]: true }"
 		>
 			<li
 				v-for="(item, index) in itemsToDisplay"
@@ -54,6 +55,7 @@
 		<ul
 			v-else-if="typeof itemsToDisplay === 'undefined' && input.length > 1"
 			class="pdap-typeahead-list"
+			:class="{ [`pdap-typeahead-list--${position}`]: true }"
 			data-test="typeahead-list-not-found"
 		>
 			<li class="max-w-[unset]">
@@ -87,6 +89,7 @@ const props = withDefaults(defineProps<PdapAsyncTypeaheadProps<T>>(), {
 	placeholder: '',
 	formatItemForDisplay: (item: T) =>
 		typeof item === 'string' ? item : JSON.stringify(item),
+	position: 'bottom', // Add this default
 });
 const emit = defineEmits(['onInput', 'onFocus', 'onBlur', 'selectItem']);
 
@@ -102,6 +105,7 @@ const isListOpen = computed(
 		(itemsToDisplay.value?.length && inputRef?.value?.value) ||
 		(typeof itemsToDisplay.value === 'undefined' && input.value.length > 1)
 );
+const position = computed(() => props.position);
 
 /* Lifecycle methods and listeners */
 onMounted(() => {
@@ -124,15 +128,15 @@ watch(
 
 /* Methods */
 function setInputPositionForList() {
-	document.documentElement.style.setProperty(
-		'--typeaheadBottom',
-		inputRef.value.offsetTop + inputRef.value.offsetHeight + 'px'
-	);
+	const inputElement = inputRef.value;
+
+	// Set the width regardless of position
 	document.documentElement.style.setProperty(
 		'--typeaheadListWidth',
-		inputRef.value.offsetWidth + 'px'
+		inputElement.offsetWidth + 'px'
 	);
 }
+
 function onInput(e: Event) {
 	emit('onInput', e);
 }
@@ -221,7 +225,7 @@ defineExpose({
 
 <style>
 .pdap-typeahead {
-	@apply leading-normal w-full flex flex-col;
+	@apply leading-normal w-full flex flex-col relative;
 }
 
 .pdap-typeahead label {
@@ -248,7 +252,15 @@ defineExpose({
 }
 
 .pdap-typeahead-list {
-	@apply absolute w-[var(--typeaheadListWidth)] top-[var(--typeaheadBottom)] z-50 overflow-scroll;
+	@apply absolute w-[var(--typeaheadListWidth)] z-50 overflow-scroll;
+}
+
+.pdap-typeahead-list--bottom {
+	@apply top-[calc(100%+2px)];
+}
+
+.pdap-typeahead-list--top {
+	@apply bottom-[calc(100%+2px)];
 }
 
 .pdap-typeahead-list-item {

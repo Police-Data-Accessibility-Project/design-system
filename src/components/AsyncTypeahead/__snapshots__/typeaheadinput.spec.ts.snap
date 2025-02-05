@@ -32,7 +32,7 @@ exports[`TypeaheadInput > focuses input on arrow up from first list item 1`] = `
   <!--v-if-->
   <!--v-if-->
   <input autocomplete="off" class="pdap-typeahead-input" id placeholder type="text">
-  <ul class="pdap-typeahead-list">
+  <ul class="pdap-typeahead-list pdap-typeahead-list--bottom">
     <li class="pdap-typeahead-list-item" role="button" tabindex="0">
       <span>
         <strong>Lev</strong>antine
@@ -62,7 +62,7 @@ exports[`TypeaheadInput > focuses next list item on arrow down 1`] = `
   <!--v-if-->
   <!--v-if-->
   <input autocomplete="off" class="pdap-typeahead-input" id placeholder type="text">
-  <ul class="pdap-typeahead-list">
+  <ul class="pdap-typeahead-list pdap-typeahead-list--bottom">
     <li class="pdap-typeahead-list-item" role="button" tabindex="0">
       <span>
         <strong>Lev</strong>antine
@@ -92,7 +92,7 @@ exports[`TypeaheadInput > focuses previous list item on arrow up 1`] = `
   <!--v-if-->
   <!--v-if-->
   <input autocomplete="off" class="pdap-typeahead-input" id placeholder type="text">
-  <ul class="pdap-typeahead-list">
+  <ul class="pdap-typeahead-list pdap-typeahead-list--bottom">
     <li class="pdap-typeahead-list-item" role="button" tabindex="0">
       <span>
         <strong>Lev</strong>antine

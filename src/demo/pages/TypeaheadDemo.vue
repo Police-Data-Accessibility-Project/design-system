@@ -1,38 +1,40 @@
 <template>
-	<main>
+	<main class="h-full w-full">
 		<h1>Typeahead test</h1>
-
-		<AsyncTypeahead
-			id="typeahead"
-			ref="typeaheadRef"
-			class="md:col-span-2"
-			:error="typeaheadError"
-			:format-item-for-display="getFullText"
-			:items="items"
-			placeholder="Search for a person"
-			@select-item="
-				(item) => {
-					if (item) {
-						selectedItems = [...selectedItems, item];
-						items = [];
+		<div class="h-full w-full flex items-center justify-center">
+			<AsyncTypeahead
+				id="typeahead"
+				ref="typeaheadRef"
+				class="md:col-span-2"
+				:error="typeaheadError"
+				:format-item-for-display="getFullText"
+				:items="items"
+				placeholder="Search for a person"
+				position="top"
+				@select-item="
+					(item) => {
+						if (item) {
+							selectedItems = [...selectedItems, item];
+							items = [];
+						}
 					}
-				}
-			"
-			@on-input="fetchTypeaheadResults"
-		>
-			<!-- Item to render passed as scoped slot -->
-			<template #item="item">
-				<span v-html="typeaheadRef?.boldMatchText(getFullText(item))" />
-				<span class="select">Select</span>
-			</template>
-			<template #not-found>
-				<span>
-					We can't find the person you're looking for. Is their name spelled
-					correctly? If our database is missing something, please reach us at
-					<a href="mailto:contact@pdap.io">contact@pdap.io</a>
-				</span>
-			</template>
-		</AsyncTypeahead>
+				"
+				@on-input="fetchTypeaheadResults"
+			>
+				<!-- Item to render passed as scoped slot -->
+				<template #item="item">
+					<span v-html="typeaheadRef?.boldMatchText(getFullText(item))" />
+					<span class="select">Select</span>
+				</template>
+				<template #not-found>
+					<span>
+						We can't find the person you're looking for. Is their name spelled
+						correctly? If our database is missing something, please reach us at
+						<a href="mailto:contact@pdap.io">contact@pdap.io</a>
+					</span>
+				</template>
+			</AsyncTypeahead>
+		</div>
 	</main>
 </template>
 
