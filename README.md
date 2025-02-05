@@ -6,7 +6,7 @@ _A `Vue` component library, styling system, and image asset repository for PDAP-
 
 [![Discord](https://img.shields.io/discord/828274060034965575?logo=discord&style=for-the-badge&color=blue)](https://discord.gg/vKhDv7nC8B)
 
-## Usage
+## Usage  
 
 1. Install the package
 
