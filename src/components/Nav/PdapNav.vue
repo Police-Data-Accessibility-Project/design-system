@@ -29,7 +29,7 @@
 		>
 			<li
 				v-for="link in links"
-				:key="link.text"
+				:key="link.text || link.path || link.href"
 				class="pdap-nav-link-container"
 			>
 				<a
@@ -39,8 +39,19 @@
 					target="_blank"
 					referrerpolicy="no-referrer"
 					@click="toggleIsExpanded"
-					>{{ link.text }}</a
 				>
+					<FontAwesomeIcon
+						v-if="link.icon && isIconDefinition(link.icon)"
+						:icon="link.icon"
+						class="pdap-nav-icon"
+					/>
+					<component
+						:is="link.icon"
+						v-else-if="link.icon"
+						class="pdap-nav-icon"
+					/>
+					<span v-if="link.text">{{ link.text }}</span>
+				</a>
 				<router-link
 					v-if="link.path"
 					active-class="pdap-nav-link-current"
@@ -49,7 +60,17 @@
 					:to="link.path"
 					@click="toggleIsExpanded"
 				>
-					{{ link.text }}
+					<FontAwesomeIcon
+						v-if="link.icon && isIconDefinition(link.icon)"
+						:icon="link.icon"
+						class="pdap-nav-icon"
+					/>
+					<component
+						:is="link.icon"
+						v-else-if="link.icon"
+						class="pdap-nav-icon"
+					/>
+					<span v-if="link.text">{{ link.text }}</span>
 				</router-link>
 			</li>
 		</nav>
@@ -59,6 +80,7 @@
 <script setup lang="ts">
 // Imports
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import type { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { faBars, faClose } from '@fortawesome/free-solid-svg-icons';
 import {
 	inject,
@@ -120,6 +142,10 @@ async function toggleIsExpanded() {
 		document.querySelector('body')?.classList.remove('lock-scroll');
 	}
 	await nextTick();
+}
+
+function isIconDefinition(icon: unknown): icon is IconDefinition {
+	return !!icon && typeof icon === 'object' && 'icon' in icon;
 }
 </script>
 
