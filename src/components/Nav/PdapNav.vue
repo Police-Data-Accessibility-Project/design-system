@@ -29,7 +29,7 @@
 		>
 			<li
 				v-for="link in links"
-				:key="link.text"
+				:key="link.text || link.path || link.href"
 				class="pdap-nav-link-container"
 			>
 				<a
@@ -39,8 +39,19 @@
 					target="_blank"
 					referrerpolicy="no-referrer"
 					@click="toggleIsExpanded"
-					>{{ link.text }}</a
 				>
+					<FontAwesomeIcon
+						v-if="link.icon && isIconDefinition(link.icon)"
+						:icon="link.icon"
+						class="pdap-nav-icon"
+					/>
+					<component
+						:is="link.icon"
+						v-else-if="link.icon"
+						class="pdap-nav-icon"
+					/>
+					<span v-if="link.text">{{ link.text }}</span>
+				</a>
 				<router-link
 					v-if="link.path"
 					active-class="pdap-nav-link-current"
@@ -49,7 +60,17 @@
 					:to="link.path"
 					@click="toggleIsExpanded"
 				>
-					{{ link.text }}
+					<FontAwesomeIcon
+						v-if="link.icon && isIconDefinition(link.icon)"
+						:icon="link.icon"
+						class="pdap-nav-icon"
+					/>
+					<component
+						:is="link.icon"
+						v-else-if="link.icon"
+						class="pdap-nav-icon"
+					/>
+					<span v-if="link.text">{{ link.text }}</span>
 				</router-link>
 			</li>
 		</nav>
@@ -59,6 +80,7 @@
 <script setup lang="ts">
 // Imports
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import type { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { faBars, faClose } from '@fortawesome/free-solid-svg-icons';
 import {
 	inject,
@@ -121,6 +143,10 @@ async function toggleIsExpanded() {
 	}
 	await nextTick();
 }
+
+function isIconDefinition(icon: unknown): icon is IconDefinition {
+	return !!icon && typeof icon === 'object' && 'icon' in icon;
+}
 </script>
 
 <script lang="ts">
@@ -182,20 +208,20 @@ export default {
 	}
 
 	.pdap-nav-link-container {
-		@apply align-top basis-[max-content] p-2 lg:p-0 inline-block list-none relative m-0;
+		@apply flex align-top basis-[max-content] p-2 lg:p-0 inline-block list-none relative m-0;
 		@apply lg:flex-shrink-0 lg:flex-grow;
 	}
 
 	.pdap-nav-link {
-		@apply decoration-0 font-medium p-2 text-left text-xl lg:text-lg text-neutral-950;
+		@apply decoration-0 font-medium py-1.5 px-3 text-left text-xl lg:text-lg text-wineneutral-950;
 	}
 
 	.pdap-nav-link-current {
-		@apply lg:outline-neutral-800 lg:outline text-neutral-950;
+		@apply lg:border-wineneutral-800 text-neutral-950;
 	}
 
 	.pdap-nav-link-current-exact {
-		@apply pdap-nav-link-current lg:outline-neutral-800;
+		@apply pdap-nav-link-current lg:border-wineneutral-800;
 	}
 
 	.pdap-nav-open-button {

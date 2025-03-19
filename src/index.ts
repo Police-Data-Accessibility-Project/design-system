@@ -5,6 +5,7 @@ export * from './components';
 import './styles/styles.css';
 
 // Types
+export * from './components/AsyncTypeahead/types';
 export * from './components/Button/types';
 export * from './components/Dropdown/types';
 export * from './components/ErrorBoundary/types';

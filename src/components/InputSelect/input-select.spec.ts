@@ -75,13 +75,11 @@ describe('PdapInputSelect', () => {
 		await wrapper
 			.find('.pdap-custom-select')
 			.trigger('keydown', { key: 'ArrowDown' });
-		// @ts-expect-error vm doesn't play well with TS
 		expect(wrapper.vm.focusedOptionIndex).toBe(0);
 
 		await wrapper
 			.find('.pdap-custom-select')
 			.trigger('keydown', { key: 'ArrowDown' });
-		// @ts-expect-error vm doesn't play well with TS
 		expect(wrapper.vm.focusedOptionIndex).toBe(1);
 
 		await wrapper
@@ -179,25 +177,21 @@ describe('PdapInputSelect', () => {
 		await wrapper
 			.find('.pdap-custom-select')
 			.trigger('keydown', { key: 'ArrowDown' });
-		// @ts-expect-error vm doesn't play well with TS
 		expect(wrapper.vm.focusedOptionIndex).toBe(0);
 
 		await wrapper
 			.find('.pdap-custom-select')
 			.trigger('keydown', { key: 'ArrowDown' });
-		// @ts-expect-error vm doesn't play well with TS
 		expect(wrapper.vm.focusedOptionIndex).toBe(1);
 
 		await wrapper
 			.find('.pdap-custom-select')
 			.trigger('keydown', { key: 'ArrowDown' });
-		// @ts-expect-error vm doesn't play well with TS
 		expect(wrapper.vm.focusedOptionIndex).toBe(2);
 
 		await wrapper
 			.find('.pdap-custom-select')
 			.trigger('keydown', { key: 'ArrowDown' });
-		// @ts-expect-error vm doesn't play well with TS
 		expect(wrapper.vm.focusedOptionIndex).toBe(0);
 	});
 
@@ -223,13 +217,11 @@ describe('PdapInputSelect', () => {
 			.find('.pdap-custom-select')
 			.trigger('keydown', { key: 'ArrowDown' });
 
-		// @ts-expect-error vm doesn't play well with TS
 		expect(wrapper.vm.focusedOptionIndex).toBe(0);
 
 		await wrapper
 			.find('.pdap-custom-select')
 			.trigger('keydown', { key: 'ArrowUp' });
-		// @ts-expect-error vm doesn't play well with TS
 		expect(wrapper.vm.focusedOptionIndex).toBe(-1);
 	});
 
@@ -244,7 +236,6 @@ describe('PdapInputSelect', () => {
 		await wrapper
 			.find('.pdap-custom-select')
 			.trigger('keydown', { key: 'ArrowDown' });
-		// @ts-expect-error vm doesn't play well with TS
 		expect(wrapper.vm.focusedOptionIndex).toBe(0);
 
 		await wrapper

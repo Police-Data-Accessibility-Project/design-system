@@ -25,7 +25,10 @@ exports[`Header component > Renders a header 1`] = `
         <!---->
       </li>
       <li class="pdap-nav-link-container">
-        <a class="pdap-nav-link" href="https://www.google.com" referrerpolicy="no-referrer" target="_blank">Link</a>
+        <a class="pdap-nav-link" href="https://www.google.com" referrerpolicy="no-referrer" target="_blank">
+          <!--v-if-->
+          <span>Link</span>
+        </a>
         <!--v-if-->
       </li>
     </nav>

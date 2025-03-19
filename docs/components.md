@@ -1,6 +1,7 @@
 # Component Documentation
 <!-- This file is auto-generated from README.md files contained in the components directory, no need to edit this file directly. -->
 
+- [AsyncTypeahead](../src/components/AsyncTypeahead//README.md)
 - [Breadcrumbs](../src/components/Breadcrumbs//README.md)
 - [Button](../src/components/Button//README.md)
 - [Dropdown](../src/components/Dropdown//README.md)
@@ -12,6 +13,7 @@
 - [InputDatePicker](../src/components/InputDatePicker//README.md)
 - [InputRadio](../src/components/InputRadio//README.md)
 - [InputSelect](../src/components/InputSelect//README.md)
+- [InputSelectMulti](../src/components/InputSelectMulti//README.md)
 - [Nav](../src/components/Nav//README.md)
 - [QuickSearchForm](../src/components/QuickSearchForm//README.md)
 - [Spinner](../src/components/Spinner//README.md)

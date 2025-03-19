@@ -8,10 +8,3 @@ export interface PdapFooterSocialLinks {
 }
 export type FooterIconName =
 	(typeof FOOTER_LINK_ICONS)[keyof typeof FOOTER_LINK_ICONS];
-
-export interface PdapFooterProps {
-	fundraisingData: {
-		raised: number;
-		goal: number;
-	};
-}

@@ -14,11 +14,11 @@ _From data-sources `App.vue`: This will catch any uncaught error at the route le
 ```
 <template>
 	<AuthWrapper>
-		<Header :logo-image-src="lockup" />
+		<Header />
 		<ErrorBoundary component="main">
 			<router-view />
 		</ErrorBoundary>
-		<Footer :logo-image-src="acronym" />
+		<Footer />
 	</AuthWrapper>
 </template>
 ```
