@@ -1,6 +1,6 @@
 <template>
 	<footer
-		class="bg-brand-wine text-wineneutral-50 dark:text-wineneutral-950 flex flex-col justify-center lg:flex-row gap-4 xl:gap-12 p-2 md:p-3 relative lg:sticky lg:bottom-0 text-med xl:text-xl"
+		class="z-1000 bg-brand-wine text-wineneutral-50 dark:text-wineneutral-950 flex flex-col justify-center lg:flex-row gap-4 xl:gap-12 p-2 md:p-3 relative lg:sticky lg:bottom-0 text-med xl:text-xl"
 	>
 		<!-- LINKS -->
 		<ul
