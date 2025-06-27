@@ -16,7 +16,7 @@
 			"types": "./dist/index.d.ts"
 		},
 		"./images/*": "./dist/images/*",
-		"./styles": "./dist/styles.css"
+		"./styles": "./dist/index.css"
 	},
 	"main": "./dist/index.js",
 	"repository": {
