@@ -10,7 +10,7 @@ exports[`QuickSearchForm component > Renders a QuickSearchForm 1`] = `
   <form class="pdap-form flex flex-wrap gap-x-4" id="quick-search-form" name="quickSearchForm">
     <!--v-if-->
     <div class="pdap-input pdap-input-text">
-      <input id="search-term" name="searchTerm" placeholder="Enter a keyword, or &#x27;all&#x27;" type="text">
+      <input id="search-term" name="searchTerm" placeholder="Enter a keyword, or 'all'" type="text">
       <!--v-if-->
       <label class="pdap-input-label" for="search-term">What are you looking for?
         <!-- This is a hacky and extremely implementation-specific way to render these icons. Would be better to decouple Form and Input rendering a bit more so that we can more easily use slots, etc. -->
@@ -19,7 +19,7 @@ exports[`QuickSearchForm component > Renders a QuickSearchForm 1`] = `
       </label>
     </div>
     <div class="pdap-input pdap-input-text">
-      <input id="location" name="location" placeholder="Enter a place, or &#x27;all&#x27;" type="text">
+      <input id="location" name="location" placeholder="Enter a place, or 'all'" type="text">
       <!--v-if-->
       <label class="pdap-input-label" for="location">From where?
         <!-- This is a hacky and extremely implementation-specific way to render these icons. Would be better to decouple Form and Input rendering a bit more so that we can more easily use slots, etc. -->
