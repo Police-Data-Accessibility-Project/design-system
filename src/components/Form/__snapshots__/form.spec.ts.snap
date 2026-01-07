@@ -40,7 +40,7 @@ exports[`Form component > Renders component in form error state 1`] = `
     </label>
   </div>
   <div class="pdap-input pdap-input-checkbox pdap-input-checkbox-checked">
-    <input checked class="pdap-input-checkbox" id="checkbox-default-checked" name="checkboxDefaultChecked" type="checkbox" value="true">
+    <input class="pdap-input-checkbox" id="checkbox-default-checked" name="checkboxDefaultChecked" type="checkbox" value="true">
     <!--v-if-->
     <label class="pdap-input-label" for="checkbox-default-checked">Keep this box checked?
       <!-- This is a hacky and extremely implementation-specific way to render these icons. Would be better to decouple Form and Input rendering a bit more so that we can more easily use slots, etc. -->
@@ -101,7 +101,7 @@ exports[`Form component > Renders component in static state 1`] = `
     </label>
   </div>
   <div class="pdap-input pdap-input-checkbox pdap-input-checkbox-checked">
-    <input checked class="pdap-input-checkbox" id="checkbox-default-checked" name="checkboxDefaultChecked" type="checkbox" value="true">
+    <input class="pdap-input-checkbox" id="checkbox-default-checked" name="checkboxDefaultChecked" type="checkbox" value="true">
     <!--v-if-->
     <label class="pdap-input-label" for="checkbox-default-checked">Keep this box checked?
       <!-- This is a hacky and extremely implementation-specific way to render these icons. Would be better to decouple Form and Input rendering a bit more so that we can more easily use slots, etc. -->

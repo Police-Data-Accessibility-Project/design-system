@@ -24,6 +24,7 @@ export default defineConfig({
 			output: {
 				assetFileNames: ({ name }) => {
 					if (name === 'style.css') return 'styles.css';
+					return name;
 				},
 				globals: {
 					vue: 'Vue',

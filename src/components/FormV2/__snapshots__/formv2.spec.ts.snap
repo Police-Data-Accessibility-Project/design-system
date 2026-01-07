@@ -27,7 +27,7 @@ exports[`PdapFormV2 > calls submit event with form values on valid submission 1`
   </div>
   <div class="pdap-input pdap-input-checkbox">
     <!--v-if-->
-    <input checked id="ice-cream" name="ice-cream" type="checkbox" value="true">
+    <input id="ice-cream" name="ice-cream" type="checkbox" value="true">
     <label for="ice-cream">Ice Cream</label>
   </div>
   <div class="pdap-input">

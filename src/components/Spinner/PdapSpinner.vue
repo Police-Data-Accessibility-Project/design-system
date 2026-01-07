@@ -22,7 +22,7 @@
 				/>
 			</svg>
 
-			<Transition :key="text" appear mode="out-in">
+			<Transition appear mode="out-in">
 				<p v-if="text && show" aria-live="polite">
 					{{ text }}
 				</p>
@@ -32,8 +32,6 @@
 </template>
 
 <script setup lang="ts">
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { Transition } from 'vue';
 import { PdapSpinnerProps } from './types';
 
 withDefaults(defineProps<PdapSpinnerProps>(), {
