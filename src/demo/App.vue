@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { Header, Footer } from '../components';
-import { provide } from 'vue';
+import { computed, provide } from 'vue';
 import { RouterView } from 'vue-router';
+import { useRoute } from 'vue-router';
 
 const links = [
 	{
@@ -30,6 +31,11 @@ const links = [
 		method: 'href',
 	},
 	{
+		path: '/form-v2-demo',
+		text: 'Form Demo',
+		method: 'route',
+	},
+	{
 		href: 'https://docs.pdap.io/',
 		text: 'Docs',
 		method: 'href',
@@ -38,10 +44,21 @@ const links = [
 
 provide('navLinks', links);
 // provide('footerLinks', links);
+
+const route = useRoute();
+const collapseFooterOnEntry = computed(() => {
+	for (let i = route.matched.length - 1; i >= 0; i -= 1) {
+		const record = route.matched[i];
+		if (typeof record.meta?.collapseFooter === 'boolean') {
+			return record.meta.collapseFooter;
+		}
+	}
+	return true;
+});
 </script>
 
 <template>
 	<Header />
 	<RouterView />
-	<Footer />
+	<Footer :collapse-on-first-render="collapseFooterOnEntry" />
 </template>
