@@ -100,3 +100,23 @@ If neither are passed, it's a no-op.
 If both are passed, `path` takes precedence.
 
 `FOOTER_LINK_ICONS` is exposed from the package. `icon` must be a value contained on that object if it is passed.
+
+### Collapsible behavior
+
+On desktop viewports (`lg` and above) the footer renders as a sticky bar with a collapse toggle so dense pages gain more vertical space. Pass the optional `collapseOnFirstRender` prop to control the default state per route:
+
+```vue
+<Footer :collapse-on-first-render="routeMeta.collapseFooter" />
+```
+
+When `collapseOnFirstRender` is `true` (default), the footer collapses on initial render until a user interacts with it. When `false`, it stays expanded. On mobile (non-sticky) layouts the content always renders expanded and the toggle is hidden.
+
+```ts
+// Example using Vue Router meta values
+const route = useRoute();
+const collapseFooterOnEntry = computed(() =>
+	typeof route.meta.collapseFooter === 'boolean'
+		? route.meta.collapseFooter
+		: true
+);
+```

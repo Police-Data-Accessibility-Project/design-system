@@ -9,16 +9,25 @@ const routes = [
 		path: '/sign-up-demo',
 		component: SignupFormDemo,
 		name: 'Login Demo',
+		meta: {
+			collapseFooter: true,
+		},
 	},
 	{
 		path: '/form-v2-demo',
 		component: FormV2Demo,
 		name: 'FormV2Demo',
+		meta: {
+			collapseFooter: true,
+		},
 	},
 	{
 		path: '/typeahead-demo',
 		component: TypeaheadDemo,
 		name: 'Typeahead demo',
+		meta: {
+			collapseFooter: true,
+		},
 	},
 	{
 		path: '/',
@@ -26,6 +35,7 @@ const routes = [
 		name: 'ComponentDemo',
 		meta: {
 			breadcrumbText: 'Home',
+			collapseFooter: false,
 		},
 		children: [
 			{
@@ -34,6 +44,7 @@ const routes = [
 				name: 'ComponentDemoFoo',
 				meta: {
 					breadcrumbText: 'Foo',
+					collapseFooter: true,
 				},
 				children: [
 					{
@@ -42,6 +53,7 @@ const routes = [
 						name: 'ComponentDemoFooBar',
 						meta: {
 							breadcrumbText: 'Bar',
+							collapseFooter: true,
 						},
 						children: [
 							{
@@ -50,6 +62,7 @@ const routes = [
 								name: 'ComponentDemoFooBarBaz',
 								meta: {
 									breadcrumbText: 'Baz',
+									collapseFooter: true,
 								},
 							},
 						],
