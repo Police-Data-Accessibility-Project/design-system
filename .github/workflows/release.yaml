@@ -6,6 +6,10 @@ on:
       - main
       - beta
 
+permissions:
+  id-token: write  # Required for OIDC
+  contents: read
+
 jobs:
   setup:
     name: Setup
