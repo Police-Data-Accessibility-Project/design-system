@@ -9,7 +9,7 @@
 		>
 			<button
 				type="button"
-				class="pdap-footer-toggle flex items-center justify-center rounded-full border border-wineneutral-50 bg-wineneutral-50 text-base text-brand-wine-700 w-8 h-8 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-wineneutral-50 shadow-lg"
+				class="pdap-footer-toggle flex items-center justify-center rounded-full border border-solid text-sm text-white w-6 h-6 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-wineneutral-50 shadow-lg bg-[rgb(var(--color-brand-wine-500))] border-white"
 				data-testid="pdap-footer-toggle"
 				:aria-controls="footerContentId"
 				:aria-expanded="isExpanded"
@@ -20,7 +20,7 @@
 			>
 				<FontAwesomeIcon
 					:icon="isExpanded ? faCaretDown : faCaretUp"
-					class="text-wineneutral-50 dark:text-wineneutral-950"
+					class="text-current"
 				/>
 			</button>
 		</div>
