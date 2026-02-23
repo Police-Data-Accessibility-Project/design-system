@@ -29,7 +29,7 @@ Test your changes **locally first**, if possible. Include **screenshots with you
 3. `cd` into the project directory `cd design-system` and install dependencies `npm i`
 
 ### Workflow
-1. Create a branch prefixed with the appropriate action (e.g. `feature/add-dropdown-component`, `fix/button-border-styles`).
+1. Branch off `beta` for all feature work and non-trivial fixes. Branch off `main` only for urgent hotfixes or chores (e.g. dependency bumps) that don't need a beta release cycle. Name your branch with an appropriate prefix (e.g. `feature/add-dropdown-component`, `fix/button-border-styles`).
 2. Make your changes.
 3. Commit your changes, using `npm run _commit` (this calls `commitizen`, which guides you through creating a conventional commit).*
 
