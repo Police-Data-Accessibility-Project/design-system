@@ -48,7 +48,7 @@ export default {
 @layer components {
 	.pdap-button {
 		@apply cursor-pointer border-2 border-brand-gold decoration-0 disabled:opacity-50 font-semibold inline-block px-6 py-2 rounded-none text-center text-lg w-full;
-		@apply hover:brightness-85 lg:text-xl sm:max-w-max;
+		@apply enabled:hover:brightness-85 lg:text-xl sm:max-w-max;
 	}
 
 	.pdap-button-primary {

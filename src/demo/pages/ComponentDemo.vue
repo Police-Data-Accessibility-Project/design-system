@@ -107,6 +107,18 @@
 					clickable pills in current data sources search results)
 				</p>
 			</div>
+			<div>
+				<h3>Button primary (disabled)</h3>
+				<Button disabled>Primary button</Button>
+			</div>
+			<div>
+				<h3>Button secondary (disabled)</h3>
+				<Button intent="secondary" disabled>Secondary button</Button>
+			</div>
+			<div>
+				<h3>Button tertiary (disabled)</h3>
+				<Button intent="tertiary" disabled>Tertiary button</Button>
+			</div>
 		</div>
 
 		<h2>Dropdown: click or press to open</h2>
