@@ -83,36 +83,7 @@ import `pdap-design-system/images`;
 
 ## Development Setup
 
-1. Clone the repo
-
-```
-gh repo clone Police-Data-Accessibility-Project/design-system
-```
-
-1. CD into the project directory and install dependencies
-
-```
-cd design-system
-npm i
-```
-
-1. Step 2 should result in the `build` script being run after packages are installed. Check the `dist` directory for changes. You then may want to take one or both of the following steps:
-
-2. If `build` wasn't called when you installed deps, build styles and images to the `dist` directory:
-
-```
-npm run build
-```
-
-- To watch for changes and update the build as you make changes:
-
-```
-npm run build:watch
-```
-
-1. If you use VS Code as your editor, you may want to install the [tailwind VS Code extension](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss), which helps with intellisense and the custom at-rules used by TailwindCSS.
-
-2. Read the [contributing guide](./CONTRIBUTING.md) for development requirements and tips.
+See the [contributing guide](./CONTRIBUTING.md) for setup, branching workflow, commit conventions, and testing requirements.
 
 ## Assets
 
@@ -144,5 +115,5 @@ _n.b. There are some other scripts defined in the `package.json` `"scripts"` fie
 
 ## Releasing
 
-Incremental updates can be added to `main` directly via a PR. For more significant updates, the `beta` branch can be used for releasing incremental beta releases to test the bigger feature without releasing to production.
+See [CONTRIBUTING.md § Workflow](./CONTRIBUTING.md#workflow) for the branching strategy (`beta` vs `main`) and release process.
   
